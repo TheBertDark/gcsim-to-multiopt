@@ -101,7 +101,7 @@ export function convertAbils(abils: AbilInfo[], convert: AbilsType): [CustomMult
     return [
         {
             name: "Powered by DarkJake",
-            description: "This configuration was generated with --> https://dark-jake.github.io/gcsim-to-multiopt/",
+            description: "This configuration was generated with --> https://thebertdark.github.io/gcsim-to-multiopt/",
             targets
         },
         errors

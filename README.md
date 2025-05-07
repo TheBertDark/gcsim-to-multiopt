@@ -19,7 +19,7 @@ This website allows you to convert gcsim simulation results into configuration f
 - No installation or technical knowledge required.
 
 ## Who made this?
-Developed and maintained by [DarkJake](https://github.com/Dark-Jake), inspired by the Genshin community and the original project by [imring](https://imring.github.io/gcsim-to-multiopt/).
+Developed and maintained by [DarkJake](https://github.com/TheBertDark), inspired by the Genshin community and the original project by [imring](https://imring.github.io/gcsim-to-multiopt/).
 
 ---
 

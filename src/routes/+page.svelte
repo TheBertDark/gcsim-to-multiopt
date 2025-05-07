@@ -168,7 +168,7 @@
     afterUpdate(() => {
     document.querySelectorAll('.token.string').forEach(span => {
         const texto = span.textContent || '';
-        const url = 'https://dark-jake.github.io/gcsim-to-multiopt/';
+        const url = 'https://thebertdark.github.io/gcsim-to-multiopt/';
 
         if (texto === '"No description available."') {
             (span as HTMLElement).style.setProperty('color', 'hsl(0, 100%, 50%)', 'important');
