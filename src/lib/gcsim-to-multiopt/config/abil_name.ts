@@ -162,6 +162,11 @@ const defaultAbils: AbilsType = {
     "Chongyun C1": ["constellation1", "dmg"],
 
     //?---------------------Citlali--------------------//
+    "Obsidian Tzitzimitl DMG": ["skill", "obsidianDmg"],
+    "Frostfall Storm DMG": ["skill", "frostfallStormDmg"],
+    "Ice Storm DMG": ["burst", "iceStormDmg"],
+    "Spiritvessel Skull DMG": ["burst", "skullDmg"],
+    "Spiritvessel Skull DMG (C4)": ["constellation4", "dmg"],
 
     //?---------------------Clorinde-------------------//
     "Swift Hunt (Piercing Shot) 0": ["skill", "piercingDmg"],
@@ -199,6 +204,12 @@ const defaultAbils: AbilsType = {
     "Flame-Mane's Fist": ["burst", "fistDmg"],
 
     //?---------------------Diluc----------------------//
+    "Searing Onslaught 0": ["skill", "firstHit"],
+    "Searing Onslaught 1": ["skill", "secondHit"],
+    "Searing Onslaught 2": ["skill", "thirdHit"],
+    "Dawn (Strike)": ["burst", "slashDmg"],
+    "Dawn (Tick)": ["burst", "dotDmg"],
+
     //?---------------------Diona----------------------//
     //?---------------------Dori-----------------------//
 

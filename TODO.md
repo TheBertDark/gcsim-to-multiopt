@@ -5,12 +5,12 @@ Mark characters as their abilities are added.
 
 ---
 
-**Updated:** 28/04/25, 10:15 p.m.
+**Updated:** 12/05/25, 1:20 a.m.
 
 - Total characters: 96
-- Mapped: 51
-- Pending: 45
-- Completion percentage: 53.1%
+- Mapped: 54
+- Pending: 42
+- Completion percentage: 56.3%
 
 ## Character Status
 
@@ -33,12 +33,12 @@ Mark characters as their abilities are added.
 | Chevreuse | ✅ |
 | Chiori | ✅ |
 | Chongyun | ✅ |
-| Citlali | ⬜ |
+| Citlali | ✅ |
 | Clorinde | ✅ |
 | Collei | ✅ |
 | Cyno | ✅ |
-| Dehya | ⬜ |
-| Diluc | ⬜ |
+| Dehya | ✅ |
+| Diluc | ✅ |
 | Diona | ⬜ |
 | Dori | ⬜ |
 | Emilie | ✅ |
