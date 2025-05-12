@@ -45,7 +45,14 @@ function convertAbil(abil: AbilInfo, convert: AbilsType): [CustomTarget | undefi
             return;
         }
         const [newName, newValue] = result;
-        bonusStats[newName] = newValue;
+
+        // Modification: If it is an elemental resist (ends with “_enemyRes_”) and a value already exists,
+        // add the new value instead of overwriting it.
+        if (newName.endsWith("_enemyRes_") && bonusStats[newName] !== undefined) {
+            bonusStats[newName] += newValue;
+        } else {
+            bonusStats[newName] = newValue;
+        }
     };
     Object.entries(abil.buffs).forEach(([name, value]) => addBuff(name, value));
     abil.resists.forEach(resist => addBuff(resist.element, resist.amount, true));
