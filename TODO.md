@@ -5,12 +5,12 @@ Mark characters as their abilities are added.
 
 ---
 
-**Updated:** 12/05/25, 1:20 a.m.
+**Updated:** 13/05/25, 7:08 p.m.
 
 - Total characters: 96
-- Mapped: 54
-- Pending: 42
-- Completion percentage: 56.3%
+- Mapped: 59
+- Pending: 37
+- Completion percentage: 61.5%
 
 ## Character Status
 
@@ -39,11 +39,11 @@ Mark characters as their abilities are added.
 | Cyno | ✅ |
 | Dehya | ✅ |
 | Diluc | ✅ |
-| Diona | ⬜ |
-| Dori | ⬜ |
+| Diona | ✅ |
+| Dori | ✅ |
 | Emilie | ✅ |
-| Eula | ⬜ |
-| Faruzan | ⬜ |
+| Eula | ✅ |
+| Faruzan | ✅ |
 | Fischl | ✅ |
 | Freminet | ⬜ |
 | Furina | ✅ |
@@ -97,7 +97,7 @@ Mark characters as their abilities are added.
 | Tighnari | ✅ |
 | Varesa | ⬜ |
 | Venti | ⬜ |
-| Wanderer | ⬜ |
+| Wanderer | ✅ |
 | Wriothesley | ⬜ |
 | Xiangling | ⬜ |
 | Xiangyun | ✅ |

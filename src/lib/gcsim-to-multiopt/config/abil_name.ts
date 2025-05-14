@@ -31,6 +31,7 @@ const defaultAbils: AbilsType = {
     "swirl-pyro": ["reaction", "pyroSwirl"],
     "Freeze Broken": ["type", "subtype"], //! No damage? irrelevant
     "shatter": ["reaction", "shattered"],
+    "superconduct": ["reaction", "superconduct"],
 
     //TODO events
     "Hurt": ["type", "subtype"], //! Character takes damage
@@ -211,7 +212,16 @@ const defaultAbils: AbilsType = {
     "Dawn (Tick)": ["burst", "dotDmg"],
 
     //?---------------------Diona----------------------//
+    "Fully-Charged Aimed Shot (C4)": ["charged", "aimedCharged"],
+    "Icy Paw": ["skill", "skillDmg"],
+    "Signature Mix (Initial)": ["burst", "skillDmg"],
+    "Signature Mix (Tick)": ["burst", "fieldDmg"],
+
     //?---------------------Dori-----------------------//
+    "Troubleshooter Shot": ["skill", "shotDmg"],
+    "After-Sales Service Round": ["skill", "roundDmg"],
+    "Alcazarzaray's Exactitude: Connector DMG": ["burst", "connectorDmg"],
+    "Special Franchise": ["constellation2", "dmg"],
 
     //?---------------------Emilie---------------------//
     "Lumidouce Case (Summon)": ["skill", "skillDmg"],
@@ -220,7 +230,17 @@ const defaultAbils: AbilsType = {
     "Spiritbreath Thorn": ["skill", "thornDmg"],
 
     //?---------------------Eula-----------------------//
+    "Icetide Vortex": ["skill", "press"],
+    "Icetide Vortex (Hold)": ["skill", "hold"],
+    "Icetide Vortex (Icewhirl)": ["skill", "icewhirl"],
+    "Icetide (Lightfall)": ["passive1", "shatteredLightfallSword"],
+    "Glacial Illumination": ["burst", "dmg"],
+    "Glacial Illumination (Lightfall)": ["burst", "lightFallSwordNew"],
+
     //?---------------------Faruzan--------------------//
+    "Wind Realm of Nasamjnin (E)": ["skill", "skillDmg"],
+    "Pressurized Collapse": ["skill", "vortexDmg"],
+    "The Wind's Secret Ways (Q)": ["burst", "dmg"],
 
     //?---------------------Fischl---------------------//
     "Fischl A4": ["passive2", "dmg"],
@@ -389,9 +409,11 @@ const defaultAbils: AbilsType = {
     //?---------------------Razor----------------------//
 
     //?---------------------Rosaria--------------------//
-    "Rites of Termination (DoT)": ["burst", "dotDmg"],
+    "Ravaging Confession (Hit 1)": ["skill", "hit1"],
+    "Ravaging Confession (Hit 2)": ["skill", "hit2"],
     "Rites of Termination (Hit 1)": ["burst", "hit1"],
     "Rites of Termination (Hit 2)": ["burst", "hit2"],
+    "Rites of Termination (DoT)": ["burst", "dotDmg"],
 
     //?---------------------Sara-----------------------//
     "Fully-Charged Aimed Shot (A1)": ["charged", "fullyAimed"], //! Same other characters?
@@ -432,7 +454,16 @@ const defaultAbils: AbilsType = {
     //?---------------------Traveler (Pyro)------------//
     //?---------------------Varesa---------------------//
     //?---------------------Venti----------------------//
+
     //?---------------------Wanderer-------------------//
+    "Normal 0 (Windfavored)": ["normal", "0"],
+    "Normal 1 (Windfavored)": ["normal", "1"],
+    "Normal 2 (Windfavored)": ["normal", "2"],
+    "Kyougen: Five Ceremonial Plays (Windfavored)": ["burst", "dmg"],
+    "Gales of Reverie": ["passive2", "dmg"],
+    "Hanega: Song of the Wind": ["skill", "dmg"],
+    "Shugen: The Curtains’ Melancholic Sway": ["constellation6", "0"],
+
     //?---------------------Wriothesley----------------//
     //?---------------------Xiangling------------------//
 
