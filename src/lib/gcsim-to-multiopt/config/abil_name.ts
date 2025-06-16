@@ -14,6 +14,7 @@ const defaultAbils: AbilsType = {
     "Aimed Shot": ["charged", "aimed"],
     "Fully-Charged Aimed Shot": ["charged", "aimedCharged"],
     "Surging Blade": ["skill", "bladeDmg"],
+    "Low Plunge": ["plunging", "low"],
     "High Plunge": ["plunging", "high"],
     "Plunge Collision": ["plunging", "dmg"],
 
@@ -253,6 +254,11 @@ const defaultAbils: AbilsType = {
     "Oz (Burst)": ["skill", "ozDmg"],
 
     //?---------------------Freminet-------------------//
+    "Pressurized Floe: Upward Thrust": ["skill", "thrustDmg"],
+    "Pressurized Floe: Spiritbreath Thorn": ["skill", "thornDmg"],
+    "Pressurized Floe: Shattering Pressure (Cryo)": ["skill", "level0Dmg"],
+    "Pressurized Floe: Pers Time Frost": ["skill", "frostDmg"],
+    "Shadowhunter's Ambush": ["burst", "dmg"],
 
     //?---------------------Furina---------------------//
     "Spiritbreath Thorn (Furina)": ["normal", "thornBladeDmg"],

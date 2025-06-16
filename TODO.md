@@ -5,12 +5,12 @@ Mark characters as their abilities are added.
 
 ---
 
-**Updated:** 13/05/25, 7:08 p.m.
+**Updated:** 16/06/25, 4:18 p.m.
 
 - Total characters: 96
-- Mapped: 59
-- Pending: 37
-- Completion percentage: 61.5%
+- Mapped: 60
+- Pending: 36
+- Completion percentage: 62.5%
 
 ## Character Status
 
@@ -45,7 +45,7 @@ Mark characters as their abilities are added.
 | Eula | ✅ |
 | Faruzan | ✅ |
 | Fischl | ✅ |
-| Freminet | ⬜ |
+| Freminet | ✅ |
 | Furina | ✅ |
 | Gaming | ✅ |
 | Ganyu | ✅ |
