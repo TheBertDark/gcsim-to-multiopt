@@ -5,12 +5,12 @@ Mark characters as their abilities are added.
 
 ---
 
-**Updated:** 16/06/25, 4:18 p.m.
+**Updated:** 11/07/25, 6:26 p.m.
 
-- Total characters: 96
-- Mapped: 60
+- Total characters: 97
+- Mapped: 61
 - Pending: 36
-- Completion percentage: 62.5%
+- Completion percentage: 62.9%
 
 ## Character Status
 
@@ -42,6 +42,7 @@ Mark characters as their abilities are added.
 | Diona | ✅ |
 | Dori | ✅ |
 | Emilie | ✅ |
+| Escoffier | ✅ |
 | Eula | ✅ |
 | Faruzan | ✅ |
 | Fischl | ✅ |

@@ -230,6 +230,12 @@ const defaultAbils: AbilsType = {
     "Lumidouce Case (Level 2)": ["skill", "level2Dmg"],
     "Spiritbreath Thorn": ["skill", "thornDmg"],
 
+    //?---------------------Escoffier------------------//
+    "Low-Temperature Cooking": ["skill", "skillDmg"],
+    "Frosty Parfait": ["skill", "parfaitDmg"],
+    "Surging Blade (Escoffier)": ["skill", "bladeDmg"],
+    "Scoring Cuts": ["burst", "skillDmg"],
+
     //?---------------------Eula-----------------------//
     "Icetide Vortex": ["skill", "press"],
     "Icetide Vortex (Hold)": ["skill", "hold"],
