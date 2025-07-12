@@ -235,6 +235,7 @@ const defaultAbils: AbilsType = {
     "Frosty Parfait": ["skill", "parfaitDmg"],
     "Surging Blade (Escoffier)": ["skill", "bladeDmg"],
     "Scoring Cuts": ["burst", "skillDmg"],
+    "Special-Grade Frozen Parfait (C6)": ["constellation6", "dmg"],
 
     //?---------------------Eula-----------------------//
     "Icetide Vortex": ["skill", "press"],
