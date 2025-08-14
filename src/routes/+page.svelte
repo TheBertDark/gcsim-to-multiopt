@@ -244,7 +244,7 @@
             return;
         }
 
-        const convert = getAbilities();
+        const convert = getAbilities(charName);
         try {
             const addedConvert = JSON.parse(addConvert || '{}');
             Object.assign(convert, addedConvert);
@@ -368,7 +368,7 @@
         const abils = getCharacterAbils(sample, charName);
         if (!abils) return;
 
-        const [newTarget, errors] = convertAbils(abils, getAbilities());
+        const [newTarget, errors] = convertAbils(abils, getAbilities(charName));
         if (errors.length > 0) {
             errorContexts = errors.map(err => ({
                 message: err.message,
