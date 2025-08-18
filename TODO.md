@@ -5,12 +5,12 @@ Mark characters as their abilities are added.
 
 ---
 
-**Updated:** 14/08/25, 1:56 a.m.
+**Updated:** 17/08/25, 9:24 p.m.
 
-- Total characters: 97
+- Total characters: 101
 - Mapped: 60
-- Pending: 37
-- Completion percentage: 61.9%
+- Pending: 41
+- Completion percentage: 59.4%
 
 ## Character Status
 
@@ -37,6 +37,7 @@ Mark characters as their abilities are added.
 | Clorinde | ✅ |
 | Collei | ✅ |
 | Cyno | ✅ |
+| Dahlia | ⬜ |
 | Dehya | ✅ |
 | Diluc | ✅ |
 | Diona | ✅ |
@@ -54,6 +55,8 @@ Mark characters as their abilities are added.
 | Heizou | ⬜ |
 | Hutao | ✅ |
 | Iansan | ⬜ |
+| Ifa | ⬜ |
+| Ineffa | ⬜ |
 | Itto | ✅ |
 | Jean | ⬜ |
 | Kachina | ⬜ |
@@ -92,6 +95,7 @@ Mark characters as their abilities are added.
 | Sethos | ⬜ |
 | Shenhe | ✅ |
 | Sigewinne | ⬜ |
+| Skirk | ⬜ |
 | Sucrose | ✅ |
 | Tartaglia | ⬜ |
 | Thoma | ⬜ |

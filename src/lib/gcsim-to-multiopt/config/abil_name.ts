@@ -237,6 +237,8 @@ const characterAbils: Record<string, AbilsType> = {
         "Raiment: Just Scales (C6)": ["passive1", "boltDmg"],
     },
 
+    dahlia: {},
+
     dehya: {
         "Molten Inferno": ["skill", "indomitableDmg"],
         "Ranging Flame": ["skill", "rangingDmg"],
@@ -357,6 +359,10 @@ const characterAbils: Record<string, AbilsType> = {
     },
 
     iansan: {},
+
+    ifa: {},
+
+    ineffa: {},
 
     itto: {
         "Arataki Kesagiri Final Slash": ["charged", "akFinal"],
@@ -536,6 +542,8 @@ const characterAbils: Record<string, AbilsType> = {
     },
 
     sigewinne: {},
+
+    skirk: {},
 
     sucrose: {
         "Astable Anemohypostasis Creation-6308": ["skill", "press"],
