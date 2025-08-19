@@ -370,11 +370,22 @@ const characterAbils: Record<string, AbilsType> = {
         "Masatsu Zetsugi: Akaushi Burst!": ["skill", "dmg"],
     },
 
-    jean: {},
+    jean: {
+        "Gale Blade": ["skill", "dmg"],
+        "Dandelion Breeze": ["burst", "dmg"],
+        "Dandelion Breeze (In/Out)": ["burst", "enterExitDmg"],
+        "swirl-pyro (aoe)": ["reaction", "pyroSwirl"],
+        "swirl-hydro (aoe)": ["reaction", "hydroSwirl"],
+        "swirl-cryo (aoe)": ["reaction", "cryoSwirl"],
+        "swirl-electro (aoe)": ["reaction", "electroSwirl"],
+    },
 
     kachina: {},
 
-    kaeya: {},
+    kaeya: {
+        "Frostgnaw": ["skill", "dmg"],
+        "Glacial Waltz": ["burst", "dmg"],
+    },
 
     kaveh: {},
 

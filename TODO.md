@@ -5,12 +5,12 @@ Mark characters as their abilities are added.
 
 ---
 
-**Updated:** 17/08/25, 9:24 p.m.
+**Updated:** 19/08/25, 1:32 p.m.
 
 - Total characters: 101
-- Mapped: 60
-- Pending: 41
-- Completion percentage: 59.4%
+- Mapped: 62
+- Pending: 39
+- Completion percentage: 61.4%
 
 ## Character Status
 
@@ -58,9 +58,9 @@ Mark characters as their abilities are added.
 | Ifa | ⬜ |
 | Ineffa | ⬜ |
 | Itto | ✅ |
-| Jean | ⬜ |
+| Jean | ✅ |
 | Kachina | ⬜ |
-| Kaeya | ⬜ |
+| Kaeya | ✅ |
 | Kaveh | ⬜ |
 | Kazuha | ✅ |
 | Keqing | ⬜ |
