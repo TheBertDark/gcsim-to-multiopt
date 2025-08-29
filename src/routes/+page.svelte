@@ -11,6 +11,7 @@
     import getAbilities from '$lib/gcsim-to-multiopt/config/abil_name';
     import statNameConvert from '$lib/gcsim-to-multiopt/config/stat_name';
     import resistNameConvert from '$lib/gcsim-to-multiopt/config/resist_name';
+    import { abilityDescriptions } from '$lib/gcsim-to-multiopt/config/ability_descriptions';
 
     import type { Sample } from '$lib/gcsim-to-multiopt/gcsim_types';
     import type { CustomMultiTarget } from '$lib/gcsim-to-multiopt/go_types';
@@ -52,27 +53,82 @@
     let showToast = false;
     let toastTimeout: ReturnType<typeof setTimeout>;
     let configName = '';
-
-    // Base skill descriptions
-    const abilityDescriptions: Record<string, string> = {
-      "Normal 0": "Basic attack (N1).",
-      "Normal 1": "Basic attack (N2).",
-      "Normal 2": "Basic attack (N3).",
-      "Normal 3": "Basic attack (N4).",
-      "Normal 4": "Basic attack (N5).",
-      "Normal 5": "Basic attack (N6).",
-      "Charge": "Charge attack.",
-      "Charge Attack": "Charge attack.",
-      "Charge 0": "Manual configuration needed for the character (charge 1).",
-      "Charge 1": "Manual configuration needed for the character (charge 2).",
-      "Bake-Kurage": "Invoca una medusa que cura y daña a los enemigos.",
-      "Sea-Dyed Foam": "Aplica una burbuja que explota e inflige daño adicional.",
-      "Cannon Fire Support": "Aplica un apoyo que inflige daño adicional.",
-      "bloom (self damage)": "Self damage (not relevant)", //! Self damage (not relevant)
-      "Hurt": "Character takes damage (not relevant)",
-    };
+    
+    // Variables para el tooltip
+    let tooltipX = 0;
+    let tooltipY = 0;
+    let showTooltip = false;
+    let tooltipTimeout: ReturnType<typeof setTimeout> | null = null;
+    let arrowPosition: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' = 'top-left';
 
     (globalThis as any).abilityDescriptions = abilityDescriptions;
+
+    // Funciones para el tooltip
+    function handleMouseEnter(event: MouseEvent) {
+        // Limpiar cualquier timeout pendiente
+        if (tooltipTimeout) {
+            clearTimeout(tooltipTimeout);
+            tooltipTimeout = null;
+        }
+        
+        // Mostrar tooltip inmediatamente
+        showTooltip = true;
+        updateTooltipPosition(event);
+    }
+
+    function handleMouseMove(event: MouseEvent) {
+        if (showTooltip) {
+            updateTooltipPosition(event);
+        }
+    }
+
+    function handleMouseLeave() {
+        // Usar un pequeño delay para evitar parpadeos
+        tooltipTimeout = setTimeout(() => {
+            showTooltip = false;
+            tooltipTimeout = null;
+        }, 50);
+    }
+
+    function updateTooltipPosition(event: MouseEvent) {
+        // Posicionar el tooltip en la esquina superior derecha del cursor
+        tooltipX = event.clientX + 15; // 15px a la derecha del cursor
+        tooltipY = event.clientY - 15; // 15px arriba del cursor
+        
+        // Ajustar si el tooltip se sale de la pantalla
+        const tooltipWidth = 320;
+        const tooltipHeight = 200; // altura aproximada
+        
+        let originX = 'left';
+        let originY = 'top';
+        
+        if (tooltipX + tooltipWidth > window.innerWidth) {
+            tooltipX = event.clientX - tooltipWidth - 15; // Mover a la izquierda
+            originX = 'right';
+        }
+        
+        if (tooltipY < 0) {
+            tooltipY = event.clientY + 15; // Mover abajo del cursor
+            originY = 'bottom';
+        }
+        
+        // Establecer el transform-origin dinámicamente para el efecto globo
+        const tooltipElement = document.querySelector('.tooltip') as HTMLElement;
+        if (tooltipElement) {
+            tooltipElement.style.transformOrigin = `${originX} ${originY}`;
+        }
+        
+        // Actualizar la posición de la flecha
+        if (originY === 'top' && originX === 'left') {
+            arrowPosition = 'top-left';
+        } else if (originY === 'top' && originX === 'right') {
+            arrowPosition = 'top-right';
+        } else if (originY === 'bottom' && originX === 'left') {
+            arrowPosition = 'bottom-left';
+        } else {
+            arrowPosition = 'bottom-right';
+        }
+    }
 
     function toggleError(index: number) {
         if (expandedErrors.has(index)) {
@@ -365,23 +421,19 @@
     function updateTarget() {
         if (!charName || !sample) return;
 
-        const abils = getCharacterAbils(sample, charName);
-        if (!abils) return;
+        const [abils, mods] = getCharacterAbils(sample, charName, ignoredMods);
+        if (!abils || abils.length === 0) return;
 
         const [newTarget, errors] = convertAbils(abils, getAbilities(charName));
         if (errors.length > 0) {
             errorContexts = errors.map(err => ({
-                message: err.message,
-                raw: err.raw,
-                suggestion: err.suggestion
+                message: err.message
             }));
             target = null;
         } else if (newTarget) {
             errorContexts = [];
-            target = {
-                name: configName || "Powered by DarkJake",
-                targets: [newTarget]
-            };
+            target = newTarget;
+            target.name = configName || "Powered by DarkJake";
             updateHighlightedJson();
         }
     }
@@ -609,11 +661,7 @@
         padding: 0;
     }
 
-    .audio-control button svg {
-        width: 60%;
-        height: 60%;
-        display: block;
-    }
+
 
     .audio-control button:hover {
         background: rgba(0, 0, 0, 0.8);
@@ -1050,20 +1098,7 @@
         }
     }
 
-    .copy-section {
-        display: flex;
-        gap: 1rem;
-        align-items: center;
-        margin: 1rem 0;
 
-        button {
-            background: #42b883;
-            
-            &:hover {
-                background: #3aa876;
-            }
-        }
-    }
 
     .result-section {
         background: rgba(66, 184, 131, 0.1);
@@ -1122,26 +1157,72 @@
                 position: absolute;
                 top: 1rem;
                 right: 1rem;
-                background: #646cff;
-                color: white;
-                border: none;
+                background: rgba(255, 255, 255, 0.08);
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+                color: rgba(255, 255, 255, 0.9);
+                border: 1px solid rgba(255, 255, 255, 0.15);
                 padding: 0.5rem 1rem;
-                border-radius: 6px;
+                border-radius: 12px;
                 cursor: pointer;
                 font-size: 0.9rem;
                 display: flex;
                 align-items: center;
                 gap: 0.5rem;
-                transition: background-color 0.2s ease;
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                z-index: 1;
+                overflow: hidden;
+                box-shadow: 
+                    0 8px 32px rgba(0, 0, 0, 0.2),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+                    inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: -100%;
+                    width: 100%;
+                    height: 100%;
+                    background: linear-gradient(
+                        90deg,
+                        transparent 0%,
+                        rgba(255, 255, 255, 0.4) 50%,
+                        transparent 100%
+                    );
+                    border-radius: 12px;
+                    opacity: 0;
+                    transition: all 0.6s ease;
+                    z-index: 1;
+                    transform: skewX(-20deg);
+                }
 
                 &:hover {
-                    background: #7c82ff;
+                    background: rgba(255, 255, 255, 0.12);
+                    border-color: rgba(255, 255, 255, 0.25);
+                    transform: translateY(-2px);
+                    box-shadow: 
+                        0 12px 40px rgba(0, 0, 0, 0.3),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.2),
+                        inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+                    
+                    &::before {
+                        opacity: 1;
+                        left: 100%;
+                    }
                 }
 
                 &:active {
-                    background: #4c53ff;
+                    background: rgba(255, 255, 255, 0.16);
+                    transform: translateY(0px) scale(0.98);
+                    box-shadow: 
+                        0 4px 16px rgba(0, 0, 0, 0.2),
+                        inset 0 2px 4px rgba(0, 0, 0, 0.1),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.15);
                 }
             }
+
+
         }
     }
 
@@ -1236,91 +1317,124 @@
 
     .info-icon {
         display: inline-flex;
-        width: 12px;
-        height: 12px;
-        background: #646cff;
+        width: 16px;
+        height: 16px;
+        background: linear-gradient(135deg, #646cff, #747bff);
         border-radius: 50%;
         color: white;
-        font-size: 0.75rem;
+        font-size: 0.7rem;
+        font-weight: bold;
         align-items: center;
         justify-content: center;
         cursor: help;
         position: relative;
+        transition: all 0.2s ease;
+        box-shadow: 0 2px 4px rgba(100, 108, 255, 0.3);
+    }
+
+    .info-icon:hover {
+        transform: scale(1.1);
+        background: linear-gradient(135deg, #747bff, #646cff);
+        box-shadow: 0 4px 8px rgba(100, 108, 255, 0.4);
     }
 
     .tooltip {
-        position: absolute;
-        top: -250%;
-        left: 15%;
-        transform: translateX(0);
-        background: linear-gradient(180deg, rgba(30,30,30,0.98), rgba(20,20,20,0.98));
-        color: #f0f0f0;
-        padding: 1rem;
-        border-radius: 12px;
+        position: fixed;
+        background: linear-gradient(145deg, rgba(25,25,35,0.97), rgba(15,15,25,0.97));
+        color: #f5f5f5;
+        padding: 1.2rem;
+        border-radius: 16px;
         font-size: 0.85rem;
-        line-height: 1.5;
+        line-height: 1.6;
         white-space: normal;
         z-index: 1000;
         opacity: 0;
+        visibility: hidden;
         pointer-events: none;
-        transition: opacity 0.25s ease, transform 0.2s ease;
-        width: 280px;
-        // box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-        box-shadow: 2px 2px 2px 1px #646cff;
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        backdrop-filter: blur(2px);
+        transform: scale(0.3);
+        transform-origin: top left;
+        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        width: 320px;
+        max-width: 90vw;
+        box-shadow: 
+            0 20px 40px rgba(0, 0, 0, 0.4),
+            0 0 0 1px rgba(100, 108, 255, 0.2),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(100, 108, 255, 0.15);
     }
 
-    /* Flechita */
-    .tooltip::after {
-    bottom: -8px;
-    left: 20px;
-    border-width: 8px 8px 0 8px;
-    border-color: rgba(20, 20, 20, 0.98) transparent transparent transparent;
-}
-
-
-    .info-icon:hover + .tooltip {
+    .tooltip.show {
         opacity: 1;
-        transform: translateX(0) scale(1.02);
+        visibility: visible;
         pointer-events: auto;
+        transform: scale(1);
     }
 
     .tooltip p {
-        margin-bottom: 0.6rem;
+        margin-bottom: 0.8rem;
+        color: #e8e8e8;
+    }
+
+    .tooltip p:last-child {
+        margin-bottom: 0;
+    }
+
+    .tooltip strong {
+        color: #ffffff;
+        font-weight: 600;
     }
 
     .tooltip-note {
         font-size: 0.75rem;
-        color: #aaaaaa;
+        color: #b8b8b8;
         font-style: italic;
-        border-top: 1px solid rgba(255,255,255,0.08);
-        padding-top: 0.5rem;
-        margin-top: 0.5rem;
+        border-top: 1px solid rgba(100, 108, 255, 0.2);
+        padding-top: 0.7rem;
+        margin-top: 0.7rem;
+        background: rgba(100, 108, 255, 0.05);
+        padding: 0.7rem;
+        border-radius: 8px;
+        margin-bottom: 0.5rem;
     }
 
     .tooltip-color-guide {
         display: flex;
         flex-direction: column;
-        margin-top: 0.5rem;
-        gap: 0.3rem;
+        margin-top: 0.8rem;
+        gap: 0.5rem;
+        background: rgba(0, 0, 0, 0.2);
+        padding: 0.8rem;
+        border-radius: 8px;
+        border: 1px solid rgba(100, 108, 255, 0.1);
+    }
+
+    .tooltip-color-guide > div {
+        display: flex;
+        align-items: center;
+        font-size: 0.8rem;
+        color: #d0d0d0;
     }
 
     .mod-box {
         display: inline-block;
-        width: 14px;
-        height: 14px;
-        border-radius: 3px;
-        margin-right: 0.5rem;
+        width: 16px;
+        height: 16px;
+        border-radius: 4px;
+        margin-right: 0.7rem;
         vertical-align: middle;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.2s ease;
     }
 
     .mod-box.active {
-        background-color: hsla(120, 39%, 45%, 0.531);
+        background: linear-gradient(135deg, #22c55e, #16a34a);
+        box-shadow: 0 2px 4px rgba(34, 197, 94, 0.3);
     }
 
     .mod-box.inactive {
-        background-color: hsla(3, 100%, 60%, 0.531);
+        background: linear-gradient(135deg, #ef4444, #dc2626);
+        box-shadow: 0 2px 4px rgba(239, 68, 68, 0.3);
     }
 
     .input-group {
@@ -1462,11 +1576,7 @@
         opacity: 0.3;
     }
 
-    footer p {
-        font-family: 'Roboto', sans-serif;
-        margin: 0;
-        line-height: 1.6;
-    }
+
 
     footer a {
         color: hsl(142, 100%, 70%);
@@ -1662,8 +1772,14 @@
     {#if availabledMods.length > 0}
         <div class="section-header">
             <h2>Ignored Mods</h2>
-            <span class="info-icon">?</span>
-            <div class="tooltip">
+            <span class="info-icon" 
+                  role="button"
+                  tabindex="0"
+                  aria-label="Show information about ignored mods"
+                  on:mouseenter={handleMouseEnter}
+                  on:mousemove={handleMouseMove}
+                  on:mouseleave={handleMouseLeave}>?</span>
+            <div class="tooltip" class:show={showTooltip} style="left: {tooltipX}px; top: {tooltipY}px;">
                 <p><strong>What is this for?</strong></p>
                 <p style="text-align: justify">Enable or disable specific mods to include or exclude them from the configuration used for Genshin Optimizer.</p>
                 
