@@ -51,7 +51,7 @@ export function getCharacterAbils(sample: Sample, charName: string, ignoredMods:
 
     const charIndex: number = sample.character_details.findIndex((char: Character) => char.name == charName) ?? 0;
     const char: Character = sample.character_details[charIndex];
-    const damages: LogDetails[] = sample.logs.filter((log: LogDetails) => log.char_index == charIndex && log.event == "damage") ?? [];
+    const damages: LogDetails[] = sample.logs.filter((log: LogDetails) => log.char_index == charIndex && log.event == "damage" && log.logs.damage != 0) ?? [];
 
     let availabledMods: Record<string, boolean> = {};
 
