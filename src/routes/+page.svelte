@@ -297,6 +297,14 @@
         availabledMods = mods;
 
         if (abilities.length === 0) {
+            // Clear the previous target and show "information not available" message
+            target = null;
+            highlightedJson = '';
+            errors = [`No information available for character "${charName}" in the loaded file.`];
+            errorContexts = [{
+                message: `No information available for character "${charName}" in the loaded file.`,
+                suggestion: "This character has no damage data recorded in the simulation. Make sure the character actively participated in combat during the simulation."
+            }];
             return;
         }
 
@@ -1856,6 +1864,19 @@
                                             {error.raw.element}
                                             <span class="label">Valid elements:</span>
                                             {error.raw.validElements.join(', ')}
+                                        </div>
+                                    {/if}
+                                {:else if error.message.includes('No information available')}
+                                    Character has no combat data in the loaded simulation file.
+                                    {#if error.suggestion}
+                                        <div class="suggestion">
+                                            {error.suggestion}
+                                        </div>
+                                    {/if}
+                                {:else}
+                                    {#if error.suggestion}
+                                        <div class="suggestion">
+                                            {error.suggestion}
                                         </div>
                                     {/if}
                                 {/if}
