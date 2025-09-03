@@ -44,7 +44,42 @@ const defaultAbils: AbilsType = {
     "Lea Lotus Lamp": ["burst", "lampDmg"],
 
     //TODO weapons
+    
+    //bows
+    "Messenger Proc": ["weapon:Messenger","dmg"],
     "Viridescent": ["weapon:TheViridescentHunt", "dmg"],
+    "End of the Line Proc": ["weapon:EndOfTheLine","dmg"],
+    "Sequence of Solitude Proc": ["weapon:SequenceOfSolitude","dmg"],
+    "King's Squire Proc": ["weapon:KingsSquire","dmg"],
+    "Skyward Harp Proc": ["weapon:SkywardHarp","dmg"],
+
+    //catalysts
+    "Ash-Graven Drinking Horn Proc": ["weapon:AshGravenDrinkingHorn","dmg"],
+    "Frostbearer Proc": ["weapon:Frostbearer","dmgAoe"], // use this path for cryo infused enemies :["weapon:Frostbearer","dmgOnCryoOp"],
+    "Eye of Preception Proc": ["weapon:EyeOfPerception","dmg_"],
+    "Skyward Atlas Proc": ["weapon:SkywardAtlas","dmg"],
+
+    //claymores
+    "Prototype Archaic Proc": ["weapon:PrototypeArchaic","dmg"],
+    "Starsilver Proc": ["weapon:SnowTombedStarsilver","dmgAoe"], // use this path for cryo infused enemies :["weapon:SnowTombedStarsilver","dmgOnCryoOp"],
+    "Skyward Pride Proc": ["weapon:SkywardPride","dmg"],
+    "Debate Club Proc": ["weapon:DebateClub","dmg"],
+    "Luxurious Sea-Lord Proc": ["weapon:LuxuriousSeaLord","dmg"],
+
+    //polearms
+    "Dragonspine Proc": ["weapon:DragonspineSpear","dmgAoe"], // use this path for cryo infused enemies :["weapon:DragonspineSpear","dmgOnCryoOp"],
+    "Crescent Pike Proc": ["weapon:CrescentPike","hit"],
+    "Halberd Proc": ["weapon:Halberd","dmg"],
+    "Skyward Spine Proc": ["weapon:SkywardSpine","dmg"],
+
+    //swords
+    "Aquila Favonia": ["weapon:AquilaFavonia","dmg"],
+    "Flute Proc": ["weapon:TheFlute","dmg_"],
+    "Kagotsurube Isshin Proc": ["weapon:KagotsurubeIsshin","dmg"],
+    "Sword of Descension Proc": ["weapon:SwordOfDescension","dmg_"],
+    "Fillet Blade Proc": ["weapon:FilletBlade","dmg_"],
+    "Skyward Blade Proc": ["weapon:SkywardBlade","dmg"],
+    "Sword of Narzissenkreuz":["weapon:SwordOfNarzissenkreuz","dmg"],
 
     //TODO artifacts
     "Sea-Dyed Foam": ["artifact:OceanHuedClam", "heal"],
@@ -90,9 +125,9 @@ const characterAbils: Record<string, AbilsType> = {
 
     ayato: {
         "Kamisato Art: Kyouka": ["skill", "illusionDmg"],
-        "Normal 0": ["skill", "dmg0"], //! only Hydro damage
-        "Normal 1": ["skill", "dmg1"], //! only Pyro damage
-        "Normal 2": ["skill", "dmg2"], //! only Electro damage
+        "Normal 0": ["skill", "dmg0"], //! only Hydro damage (maybe we could charge the name in gcsim to Shunsuiken 0 1 2)
+        "Normal 1": ["skill", "dmg1"], //! only Hydro damage
+        "Normal 2": ["skill", "dmg2"], //! only Hydro damage
         "Kamisato Art: Suiyuu": ["burst", "dmg"],
         "Boundless Origin (C6)": ["constellation6", "dmg"]
     },
