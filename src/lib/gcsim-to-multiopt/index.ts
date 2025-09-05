@@ -126,6 +126,7 @@ export function getCharacterAbils(sample: Sample, charName: string, ignoredMods:
     let lastBuffs: Buffs = {};
     const abils: AbilInfo[] = damages.map(x => {
         const name = x.logs["abil"];
+        const ele = x.logs["ele"];
         const reaction = x.logs["amp"] || x.logs["cata"] || undefined;
         const defShred = getDefShred(getSubMods(x.logs["def_mods"]))
 
@@ -148,7 +149,7 @@ export function getCharacterAbils(sample: Sample, charName: string, ignoredMods:
         applyResists(getSubMods(x.logs["resist_mods"]), resists);
         
         lastBuffs = { ...buffs };
-        return { name, reaction, buffs, defShred, infusion, resists };
+        return { name, reaction, buffs, defShred, infusion, resists, ele };
     });
     return [abils, Object.keys(availabledMods)];
 }
