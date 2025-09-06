@@ -194,6 +194,7 @@ const characterAbils: Record<string, AbilsType> = {
         "Shining Shadowhunt Shell (hydro)": ["skill", "shiningShellDmg_hydro"],
         "Shining Shadowhunt Shell (cryo)": ["skill", "shiningShellDmg_cryo"],
         "Shining Shadowhunt Shell (electro)": ["skill", "shiningShellDmg_electro"],
+        "Soulseeker Shell": ["burst", "shellDmg"],
         "Radiant Soulseeker Shell (pyro)": ["burst", "radiantDmg_pyro"],
         "Radiant Soulseeker Shell (hydro)": ["burst", "radiantDmg_hydro"],
         "Radiant Soulseeker Shell (cryo)": ["burst", "radiantDmg_cryo"],
@@ -203,8 +204,8 @@ const characterAbils: Record<string, AbilsType> = {
         "Burning Shadowhunt Shell (hydro)": ["passive2", "hydro"],
         "Burning Shadowhunt Shell (cryo)": ["passive2", "cryo"],
         "Burning Shadowhunt Shell (electro)": ["passive2", "electro"],
-        "Shining Shadowhunt Shell (C2)": ["constellation2", "subtype"], //! Select the correct element (pyro, hydro, cryo, electro) from "Muzzle, the Searing Smoke" in [Select an Optimization Target] manually
-        "Radiant Shadowhunt Shell (C4)": ["constellation4", "subtype"], //! Select the correct element (pyro, hydro, cryo, electro) from "Sparks, the Sudden Shot" in [Select an Optimization Target] manually
+        "Shining Shadowhunt Shell (C2)": ["constellation2", "hydro", "pyro", "cryo", "electro"],
+        "Radiant Shadowhunt Shell (C4)": ["constellation4", "hydro", "pyro", "cryo", "electro"],
     },
 
     chevreuse: {
@@ -599,7 +600,7 @@ const characterAbils: Record<string, AbilsType> = {
     sucrose: {
         "Astable Anemohypostasis Creation-6308": ["skill", "press"],
         "Forbidden Creation-Isomer 75/Type II": ["burst", "dot"],
-        "Forbidden Creation-Isomer 75/Type II (Absorb)": ["burst", "cryo"],
+        "Forbidden Creation-Isomer 75/Type II (Absorb)": ["burst", "hydro", "pyro", "cryo", "electro"],
     },
 
     tartaglia: {},
