@@ -8,6 +8,9 @@ declare global {
 		// interface PageState {}
 		// interface Platform {}
 	}
+	
+	// Global type declarations
+	var abilityDescriptions: Record<string, string> | undefined;
 }
 
 export {};
