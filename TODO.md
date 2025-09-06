@@ -5,12 +5,12 @@ Mark characters as their abilities are added.
 
 ---
 
-**Updated:** 19/08/25, 1:32 p.m.
+**Updated:** 05/09/25, 10:49 p.m.
 
 - Total characters: 101
-- Mapped: 62
-- Pending: 39
-- Completion percentage: 61.4%
+- Mapped: 64
+- Pending: 37
+- Completion percentage: 63.4%
 
 ## Character Status
 
@@ -52,7 +52,7 @@ Mark characters as their abilities are added.
 | Gaming | ✅ |
 | Ganyu | ✅ |
 | Gorou | ✅ |
-| Heizou | ⬜ |
+| Heizou | ✅ |
 | Hutao | ✅ |
 | Iansan | ⬜ |
 | Ifa | ⬜ |
@@ -100,7 +100,7 @@ Mark characters as their abilities are added.
 | Tartaglia | ⬜ |
 | Thoma | ⬜ |
 | Tighnari | ⬜ |
-| Varesa | ⬜ |
+| Varesa | ✅ |
 | Venti | ⬜ |
 | Wanderer | ✅ |
 | Wriothesley | ⬜ |
