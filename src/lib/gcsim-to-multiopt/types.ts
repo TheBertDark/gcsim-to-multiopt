@@ -19,4 +19,5 @@ export interface AbilInfo {
     defShred?: number;
     infusion?: string;
     resists: Resist[];
+    ele: string;
 };

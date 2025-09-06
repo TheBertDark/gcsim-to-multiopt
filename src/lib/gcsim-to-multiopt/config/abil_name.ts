@@ -384,8 +384,12 @@ const characterAbils: Record<string, AbilsType> = {
         "Juuga: Forward Unto Victory": ["burst", "dmg"],
         "Crystal Collapse": ["burst", "crystalCollapse"],
     },
-
-    heizou: {},
+    
+    heizou: {
+      "Heartstopper Strike": ["skill", "dmg"],
+      "Fudou Style Vacuum Slugger": ["burst", "slugger_dmg"],
+      "Windmuster Iris": ["burst", "hydro_iris_dmg", "pyro_iris_dmg", "cryo_iris_dmg", "electro_iris_dmg"],
+    },
 
     hutao: {
         "Blood Blossom": ["skill", "dmg"],

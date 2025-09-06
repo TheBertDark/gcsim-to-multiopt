@@ -25,10 +25,30 @@ export function resistConvert(element: string, value: number): [string, number] 
     return [element, value];
 }
 
+// Used for cases where the ability name on GCSIM stay the same
+// But element change and name on GO change with it
+function getAbilByEle(abilPath: string[], ele: string) {
+    // Arbitrary element order to put in the config (the one on go)
+    if (ele === "hydro")
+        return [abilPath[0], abilPath[1]];
+    else if (ele === "pyro")
+        return [abilPath[0], abilPath[2]];
+    else if (ele === "cryo")
+        return [abilPath[0], abilPath[3]];
+    else if (ele === "electro")
+        return [abilPath[0], abilPath[4]];
+    return [];
+}
+
 function convertAbil(abil: AbilInfo, convert: AbilsType): [CustomTarget | undefined, Error[]] {
-    const abilPath = convert[abil.name];
+    let abilPath = convert[abil.name];
     if (!abilPath) {
         return [undefined, [new Error(`Unknown ability "${abil.name}"`)]];
+    }
+    else if (abilPath.length > 2) {
+        abilPath = getAbilByEle(abilPath, abil.ele);
+        if (!abilPath.length)
+            return [undefined, [new Error(`Unknown ability "${abil.name}"`)]];
     }
 
     let bonusStats: Record<string, number> = {};
