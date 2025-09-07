@@ -125,9 +125,9 @@ const characterAbils: Record<string, AbilsType> = {
 
     ayato: {
         "Kamisato Art: Kyouka": ["skill", "illusionDmg"],
-        "Normal 0": ["skill", "dmg0"], //! only Hydro damage (maybe we could charge the name in gcsim to Shunsuiken 0 1 2)
-        "Normal 1": ["skill", "dmg1"], //! only Hydro damage
-        "Normal 2": ["skill", "dmg2"], //! only Hydro damage
+        "Normal 0": ["skill", "dmg0"],
+        "Normal 1": ["skill", "dmg1"],
+        "Normal 2": ["skill", "dmg2"],
         "Kamisato Art: Suiyuu": ["burst", "dmg"],
         "Boundless Origin (C6)": ["constellation6", "dmg"]
     },
@@ -694,6 +694,8 @@ const characterAbils: Record<string, AbilsType> = {
         "Planet Befall": ["burst", "dmg"],
     }
 };
+
+export { defaultAbils, characterAbils };
 
 export default function (charName?: string) {
     if (!charName || !characterAbils[charName]) {

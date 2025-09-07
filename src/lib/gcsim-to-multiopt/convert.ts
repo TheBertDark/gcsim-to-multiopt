@@ -3,7 +3,7 @@ import type { AbilInfo } from "./types";
 
 import statNameConvert from "./config/stat_name";
 import resistNameConvert from "./config/resist_name";
-import abilNameConvert, { type AbilsType } from "./config/abil_name";
+import abilNameConvert, { type AbilsType, defaultAbils, characterAbils } from "./config/abil_name";
 
 export function statConvert(name: string, value: number): [string, number] | Error {
     if (!statNameConvert[name]) {
@@ -40,8 +40,48 @@ function getAbilByEle(abilPath: string[], ele: string) {
     return [];
 }
 
-function convertAbil(abil: AbilInfo, convert: AbilsType): [CustomTarget | undefined, Error[]] {
+// Used for cases where abilities have the same name but different elements
+// Returns the appropriate ability path based on element
+// Example: Ayato's "Normal 0" -> physical: ["normal", "0"], hydro (Active skill): ["skill", "dmg0"]
+function getAbilByElementDifferentiation(abilName: string, ele: string, characterAbils: AbilsType, defaultAbils: AbilsType): string[] | undefined {
+    // Check if character has specific mapping for this ability
+    const charAbil = characterAbils[abilName];
+    const defaultAbil = defaultAbils[abilName];
+    
+    // If both exist, we need to differentiate by element
+    if (charAbil && defaultAbil) {
+        // For physical damage, prefer default abilities (normal attacks)
+        if (ele === "physical") {
+            return defaultAbil;
+        }
+        // For elemental damage, prefer character-specific abilities
+        else if (ele === "hydro" || ele === "pyro" || ele === "cryo" || ele === "electro" || ele === "anemo" || ele === "geo" || ele === "dendro") {
+            return charAbil;
+        }
+    }
+    
+    // If only one exists, return it
+    return charAbil || defaultAbil;
+}
+
+function convertAbil(abil: AbilInfo, convert: AbilsType, charName?: string): [CustomTarget | undefined, Error[]] {
     let abilPath = convert[abil.name];
+    
+    // Try element-based differentiation for character-specific abilities
+    if (charName) {
+        const charAbils: AbilsType = characterAbils[charName] || {};
+        const elementDifferentiatedPath = getAbilByElementDifferentiation(abil.name, abil.ele, charAbils, defaultAbils);
+        
+        if (elementDifferentiatedPath) {
+            abilPath = elementDifferentiatedPath;
+        }
+    }
+    
+    // Fallback to combined config if no element differentiation was applied
+    if (!abilPath) {
+        abilPath = convert[abil.name];
+    }
+    
     if (!abilPath) {
         return [undefined, [new Error(`Unknown ability "${abil.name}"`)]];
     }
@@ -118,8 +158,8 @@ export function mergeCustomTargets(targets: CustomTarget[]): CustomTarget[] {
     return Array.from(mergedMap.values());
 }
 
-export function convertAbils(abils: AbilInfo[], convert: AbilsType): [CustomMultiTarget, Error[]] {
-    const result = abils.map(x => convertAbil(x, convert));
+export function convertAbils(abils: AbilInfo[], convert: AbilsType, charName?: string): [CustomMultiTarget, Error[]] {
+    const result = abils.map(x => convertAbil(x, convert, charName));
     const targets: CustomTarget[] = mergeCustomTargets(result.
         map(x => x[0]).
         filter((x): x is CustomTarget => x !== undefined)

@@ -322,7 +322,7 @@
             return;
         }
 
-        const [newTarget, newErrors] = convertAbils(abilities, convert);
+        const [newTarget, newErrors] = convertAbils(abilities, convert, charName);
         target = newTarget;
         errors = newErrors.map(e => e.message);
         
@@ -432,7 +432,7 @@
         const [abils, mods] = getCharacterAbils(sample, charName, ignoredMods);
         if (!abils || abils.length === 0) return;
 
-        const [newTarget, errors] = convertAbils(abils, getAbilities(charName));
+        const [newTarget, errors] = convertAbils(abils, getAbilities(charName), charName);
         if (errors.length > 0) {
             errorContexts = errors.map(err => ({
                 message: err.message
