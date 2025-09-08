@@ -428,7 +428,11 @@ const characterAbils: Record<string, AbilsType> = {
         "Glacial Waltz": ["burst", "dmg"],
     },
 
-    kaveh: {},
+    kaveh: {
+        "Artistic Ingenuity (E)": ["skill", "dmg"],
+        "Painted Dome (Q)": ["burst", "dmg"],
+        "Pairidaeza's Dreams (C6)": ["constellation6", "dmg"],
+    },
 
     kazuha: {
         "Kazuha A1": ["passive1", "absorb"],
@@ -439,7 +443,15 @@ const characterAbils: Record<string, AbilsType> = {
         "Kazuha Slash (Absorb Dot)": ["burst", "absorb"],
     },
 
-    keqing: {},
+    keqing: {
+        "Stellar Restoration": ["skill", "stiletto"],
+        "Stellar Restoration (Slashing)": ["skill", "slash"],
+        "Thunderclap Slash": ["skill", "thunderclap"],
+        "Starward Sword (Initial)": ["burst", "initial"],
+        "Starward Sword (Consecutive Slash)": ["burst", "slash"],
+        "Starward Sword (Last Attack)": ["burst", "final"],
+        "Stellar Restoration (C1)": ["constellation1", "dmg"],
+    },
 
     kinich: {
         "Loop Shot 0": ["skill", "shotDmg"],
@@ -457,7 +469,13 @@ const characterAbils: Record<string, AbilsType> = {
         "Steed of Skanda": ["constellation4", "dmg"],
     },
 
-    klee: {},
+    klee: {
+        "Jumpy Dumpty": ["skill", "jumptyDumptyDmg"],
+        "Jumpy Dumpty Mine Hit": ["skill", "mineDmg"],
+        "Sparks'n'Splash": ["burst","dmg"],
+        "Sparks'n'Splash C1": ["constellation1", "chainedReactionsDmg"],
+        "Sparks'n'Splash C4": ["constellation4","sparklyExplosionDmg"],
+    },
 
     kokomi: {
         "Bake-Kurage": ["skill", "dmg"],
@@ -465,11 +483,32 @@ const characterAbils: Record<string, AbilsType> = {
         "At Water's Edge (C1)": ["constellation1", "dmg"],
     },
 
-    kuki: {},
+    kuki: {
+        "Sanctifying Ring": ["skill", "pressDmg"],
+        "Grass Ring of Sanctification": ["skill", "ringDmg"],
+        "Gyoei Narukami Kariyama Rite": ["burst", "singleDmg"],
+        "Thundergrass Mark": ["constellation4", "markDmg"],
+    },
 
-    lanyan: {},
+    lanyan: {
+        "Feathermoon Ring": ["skill", "ringDmg"],
+        "Feathermoon Ring (C1)": ["skill", "ringDmg"],
+        "Lustrous Moonrise": ["burst", "dmg"],
+        "Feathermoon Ring (hydro)": ["passive1", "hydro"],
+        "Feathermoon Ring (C1) (hydro)": ["passive1", "hydro"],
+        "Feathermoon Ring (pyro)": ["passive1", "pyro"],
+        "Feathermoon Ring (C1) (pyro)": ["passive1", "pyro"],
+        "Feathermoon Ring (cryo)": ["passive1", "cryo"],
+        "Feathermoon Ring (C1) (cryo)": ["passive1", "cryo"],
+        "Feathermoon Ring (electro)": ["passive1", "electro"],
+        "Feathermoon Ring (C1) (electro)": ["passive1", "electro"],
+    },
 
-    layla: {},
+    layla: {
+        "Nights of Formal Focus": ["skill", "skillDmg"],
+        "Shooting Star": ["skill", "starDmg"],
+        "Starlight Slug": ["burst", "slugDmg"],
+    },
 
     lisa: {
         "Violet Arc": ["skill", "press"],
@@ -478,9 +517,23 @@ const characterAbils: Record<string, AbilsType> = {
         "Lightning Rose (Tick)": ["burst", "tick"],
     },
 
-    lynette: {},
+    lynette: {
+        "Enigmatic Feint": ["skill", "thrustDmg"],
+        "Surging Blade (Lynette)": ["skill", "bladeDmg"],
+        "Magic Trick: Astonishing Shift": ["burst", "dmg"],
+        "Bogglecat Box": ["burst", "boxDmg"],
+        "Vivid Shot": ["burst", "shotDmg"],
+    },
 
-    lyney: {},
+    lyney: {
+        "Fully-Charged Aimed Shot (Prop Arrow)": ["charged", "prop"],
+        "Pyrotechnic Strike": ["charged", "pyrotechnic"],
+        "Spiritbreath Thorn (Lyney)": ["charged", "spiritbreath"],
+        "Bewildering Lights": ["skill", "dmg"],
+        "Wondrous Trick: Miracle Parade": ["burst", "dmg"],
+        "Wondrous Trick: Miracle Parade (Explosive Firework)": ["burst", "fireworkDmg"],
+        "Pyrotechnic Strike: Reprised": ["constellation6", "dmg"],
+    },
 
     mavuika: {
         "The Named Moment (Flamestrider)": ["skill", "skillDmg"],
@@ -499,11 +552,25 @@ const characterAbils: Record<string, AbilsType> = {
         "Rings of Searing Radiance (C6)": ["constellation6", "ringDmg"],
     },
 
-    mika: {},
+    mika: {
+        "Flowfrost Arrow": ["skill", "arrowDmg"],
+        "Rimestar Flare": ["skill", "flareDmg"],
+        "Rimestar Shard": ["skill", "shardDmg"],
+    },
 
-    mizuki: {},
+    mizuki: {
+        "Aisa Utamakura Pilgrimage": ["skill", "skillDmg"],
+        "Dreamdrifter Continuous Attack": ["skill", "contDmg"],
+        "Anraku Secret Spring Therapy": ["burst", "skillDmg"],
+        "Munen Shockwave": ["burst", "shockwaveDmg"],
+    },
 
-    mona: {},
+    mona: {
+        "Mirror Reflection of Doom (Tick)": ["skill", "dot"],
+        "Mirror Reflection of Doom (Explode)": ["skill", "dmg"],
+        "Illusory Bubble (Explosion)": ["burst", "dmg"],
+        "Mirror Reflection of Doom (A1 Explode)": ["passive1", "dmg"],
+    },
 
     mualani: {
         "Charge Attack": ["charged", "dmg"],
