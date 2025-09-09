@@ -5,12 +5,12 @@ Mark characters as their abilities are added.
 
 ---
 
-**Updated:** 05/09/25, 10:49 p.m.
+**Updated:** 08/09/25, 9:01 p.m.
 
 - Total characters: 101
-- Mapped: 64
-- Pending: 37
-- Completion percentage: 63.4%
+- Mapped: 75
+- Pending: 26
+- Completion percentage: 74.3%
 
 ## Character Status
 
@@ -61,23 +61,23 @@ Mark characters as their abilities are added.
 | Jean | ✅ |
 | Kachina | ⬜ |
 | Kaeya | ✅ |
-| Kaveh | ⬜ |
+| Kaveh | ✅ |
 | Kazuha | ✅ |
-| Keqing | ⬜ |
+| Keqing | ✅ |
 | Kinich | ✅ |
 | Kirara | ✅ |
-| Klee | ⬜ |
+| Klee | ✅ |
 | Kokomi | ✅ |
-| Kuki | ⬜ |
-| Lanyan | ⬜ |
-| Layla | ⬜ |
+| Kuki | ✅ |
+| Lanyan | ✅ |
+| Layla | ✅ |
 | Lisa | ✅ |
-| Lynette | ⬜ |
-| Lyney | ⬜ |
+| Lynette | ✅ |
+| Lyney | ✅ |
 | Mavuika | ✅ |
-| Mika | ⬜ |
-| Mizuki | ⬜ |
-| Mona | ⬜ |
+| Mika | ✅ |
+| Mizuki | ✅ |
+| Mona | ✅ |
 | Mualani | ✅ |
 | Nahida | ✅ |
 | Navia | ✅ |
