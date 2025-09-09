@@ -613,13 +613,31 @@ const characterAbils: Record<string, AbilsType> = {
         "Tranquility Aura": ["element", "hydro"], //! No damage
     },
 
-    ningguang: {},
+    ningguang: {
+        "Jade Screen": ["skill", "dmg"],
+        "Starshatter": ["burst", "gemDmg"],
+    },
 
-    noelle: {},
+    noelle: {
+        "Breastplate": ["skill", "dmg"],
+        "Sweeping Time (Burst)": ["burst", "burstDmg"],
+        "Sweeping Time (Skill)": ["burst", "skillDmg"],
+        "Breastplate (C4)": ["constellation4", "dmg"],
+    },
 
-    ororon: {},
+    ororon: {
+        "Spirit Orb DMG": ["skill", "dmg"],
+        "Ritual DMG": ["burst", "activationDmg"],
+        "Soundwave Collision DMG": ["burst", "soundwaveDmg"],
+        "Hypersense": ["passive1", "dmg"],
+        "Hypersense (C6)": ["constellation6", "dmg"],
+    },
 
-    qiqi: {},
+    qiqi: {
+        "Herald of Frost: Initial Damage": ["skill", "castDmg"],
+        "Herald of Frost: Skill Damage": ["skill", "tickDmg"],
+        "Fortune-Preserving Talisman": ["burst", "dmg"],
+    },
 
     raiden: {
         "Musou Shinsetsu": ["burst", "dmg"],
@@ -631,7 +649,16 @@ const characterAbils: Record<string, AbilsType> = {
         "Eye of Stormy Judgement (Strike)": ["skill", "coorDmg"],
     },
 
-    razor: {},
+    razor: {
+        "Claw and Thunder (Press)": ["skill", "press"],
+        "Claw and Thunder (Hold)": ["skill", "hold"],
+        "Lightning Fang": ["burst", "dmg"],
+        "The Wolf Within 0": ["burst", "companionDmg1"],
+        "The Wolf Within 1": ["burst", "companionDmg2"],
+        "The Wolf Within 2": ["burst", "companionDmg3"],
+        "The Wolf Within 3": ["burst", "companionDmg4"],
+        "Lupus Fulguris": ["constellation6", "dmg"],
+    },
 
     rosaria: {
         "Ravaging Confession (Hit 1)": ["skill", "hit1"],
@@ -649,9 +676,22 @@ const characterAbils: Record<string, AbilsType> = {
         "Tengu Juurai: Stormcluster": ["burst", "stormcluster"],
     },
 
-    sayu: {},
+    sayu: {
+        "Fuufuu Windwheel (DoT Press)": ["skill", "wheelDmg"],
+        "Fuufuu Windwheel (DoT Hold)": ["skill", "wheelDmg"],
+        "Fuufuu Whirlwind (Kick Press)": ["skill", "kickPressDmg"],
+        "Fuufuu Whirlwind (Kick Hold)": ["skill", "kickHoldDmg"],
+        "Yoohoo Art: Mujina Flurry": ["burst", "pressDmg"],
+        "Muji-Muji Daruma": ["burst", "darumaDmg"],
+    },
 
-    sethos: {},
+    sethos: {
+        "Shadowpiercing Shot": ["charged", "shadow"],
+        "Ancient Rite: Thunderous Roar of Sand": ["skill", "dmg"],
+        "Dusk Bolt 0": ["burst", "dusk_0"],
+        "Dusk Bolt 1": ["burst", "dusk_1"], // N2 during burst has 2 identical hit on gcsim but damage diff is insignificant
+        "Dusk Bolt 2": ["burst", "dusk_3"],
+    },
 
     shenhe: {
         "Spring Spirit Summoning (Press)": ["skill", "press"],
@@ -660,9 +700,30 @@ const characterAbils: Record<string, AbilsType> = {
         "Divine Maiden's Deliverance (DoT)": ["burst", "dot"],
     },
 
-    sigewinne: {},
+    sigewinne: {
+        "Mini-Stration Bubble": ["charged", "bubble"],
+        "Rebound Hydrotherapy": ["skill", "dmg"],
+        "Spiritbreath Thorn (Sigewinne)": ["skill", "bladeDmg"],
+        "Super Saturated Syringing": ["burst", "spoutDmg"],
+    },
 
-    skirk: {},
+    // Miss ["constellation6","burstDmg"] and ["constellation6","chargedDmg"]
+    // Haven't found how to proc it on sims
+    // Plunge are not yet implemented for skirk on gcsim
+    skirk: {
+        "Normal (Skill) 0": ["skill", "0"],
+        "Normal (Skill) 1": ["skill", "1"],
+        "Normal (Skill) 2": ["skill", "2"],
+        "Normal (Skill) 3": ["skill", "3"],
+        "Normal (Skill) 4": ["skill", "4"],
+        "Charge (Skill) 0": ["skill", "chargedDmg"],
+        "Charge (Skill) 1": ["skill", "chargedDmg"],
+        "Charge (Skill) 2": ["skill", "chargedDmg"],
+        "Havoc: Ruin (DoT)": ["burst", "skillDmg"],
+        "Havoc: Ruin (Final)": ["burst", "finalDmg"],
+        "Far to Fall": ["constellation1", "dmg"],
+        "Havoc: Sever (Normal)": ["constellation6", "normalDmg"],
+    },
 
     sucrose: {
         "Astable Anemohypostasis Creation-6308": ["skill", "press"],
