@@ -8,9 +8,9 @@ Mark characters as their abilities are added.
 **Updated:** 08/09/25, 9:01 p.m.
 
 - Total characters: 101
-- Mapped: 75
-- Pending: 26
-- Completion percentage: 74.3%
+- Mapped: 84
+- Pending: 17
+- Completion percentage: 83.2%
 
 ## Character Status
 
@@ -83,19 +83,19 @@ Mark characters as their abilities are added.
 | Navia | ✅ |
 | Neuvillette | ✅ |
 | Nilou | ✅ |
-| Ningguang | ⬜ |
-| Noelle | ⬜ |
-| Ororon | ⬜ |
-| Qiqi | ⬜ |
+| Ningguang | ✅ |
+| Noelle | ✅ |
+| Ororon | ✅ |
+| Qiqi | ✅ |
 | Raiden | ✅ |
-| Razor | ⬜ |
+| Razor | ✅ |
 | Rosaria | ✅ |
 | Sara | ✅ |
-| Sayu | ⬜ |
-| Sethos | ⬜ |
+| Sayu | ✅ |
+| Sethos | ✅ |
 | Shenhe | ✅ |
-| Sigewinne | ⬜ |
-| Skirk | ⬜ |
+| Sigewinne | ✅ |
+| Skirk | ✅ |
 | Sucrose | ✅ |
 | Tartaglia | ⬜ |
 | Thoma | ⬜ |
