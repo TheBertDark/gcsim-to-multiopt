@@ -5,12 +5,12 @@ Mark characters as their abilities are added.
 
 ---
 
-**Updated:** 08/09/25, 9:01 p.m.
+**Updated:** 13/09/25, 10:05 p.m.
 
 - Total characters: 101
-- Mapped: 84
-- Pending: 17
-- Completion percentage: 83.2%
+- Mapped: 85
+- Pending: 16
+- Completion percentage: 84.2%
 
 ## Character Status
 
@@ -97,7 +97,7 @@ Mark characters as their abilities are added.
 | Sigewinne | ✅ |
 | Skirk | ✅ |
 | Sucrose | ✅ |
-| Tartaglia | ⬜ |
+| Tartaglia | ✅ |
 | Thoma | ⬜ |
 | Tighnari | ⬜ |
 | Varesa | ✅ |

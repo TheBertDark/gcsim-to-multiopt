@@ -731,7 +731,22 @@ const characterAbils: Record<string, AbilsType> = {
         "Forbidden Creation-Isomer 75/Type II (Absorb)": ["burst", "hydro", "pyro", "cryo", "electro"],
     },
 
-    tartaglia: {},
+    tartaglia: {
+        "Normal 0": ["skill", "normal1"],
+        "Normal 1": ["skill", "normal2"],
+        "Normal 2": ["skill", "normal3"],
+        "Normal 3": ["skill", "normal4"],
+        "Normal 4": ["skill", "normal5"],
+        "Normal 5": ["skill", "normal61"], //! Only first hit because both hits have same name [add logic to get both hits]
+        "Riptide Flash": ["charged", "flashDmg"],
+        "Riptide Burst": ["charged", "burstDmg"],
+        "Charged Attack": ["skill", "charged1"], //! Only first hit because both hits have same name [add logic to get both hits]
+        "Foul Legacy: Raging Tide": ["skill", "stanceDmg"],
+        "Riptide Slash": ["skill", "riptideSlash"],
+        "Ranged Stance: Flash of Havoc": ["burst", "rangedDmg"],
+        "Melee Stance: Light of Obliteration": ["burst", "meleeDmg"],
+        "Riptide Blast": ["burst", "riptideBlastDmg"],
+    },
 
     thoma: {},
 
