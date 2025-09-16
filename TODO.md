@@ -7,15 +7,16 @@ Mark characters as their abilities are added.
 
 **Updated:** 13/09/25, 10:05 p.m.
 
-- Total characters: 101
-- Mapped: 85
-- Pending: 16
-- Completion percentage: 84.2%
+- Total characters: 109
+- Mapped: 97
+- Pending: 12
+- Completion percentage: 89.0%
 
 ## Character Status
 
 | Character | Status |
 |-----------|--------|
+| Aino | ⬜ |
 | Albedo | ✅ |
 | Alhaitham | ✅ |
 | Aloy | ✅ |
@@ -70,6 +71,7 @@ Mark characters as their abilities are added.
 | Kokomi | ✅ |
 | Kuki | ✅ |
 | Lanyan | ✅ |
+| Lauma | ⬜ |
 | Layla | ✅ |
 | Lisa | ✅ |
 | Lynette | ✅ |
@@ -98,24 +100,30 @@ Mark characters as their abilities are added.
 | Skirk | ✅ |
 | Sucrose | ✅ |
 | Tartaglia | ✅ |
-| Thoma | ⬜ |
-| Tighnari | ⬜ |
+| Thoma | ✅ |
+| Tighnari | ✅ |
+| Traveler anemo | ✅ |
+| Traveler geo | ⬜ |
+| Traveler electro | ⬜ |
+| Traveler dendro | ⬜ |
+| Traveler hydro | ⬜ |
+| Traveler pyro | ⬜ |
 | Varesa | ✅ |
-| Venti | ⬜ |
+| Venti | ✅ |
 | Wanderer | ✅ |
-| Wriothesley | ⬜ |
-| Xiangling | ⬜ |
+| Wriothesley | ✅ |
+| Xiangling | ✅ |
 | Xianyun | ✅ |
-| Xiao | ⬜ |
+| Xiao | ✅ |
 | Xilonen | ✅ |
 | Xingqiu | ✅ |
-| Xinyan | ⬜ |
-| Yaemiko | ⬜ |
-| Yanfei | ⬜ |
-| Yaoyao | ⬜ |
+| Xinyan | ✅ |
+| Yaemiko | ✅ |
+| Yanfei | ✅ |
+| Yaoyao | ✅ |
 | Yelan | ✅ |
 | Yoimiya | ✅ |
-| Yunjin | ⬜ |
+| Yunjin | ✅ |
 | Zhongli | ✅ |
 ---
 

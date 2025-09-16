@@ -86,6 +86,8 @@ const defaultAbils: AbilsType = {
 };
 
 const characterAbils: Record<string, AbilsType> = {
+    aino: {},
+
     albedo: {
         "Charge 0": ["charged", "dmg1"],
         "Charge 1": ["charged", "dmg2"],
@@ -504,6 +506,8 @@ const characterAbils: Record<string, AbilsType> = {
         "Feathermoon Ring (C1) (electro)": ["passive1", "electro"],
     },
 
+    lauma: {},
+
     layla: {
         "Nights of Formal Focus": ["skill", "skillDmg"],
         "Shooting Star": ["skill", "starDmg"],
@@ -748,9 +752,45 @@ const characterAbils: Record<string, AbilsType> = {
         "Riptide Blast": ["burst", "riptideBlastDmg"],
     },
 
-    thoma: {},
+    thoma: {
+        "Blazing Blessing": ["skill", "dmg"],
+        "Crimson Ooyoroi": ["burst", "pressDmg"],
+        "Fiery Collapse": ["burst", "collapseDmg"],
+    },
 
-    tighnari: {},
+    tighnari: {
+        "Fully-Charged Aimed Shot (Wreath Arrow)": ["charged", "wreath"],
+        "Clusterbloom Arrow": ["charged", "cluster"],
+        "Vijnana-Phala Mine": ["skill", "dmg"],
+        "Tanglevine Shaft": ["burst", "primaryDmg"],
+        "Secondary Tanglevine Shaft": ["burst", "secondaryDmg"],
+        "Karma Adjudged From the Leaden Fruit": ["constellation6", "cluster"],
+    },
+
+    traveleranemo: {
+        "Palm Vortex (Tap)": ["skill", "initial_dmg"],
+        "Palm Vortex Initial Cutting (Hold)": ["skill", "initial_dmg"],
+        "Palm Vortex Max Cutting (Hold)": ["skill", "initial_max"],
+        "Palm Vortex Initial Cutting Absorbed (Hold)": ["skill", "initial_ele_dmg"],
+        "Palm Vortex Max Cutting Absorbed (Hold)": ["skill", "max_ele_dmg"],
+        "Palm Vortex Initial Storm (Hold)": ["skill", "storm_dmg"],
+        "Palm Vortex Max Storm (Hold)": ["skill", "storm_max"],
+        "Palm Vortex Initial Storm Absorbed (Hold)": ["skill", "storm_ele_dmg"],
+        "Palm Vortex Max Storm Absorbed (Hold)": ["skill", "storm_ele_max"],
+        "Gust Surge": ["burst", "dmg"],
+        "Gust Surge (Absorbed)": ["burst", "absorb"],
+        "Slitting Wind (A1)": ["passive1", "dmg"],
+    },
+
+    travelergeo: {},
+
+    travelerelectro: {},
+
+    travelerdendro: {},
+
+    travelerhydro: {},
+
+    travelerpyro: {},
 
     varesa: {
         "Charged Attack (Follow-Up Strike)": ["charged", "dmg"],
@@ -761,7 +801,14 @@ const characterAbils: Record<string, AbilsType> = {
         "Volcano Kablam": ["burst", "volcanoDmg"],
     },
 
-    venti: {},
+    // Missing hold e ["skill","hold"], nothing on gcsim let you see a diff
+    venti: {
+        "Skyward Sonnett": ["skill", "press"],
+        "Wind's Grand Ode": ["burst", "base"],
+        "Wind's Grand Ode (Absorbed)": ["burst", "absorb"],
+        "Aimed Shot (C1)": ["constellation1", "aimed"],
+        "Fully-Charged Aimed Shot (C1)": ["constellation1", "fully"],
+    },
 
     wanderer: {
         "Normal 0 (Windfavored)": ["normal", "0"],
@@ -775,9 +822,27 @@ const characterAbils: Record<string, AbilsType> = {
         "Shugen: The Curtains’ Melancholic Sway": ["constellation6", "0"],
     },
 
-    wriothesley: {},
+    // Will be issue with Normal atk as it's the same element not like Ayato
+    wriothesley: {
+        "Rebuke: Vaulting Fist": ["charged", "rebukeDmg"],
+        "Normal 0": ["skill", "enhanced_0"],
+        "Normal 1": ["skill", "enhanced_1"],
+        "Normal 2": ["skill", "enhanced_2"],
+        "Normal 3": ["skill", "enhanced_3"],
+        "Normal 4": ["skill", "enhanced_4"],
+        "Darkgold Wolfbite": ["burst", "skillDmg"],
+        "Surging Blade": ["burst", "bladeDmg"],
+        "Rebuke: Vaulting Fist (C6)": ["constellation6", "icicleDmg"],
+    },
 
-    xiangling: {},
+    xiangling: {
+        "Guoba": ["skill", "press"],
+        "Pyronado Hit 1": ["burst", "dmg1"],
+        "Pyronado Hit 2": ["burst", "dmg2"],
+        "Pyronado Hit 3": ["burst", "dmg3"],
+        "Pyronado": ["burst", "dmgNado"],
+        "Oil Meets Fire (C2)": ["constellation2", "dmg"],
+    },
 
     xianyun: {
         "Driftcloud Wave (1 Leaps)": ["skill", "firstLeapDmg"],
@@ -787,7 +852,9 @@ const characterAbils: Record<string, AbilsType> = {
         "Starwicker": ["burst", "coordinatedDmg"],
     },
 
-    xiao: {},
+    xiao: {
+        "Lemniscatic Wind Cycling": ["skill", "press"],
+    },
 
     xilonen: {
         "Yohual's Scratch": ["skill", "rushDmg"],
@@ -802,13 +869,34 @@ const characterAbils: Record<string, AbilsType> = {
         "Guhua Sword: Raincutter": ["burst", "dmg"],
     },
 
-    xinyan: {},
+    xinyan: {
+        "Sweeping Fervor": ["skill", "dmg"],
+        "Sweeping Fervor (DoT)": ["skill", "lvl3Dmg"],
+        "Riff Revolution": ["burst", "pressPhysDmg"],
+        "Riff Revolution (DoT)": ["burst", "dotPyroDmg"],
+    },
 
-    yaemiko: {},
+    // Missing ["skill","dmg3"] and ["skill","dmg4"] cause can't see Sesshou Sakura level (or number)
+    yaemiko: {
+        "Sesshou Sakura Tick": ["skill", "dmg2"],
+        "Great Secret Art: Tenko Kenshin": ["burst", "dmg"],
+        "Tenko Thunderbolt": ["burst", "tenkoDmg"],
+    },
 
-    yanfei: {},
+    // Missing ["charged","1"] to ["charged","4"], all seal number variation which we can't see
+    yanfei: {
+        "Charge Attack": ["charged", "0"],
+        "Signed Edict": ["skill", "dmg"],
+        "Done Deal": ["burst", "dmg"],
+        "Blazing Eye (A4)": ["passive2", "dmg"],
+    },
 
-    yaoyao: {},
+    yaoyao: {
+        "Radish (Skill)": ["skill", "dmg"],
+        "Moonjade Descent": ["burst", "skillDmg"],
+        "Radish (Burst)": ["burst", "radish"],
+        "Mega Radish": ["constellation6", "dmg"],
+    },
 
     yelan: {
         "Lingering Lifeline": ["skill", "dmg"],
@@ -828,7 +916,13 @@ const characterAbils: Record<string, AbilsType> = {
         "Kindling (C6) - N4": ["constellation6", "4"], //! N5
     },
 
-    yunjin: {},
+    // What should we do with additive damage like it's q or shenhe e ?
+    yunjin: {
+        "Opening Flourish Press (E)": ["skill", "dmg"],
+        "Opening Flourish Level 1 (E)": ["skill", "dmg1"],
+        "Opening Flourish Level 2 (E)": ["skill", "dmg2"],
+        "Cliffbreaker's Banner": ["burst", "dmg"],
+    },
 
     zhongli: {
         "Stone Stele (Initial)": ["skill", "stele"],
