@@ -1,6 +1,7 @@
 export default {
     "hp": "hp",
     "hp%": "hp_",
+    "base_hp": "base_hp",
     "atk": "atk",
     "atk%": "atk_",
     "atkspd%": "atkSPD_",
