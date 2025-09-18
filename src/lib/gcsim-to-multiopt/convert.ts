@@ -160,7 +160,7 @@ export function mergeCustomTargets(targets: CustomTarget[]): CustomTarget[] {
 
 export function convertAbils(abils: AbilInfo[], convert: AbilsType, charName?: string): [CustomMultiTarget, Error[]] {
     if (charName)
-        charName.replace(/^(aeter|lumine)/, "traveler");
+        charName = charName.replace(/^(aether|lumine)/, "traveler");
     const result = abils.map(x => convertAbil(x, convert, charName));
     const targets: CustomTarget[] = mergeCustomTargets(result.
         map(x => x[0]).
