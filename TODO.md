@@ -8,9 +8,15 @@ Mark characters as their abilities are added.
 **Updated:** 18/09/25, 11:42 p.m.
 
 - Total characters: 109
+<<<<<<< Updated upstream
 - Mapped: 98
 - Pending: 11
 - Completion percentage: 89.9%
+=======
+- Mapped: 102
+- Pending: 7
+- Completion percentage: 93.6%
+>>>>>>> Stashed changes
 
 ## Character Status
 
@@ -102,12 +108,21 @@ Mark characters as their abilities are added.
 | Tartaglia | ✅ |
 | Thoma | ✅ |
 | Tighnari | ✅ |
+<<<<<<< Updated upstream
 | Traveler Anemo | ✅ |
 | Traveler Dendro | ⬜ |
 | Traveler Electro | ⬜ |
 | Traveler Geo | ✅ |
 | Traveler Hydro | ⬜ |
 | Traveler Pyro | ⬜ |
+=======
+| Traveler anemo | ✅ |
+| Traveler geo | ✅ |
+| Traveler electro | ✅ |
+| Traveler dendro | ✅ |
+| Traveler hydro | ✅ |
+| Traveler pyro | ✅ |
+>>>>>>> Stashed changes
 | Varesa | ✅ |
 | Venti | ✅ |
 | Wanderer | ✅ |
