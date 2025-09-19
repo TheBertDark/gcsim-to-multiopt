@@ -89,12 +89,13 @@ const characterAbils: Record<string, AbilsType> = {
     aino: {},
 
     albedo: {
-        "Charge 0": ["charged", "dmg1"],
-        "Charge 1": ["charged", "dmg2"],
         "Abiogenesis: Solar Isotoma": ["skill", "dmg"],
         "Abiogenesis: Solar Isotoma (Tick)": ["skill", "blossom"],
+        "Rite of Progeniture: Tectonic Tide": ["burst", "dmg"],
+        "Rite of Progeniture: Tectonic Tide (Blossom)": ["burst", "blossom"],
     },
 
+    // Should create an exception on his charged
     alhaitham: {
         "Charge 0": ["charged", "dmg"],
         "Charge 1": ["charged", "dmg"],
@@ -111,9 +112,10 @@ const characterAbils: Record<string, AbilsType> = {
         "Prophecies of Dawn": ["burst", "dmg"],
     },
 
+    // Miss ["constellation1","secondAimedCharged"] and ["constellation1","secondAimed"]
     amber: {
         "Baron Bunny": ["skill", "dmg"],
-        "Baron Bunny (Manual Explosion)": ["constellation2", "manualDetonationDmg"], //!C2
+        "Baron Bunny (Manual Explosion)": ["constellation2", "manualDetonationDmg"],
         "Fiery Rain": ["burst", "dmgPerWave"],
     },
 
@@ -134,6 +136,7 @@ const characterAbils: Record<string, AbilsType> = {
         "Boundless Origin (C6)": ["constellation6", "dmg"]
     },
     
+    // Should create an exception on her charged
     ayaka: {
         "Charge": ["charged", "dmg1"],
         "Hyouka": ["skill", "press"],
@@ -151,21 +154,24 @@ const characterAbils: Record<string, AbilsType> = {
 
     barbara: {
         "Let the Show Begin♪ (Droplet)": ["skill", "dmg"],
-        "Let the Show Begin♪ (Melody Loop)": ["type", "subtype"], //! No damage? Apply hydro
     },
 
+    // Base damage Modify for "dmgOneHit" or "dmgTwoHits" skill sim doesn't have different names for it
     beidou: {
-        "Tidecaller (E)": ["skill", "baseDmg"], //! Base damage [Modifi for "DMG w/1 hit or 2 hits"] sim doesn't have different names for 1 hit and 2 hits
+        "Tidecaller (E)": ["skill", "baseDmg"],
         "Stormbreaker (Q)": ["burst", "burstDmg"],
         "Stormbreak Proc (Q)": ["burst", "lightningDmg"],
+        "Beidou C4": ["constellation4", "skillDmg"],
     },
 
+    // Miss second hit for hold1/2 (["skill","hold1_2"], ["skill","hold2_2"])
+    // Miss third hit for hold2 (["skill","explosion"])
     bennett: {
         "Charge 0": ["charged", "dmg1"],
         "Charge 1": ["charged", "dmg2"],
         "Passion Overload (Press)": ["skill", "press"],
-        "Passion Overload (Level 1)": ["skill", "hold1_1"], //! Specify hit 1 or 2
-        "Passion Overload (Level 2)": ["skill", "hold2_1"], //! Specify hit 1 or 2
+        "Passion Overload (Level 1)": ["skill", "hold1_1"],
+        "Passion Overload (Level 2)": ["skill", "hold2_1"],
         "Fantastic Voyage": ["burst", "dmg"],
         "Passion Overload (C4)": ["constellation4", "dmg"],
     },
@@ -191,6 +197,7 @@ const characterAbils: Record<string, AbilsType> = {
 
     chasca: {
         "Spirit Reins, Shadow Hunt": ["skill", "activationDmg"],
+        "Normal 0": ["skill", "pressDmg"],
         "Shadowhunt Shell": ["skill", "shellDmg"],
         "Shining Shadowhunt Shell (pyro)": ["skill", "shiningShellDmg_pyro"],
         "Shining Shadowhunt Shell (hydro)": ["skill", "shiningShellDmg_hydro"],
@@ -202,6 +209,7 @@ const characterAbils: Record<string, AbilsType> = {
         "Radiant Soulseeker Shell (cryo)": ["burst", "radiantDmg_cryo"],
         "Radiant Soulseeker Shell (electro)": ["burst", "radiantDmg_electro"],
         "Galesplitting Soulseeker Shell": ["burst", "galeSplittingDmg"],
+        "Burning Shadowhunt Shell": ["passive2", "anemo"],
         "Burning Shadowhunt Shell (pyro)": ["passive2", "pyro"],
         "Burning Shadowhunt Shell (hydro)": ["passive2", "hydro"],
         "Burning Shadowhunt Shell (cryo)": ["passive2", "cryo"],
@@ -245,6 +253,7 @@ const characterAbils: Record<string, AbilsType> = {
     },
 
     clorinde: {
+        "Swift Hunt (Normal shot) 0": ["skill", "normalDmg"],
         "Swift Hunt (Normal shot) 1": ["skill", "normalDmg"],
         "Swift Hunt (Normal shot) 2": ["skill", "normalDmg"],
         "Swift Hunt (Piercing Shot) 0": ["skill", "piercingDmg"],
@@ -253,6 +262,7 @@ const characterAbils: Record<string, AbilsType> = {
         "Impale the Night (0% BoL)": ["skill", "thrust1Dmg"],
         "Impale the Night (<100% BoL)": ["skill", "thrust2Dmg"],
         "Impale the Night (100%+ BoL)": ["skill", "thrust3Dmg"],
+        "Surging Blade": ["skill", "bladeDmg"],
         "Burst": ["burst", "skillDmg"],
         "Nightwatch Shade (C1)": ["constellation1", "dmg"],
         "Glimbright Shade (C6)": ["constellation6", "dmg"],
@@ -273,6 +283,10 @@ const characterAbils: Record<string, AbilsType> = {
         "Pactsworn Pathclearer 1": ["burst", "normal_1"],
         "Pactsworn Pathclearer 2": ["burst", "normal_2"],
         "Pactsworn Pathclearer 3": ["burst", "normal_3"],
+        "Pactsworn Pathclearer 4": ["burst", "normal_4"],
+        "Pactsworn Pathclearer Charge": ["burst", "charged"],
+        "Low Plunge (Q)": ["burst", "plunging_low"],
+        "High Plunge (Q)": ["burst", "plunging_high"],
         "Duststalker Bolt": ["passive1", "boltDmg"],
         "Raiment: Just Scales (C6)": ["passive1", "boltDmg"],
     },
@@ -293,6 +307,7 @@ const characterAbils: Record<string, AbilsType> = {
         "Searing Onslaught 2": ["skill", "thirdHit"],
         "Dawn (Strike)": ["burst", "slashDmg"],
         "Dawn (Tick)": ["burst", "dotDmg"],
+        "Dawn (Explode)": ["burst", "explosionDmg"],
     },
 
     diona: {
@@ -341,6 +356,7 @@ const characterAbils: Record<string, AbilsType> = {
         "The Wind's Secret Ways (Q)": ["burst", "dmg"],
     },
 
+    // Miss ["passive1","aimedChargedOz"], seems it's not implemented
     fischl: {
         "Fischl A4": ["passive2", "dmg"],
         "Fischl C1": ["constellation1", "dmg"],
@@ -352,19 +368,22 @@ const characterAbils: Record<string, AbilsType> = {
         "Oz (Burst)": ["skill", "ozDmg"],
     },
 
+    // Miss ["skill","level1CryoDmg"] (1 to 3) and ["skill","level2PhysDmg"] (2 and 3) and ["skill","level4Dmg"]
+    // No distinction between pers level
     freminet: {
         "Pressurized Floe: Upward Thrust": ["skill", "thrustDmg"],
-        "Pressurized Floe: Spiritbreath Thorn": ["skill", "thornDmg"],
-        "Pressurized Floe: Shattering Pressure (Cryo)": ["skill", "level0Dmg"],
         "Pressurized Floe: Pers Time Frost": ["skill", "frostDmg"],
+        "Pressurized Floe: Shattering Pressure (Cryo)": ["skill", "level0Dmg"],
+        "Pressurized Floe: Shattering Pressure (Physical)": ["skill", "level1PhysDmg"],
+        "Pressurized Floe: Spiritbreath Thorn": ["skill", "thornDmg"],
         "Shadowhunter's Ambush": ["burst", "dmg"],
     },
 
     furina: {
         "Spiritbreath Thorn (Furina)": ["normal", "thornBladeDmg"],
         "Surging Blade (Furina)": ["normal", "thornBladeDmg"],
-        "Charge Pneuma": ["charged", "dmg"], //! I dont sure this is correct
-        "Charge Ousia": ["charged", "dmg"], //! I dont sure this is correct
+        "Charge Pneuma": ["charged", "dmg"],
+        "Charge Ousia": ["charged", "dmg"],
         "Salon Solitaire: Ousia Bubble": ["skill", "bubbleDmg"],
         "Salon Member: Surintendante Chevalmarin": ["skill", "chevalDmg"],
         "Salon Member: Gentilhomme Usher": ["skill", "usherDmg"],
@@ -390,17 +409,18 @@ const characterAbils: Record<string, AbilsType> = {
         "Crystal Collapse": ["burst", "crystalCollapse"],
     },
     
+    // GO doesn’t use different names for the number of stacks; it only changes in the [Talents] section
     heizou: {
-      "Heartstopper Strike": ["skill", "dmg"], //! GO will take the configured stacks from the [Talents] section
-      // "Heartstopper Strike (Max Stacks)": ["type", "subtype"], //! GO doesn’t use different names for the number of stacks; it only changes in the [Talents] section
+      "Heartstopper Strike": ["skill", "dmg"],
       "Fudou Style Vacuum Slugger": ["burst", "slugger_dmg"],
       "Windmuster Iris": ["burst", "hydro_iris_dmg", "pyro_iris_dmg", "cryo_iris_dmg", "electro_iris_dmg"],
     },
 
+    // Miss ["burst","lowHpDmg"] sim doesn't have different names for <50% hp and >50% hp hu tao bursts
+    // Maybe see with a4 proc
     hutao: {
         "Blood Blossom": ["skill", "dmg"],
-        "Spirit Soother": ["burst", "dmg"], //! sim doesn't have different names for <50% hp and >50% hp hu tao bursts
-        "Paramita (0 dmg)": ["skill", "atk"],
+        "Spirit Soother": ["burst", "dmg"],
     },
 
     iansan: {},
@@ -410,6 +430,7 @@ const characterAbils: Record<string, AbilsType> = {
     ineffa: {},
 
     itto: {
+        "Saichimonji Slash": ["charged", "sSlash"],
         "Arataki Kesagiri Final Slash": ["charged", "akFinal"],
         "Arataki Kesagiri Combo Slash": ["charged", "akSlash"],
         "Masatsu Zetsugi: Akaushi Burst!": ["skill", "dmg"],
@@ -438,10 +459,12 @@ const characterAbils: Record<string, AbilsType> = {
         "Pairidaeza's Dreams (C6)": ["constellation6", "dmg"],
     },
 
+    // Miss ["skill","hold"] don't have the diff on gcsim
+    // Gcsim let only high_plunge after e
     kazuha: {
         "Kazuha A1": ["passive1", "absorb"],
-        "High Plunge": ["skill", "phigh"], //! Not sure
-        "Chihayaburu": ["skill", "press"], //! Not sure
+        "High Plunge": ["skill", "phigh"],
+        "Chihayaburu": ["skill", "press"],
         "Kazuha Slash": ["burst", "dmg"],
         "Kazuha Slash (Dot)": ["burst", "dot"],
         "Kazuha Slash (Absorb Dot)": ["burst", "absorb"],
@@ -791,13 +814,32 @@ const characterAbils: Record<string, AbilsType> = {
         "Rockcore Meltdown": ["constellation2", "dmg"],
     },
 
-    travelerelectro: {},
+    // Miss ["burst","thirdThunderDmg"] which is written the same way as ["burst","thunderDmg"]
+    travelerelectro: {
+        "Lightning Blade": ["skill", "dmg"],
+        "Bellowing Thunder": ["burst", "pressDmg"],
+        "Falling Thunder Proc (Q)": ["burst", "thunderDmg"],
+    },
 
-    travelerdendro: {},
+    travelerdendro: {
+        "Razorgrass Blade": ["skill", "dmg"],
+        "Lea Lotus Lamp": ["burst", "lampDmg"],
+        "Lea Lotus Lamp Explosion": ["burst", "explosionDmg"],
+    },
 
-    travelerhydro: {},
+    travelerhydro: {
+        "Torrent Surge": ["skill", "surgeDmg"],
+        "Dewdrop (Hold)": ["skill", "dewdropDmg"],
+        "Spiritbreath Thorn": ["skill", "thornDmg"],
+        "Rising Waters": ["burst", "dmg"],
+    },
 
-    travelerpyro: {},
+    travelerpyro: {
+        "Blazing Threshold DMG": ["skill", "blazingDmg"],
+        "Flowfire Blade (Hold DMG)": ["skill", "scorchingInstantDmg"],
+        "Scorching Threshold": ["skill", "scorchingDmg"],
+        "Plains Scorcher": ["burst", "dmg"],
+    },
 
     varesa: {
         "Charged Attack (Follow-Up Strike)": ["charged", "dmg"],
