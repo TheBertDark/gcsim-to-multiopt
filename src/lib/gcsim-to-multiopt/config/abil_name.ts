@@ -440,6 +440,10 @@ const characterAbils: Record<string, AbilsType> = {
         "Gale Blade": ["skill", "dmg"],
         "Dandelion Breeze": ["burst", "dmg"],
         "Dandelion Breeze (In/Out)": ["burst", "enterExitDmg"],
+        "swirl-pyro (aoe)": ["reaction", "pyroSwirl"],
+        "swirl-hydro (aoe)": ["reaction", "hydroSwirl"],
+        "swirl-cryo (aoe)": ["reaction", "cryoSwirl"],
+        "swirl-electro (aoe)": ["reaction", "electroSwirl"],
     },
 
     kachina: {},
