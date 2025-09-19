@@ -253,10 +253,7 @@ const characterAbils: Record<string, AbilsType> = {
     },
 
     clorinde: {
-<<<<<<< Updated upstream
-=======
         "Swift Hunt (Normal shot) 0": ["skill", "normalDmg"],
->>>>>>> Stashed changes
         "Swift Hunt (Normal shot) 1": ["skill", "normalDmg"],
         "Swift Hunt (Normal shot) 2": ["skill", "normalDmg"],
         "Swift Hunt (Piercing Shot) 0": ["skill", "piercingDmg"],
