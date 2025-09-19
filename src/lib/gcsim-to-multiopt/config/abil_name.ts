@@ -245,6 +245,8 @@ const characterAbils: Record<string, AbilsType> = {
     },
 
     clorinde: {
+        "Swift Hunt (Normal shot) 1": ["skill", "normalDmg"],
+        "Swift Hunt (Normal shot) 2": ["skill", "normalDmg"],
         "Swift Hunt (Piercing Shot) 0": ["skill", "piercingDmg"],
         "Swift Hunt (Piercing Shot) 1": ["skill", "piercingDmg"],
         "Swift Hunt (Piercing Shot) 2": ["skill", "piercingDmg"],
@@ -782,7 +784,12 @@ const characterAbils: Record<string, AbilsType> = {
         "Slitting Wind (A1)": ["passive1", "dmg"],
     },
 
-    travelergeo: {},
+    travelergeo: {
+        "Starfell Sword": ["skill", "dmg"],
+        "Wake of Earth": ["burst", "dmg"],
+        "Frenzied Rockslide (A4)": ["passive2", "dmg"],
+        "Rockcore Meltdown": ["constellation2", "dmg"],
+    },
 
     travelerelectro: {},
 
