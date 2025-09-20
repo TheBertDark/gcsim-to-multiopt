@@ -38,11 +38,6 @@ const defaultAbils: AbilsType = {
     //TODO events
     "Hurt": ["type", "subtype"], //! Character takes damage
 
-    //TODO passives/skills
-    //?---------------------Traveler (Dendro)----------//
-    "Razorgrass Blade": ["skill", "dmg"],
-    "Lea Lotus Lamp": ["burst", "lampDmg"],
-
     //TODO weapons
     
     //bows
@@ -167,8 +162,6 @@ const characterAbils: Record<string, AbilsType> = {
     // Miss second hit for hold1/2 (["skill","hold1_2"], ["skill","hold2_2"])
     // Miss third hit for hold2 (["skill","explosion"])
     bennett: {
-        "Charge 0": ["charged", "dmg1"],
-        "Charge 1": ["charged", "dmg2"],
         "Passion Overload (Press)": ["skill", "press"],
         "Passion Overload (Level 1)": ["skill", "hold1_1"],
         "Passion Overload (Level 2)": ["skill", "hold2_1"],
@@ -262,7 +255,6 @@ const characterAbils: Record<string, AbilsType> = {
         "Impale the Night (0% BoL)": ["skill", "thrust1Dmg"],
         "Impale the Night (<100% BoL)": ["skill", "thrust2Dmg"],
         "Impale the Night (100%+ BoL)": ["skill", "thrust3Dmg"],
-        "Surging Blade": ["skill", "bladeDmg"],
         "Burst": ["burst", "skillDmg"],
         "Nightwatch Shade (C1)": ["constellation1", "dmg"],
         "Glimbright Shade (C6)": ["constellation6", "dmg"],
@@ -807,11 +799,10 @@ const characterAbils: Record<string, AbilsType> = {
         "Slitting Wind (A1)": ["passive1", "dmg"],
     },
 
-    travelergeo: {
-        "Starfell Sword": ["skill", "dmg"],
-        "Wake of Earth": ["burst", "dmg"],
-        "Frenzied Rockslide (A4)": ["passive2", "dmg"],
-        "Rockcore Meltdown": ["constellation2", "dmg"],
+    travelerdendro: {
+        "Razorgrass Blade": ["skill", "dmg"],
+        "Lea Lotus Lamp": ["burst", "lampDmg"],
+        "Lea Lotus Lamp Explosion": ["burst", "explosionDmg"],
     },
 
     // Miss ["burst","thirdThunderDmg"] which is written the same way as ["burst","thunderDmg"]
@@ -821,10 +812,11 @@ const characterAbils: Record<string, AbilsType> = {
         "Falling Thunder Proc (Q)": ["burst", "thunderDmg"],
     },
 
-    travelerdendro: {
-        "Razorgrass Blade": ["skill", "dmg"],
-        "Lea Lotus Lamp": ["burst", "lampDmg"],
-        "Lea Lotus Lamp Explosion": ["burst", "explosionDmg"],
+    travelergeo: {
+        "Starfell Sword": ["skill", "dmg"],
+        "Wake of Earth": ["burst", "dmg"],
+        "Frenzied Rockslide (A4)": ["passive2", "dmg"],
+        "Rockcore Meltdown": ["constellation2", "dmg"],
     },
 
     travelerhydro: {
