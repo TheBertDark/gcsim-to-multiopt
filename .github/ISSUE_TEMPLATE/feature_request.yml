@@ -1,0 +1,135 @@
+name: ✨ Feature Request
+description: Suggest a new feature or improvement for the GCSim to GO-MultiOpt converter
+title: '[FEATURE] '
+labels: ['enhancement', 'feature-request']
+assignees:
+    - TheBertDark
+
+body:
+    - type: markdown
+      attributes:
+          value: |
+              Thanks for suggesting a new feature! Your ideas help make the converter better for everyone.
+
+    - type: dropdown
+      id: feature-type
+      attributes:
+          label: Type of Feature
+          description: What type of feature are you requesting?
+          options:
+              - UI/UX Improvement
+              - New Conversion Option
+              - Export Format
+              - Performance Enhancement
+              - Quality of Life
+              - Integration
+              - Other
+      validations:
+          required: true
+
+    - type: textarea
+      id: feature-summary
+      attributes:
+          label: Feature Summary
+          description: A brief summary of the feature you'd like to see
+          placeholder: Provide a concise description of the feature
+      validations:
+          required: true
+
+    - type: textarea
+      id: problem-description
+      attributes:
+          label: Problem Description
+          description: What problem does this feature solve? What's the current limitation?
+          placeholder: Describe the current limitation or problem this feature would address
+      validations:
+          required: true
+
+    - type: textarea
+      id: proposed-solution
+      attributes:
+          label: Proposed Solution
+          description: How would you like this feature to work?
+          placeholder: Describe your ideal solution in detail
+      validations:
+          required: true
+
+    - type: textarea
+      id: use-cases
+      attributes:
+          label: Use Cases
+          description: When and how would this feature be used?
+          placeholder: |
+              Describe specific scenarios where this feature would be helpful:
+              - Use case 1: ...
+              - Use case 2: ...
+              - Use case 3: ...
+      validations:
+          required: true
+
+    - type: textarea
+      id: alternatives
+      attributes:
+          label: Alternative Solutions
+          description: Have you considered any alternative approaches?
+          placeholder: Describe any alternative solutions or workarounds you've considered
+
+    - type: dropdown
+      id: priority
+      attributes:
+          label: Priority Level
+          description: How important is this feature to you?
+          options:
+              - Low - Nice to have
+              - Medium - Would be helpful
+              - High - Important for my workflow
+              - Critical - Blocking my usage
+      validations:
+          required: true
+
+    - type: dropdown
+      id: user-type
+      attributes:
+          label: User Type
+          description: How would you describe your usage of the converter?
+          options:
+              - Casual user (occasional use)
+              - Regular user (weekly use)
+              - Power user (daily use)
+              - Developer/Contributor
+      validations:
+          required: true
+
+    - type: textarea
+      id: mockup-description
+      attributes:
+          label: Mockup or Visual Description
+          description: If applicable, describe how this feature should look or behave
+          placeholder: Describe the UI/UX, provide mockups, or explain the visual aspects
+
+    - type: textarea
+      id: technical-considerations
+      attributes:
+          label: Technical Considerations
+          description: Any technical aspects or constraints to consider?
+          placeholder: Performance implications, compatibility requirements, etc.
+
+    - type: textarea
+      id: additional-context
+      attributes:
+          label: Additional Context
+          description: Any other relevant information
+          placeholder: Screenshots, examples, references to similar features in other tools, etc.
+
+    - type: checkboxes
+      id: terms
+      attributes:
+          label: Checklist
+          description: Please confirm the following
+          options:
+              - label: I have searched existing issues to make sure this feature hasn't been requested before
+                required: true
+              - label: This feature is related to the GCSim to GO-MultiOpt converter
+                required: true
+              - label: I understand that feature requests are prioritized based on community needs and development resources
+                required: true

@@ -1,0 +1,70 @@
+name: 👤 Character Implementation Request
+description: Request implementation of a character not yet supported by the converter
+title: '[CHARACTER] '
+labels: ['enhancement', 'character-request']
+assignees:
+    - TheBertDark
+
+body:
+    - type: markdown
+      attributes:
+          value: |
+              Thanks for requesting a new character implementation! This helps us prioritize which characters to add next.
+
+    - type: input
+      id: character-name
+      attributes:
+          label: Character Name
+          description: What is the name of the character you want implemented?
+          placeholder: e.g., Furina, Xianyun, Gaming
+      validations:
+          required: true
+
+    - type: textarea
+      id: priority-reason
+      attributes:
+          label: Why is this character important?
+          description: Why should this character be prioritized for implementation?
+          placeholder: e.g., Popular in meta teams, unique mechanics, high usage rate, etc.
+
+    - type: textarea
+      id: team-comps
+      attributes:
+          label: Common Team Compositions
+          description: What are some popular team compositions that use this character?
+          placeholder: |
+              List some common teams where this character is used:
+              - Team 1: Character A, Character B, Character C, [Requested Character]
+              - Team 2: [Requested Character], Character D, Character E, Character F
+
+    - type: textarea
+      id: gcsim-config
+      attributes:
+          label: Sample GCSim Configuration (if available)
+          description: If you have a GCSim config for this character, please share it
+          placeholder: |
+              If you have a working GCSim configuration for this character, paste it here:
+              ```
+              // Your GCSim config
+              ```
+          render: text
+
+    - type: textarea
+      id: additional-info
+      attributes:
+          label: Additional Information
+          description: Any other relevant information about this character
+          placeholder: Special mechanics, constellation priorities, etc.
+
+    - type: checkboxes
+      id: terms
+      attributes:
+          label: Checklist
+          description: Please confirm the following
+          options:
+              - label: I have checked that this character is not already implemented
+                required: true
+              - label: I have searched existing issues to make sure this request doesn't already exist
+                required: true
+              - label: This character is officially released in Genshin Impact and GCSim
+                required: true

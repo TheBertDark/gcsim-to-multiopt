@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+    - name: 💬 Discord Support (Under development)
+      url: https://discord.com/users/723426524585525300
+      about: Contact the developer directly on Discord for quick questions or support
+    - name: 📖 Documentation
+      url: https://github.com/TheBertDark/gcsim-to-multiopt/blob/main/README.md
+      about: Check the README for usage instructions and frequently asked questions
+    - name: 🔍 Search Existing Issues
+      url: https://github.com/TheBertDark/gcsim-to-multiopt/issues
+      about: Search through existing issues before creating a new one
