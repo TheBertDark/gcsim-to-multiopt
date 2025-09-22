@@ -852,6 +852,7 @@ const characterAbils: Record<string, AbilsType> = {
         "Plains Scorcher": ["burst", "dmg"],
     },
 
+    // Miss ["burst","fpKickDmg"] and ["plunging","fplow"] haven't found how to proc them on gcsim
     varesa: {
         "Fiery Passion 0": ["normal", "fp0"],
         "Fiery Passion 1": ["normal", "fp1"],
