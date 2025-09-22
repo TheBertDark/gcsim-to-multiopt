@@ -8,12 +8,11 @@ const defaultAbils: AbilsType = {
     "Normal 4": ["normal", "4"],
     "Normal 5": ["normal", "5"],
     "Charge": ["charged", "dmg"],
-    // "Charge Attack": ["charged", "dmg"],
+    "Charge Attack": ["charged", "dmg"],
     "Charge 0": ["charged", "dmg1"],
     "Charge 1": ["charged", "dmg2"],
     "Aimed Shot": ["charged", "aimed"],
     "Fully-Charged Aimed Shot": ["charged", "aimedCharged"],
-    "Surging Blade": ["skill", "bladeDmg"],
     "Low Plunge": ["plunging", "low"],
     "High Plunge": ["plunging", "high"],
     "Plunge Collision": ["plunging", "dmg"],
@@ -149,6 +148,7 @@ const characterAbils: Record<string, AbilsType> = {
 
     barbara: {
         "Let the Show Begin♪ (Droplet)": ["skill", "dmg"],
+        "Let the Show Begin♪ (Melody Loop)": ["type", "subtype"], // No Opt
     },
 
     // Base damage Modify for "dmgOneHit" or "dmgTwoHits" skill sim doesn't have different names for it
@@ -255,6 +255,7 @@ const characterAbils: Record<string, AbilsType> = {
         "Impale the Night (0% BoL)": ["skill", "thrust1Dmg"],
         "Impale the Night (<100% BoL)": ["skill", "thrust2Dmg"],
         "Impale the Night (100%+ BoL)": ["skill", "thrust3Dmg"],
+        "Surging Blade": ["skill", "bladeDmg"],
         "Burst": ["burst", "skillDmg"],
         "Nightwatch Shade (C1)": ["constellation1", "dmg"],
         "Glimbright Shade (C6)": ["constellation6", "dmg"],
@@ -476,6 +477,8 @@ const characterAbils: Record<string, AbilsType> = {
         "Loop Shot 0": ["skill", "shotDmg"],
         "Loop Shot 1": ["skill", "shotDmg"],
         "Scalespiker Cannon": ["skill", "cannonDmg"],
+        "Hail to the Almighty Dragonlord (Skill DMG)": ["burst", "skillDmg"],
+        "Hail to the Almighty Dragonlord (Dragon Breath DMG)": ["burst", "laserDmg"],
         "Scalespiker Cannon (C6)": ["constellation6", "dmg"],
     },
 
@@ -531,6 +534,7 @@ const characterAbils: Record<string, AbilsType> = {
         "Starlight Slug": ["burst", "slugDmg"],
     },
 
+    // Miss ["skill","stack1"] (1 to 3) for conductive stacks
     lisa: {
         "Violet Arc": ["skill", "press"],
         "Violet Arc (Hold)": ["skill", "stack0"],
@@ -557,7 +561,9 @@ const characterAbils: Record<string, AbilsType> = {
     },
 
     mavuika: {
+        "The Named Moment": ["skill", "skillDmg"],
         "The Named Moment (Flamestrider)": ["skill", "skillDmg"],
+        "Rings of Searing Radiance": ["skill", "radianceDmg"],
         "Flamestrider Normal 0": ["skill", "normal1Dmg"],
         "Flamestrider Normal 1": ["skill", "normal2Dmg"],
         "Flamestrider Normal 2": ["skill", "normal3Dmg"],
@@ -566,9 +572,8 @@ const characterAbils: Record<string, AbilsType> = {
         "Flamestrider Charged Attack (Cyclic)": ["skill", "chargedCyclicDmg"],
         "Flamestrider Charged Attack (Final)": ["skill", "chargedFinalDmg"],
         "Flamestrider Sprint": ["skill", "sprintDmg"],
+        "Flamestrider Plunge": ["skill", "plungeDmg"],
         "Sunfell Slice": ["burst", "skillDmg"],
-        "The Named Moment": ["skill", "skillDmg"],
-        "Rings of Searing Radiance": ["skill", "radianceDmg"],
         "Flamestrider (C6)": ["constellation6", "flamestriderDmg"],
         "Rings of Searing Radiance (C6)": ["constellation6", "ringDmg"],
     },
@@ -593,22 +598,25 @@ const characterAbils: Record<string, AbilsType> = {
         "Mirror Reflection of Doom (A1 Explode)": ["passive1", "dmg"],
     },
 
+    // Miss ["constellation1","surgingDmg"] not differentiate from skill surging
     mualani: {
-        "Charge Attack": ["charged", "dmg"],
-        "Surfing Hit": ["type", "subtype"], //! No damage (irrelevant)  
+        "Sharky's Bite (0 momentum)":["skill","basicDmg"],
+        "Sharky's Bite (1 momentum)":["skill","stack1Dmg"],
+        "Sharky's Bite (2 momentum)":["skill","stack2Dmg"],
         "Sharky's Surging Bite": ["skill", "surgingDmg"],
         "Boomsharka-laka": ["burst", "dmg"],
     },
 
     nahida: {
-        "Charge Attack": ["charged", "dmg"],
         "All Schemes to Know (Press)": ["skill", "pressDmg"],
+        "All Schemes to Know (Hold)": ["skill", "holdDmg"],
         "Tri-Karma Purification": ["skill", "karmaDmg"],
         "Tri-Karma Purification: Karmic Oblivion": ["constellation6", "dmg"],
     },
 
     navia: {
         "Rosula Shardshot": ["skill", "totalShardDmg"],
+        "Surging Blade": ["skill", "bladeDmg"],
         "As the Sunlit Sky's Singing Salute": ["burst", "skillDmg"],
         "Cannon Fire Support": ["burst", "supportDmg"],
         "The President's Pursuit of Victory": ["burst", "supportDmg"], //! (C2)
@@ -627,11 +635,13 @@ const characterAbils: Record<string, AbilsType> = {
         "Water Wheel": ["skill", "wheelDmg"],
         "Sword Dance 0": ["skill", "dance1Dmg"],
         "Sword Dance 1": ["skill", "dance2Dmg"],
+        "Whirling Steps 0":["skill","whirl1Dmg"],
+        "Whirling Steps 1":["skill","whirl2Dmg"],
         "Luminous Illusion": ["skill", "moonDmg"],
         "Dance of Haftkarsvar": ["skill", "skillDmg"],
         "Lingering Aeon": ["burst", "aeonDmg"],
         "Dance of Abzendegi: Distant Dreams, Listening Spring": ["burst", "skillDmg"],
-        "Tranquility Aura": ["element", "hydro"], //! No damage
+        "Tranquility Aura": ["type", "subtype"], // No Opt
     },
 
     ningguang: {
@@ -660,12 +670,18 @@ const characterAbils: Record<string, AbilsType> = {
         "Fortune-Preserving Talisman": ["burst", "dmg"],
     },
 
+    // Miss ["burst","hit42"] for 2nd hit of n4 (marginal)
+    // Miss ["burst","charged2"] for 2nd hit of charged
     raiden: {
         "Musou Shinsetsu": ["burst", "dmg"],
         "Musou Isshin 0": ["burst", "hit1"],
         "Musou Isshin 1": ["burst", "hit2"],
         "Musou Isshin 2": ["burst", "hit3"],
-        "Musou Isshin 3": ["burst", "hit41"], //! N3 have 2 hits whit different Multipliers but difference is insignificative
+        "Musou Isshin 3": ["burst", "hit41"],
+        "Musou Isshin 4": ["burst", "hit5"],
+        "Musou Isshin (Charge Attack)": ["burst", "charged1"],
+        "Low Plunge (Q)": ["burst", "plungeLow"],
+        "High Plunge (Q)": ["burst", "plungeHigh"],
         "Eye of Stormy Judgement": ["skill", "dmg"],
         "Eye of Stormy Judgement (Strike)": ["skill", "coorDmg"],
     },
@@ -706,11 +722,12 @@ const characterAbils: Record<string, AbilsType> = {
         "Muji-Muji Daruma": ["burst", "darumaDmg"],
     },
 
+    // Miss ["burst", "dusk_2"] N2 during burst has 2 identical hit on gcsim (marginal)
     sethos: {
         "Shadowpiercing Shot": ["charged", "shadow"],
         "Ancient Rite: Thunderous Roar of Sand": ["skill", "dmg"],
         "Dusk Bolt 0": ["burst", "dusk_0"],
-        "Dusk Bolt 1": ["burst", "dusk_1"], // N2 during burst has 2 identical hit on gcsim but damage diff is insignificant
+        "Dusk Bolt 1": ["burst", "dusk_1"],
         "Dusk Bolt 2": ["burst", "dusk_3"],
     },
 
@@ -752,16 +769,18 @@ const characterAbils: Record<string, AbilsType> = {
         "Forbidden Creation-Isomer 75/Type II (Absorb)": ["burst", "hydro", "pyro", "cryo", "electro"],
     },
 
+    // Miss ["skill","normal62"] 2nd hit of N6
+    // Miss ["skill","charged2"] 2nd hit of charged
     tartaglia: {
         "Normal 0": ["skill", "normal1"],
         "Normal 1": ["skill", "normal2"],
         "Normal 2": ["skill", "normal3"],
         "Normal 3": ["skill", "normal4"],
         "Normal 4": ["skill", "normal5"],
-        "Normal 5": ["skill", "normal61"], //! Only first hit because both hits have same name [add logic to get both hits]
+        "Normal 5": ["skill", "normal61"],
         "Riptide Flash": ["charged", "flashDmg"],
         "Riptide Burst": ["charged", "burstDmg"],
-        "Charged Attack": ["skill", "charged1"], //! Only first hit because both hits have same name [add logic to get both hits]
+        "Charged Attack": ["skill", "charged1"],
         "Foul Legacy: Raging Tide": ["skill", "stanceDmg"],
         "Riptide Slash": ["skill", "riptideSlash"],
         "Ranged Stance: Flash of Havoc": ["burst", "rangedDmg"],
@@ -833,12 +852,18 @@ const characterAbils: Record<string, AbilsType> = {
         "Plains Scorcher": ["burst", "dmg"],
     },
 
+    // Miss ["burst","fpKickDmg"] and ["plunging","fplow"] haven't found how to proc them on gcsim
     varesa: {
+        "Fiery Passion 0": ["normal", "fp0"],
+        "Fiery Passion 1": ["normal", "fp1"],
+        "Fiery Passion 2": ["normal", "fp2"],
         "Charged Attack (Follow-Up Strike)": ["charged", "dmg"],
+        "Fiery Passion Charged Attack": ["charged", "fpDmg"],
         "Fiery Passion Charged Attack (Follow-Up Strike)": ["charged", "fpDmg"],
+        "Fiery Passion High Plunge": ["plunging", "fphigh"],
         "Rush": ["skill", "rushDmg"],
         "Fiery Passion Rush": ["skill", "fpRushDmg"],
-        "Fiery Passion High Plunge": ["plunging", "fphigh"],
+        "Flying Kick": ["burst", "kickDmg"],
         "Volcano Kablam": ["burst", "volcanoDmg"],
     },
 
@@ -851,12 +876,13 @@ const characterAbils: Record<string, AbilsType> = {
         "Fully-Charged Aimed Shot (C1)": ["constellation1", "fully"],
     },
 
+    // Miss ["constellation6","1"] and ["constellation6","2"] which scale with N2 and N3 instead of N1
     wanderer: {
         "Normal 0 (Windfavored)": ["normal", "0"],
         "Normal 1 (Windfavored)": ["normal", "1"],
         "Normal 2 (Windfavored)": ["normal", "2"],
         "Charge Attack (Windfavored)": ["charged", "dmg"],
-        "Kyougen: Five Ceremonial Plays": ["burst", "dmg"], //! I don't sure
+        "Kyougen: Five Ceremonial Plays": ["burst", "dmg"],
         "Kyougen: Five Ceremonial Plays (Windfavored)": ["burst", "dmg"],
         "Gales of Reverie": ["passive2", "dmg"],
         "Hanega: Song of the Wind": ["skill", "dmg"],
@@ -885,6 +911,7 @@ const characterAbils: Record<string, AbilsType> = {
         "Oil Meets Fire (C2)": ["constellation2", "dmg"],
     },
 
+    // Miss ["skill","trailDmg"] don't know how to proc it on gcsim
     xianyun: {
         "Driftcloud Wave (1 Leaps)": ["skill", "firstLeapDmg"],
         "Driftcloud Wave (2 Leaps)": ["skill", "secondLeapDmg"],

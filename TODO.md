@@ -103,9 +103,9 @@ Mark characters as their abilities are added.
 | Thoma | ✅ |
 | Tighnari | ✅ |
 | Traveler anemo | ✅ |
-| Traveler geo | ✅ |
-| Traveler electro | ✅ |
 | Traveler dendro | ✅ |
+| Traveler electro | ✅ |
+| Traveler geo | ✅ |
 | Traveler hydro | ✅ |
 | Traveler pyro | ✅ |
 | Varesa | ✅ |
