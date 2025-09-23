@@ -83,7 +83,9 @@ const characterAbils: Record<string, AbilsType> = {
     aino: {},
 
     albedo: {
-        "Abiogenesis: Solar Isotoma": ["skill", "dmg"],
+        "Charge 0": ["charged", "dmg1"],
+        "Charge 1": ["charged", "dmg2"],
+        "Abiogenesis: Solar Isotoma (Initial)": ["skill", "dmg"],
         "Abiogenesis: Solar Isotoma (Tick)": ["skill", "blossom"],
         "Rite of Progeniture: Tectonic Tide": ["burst", "dmg"],
         "Rite of Progeniture: Tectonic Tide (Blossom)": ["burst", "blossom"],
@@ -136,13 +138,13 @@ const characterAbils: Record<string, AbilsType> = {
         "Hyouka": ["skill", "press"],
         "Soumetsu (Cutting)": ["burst", "cutting"],
         "Soumetsu (Bloom)": ["burst", "bloom"],
-        "C2 Mini-Frostflake Seki no To (Cutting)": ["constellation2", "dmg"],
-        "C2 Mini-Frostflake Seki no To (Bloom)": ["constellation2", "bloom"],
+        "Mini-Frostflake Seki no To (Cutting) (C2)": ["constellation2", "dmg"],
+        "Mini-Frostflake Seki no To (Bloom) (C2)": ["constellation2", "bloom"],
     },
 
     baizhu: {
         "Spiritvein Damage": ["burst", "dmg"],
-        "Gossamer Sprite: Splice. (Baizhu's C2)": ["constellation2", "dmg"],
+        "Gossamer Sprite: Splice. (C2)": ["constellation2", "dmg"],
         "Universal Diagnosis": ["skill", "dmg"],
     },
 
@@ -153,10 +155,10 @@ const characterAbils: Record<string, AbilsType> = {
 
     // Base damage Modify for "dmgOneHit" or "dmgTwoHits" skill sim doesn't have different names for it
     beidou: {
-        "Tidecaller (E)": ["skill", "baseDmg"],
-        "Stormbreaker (Q)": ["burst", "burstDmg"],
-        "Stormbreak Proc (Q)": ["burst", "lightningDmg"],
-        "Beidou C4": ["constellation4", "skillDmg"],
+        "Tidecaller": ["skill", "baseDmg"], //! Base damage [Modifi for "DMG w/1 hit or 2 hits"] sim doesn't have different names for 1 hit and 2 hits
+        "Stormbreaker (Initial)": ["burst", "burstDmg"],
+        "Stormbreaker (Bounce)": ["burst", "lightningDmg"],
+        "Stunning Revenge (C4)": ["constellation4","skillDmg"],
     },
 
     // Miss second hit for hold1/2 (["skill","hold1_2"], ["skill","hold2_2"])
@@ -170,9 +172,9 @@ const characterAbils: Record<string, AbilsType> = {
     },
 
     candace: {
-        "Sacred Rite: Heron's Sanctum (E)": ["skill", "basicDmg"],
-        "Sacred Rite: Heron's Sanctum Charged Up (E)": ["skill", "chargedDmg"],
-        "Sacred Rite: Wagtail's Tide (Q)": ["burst", "skillDmg"],
+        "Sacred Rite: Heron's Sanctum": ["skill", "basicDmg"],
+        "Sacred Rite: Heron's Sanctum (Charged)": ["skill", "chargedDmg"],
+        "Sacred Rite: Wagtail's Tide (Initial)": ["burst", "skillDmg"],
         "Sacred Rite: Wagtail's Tide (Wave)": ["burst", "waveDmg"],
         "The Overflow (C6)": ["constellation6", "dmg"],
     },
@@ -185,7 +187,7 @@ const characterAbils: Record<string, AbilsType> = {
         "Focused Impression Mark": ["skill", "focusMarkDmg"],
         "Still Photo: Comprehensive Confirmation": ["burst", "skillDmg"],
         "Still Photo: Kamera": ["burst", "kameraDmg"],
-        "charlotte-c6-coordinate-atk": ["constellation6", "dmg"],
+        "A Summation of Interest (C6)": ["constellation6", "dmg"],
     },
 
     chasca: {
@@ -256,7 +258,7 @@ const characterAbils: Record<string, AbilsType> = {
         "Impale the Night (<100% BoL)": ["skill", "thrust2Dmg"],
         "Impale the Night (100%+ BoL)": ["skill", "thrust3Dmg"],
         "Surging Blade": ["skill", "bladeDmg"],
-        "Burst": ["burst", "skillDmg"],
+        "Last Lightfall": ["burst", "skillDmg"],
         "Nightwatch Shade (C1)": ["constellation1", "dmg"],
         "Glimbright Shade (C6)": ["constellation6", "dmg"],
     },
@@ -278,8 +280,8 @@ const characterAbils: Record<string, AbilsType> = {
         "Pactsworn Pathclearer 3": ["burst", "normal_3"],
         "Pactsworn Pathclearer 4": ["burst", "normal_4"],
         "Pactsworn Pathclearer Charge": ["burst", "charged"],
-        "Low Plunge (Q)": ["burst", "plunging_low"],
-        "High Plunge (Q)": ["burst", "plunging_high"],
+        "Low Plunge (Pactsworn Pathclearer)": ["burst","plunging_low"],
+        "High Plunge (Pactsworn Pathclearer)": ["burst","plunging_high"],
         "Duststalker Bolt": ["passive1", "boltDmg"],
         "Raiment: Just Scales (C6)": ["passive1", "boltDmg"],
     },
@@ -314,7 +316,7 @@ const characterAbils: Record<string, AbilsType> = {
         "Troubleshooter Shot": ["skill", "shotDmg"],
         "After-Sales Service Round": ["skill", "roundDmg"],
         "Alcazarzaray's Exactitude: Connector DMG": ["burst", "connectorDmg"],
-        "Special Franchise": ["constellation2", "dmg"],
+        "Special Franchise (C2)": ["constellation2", "dmg"],
     },
 
     emilie: {
@@ -339,22 +341,22 @@ const characterAbils: Record<string, AbilsType> = {
         "Icetide Vortex (Hold)": ["skill", "hold"],
         "Icetide Vortex (Icewhirl)": ["skill", "icewhirl"],
         "Icetide (Lightfall)": ["passive1", "shatteredLightfallSword"],
-        "Glacial Illumination": ["burst", "dmg"],
+        "Glacial Illumination (Initial)": ["burst", "dmg"],
         "Glacial Illumination (Lightfall)": ["burst", "lightFallSwordNew"],
     },
 
     faruzan: {
-        "Wind Realm of Nasamjnin (E)": ["skill", "skillDmg"],
+        "Wind Realm of Nasamjnin": ["skill", "skillDmg"],
         "Pressurized Collapse": ["skill", "vortexDmg"],
-        "The Wind's Secret Ways (Q)": ["burst", "dmg"],
+        "The Wind's Secret Ways": ["burst", "dmg"],
     },
 
     // Miss ["passive1","aimedChargedOz"], seems it's not implemented
     fischl: {
-        "Fischl A4": ["passive2", "dmg"],
-        "Fischl C1": ["constellation1", "dmg"],
+        "Thundering Retribution (A4)": ["passive2", "dmg"],
+        "Gaze of the Deep (C1)": ["constellation1", "dmg"],
         "Her Pilgrimage of Bleak (C4)": ["constellation4", "burstAdditionalDmg"],
-        "Fischl C6": ["constellation6", "ozActiveCharDmg"],
+        "Evernight Raven (C6)": ["constellation6", "ozActiveCharDmg"],
         "Midnight Phantasmagoria": ["burst", "dmg"],
         "Oz (Summon)": ["skill", "summonDmg"],
         "Oz (Skill)": ["skill", "ozDmg"],
@@ -386,7 +388,7 @@ const characterAbils: Record<string, AbilsType> = {
 
     gaming: {
         "Charmed Cloudstrider": ["skill", "cloudstriderDmg"],
-        "Suanni's Gilded Dance (Q)": ["burst", "smashDmg"],
+        "Suanni's Gilded Dance": ["burst", "smashDmg"],
     },
 
     ganyu: {
@@ -413,7 +415,9 @@ const characterAbils: Record<string, AbilsType> = {
     // Maybe see with a4 proc
     hutao: {
         "Blood Blossom": ["skill", "dmg"],
-        "Spirit Soother": ["burst", "dmg"],
+        "Spirit Soother": ["burst", "dmg"], //! sim doesn't have different names for <50% hp and >50% hp hu tao bursts
+        "Low Plunge (Paramita Papilio)": ["plunging","low"], //! GO doesnt have different names for low and high plunge in skill state
+        "High Plunge (Paramita Papilio)": ["plunging","high"],
     },
 
     iansan: {},
@@ -447,20 +451,20 @@ const characterAbils: Record<string, AbilsType> = {
     },
 
     kaveh: {
-        "Artistic Ingenuity (E)": ["skill", "dmg"],
-        "Painted Dome (Q)": ["burst", "dmg"],
-        "Pairidaeza's Dreams (C6)": ["constellation6", "dmg"],
+        "Artistic Ingenuity": ["skill","dmg"],
+        "Painted Dome": ["burst","dmg"],
+        "Pairidaeza's Dreams (C6)": ["constellation6","dmg"],
     },
 
     // Miss ["skill","hold"] don't have the diff on gcsim
     // Gcsim let only high_plunge after e
     kazuha: {
-        "Kazuha A1": ["passive1", "absorb"],
+        "Soumon Swordsmanship (A1)": ["passive1", "absorb"],
         "High Plunge": ["skill", "phigh"],
         "Chihayaburu": ["skill", "press"],
         "Kazuha Slash": ["burst", "dmg"],
-        "Kazuha Slash (Dot)": ["burst", "dot"],
-        "Kazuha Slash (Absorb Dot)": ["burst", "absorb"],
+        "Kazuha Slash (DoT)": ["burst", "dot"],
+        "Kazuha Slash (Absorb DoT)": ["burst", "absorb"],
     },
 
     keqing: {
@@ -492,11 +496,11 @@ const characterAbils: Record<string, AbilsType> = {
     },
 
     klee: {
-        "Jumpy Dumpty": ["skill", "jumptyDumptyDmg"],
-        "Jumpy Dumpty Mine Hit": ["skill", "mineDmg"],
+        "Jumpy Dumpty (Bounce)": ["skill","jumptyDumptyDmg"],
+        "Jumpy Dumpty (Mine)": ["skill","mineDmg"],
         "Sparks'n'Splash": ["burst","dmg"],
-        "Sparks'n'Splash C1": ["constellation1", "chainedReactionsDmg"],
-        "Sparks'n'Splash C4": ["constellation4","sparklyExplosionDmg"],
+        "Sparks'n'Splash (C1)": ["constellation1","chainedReactionsDmg"],
+        "Sparkly Explosion (C4)": ["constellation4","sparklyExplosionDmg"],
     },
 
     kokomi: {
@@ -506,10 +510,10 @@ const characterAbils: Record<string, AbilsType> = {
     },
 
     kuki: {
-        "Sanctifying Ring": ["skill", "pressDmg"],
-        "Grass Ring of Sanctification": ["skill", "ringDmg"],
-        "Gyoei Narukami Kariyama Rite": ["burst", "singleDmg"],
-        "Thundergrass Mark": ["constellation4", "markDmg"],
+        "Sanctifying Ring": ["skill","pressDmg"],
+        "Grass Ring of Sanctification": ["skill","ringDmg"],
+        "Gyoei Narukami Kariyama Rite": ["burst","singleDmg"],
+        "Thundergrass Mark (C4)": ["constellation4","markDmg"],
     },
 
     lanyan: {
@@ -529,35 +533,40 @@ const characterAbils: Record<string, AbilsType> = {
     lauma: {},
 
     layla: {
-        "Nights of Formal Focus": ["skill", "skillDmg"],
-        "Shooting Star": ["skill", "starDmg"],
-        "Starlight Slug": ["burst", "slugDmg"],
+        "Charge 0":["charged","dmg1"],
+        "Charge 1":["charged","dmg2"],
+        "Nights of Formal Focus":["skill","skillDmg"],
+        "Shooting Star":["skill","starDmg"],
+        "Starlight Slug":["burst","slugDmg"],
     },
 
     // Miss ["skill","stack1"] (1 to 3) for conductive stacks
     lisa: {
-        "Violet Arc": ["skill", "press"],
+        "Violet Arc (Press)": ["skill", "press"],
         "Violet Arc (Hold)": ["skill", "stack0"],
         "Lightning Rose (Initial)": ["burst", "summon"],
         "Lightning Rose (Tick)": ["burst", "tick"],
     },
 
     lynette: {
-        "Enigmatic Feint": ["skill", "thrustDmg"],
-        "Surging Blade (Lynette)": ["skill", "bladeDmg"],
-        "Magic Trick: Astonishing Shift": ["burst", "dmg"],
-        "Bogglecat Box": ["burst", "boxDmg"],
-        "Vivid Shot": ["burst", "shotDmg"],
+        "Normal 3": ["normal", "4"],
+        "Charge 0": ["charged", "dmg1"],
+        "Charge 1": ["charged", "dmg2"],
+        "Enigmatic Feint":["skill","thrustDmg"],
+        "Surging Blade (Lynette)":["skill","bladeDmg"],
+        "Magic Trick: Astonishing Shift":["burst","dmg"],
+        "Bogglecat Box":["burst","boxDmg"],
+        "Vivid Shot":["burst","shotDmg"],
     },
 
     lyney: {
-        "Fully-Charged Aimed Shot (Prop Arrow)": ["charged", "prop"],
-        "Pyrotechnic Strike": ["charged", "pyrotechnic"],
-        "Spiritbreath Thorn (Lyney)": ["charged", "spiritbreath"],
-        "Bewildering Lights": ["skill", "dmg"],
-        "Wondrous Trick: Miracle Parade": ["burst", "dmg"],
-        "Wondrous Trick: Miracle Parade (Explosive Firework)": ["burst", "fireworkDmg"],
-        "Pyrotechnic Strike: Reprised": ["constellation6", "dmg"],
+        "Fully-Charged Aimed Shot (Prop Arrow)" :["charged","prop"],
+        "Pyrotechnic Strike": ["charged","pyrotechnic"],
+        "Spiritbreath Thorn (Lyney)": ["charged","spiritbreath"],
+        "Bewildering Lights": ["skill","dmg"],
+        "Wondrous Trick: Miracle Parade": ["burst","dmg"],
+        "Wondrous Trick: Miracle Parade (Explosive Firework)": ["burst","fireworkDmg"],
+        "Pyrotechnic Strike: Reprised (C6)": ["constellation6","dmg"],
     },
 
     mavuika: {
@@ -619,7 +628,7 @@ const characterAbils: Record<string, AbilsType> = {
         "Surging Blade": ["skill", "bladeDmg"],
         "As the Sunlit Sky's Singing Salute": ["burst", "skillDmg"],
         "Cannon Fire Support": ["burst", "supportDmg"],
-        "The President's Pursuit of Victory": ["burst", "supportDmg"], //! (C2)
+        "Cannon Fire Support (C2)": ["burst", "supportDmg"], //! (C2)
     },
 
     neuvillette: {
@@ -680,8 +689,9 @@ const characterAbils: Record<string, AbilsType> = {
         "Musou Isshin 3": ["burst", "hit41"],
         "Musou Isshin 4": ["burst", "hit5"],
         "Musou Isshin (Charge Attack)": ["burst", "charged1"],
-        "Low Plunge (Q)": ["burst", "plungeLow"],
-        "High Plunge (Q)": ["burst", "plungeHigh"],
+        "Plunge Collision": ["burst","plunge"], //! gcsim doesn't have different name for plunge damage in burst state
+        "Low Plunge (Musou Isshin)": ["burst","plungeLow"],
+        "High Plunge (Musou Isshin)": ["burst","plungeHigh"],
         "Eye of Stormy Judgement": ["skill", "dmg"],
         "Eye of Stormy Judgement (Strike)": ["skill", "coorDmg"],
     },
@@ -700,15 +710,15 @@ const characterAbils: Record<string, AbilsType> = {
     rosaria: {
         "Ravaging Confession (Hit 1)": ["skill", "hit1"],
         "Ravaging Confession (Hit 2)": ["skill", "hit2"],
-        "Rites of Termination (Hit 1)": ["burst", "hit1"],
-        "Rites of Termination (Hit 2)": ["burst", "hit2"],
+        "Rites of Termination (Initial 1)": ["burst", "hit1"],
+        "Rites of Termination (Initial 2)": ["burst", "hit2"],
         "Rites of Termination (DoT)": ["burst", "dotDmg"],
     },
 
     sara: {
         "Fully-Charged Aimed Shot (A1)": ["charged", "fullyAimed"],
         "Tengu Juurai: Ambush": ["skill", "dmg"],
-        "Tengu Juurai: Ambush C2": ["constellation2", "dmg"],
+        "Tengu Juurai: Ambush (C2)": ["constellation2", "dmg"],
         "Tengu Juurai: Titanbreaker": ["burst", "titanbreaker"],
         "Tengu Juurai: Stormcluster": ["burst", "stormcluster"],
     },
@@ -759,7 +769,7 @@ const characterAbils: Record<string, AbilsType> = {
         "Charge (Skill) 2": ["skill", "chargedDmg"],
         "Havoc: Ruin (DoT)": ["burst", "skillDmg"],
         "Havoc: Ruin (Final)": ["burst", "finalDmg"],
-        "Far to Fall": ["constellation1", "dmg"],
+        "Far to Fall (C1)": ["constellation1", "dmg"],
         "Havoc: Sever (Normal)": ["constellation6", "normalDmg"],
     },
 
@@ -938,10 +948,10 @@ const characterAbils: Record<string, AbilsType> = {
     },
 
     xinyan: {
-        "Sweeping Fervor": ["skill", "dmg"],
-        "Sweeping Fervor (DoT)": ["skill", "lvl3Dmg"],
-        "Riff Revolution": ["burst", "pressPhysDmg"],
-        "Riff Revolution (DoT)": ["burst", "dotPyroDmg"],
+        "Sweeping Fervor (Initial)": ["skill","dmg"],
+        "Sweeping Fervor (DoT)": ["skill","lvl3Dmg"],
+        "Riff Revolution (Initial)": ["burst","pressPhysDmg"],
+        "Riff Revolution (DoT)": ["burst","dotPyroDmg"],
     },
 
     // Missing ["skill","dmg3"] and ["skill","dmg4"] cause can't see Sesshou Sakura level (or number)
@@ -970,12 +980,12 @@ const characterAbils: Record<string, AbilsType> = {
         "Lingering Lifeline": ["skill", "dmg"],
         "Depth-Clarion Dice": ["burst", "pressDmg"],
         "Exquisite Throw": ["burst", "throwDmg"],
-        "Yelan C2 Proc": ["constellation2", "arrowDmg"],
+        "Exquisite Throw (C2)": ["constellation2", "arrowDmg"],
         "Breakthrough Barb": ["constellation6", "barbDmg"], //! Same as Yelan charged
     },
 
     yoimiya: {
-        "Aurous Blaze": ["burst", "dmg"],
+        "Aurous Blaze (Initial)": ["burst", "dmg"],
         "Aurous Blaze (Explode)": ["burst", "exp"],
         "Kindling (C6) - N0": ["constellation6", "0"], //! N1 * 2
         "Kindling (C6) - N1": ["constellation6", "1"], //! N2
@@ -986,10 +996,10 @@ const characterAbils: Record<string, AbilsType> = {
 
     // What should we do with additive damage like it's q or shenhe e ?
     yunjin: {
-        "Opening Flourish Press (E)": ["skill", "dmg"],
-        "Opening Flourish Level 1 (E)": ["skill", "dmg1"],
-        "Opening Flourish Level 2 (E)": ["skill", "dmg2"],
-        "Cliffbreaker's Banner": ["burst", "dmg"],
+        "Opening Flourish (Press)":["skill","dmg"],
+        "Opening Flourish (Level 1)":["skill","dmg1"],
+        "Opening Flourish (Level 2)":["skill","dmg2"],
+        "Cliffbreaker's Banner":["burst","dmg"],
     },
 
     zhongli: {
