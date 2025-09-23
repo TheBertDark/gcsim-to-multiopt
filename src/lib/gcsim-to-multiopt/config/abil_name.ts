@@ -113,6 +113,7 @@ const characterAbils: Record<string, AbilsType> = {
         "Baron Bunny": ["skill", "dmg"],
         "Baron Bunny (Manual Explosion)": ["constellation2", "manualDetonationDmg"],
         "Fiery Rain": ["burst", "dmgPerWave"],
+        "Aimed Shot (C1)": ["constellation1","secondAimedCharged"]
     },
 
     arlecchino: {
@@ -125,9 +126,9 @@ const characterAbils: Record<string, AbilsType> = {
 
     ayato: {
         "Kamisato Art: Kyouka": ["skill", "illusionDmg"],
-        "Normal 0": ["skill", "dmg0"],
-        "Normal 1": ["skill", "dmg1"],
-        "Normal 2": ["skill", "dmg2"],
+        "Shunsuiken 0": ["skill", "dmg0"],
+        "Shunsuiken 1": ["skill", "dmg1"],
+        "Shunsuiken 2": ["skill", "dmg2"],
         "Kamisato Art: Suiyuu": ["burst", "dmg"],
         "Boundless Origin (C6)": ["constellation6", "dmg"]
     },
@@ -153,9 +154,10 @@ const characterAbils: Record<string, AbilsType> = {
         "Let the Show Begin♪ (Melody Loop)": ["type", "subtype"], // No Opt
     },
 
-    // Base damage Modify for "dmgOneHit" or "dmgTwoHits" skill sim doesn't have different names for it
     beidou: {
-        "Tidecaller": ["skill", "baseDmg"], //! Base damage [Modifi for "DMG w/1 hit or 2 hits"] sim doesn't have different names for 1 hit and 2 hits
+        "Tidecaller": ["skill", "baseDmg"],
+        "Tidecaller (Level 1)": ["skill","dmgOneHit"],
+        "Tidecaller (Level 2)": ["skill","dmgTwoHits"],
         "Stormbreaker (Initial)": ["burst", "burstDmg"],
         "Stormbreaker (Bounce)": ["burst", "lightningDmg"],
         "Stunning Revenge (C4)": ["constellation4","skillDmg"],
@@ -363,13 +365,17 @@ const characterAbils: Record<string, AbilsType> = {
         "Oz (Burst)": ["skill", "ozDmg"],
     },
 
-    // Miss ["skill","level1CryoDmg"] (1 to 3) and ["skill","level2PhysDmg"] (2 and 3) and ["skill","level4Dmg"]
-    // No distinction between pers level
     freminet: {
         "Pressurized Floe: Upward Thrust": ["skill", "thrustDmg"],
         "Pressurized Floe: Pers Time Frost": ["skill", "frostDmg"],
-        "Pressurized Floe: Shattering Pressure (Cryo)": ["skill", "level0Dmg"],
-        "Pressurized Floe: Shattering Pressure (Physical)": ["skill", "level1PhysDmg"],
+        "Pressurized Floe: Shattering Pressure (Cryo Lvl 0)": ["skill", "level0Dmg"],
+        "Pressurized Floe: Shattering Pressure (Cryo Lvl 1)": ["skill", "level1CryoDmg"],
+        "Pressurized Floe: Shattering Pressure (Cryo Lvl 2)": ["skill", "level2CryoDmg"],
+        "Pressurized Floe: Shattering Pressure (Cryo Lvl 3)": ["skill", "level3CryoDmg"],
+        "Pressurized Floe: Shattering Pressure (Physical Lvl 1)": ["skill", "level1PhysDmg"],
+        "Pressurized Floe: Shattering Pressure (Physical Lvl 2)": ["skill", "level2PhysDmg"],
+        "Pressurized Floe: Shattering Pressure (Physical Lvl 3)": ["skill", "level3PhysDmg"],
+        "Pressurized Floe: Shattering Pressure (Physical Lvl 4)": ["skill", "level4Dmg"],
         "Pressurized Floe: Spiritbreath Thorn": ["skill", "thornDmg"],
         "Shadowhunter's Ambush": ["burst", "dmg"],
     },
@@ -416,7 +422,8 @@ const characterAbils: Record<string, AbilsType> = {
     hutao: {
         "Blood Blossom": ["skill", "dmg"],
         "Spirit Soother": ["burst", "dmg"], //! sim doesn't have different names for <50% hp and >50% hp hu tao bursts
-        "Low Plunge (Paramita Papilio)": ["plunging","low"], //! GO doesnt have different names for low and high plunge in skill state
+        "Spirit Soother (Low HP)": ["burst","lowHpDmg"],
+        "Low Plunge (Paramita Papilio)": ["plunging","low"], //! GO doesnt have different names for low and high plunge in skill state to normal state
         "High Plunge (Paramita Papilio)": ["plunging","high"],
     },
 
@@ -461,7 +468,8 @@ const characterAbils: Record<string, AbilsType> = {
     kazuha: {
         "Soumon Swordsmanship (A1)": ["passive1", "absorb"],
         "High Plunge": ["skill", "phigh"],
-        "Chihayaburu": ["skill", "press"],
+        "Chihayaburu (Press)": ["skill", "press"],
+        "Chihayaburu (Hold)": ["skill", "hold"],
         "Kazuha Slash": ["burst", "dmg"],
         "Kazuha Slash (DoT)": ["burst", "dot"],
         "Kazuha Slash (Absorb DoT)": ["burst", "absorb"],
@@ -688,8 +696,9 @@ const characterAbils: Record<string, AbilsType> = {
         "Musou Isshin 2": ["burst", "hit3"],
         "Musou Isshin 3": ["burst", "hit41"],
         "Musou Isshin 4": ["burst", "hit5"],
-        "Musou Isshin (Charge Attack)": ["burst", "charged1"],
-        "Plunge Collision": ["burst","plunge"], //! gcsim doesn't have different name for plunge damage in burst state
+        "Musou Isshin (Charge Attack 0)": ["burst", "charged1"],
+        "Musou Isshin (Charge Attack 1)": ["burst", "charged2"],
+        "Plunge Collision (Musou Isshin)": ["burst","plunge"],
         "Low Plunge (Musou Isshin)": ["burst","plungeLow"],
         "High Plunge (Musou Isshin)": ["burst","plungeHigh"],
         "Eye of Stormy Judgement": ["skill", "dmg"],
@@ -780,7 +789,6 @@ const characterAbils: Record<string, AbilsType> = {
     },
 
     // Miss ["skill","normal62"] 2nd hit of N6
-    // Miss ["skill","charged2"] 2nd hit of charged
     tartaglia: {
         "Normal 0": ["skill", "normal1"],
         "Normal 1": ["skill", "normal2"],
@@ -790,7 +798,8 @@ const characterAbils: Record<string, AbilsType> = {
         "Normal 5": ["skill", "normal61"],
         "Riptide Flash": ["charged", "flashDmg"],
         "Riptide Burst": ["charged", "burstDmg"],
-        "Charged Attack": ["skill", "charged1"],
+        "Charged Attack 0": ["skill", "charged1"],
+        "Charged Attack 1": ["skill", "charged2"],
         "Foul Legacy: Raging Tide": ["skill", "stanceDmg"],
         "Riptide Slash": ["skill", "riptideSlash"],
         "Ranged Stance: Flash of Havoc": ["burst", "rangedDmg"],
@@ -831,14 +840,14 @@ const characterAbils: Record<string, AbilsType> = {
     travelerdendro: {
         "Razorgrass Blade": ["skill", "dmg"],
         "Lea Lotus Lamp": ["burst", "lampDmg"],
-        "Lea Lotus Lamp Explosion": ["burst", "explosionDmg"],
+        "Lea Lotus Lamp (Explosion)": ["burst", "explosionDmg"],
     },
 
     // Miss ["burst","thirdThunderDmg"] which is written the same way as ["burst","thunderDmg"]
     travelerelectro: {
         "Lightning Blade": ["skill", "dmg"],
         "Bellowing Thunder": ["burst", "pressDmg"],
-        "Falling Thunder Proc (Q)": ["burst", "thunderDmg"],
+        "Falling Thunder": ["burst", "thunderDmg"],
     },
 
     travelergeo: {
@@ -870,16 +879,18 @@ const characterAbils: Record<string, AbilsType> = {
         "Charged Attack (Follow-Up Strike)": ["charged", "dmg"],
         "Fiery Passion Charged Attack": ["charged", "fpDmg"],
         "Fiery Passion Charged Attack (Follow-Up Strike)": ["charged", "fpDmg"],
+        "Fiery Passion Low Plunge": ["plunging","fplow"],
         "Fiery Passion High Plunge": ["plunging", "fphigh"],
         "Rush": ["skill", "rushDmg"],
         "Fiery Passion Rush": ["skill", "fpRushDmg"],
         "Flying Kick": ["burst", "kickDmg"],
+        "Fiery Passion Flying Kick": ["burst","fpKickDmg"],
         "Volcano Kablam": ["burst", "volcanoDmg"],
     },
 
-    // Missing hold e ["skill","hold"], nothing on gcsim let you see a diff
     venti: {
-        "Skyward Sonnett": ["skill", "press"],
+        "Skyward Sonnett (Press)": ["skill", "press"],
+        "Skyward Sonnett (Hold)": ["skill", "hold"],
         "Wind's Grand Ode": ["burst", "base"],
         "Wind's Grand Ode (Absorbed)": ["burst", "absorb"],
         "Aimed Shot (C1)": ["constellation1", "aimed"],
@@ -902,11 +913,11 @@ const characterAbils: Record<string, AbilsType> = {
     // Will be issue with Normal atk as it's the same element not like Ayato
     wriothesley: {
         "Rebuke: Vaulting Fist": ["charged", "rebukeDmg"],
-        "Normal 0": ["skill", "enhanced_0"],
-        "Normal 1": ["skill", "enhanced_1"],
-        "Normal 2": ["skill", "enhanced_2"],
-        "Normal 3": ["skill", "enhanced_3"],
-        "Normal 4": ["skill", "enhanced_4"],
+        "Normal 0 (Enhanced)": ["skill", "enhanced_0"],
+        "Normal 1 (Enhanced)": ["skill", "enhanced_1"],
+        "Normal 2 (Enhanced)": ["skill", "enhanced_2"],
+        "Normal 3 (Enhanced)": ["skill", "enhanced_3"],
+        "Normal 4 (Enhanced)": ["skill", "enhanced_4"],
         "Darkgold Wolfbite": ["burst", "skillDmg"],
         "Surging Blade": ["burst", "bladeDmg"],
         "Rebuke: Vaulting Fist (C6)": ["constellation6", "icicleDmg"],
@@ -921,8 +932,8 @@ const characterAbils: Record<string, AbilsType> = {
         "Oil Meets Fire (C2)": ["constellation2", "dmg"],
     },
 
-    // Miss ["skill","trailDmg"] don't know how to proc it on gcsim
     xianyun: {
+        "Skyladder": ["skill","trailDmg"],
         "Driftcloud Wave (1 Leaps)": ["skill", "firstLeapDmg"],
         "Driftcloud Wave (2 Leaps)": ["skill", "secondLeapDmg"],
         "Driftcloud Wave (3 Leaps)": ["skill", "thirdLeapDmg"],
@@ -943,7 +954,8 @@ const characterAbils: Record<string, AbilsType> = {
 
     xingqiu: {
         "Xingqiu Orbital": ["type", "subtype"], //! No damage
-        "Guhua Sword: Fatal Rainscreen": ["skill", "press1"], //! Only first hit because both hits have same name [add logic to get both hits]
+        "Guhua Sword: Fatal Rainscreen 0": ["skill", "press1"], //! Only first hit because both hits have same name [add logic to get both hits]
+        "Guhua Sword: Fatal Rainscreen 1": ["skill", "press2"], //! Only first hit because both hits have same name [add logic to get both hits]
         "Guhua Sword: Raincutter": ["burst", "dmg"],
     },
 
