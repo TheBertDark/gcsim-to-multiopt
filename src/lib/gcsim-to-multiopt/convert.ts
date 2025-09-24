@@ -1,4 +1,4 @@
-import type { CustomMultiTarget, CustomTarget } from "./go_types";
+import type { CustomMultiTarget, CustomTarget, TargetResult } from "./go_types";
 import type { AbilInfo } from "./types";
 
 import statNameConvert from "./config/stat_name";
@@ -27,7 +27,7 @@ export function resistConvert(element: string, value: number): [string, number] 
 
 // Used for cases where the ability name on GCSIM stay the same
 // But element change and name on GO change with it
-function getAbilByEle(abilPath: string[], ele: string) {
+function getAbilByEle(abilPath: string[], ele: string): string[] {
     // Arbitrary element order to put in the config (the one on go)
     if (ele === "hydro")
         return [abilPath[0], abilPath[1]];
@@ -64,7 +64,20 @@ function getAbilByElementDifferentiation(abilName: string, ele: string, characte
     return charAbil || defaultAbil;
 }
 
-function convertAbil(abil: AbilInfo, convert: AbilsType, charName?: string): [CustomTarget | undefined, Error[]] {
+function getAbilExceptions(abil: AbilInfo, abilPath: string[], allAbils: CustomTarget[], charName?: string): string[] {
+    if (charName) {
+        if (charName === "xingqiu") {
+            if (abil.name === "Guhua Sword: Fatal Rainscreen") {
+                const found = [...allAbils].reverse().find(target => target.path[0] === "skill");
+                if (found && found.path[1] === "press1")
+                    return ["skill", "press2"];
+            }
+        }
+    }
+    return abilPath;
+}
+
+function getAbil(abil: AbilInfo, convert: AbilsType, allAbils: CustomTarget[], charName?: string): string[] {
     let abilPath = convert[abil.name];
     
     // Try element-based differentiation for character-specific abilities
@@ -76,20 +89,20 @@ function convertAbil(abil: AbilInfo, convert: AbilsType, charName?: string): [Cu
             abilPath = elementDifferentiatedPath;
         }
     }
-    
-    // Fallback to combined config if no element differentiation was applied
-    if (!abilPath) {
-        abilPath = convert[abil.name];
+
+    if (abilPath) {
+        if (abilPath.length > 2)
+            abilPath = getAbilByEle(abilPath, abil.ele);
+        abilPath = getAbilExceptions(abil, abilPath, allAbils, charName)
     }
-    
-    if (!abilPath) {
+
+    return abilPath
+}
+
+function convertAbil(abil: AbilInfo, convert: AbilsType, allAbils: CustomTarget[], charName?: string): TargetResult {
+    const abilPath = getAbil(abil, convert, allAbils, charName);
+    if (!abilPath || !abilPath.length)
         return [undefined, [new Error(`Unknown ability "${abil.name}"`)]];
-    }
-    else if (abilPath.length > 2) {
-        abilPath = getAbilByEle(abilPath, abil.ele);
-        if (!abilPath.length)
-            return [undefined, [new Error(`Unknown ability "${abil.name}"`)]];
-    }
 
     let bonusStats: Record<string, number> = {};
     let errors: Error[] = [];
@@ -159,9 +172,14 @@ export function mergeCustomTargets(targets: CustomTarget[]): CustomTarget[] {
 }
 
 export function convertAbils(abils: AbilInfo[], convert: AbilsType, charName?: string): [CustomMultiTarget, Error[]] {
+    const result: TargetResult[] = [];
+    
     if (charName)
         charName = charName.replace(/^(aether|lumine)/, "traveler");
-    const result = abils.map(x => convertAbil(x, convert, charName));
+    for (let i = 0; i < abils.length; i++) {
+        const customeTargets = result.map(x => x[0]).filter((x): x is CustomTarget => x !== undefined);
+        result.push(convertAbil(abils[i], convert, customeTargets, charName));
+    }
     const targets: CustomTarget[] = mergeCustomTargets(result.
         map(x => x[0]).
         filter((x): x is CustomTarget => x !== undefined)

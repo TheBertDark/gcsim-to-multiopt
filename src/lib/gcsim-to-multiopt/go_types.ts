@@ -22,3 +22,5 @@ export interface CustomMultiTarget {
     targets: CustomTarget[];
     abilities?: AbilityInfo[];
 }
+
+export type TargetResult = [CustomTarget | undefined, Error[]];

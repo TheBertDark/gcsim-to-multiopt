@@ -1,6 +1,7 @@
 export type AbilsType = Record<string, string[]>;
 
 const defaultAbils: AbilsType = {
+    // Standard attacks
     "Normal 0": ["normal", "0"],
     "Normal 1": ["normal", "1"],
     "Normal 2": ["normal", "2"],
@@ -17,29 +18,31 @@ const defaultAbils: AbilsType = {
     "High Plunge": ["plunging", "high"],
     "Plunge Collision": ["plunging", "dmg"],
 
-    //TODO reactions
+    // Reactions
     "bloom": ["reaction", "bloom"],
-    "bloom (self damage)": ["type", "subtype"], //! Self damage (not relevant)
+    "bloom (self damage)": ["type", "subtype"], // No Opt
     "burning": ["reaction", "burning"],
-    "hyperbloom": ["reaction", "hyperbloom"],
-    "hyperbloom (self damage)": ["type", "subtype"], //! Self damage (not relevant)
-    "overload": ["reaction", "overloaded"],
     "electrocharged": ["reaction", "electrocharged"],
-    "swirl-hydro": ["reaction", "hydroSwirl"],
-    "swirl-electro": ["reaction", "electroSwirl"],
-    "swirl-electro (aoe)": ["reaction", "electroSwirl"],
-    "swirl-cryo": ["reaction", "cryoSwirl"],
-    "swirl-pyro": ["reaction", "pyroSwirl"],
-    "Freeze Broken": ["type", "subtype"], //! No damage? irrelevant
+    "Freeze Broken": ["type", "subtype"], // No Opt
+    "hyperbloom": ["reaction", "hyperbloom"],
+    "hyperbloom (self damage)": ["type", "subtype"], // No Opt
+    "overload": ["reaction", "overloaded"],
     "shatter": ["reaction", "shattered"],
     "superconduct": ["reaction", "superconduct"],
+    "swirl-cryo": ["reaction", "cryoSwirl"],
+    "swirl-cryo (aoe)": ["reaction", "cryoSwirl"],
+    "swirl-electro": ["reaction", "electroSwirl"],
+    "swirl-electro (aoe)": ["reaction", "electroSwirl"],
+    "swirl-hydro": ["reaction", "hydroSwirl"],
+    "swirl-hydro (aoe)": ["reaction", "hydroSwirl"],
+    "swirl-pyro": ["reaction", "pyroSwirl"],
+    "swirl-pyro (aoe)": ["reaction", "pyroSwirl"],
 
-    //TODO events
-    "Hurt": ["type", "subtype"], //! Character takes damage
+    // Events
+    "Hurt": ["type", "subtype"], // No Opt
 
-    //TODO weapons
-    
-    //bows
+    // Weapons
+    // Bows
     "Messenger Proc": ["weapon:Messenger","dmg"],
     "Viridescent": ["weapon:TheViridescentHunt", "dmg"],
     "End of the Line Proc": ["weapon:EndOfTheLine","dmg"],
@@ -47,26 +50,26 @@ const defaultAbils: AbilsType = {
     "King's Squire Proc": ["weapon:KingsSquire","dmg"],
     "Skyward Harp Proc": ["weapon:SkywardHarp","dmg"],
 
-    //catalysts
+    // Catalysts
     "Ash-Graven Drinking Horn Proc": ["weapon:AshGravenDrinkingHorn","dmg"],
-    "Frostbearer Proc": ["weapon:Frostbearer","dmgAoe"], // use this path for cryo infused enemies :["weapon:Frostbearer","dmgOnCryoOp"],
+    "Frostbearer Proc": ["weapon:Frostbearer","dmgAoe"], // Miss ["weapon:Frostbearer","dmgOnCryoOp"] not diff of normal proc
     "Eye of Preception Proc": ["weapon:EyeOfPerception","dmg_"],
     "Skyward Atlas Proc": ["weapon:SkywardAtlas","dmg"],
 
-    //claymores
+    // Claymores
     "Prototype Archaic Proc": ["weapon:PrototypeArchaic","dmg"],
-    "Starsilver Proc": ["weapon:SnowTombedStarsilver","dmgAoe"], // use this path for cryo infused enemies :["weapon:SnowTombedStarsilver","dmgOnCryoOp"],
+    "Starsilver Proc": ["weapon:SnowTombedStarsilver","dmgAoe"], // Miss ["weapon:SnowTombedStarsilver","dmgOnCryoOp"] not diff of normal proc
     "Skyward Pride Proc": ["weapon:SkywardPride","dmg"],
     "Debate Club Proc": ["weapon:DebateClub","dmg"],
     "Luxurious Sea-Lord Proc": ["weapon:LuxuriousSeaLord","dmg"],
 
-    //polearms
-    "Dragonspine Proc": ["weapon:DragonspineSpear","dmgAoe"], // use this path for cryo infused enemies :["weapon:DragonspineSpear","dmgOnCryoOp"],
+    // Polearms
+    "Dragonspine Proc": ["weapon:DragonspineSpear","dmgAoe"], // Miss ["weapon:DragonspineSpear","dmgOnCryoOp"] not diff of normal proc
     "Crescent Pike Proc": ["weapon:CrescentPike","hit"],
     "Halberd Proc": ["weapon:Halberd","dmg"],
     "Skyward Spine Proc": ["weapon:SkywardSpine","dmg"],
 
-    //swords
+    // Swords
     "Aquila Favonia": ["weapon:AquilaFavonia","dmg"],
     "Flute Proc": ["weapon:TheFlute","dmg_"],
     "Kagotsurube Isshin Proc": ["weapon:KagotsurubeIsshin","dmg"],
@@ -75,8 +78,8 @@ const defaultAbils: AbilsType = {
     "Skyward Blade Proc": ["weapon:SkywardBlade","dmg"],
     "Sword of Narzissenkreuz":["weapon:SwordOfNarzissenkreuz","dmg"],
 
-    //TODO artifacts
-    "Sea-Dyed Foam": ["artifact:OceanHuedClam", "heal"],
+    // Artifacts
+    "Sea-Dyed Foam": ["artifact:OceanHuedClam", "heal"], // Make a better logic for it
 };
 
 const characterAbils: Record<string, AbilsType> = {
@@ -91,7 +94,6 @@ const characterAbils: Record<string, AbilsType> = {
         "Rite of Progeniture: Tectonic Tide (Blossom)": ["burst", "blossom"],
     },
 
-    // Should create an exception on his charged
     alhaitham: {
         "Charge 0": ["charged", "dmg"],
         "Charge 1": ["charged", "dmg"],
@@ -133,7 +135,6 @@ const characterAbils: Record<string, AbilsType> = {
         "Boundless Origin (C6)": ["constellation6", "dmg"]
     },
     
-    // Should create an exception on her charged
     ayaka: {
         "Charge": ["charged", "dmg1"],
         "Hyouka": ["skill", "press"],
@@ -444,10 +445,6 @@ const characterAbils: Record<string, AbilsType> = {
         "Gale Blade": ["skill", "dmg"],
         "Dandelion Breeze": ["burst", "dmg"],
         "Dandelion Breeze (In/Out)": ["burst", "enterExitDmg"],
-        "swirl-pyro (aoe)": ["reaction", "pyroSwirl"],
-        "swirl-hydro (aoe)": ["reaction", "hydroSwirl"],
-        "swirl-cryo (aoe)": ["reaction", "cryoSwirl"],
-        "swirl-electro (aoe)": ["reaction", "electroSwirl"],
     },
 
     kachina: {},
@@ -945,17 +942,22 @@ const characterAbils: Record<string, AbilsType> = {
         "Lemniscatic Wind Cycling": ["skill", "press"],
     },
 
+    // Miss ["plunging","ns_low"] not implem on gcsim
+    // Miss ["plunging","ns_high"] written as a standard high plunge
     xilonen: {
-        "Yohual's Scratch": ["skill", "rushDmg"],
         "Blade Roller 0": ["normal", "ns0"],
         "Blade Roller 1": ["normal", "ns1"],
+        "Blade Roller 2": ["normal", "ns2"],
+        "Blade Roller 3": ["normal", "ns3"],
+        "Yohual's Scratch": ["skill", "rushDmg"],
         "Ocelotlicue Point!": ["burst", "skillDmg"],
+        "Follow-Up Beat": ["burst", "beatDmg"],
     },
 
     xingqiu: {
         "Xingqiu Orbital": ["type", "subtype"], //! No damage
-        "Guhua Sword: Fatal Rainscreen 0": ["skill", "press1"], //! Only first hit because both hits have same name [add logic to get both hits]
-        "Guhua Sword: Fatal Rainscreen 1": ["skill", "press2"], //! Only first hit because both hits have same name [add logic to get both hits]
+        "Guhua Sword: Fatal Rainscreen 0": ["skill", "press1"],
+        "Guhua Sword: Fatal Rainscreen 1": ["skill", "press2"],
         "Guhua Sword: Raincutter": ["burst", "dmg"],
     },
 
@@ -988,7 +990,9 @@ const characterAbils: Record<string, AbilsType> = {
         "Mega Radish": ["constellation6", "dmg"],
     },
 
+    // Miss ["constellation6","barbDmg"] cause this have the same name as special charged
     yelan: {
+        "Breakthrough Barb": ["charged", "barb"],
         "Lingering Lifeline": ["skill", "dmg"],
         "Depth-Clarion Dice": ["burst", "pressDmg"],
         "Exquisite Throw": ["burst", "throwDmg"],
@@ -998,15 +1002,17 @@ const characterAbils: Record<string, AbilsType> = {
 
     yoimiya: {
         "Aurous Blaze (Initial)": ["burst", "dmg"],
+        "Kindling Arrow 1": ["charged", "kindling"],
+        "Kindling Arrow 2": ["charged", "kindling"],
+        "Kindling Arrow 3": ["charged", "kindling"],
         "Aurous Blaze (Explode)": ["burst", "exp"],
-        "Kindling (C6) - N0": ["constellation6", "0"], //! N1 * 2
-        "Kindling (C6) - N1": ["constellation6", "1"], //! N2
-        "Kindling (C6) - N2": ["constellation6", "2"], //! N3
-        "Kindling (C6) - N3": ["constellation6", "3"], //! N4 * 2
-        "Kindling (C6) - N4": ["constellation6", "4"], //! N5
+        "Kindling (C6) - N0": ["constellation6", "0"],
+        "Kindling (C6) - N1": ["constellation6", "1"],
+        "Kindling (C6) - N2": ["constellation6", "2"],
+        "Kindling (C6) - N3": ["constellation6", "3"],
+        "Kindling (C6) - N4": ["constellation6", "4"],
     },
 
-    // What should we do with additive damage like it's q or shenhe e ?
     yunjin: {
         "Opening Flourish (Press)":["skill","dmg"],
         "Opening Flourish (Level 1)":["skill","dmg1"],
