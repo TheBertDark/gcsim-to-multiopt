@@ -112,7 +112,6 @@ const characterAbils: Record<string, AbilsType> = {
         "Prophecies of Dawn": ["burst", "dmg"],
     },
 
-    // Miss ["constellation1","secondAimedCharged"] and ["constellation1","secondAimed"]
     amber: {
         "Baron Bunny": ["skill", "dmg"],
         "Baron Bunny (Manual Explosion)": ["constellation2", "manualDetonationDmg"],
@@ -166,8 +165,6 @@ const characterAbils: Record<string, AbilsType> = {
         "Stunning Revenge (C4)": ["constellation4","skillDmg"],
     },
 
-    // Miss second hit for hold1/2 (["skill","hold1_2"], ["skill","hold2_2"])
-    // Miss third hit for hold2 (["skill","explosion"])
     bennett: {
         "Passion Overload (Press)": ["skill", "press"],
         "Passion Overload (Level 1)": ["skill", "hold1_1"],
@@ -356,7 +353,7 @@ const characterAbils: Record<string, AbilsType> = {
         "The Wind's Secret Ways": ["burst", "dmg"],
     },
 
-    // Miss ["passive1","aimedChargedOz"], seems it's not implemented
+    // Miss ["passive1","aimedChargedOz"], seems it's not implemented on gcsim
     fischl: {
         "Thundering Retribution (A4)": ["passive2", "dmg"],
         "Gaze of the Deep (C1)": ["constellation1", "dmg"],
@@ -688,8 +685,6 @@ const characterAbils: Record<string, AbilsType> = {
         "Fortune-Preserving Talisman": ["burst", "dmg"],
     },
 
-    // Miss ["burst","hit42"] for 2nd hit of n4 (marginal)
-    // Miss ["burst","charged2"] for 2nd hit of charged
     raiden: {
         "Musou Shinsetsu": ["burst", "dmg"],
         "Musou Isshin 0": ["burst", "hit1"],
@@ -742,7 +737,6 @@ const characterAbils: Record<string, AbilsType> = {
         "Muji-Muji Daruma": ["burst", "darumaDmg"],
     },
 
-    // Miss ["burst", "dusk_2"] N2 during burst has 2 identical hit on gcsim (marginal)
     sethos: {
         "Shadowpiercing Shot": ["charged", "shadow"],
         "Ancient Rite: Thunderous Roar of Sand": ["skill", "dmg"],
@@ -789,7 +783,6 @@ const characterAbils: Record<string, AbilsType> = {
         "Forbidden Creation-Isomer 75/Type II (Absorb)": ["burst", "hydro", "pyro", "cryo", "electro"],
     },
 
-    // Miss ["skill","normal62"] 2nd hit of N6
     tartaglia: {
         "Normal 0": ["skill", "normal1"],
         "Normal 1": ["skill", "normal2"],
@@ -844,7 +837,6 @@ const characterAbils: Record<string, AbilsType> = {
         "Lea Lotus Lamp (Explosion)": ["burst", "explosionDmg"],
     },
 
-    // Miss ["burst","thirdThunderDmg"] which is written the same way as ["burst","thunderDmg"]
     travelerelectro: {
         "Lightning Blade": ["skill", "dmg"],
         "Bellowing Thunder": ["burst", "pressDmg"],
