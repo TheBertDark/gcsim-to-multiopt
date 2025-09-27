@@ -1753,68 +1753,30 @@
                 position: absolute;
                 top: 1rem;
                 right: 1rem;
-                background: rgba(255, 255, 255, 0.08);
-                backdrop-filter: blur(12px);
-                -webkit-backdrop-filter: blur(12px);
-                color: rgba(255, 255, 255, 0.9);
-                border: 1px solid rgba(255, 255, 255, 0.15);
+                background: linear-gradient(135deg, #00ffe7 0%, #646cff 100%);
+                color: #1a1b1e;
+                border: 1px solid #00ffe7;
                 padding: 0.5rem 1rem;
-                border-radius: 12px;
+                border-radius: 8px;
+                font-weight: 600;
                 cursor: pointer;
-                font-size: 0.9rem;
+                transition: all 0.2s;
+                font-size: 1rem;
+                text-shadow: none;
                 display: flex;
                 align-items: center;
                 gap: 0.5rem;
-                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
                 z-index: 1;
-                overflow: hidden;
-                box-shadow:
-                    0 8px 32px rgba(0, 0, 0, 0.2),
-                    inset 0 1px 0 rgba(255, 255, 255, 0.1),
-                    inset 0 -1px 0 rgba(0, 0, 0, 0.1);
-
-                &::before {
-                    content: '';
-                    position: absolute;
-                    top: 0;
-                    left: -100%;
-                    width: 100%;
-                    height: 100%;
-                    background: linear-gradient(
-                        90deg,
-                        transparent 0%,
-                        rgba(255, 255, 255, 0.4) 50%,
-                        transparent 100%
-                    );
-                    border-radius: 12px;
-                    opacity: 0;
-                    transition: all 0.6s ease;
-                    z-index: 1;
-                    transform: skewX(-20deg);
-                }
 
                 &:hover {
-                    background: rgba(255, 255, 255, 0.12);
-                    border-color: rgba(255, 255, 255, 0.25);
+                    background: linear-gradient(135deg, #646cff 0%, #00ffe7 100%);
+                    color: #e4e5e7;
                     transform: translateY(-2px);
-                    box-shadow:
-                        0 12px 40px rgba(0, 0, 0, 0.3),
-                        inset 0 1px 0 rgba(255, 255, 255, 0.2),
-                        inset 0 -1px 0 rgba(0, 0, 0, 0.1);
-
-                    &::before {
-                        opacity: 1;
-                        left: 100%;
-                    }
+                    box-shadow: 0 8px 25px rgba(0, 255, 231, 0.4);
                 }
 
                 &:active {
-                    background: rgba(255, 255, 255, 0.16);
                     transform: translateY(0px) scale(0.98);
-                    box-shadow:
-                        0 4px 16px rgba(0, 0, 0, 0.2),
-                        inset 0 2px 4px rgba(0, 0, 0, 0.1),
-                        inset 0 1px 0 rgba(255, 255, 255, 0.15);
                 }
             }
         }
