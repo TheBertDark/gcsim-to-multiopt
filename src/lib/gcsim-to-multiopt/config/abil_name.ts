@@ -365,6 +365,8 @@ const characterAbils: Record<string, AbilsType> = {
         "Oz (Burst)": ["skill", "ozDmg"],
     },
 
+    flins: {},
+
     // Miss ["skill","level1CryoDmg"] (1 to 3) and ["skill","level2PhysDmg"] (2 and 3) and ["skill","level4Dmg"]
     // No distinction between pers level
     freminet: {

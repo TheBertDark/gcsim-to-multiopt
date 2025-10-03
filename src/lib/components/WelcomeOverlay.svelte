@@ -4,7 +4,16 @@
     const dispatch = createEventDispatcher();
 
     // List of pending characters (extracted from TODO.md)
-    const pendingCharacters = ['Aino', 'Dahlia', 'Iansan', 'Ifa', 'Ineffa', 'Kachina', 'Lauma'];
+    const pendingCharacters = [
+        'Aino',
+        'Dahlia',
+        `Flins`,
+        'Iansan',
+        'Ifa',
+        'Ineffa',
+        'Kachina',
+        'Lauma',
+    ];
 
     let overlayElement: HTMLElement;
 
