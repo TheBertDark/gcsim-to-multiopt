@@ -10,11 +10,13 @@ const defaultAbils: AbilsType = {
     "Normal 5": ["normal", "5"],
     "Charge": ["charged", "dmg"],
     "Charge Attack": ["charged", "dmg"],
+    "Charged Attack": ["charged", "dmg"],
     "Charge 0": ["charged", "dmg1"],
     "Charge 1": ["charged", "dmg2"],
     "Aimed Shot": ["charged", "aimed"],
     "Fully-Charged Aimed Shot": ["charged", "aimedCharged"],
     "Low Plunge": ["plunging", "low"],
+    "Low Plunge Attack": ["plunging", "low"],
     "High Plunge": ["plunging", "high"],
     "Plunge Collision": ["plunging", "dmg"],
 
@@ -98,6 +100,7 @@ const characterAbils: Record<string, AbilsType> = {
         "Charge 0": ["charged", "dmg"],
         "Charge 1": ["charged", "dmg"],
         "Universality: An Elaboration on Form": ["skill", "rushDmg"],
+        "Universality: An Elaboration on Form (Hold)": ["skill", "rushDmg"],
         "Chisel-Light Mirror: Projection Attack 1": ["skill", "mirrorDmg1"],
         "Chisel-Light Mirror: Projection Attack 2": ["skill", "mirrorDmg1"],
         "Chisel-Light Mirror: Projection Attack 3": ["skill", "mirrorDmg1"],
@@ -366,6 +369,10 @@ const characterAbils: Record<string, AbilsType> = {
         "Oz (Burst)": ["skill", "ozDmg"],
     },
 
+    flins: {},
+
+    // Miss ["skill","level1CryoDmg"] (1 to 3) and ["skill","level2PhysDmg"] (2 and 3) and ["skill","level4Dmg"]
+    // No distinction between pers level
     freminet: {
         "Pressurized Floe: Upward Thrust": ["skill", "thrustDmg"],
         "Pressurized Floe: Pers Time Frost": ["skill", "frostDmg"],

@@ -21,6 +21,15 @@
     import PlayIcon from '$lib/components/PlayIcon.svelte';
     import WelcomeOverlay from '$lib/components/WelcomeOverlay.svelte';
 
+    // Import element icons
+    import AnemoIcon from '$lib/icons/AnemoIcon.svelte';
+    import CryoIcon from '$lib/icons/CryoIcon.svelte';
+    import DendroIcon from '$lib/icons/DendroIcon.svelte';
+    import ElectroIcon from '$lib/icons/ElectroIcon.svelte';
+    import GeoIcon from '$lib/icons/GeoIcon.svelte';
+    import HydroIcon from '$lib/icons/HydroIcon.svelte';
+    import PyroIcon from '$lib/icons/PyroIcon.svelte';
+
     let isNeonTheme = false;
     let isPlaying = false;
     let decryptSound: HTMLAudioElement;
@@ -31,6 +40,37 @@
         '/gcsim-to-multiopt/sound3.mp3',
         '/gcsim-to-multiopt/sound4.mp3',
     ];
+
+    // Dynamic character to element mapping from loaded file
+    let characterElements: Record<string, string> = {};
+
+    // Element colors
+    const elementColors: Record<string, string> = {
+        anemo: '#61DBBB',
+        cryo: '#4FC3F7',
+        dendro: '#A5C83B',
+        electro: '#AB47BC',
+        geo: '#F8BA4E',
+        hydro: '#5680FF',
+        pyro: '#FF3C32',
+    };
+
+    // Get current character element
+    $: currentElement = characterElements[charName?.toLowerCase()] || 'anemo';
+
+    // Element icon components mapping
+    const elementIcons: Record<string, any> = {
+        anemo: AnemoIcon,
+        cryo: CryoIcon,
+        dendro: DendroIcon,
+        electro: ElectroIcon,
+        geo: GeoIcon,
+        hydro: HydroIcon,
+        pyro: PyroIcon,
+    };
+
+    // Get current element icon component
+    $: currentElementIcon = elementIcons[currentElement];
 
     interface ErrorContext {
         message: string;
@@ -427,6 +467,14 @@
         }
         charNames = sample.character_details?.map(detail => detail.name) ?? [];
         charName = charNames[0] ?? '';
+
+        // Extract character elements from the loaded file
+        if (sample.character_details) {
+            characterElements = {};
+            for (const character of sample.character_details) {
+                characterElements[character.name] = character.element.toLowerCase();
+            }
+        }
     }
 
     async function handleFileInput(
@@ -571,11 +619,24 @@
 
                 <div class="input-group">
                     <label for="charSelect">Select Character</label>
-                    <select id="charSelect" bind:value={charName}>
-                        {#each charNames as name}
-                            <option value={name}>{name}</option>
-                        {/each}
-                    </select>
+                    <div
+                        class="character-select-wrapper"
+                        style="--element-color: {elementColors[currentElement]}"
+                    >
+                        <div class="element-icon-wrapper">
+                            <svelte:component this={currentElementIcon} />
+                        </div>
+                        <select id="charSelect" bind:value={charName}>
+                            {#each charNames as name}
+                                <option value={name}
+                                    >{name
+                                        .split(' ')
+                                        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                                        .join(' ')}</option
+                                >
+                            {/each}
+                        </select>
+                    </div>
                 </div>
 
                 {#if sample != null}
@@ -1753,68 +1814,30 @@
                 position: absolute;
                 top: 1rem;
                 right: 1rem;
-                background: rgba(255, 255, 255, 0.08);
-                backdrop-filter: blur(12px);
-                -webkit-backdrop-filter: blur(12px);
-                color: rgba(255, 255, 255, 0.9);
-                border: 1px solid rgba(255, 255, 255, 0.15);
+                background: linear-gradient(135deg, #00ffe7 0%, #646cff 100%);
+                color: #1a1b1e;
+                border: 1px solid #00ffe7;
                 padding: 0.5rem 1rem;
-                border-radius: 12px;
+                border-radius: 8px;
+                font-weight: 600;
                 cursor: pointer;
-                font-size: 0.9rem;
+                transition: all 0.2s;
+                font-size: 1rem;
+                text-shadow: none;
                 display: flex;
                 align-items: center;
                 gap: 0.5rem;
-                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
                 z-index: 1;
-                overflow: hidden;
-                box-shadow:
-                    0 8px 32px rgba(0, 0, 0, 0.2),
-                    inset 0 1px 0 rgba(255, 255, 255, 0.1),
-                    inset 0 -1px 0 rgba(0, 0, 0, 0.1);
-
-                &::before {
-                    content: '';
-                    position: absolute;
-                    top: 0;
-                    left: -100%;
-                    width: 100%;
-                    height: 100%;
-                    background: linear-gradient(
-                        90deg,
-                        transparent 0%,
-                        rgba(255, 255, 255, 0.4) 50%,
-                        transparent 100%
-                    );
-                    border-radius: 12px;
-                    opacity: 0;
-                    transition: all 0.6s ease;
-                    z-index: 1;
-                    transform: skewX(-20deg);
-                }
 
                 &:hover {
-                    background: rgba(255, 255, 255, 0.12);
-                    border-color: rgba(255, 255, 255, 0.25);
+                    background: linear-gradient(135deg, #646cff 0%, #00ffe7 100%);
+                    color: #e4e5e7;
                     transform: translateY(-2px);
-                    box-shadow:
-                        0 12px 40px rgba(0, 0, 0, 0.3),
-                        inset 0 1px 0 rgba(255, 255, 255, 0.2),
-                        inset 0 -1px 0 rgba(0, 0, 0, 0.1);
-
-                    &::before {
-                        opacity: 1;
-                        left: 100%;
-                    }
+                    box-shadow: 0 8px 25px rgba(0, 255, 231, 0.4);
                 }
 
                 &:active {
-                    background: rgba(255, 255, 255, 0.16);
                     transform: translateY(0px) scale(0.98);
-                    box-shadow:
-                        0 4px 16px rgba(0, 0, 0, 0.2),
-                        inset 0 2px 4px rgba(0, 0, 0, 0.1),
-                        inset 0 1px 0 rgba(255, 255, 255, 0.15);
                 }
             }
         }
@@ -2051,7 +2074,8 @@
             font-size: 0.9rem;
         }
 
-        input[type='text'] {
+        input[type='text'],
+        select {
             width: 100%;
             padding: 0.5rem;
             border-radius: 6px;
@@ -2070,6 +2094,52 @@
                 color: rgba(255, 255, 255, 0.3);
             }
         }
+    }
+
+    .character-select-wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+        background: #2c2c2c;
+        border: 1px solid #3f3f3f;
+        border-radius: 6px;
+        transition: all 0.3s ease;
+        overflow: hidden;
+    }
+
+    .character-select-wrapper:focus-within {
+        border-color: var(--element-color);
+        box-shadow: 0 0 0 2px rgba(var(--element-color-rgb), 0.2);
+    }
+
+    .element-icon-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.5rem;
+        background: var(--element-color);
+        color: white;
+        min-width: 40px;
+        height: 100%;
+    }
+
+    .element-icon-wrapper :global(svg) {
+        width: 20px;
+        height: 20px;
+        filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+    }
+
+    .character-select-wrapper select {
+        border: none;
+        background: #2c2c2c;
+        flex: 1;
+        padding-left: 0.75rem;
+        margin: 0;
+    }
+
+    .character-select-wrapper select:focus {
+        border: none;
+        outline: none;
     }
 
     .credit {
