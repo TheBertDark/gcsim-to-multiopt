@@ -86,7 +86,7 @@
                     {/each}
                 </div>
                 <p class="completion-info">
-                    <strong>Current progress:</strong> 102/109 characters implemented (93.6% completed)
+                    <strong>Current progress:</strong> 102/110 characters implemented (92.7% completed)
                 </p>
             </div>
 
