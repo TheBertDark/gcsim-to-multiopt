@@ -14,6 +14,7 @@ const defaultAbils: AbilsType = {
     "Charge 0": ["charged", "dmg1"],
     "Charge 1": ["charged", "dmg2"],
     "Aimed Shot": ["charged", "aimed"],
+    "Aimed Shot (C1)": ["constellation1","secondAimed"], //! Aimed shot's Amber C1 (physic)
     "Fully-Charged Aimed Shot": ["charged", "aimedCharged"],
     "Low Plunge": ["plunging", "low"],
     "Low Plunge Attack": ["plunging", "low"],
@@ -88,8 +89,6 @@ const characterAbils: Record<string, AbilsType> = {
     aino: {},
 
     albedo: {
-        "Charge 0": ["charged", "dmg1"],
-        "Charge 1": ["charged", "dmg2"],
         "Abiogenesis: Solar Isotoma (Initial)": ["skill", "dmg"],
         "Abiogenesis: Solar Isotoma (Tick)": ["skill", "blossom"],
         "Rite of Progeniture: Tectonic Tide": ["burst", "dmg"],
@@ -562,8 +561,6 @@ const characterAbils: Record<string, AbilsType> = {
 
     lynette: {
         "Normal 3": ["normal", "4"],
-        "Charge 0": ["charged", "dmg1"],
-        "Charge 1": ["charged", "dmg2"],
         "Enigmatic Feint":["skill","thrustDmg"],
         "Surging Blade (Lynette)":["skill","bladeDmg"],
         "Magic Trick: Astonishing Shift":["burst","dmg"],
@@ -1004,7 +1001,7 @@ const characterAbils: Record<string, AbilsType> = {
         "Depth-Clarion Dice": ["burst", "pressDmg"],
         "Exquisite Throw": ["burst", "throwDmg"],
         "Exquisite Throw (C2)": ["constellation2", "arrowDmg"],
-        "Breakthrough Barb": ["constellation6", "barbDmg"], //! Same as Yelan charged
+        // "Breakthrough Barb": ["constellation6", "barbDmg"], //! Same as Yelan charged
     },
 
     yoimiya: {
