@@ -1,0 +1,476 @@
+/* Halloween Theme - Automatically activated in October */
+/* Color palette: oranges, blacks, purples */
+
+:root.halloween-theme {
+    /* Primary Halloween colors */
+    --halloween-primary: #ff6b35;
+    --halloween-secondary: #2d1b69;
+    --halloween-accent: #ff8c42;
+    --halloween-dark: #1a0e2e;
+    --halloween-darker: #0a0512;
+    --halloween-text: #ffffff;
+    --halloween-text-secondary: #ffd700;
+    --halloween-text-muted: #e0e0e0;
+
+    /* Gradients with darker colors */
+    --halloween-gradient-primary: linear-gradient(135deg, #1a0e2e 0%, #0a0512 50%, #2d1b69 100%);
+    --halloween-gradient-secondary: linear-gradient(45deg, #0a0512 0%, #1a0e2e 50%, #2d1b69 100%);
+    --halloween-gradient-accent: radial-gradient(circle, #2d1b69 0%, #0a0512 70%);
+
+    /* Halloween shadows */
+    --halloween-shadow: 0 4px 20px rgba(255, 107, 53, 0.3);
+    --halloween-shadow-hover: 0 8px 30px rgba(255, 107, 53, 0.4);
+    --halloween-glow: 0 0 20px rgba(255, 140, 66, 0.6);
+    --halloween-text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+}
+
+/* Apply Halloween theme to body with higher specificity */
+body.halloween-theme {
+    background: var(--halloween-gradient-primary) !important;
+    color: var(--halloween-text) !important;
+    transition: all 0.5s ease-in-out;
+}
+
+/* Animated background with subtle Halloween particles */
+body.halloween-theme::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(2px 2px at 20px 30px, rgba(255, 107, 53, 0.15), transparent),
+        radial-gradient(2px 2px at 40px 70px, rgba(45, 27, 105, 0.2), transparent),
+        radial-gradient(1px 1px at 90px 40px, rgba(255, 140, 66, 0.1), transparent),
+        radial-gradient(1px 1px at 130px 80px, rgba(255, 107, 53, 0.1), transparent);
+    background-repeat: repeat;
+    background-size: 150px 150px;
+    animation: halloweenFloat 20s linear infinite;
+    pointer-events: none;
+    z-index: -1;
+}
+
+@keyframes halloweenFloat {
+    0% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-20px) rotate(180deg);
+    }
+    100% {
+        transform: translateY(0px) rotate(360deg);
+    }
+}
+
+/* Styles for primary Halloween elements */
+.halloween-theme .character-select-wrapper {
+    background: var(--halloween-gradient-secondary) !important;
+    border: 2px solid var(--halloween-accent) !important;
+    box-shadow: var(--halloween-shadow) !important;
+    transition: all 0.3s ease;
+}
+
+.halloween-theme .character-select-wrapper:hover {
+    box-shadow: var(--halloween-shadow-hover) !important;
+    transform: translateY(-2px);
+}
+
+.halloween-theme select {
+    background: rgba(26, 14, 46, 0.9) !important;
+    color: var(--halloween-text) !important;
+    border: 1px solid var(--halloween-accent) !important;
+}
+
+.halloween-theme select option {
+    background: var(--halloween-dark) !important;
+    color: var(--halloween-text) !important;
+}
+
+/* Halloween theme buttons */
+.halloween-theme button {
+    background: var(--halloween-gradient-secondary) !important;
+    color: var(--halloween-text) !important;
+    border: 2px solid var(--halloween-accent) !important;
+    box-shadow: var(--halloween-shadow) !important;
+    transition: all 0.3s ease;
+}
+
+.halloween-theme button:hover {
+    background: var(--halloween-gradient-accent) !important;
+    box-shadow: var(--halloween-glow) !important;
+    transform: scale(1.05);
+}
+
+/* Primary Halloween containers */
+.halloween-theme .container,
+.halloween-theme .main-content {
+    background: rgba(15, 10, 26, 0.9) !important;
+    border: 1px solid var(--halloween-accent) !important;
+    box-shadow: var(--halloween-shadow) !important;
+    backdrop-filter: blur(10px);
+}
+
+/* Improvements for elements with background that need better contrast */
+.halloween-theme .welcome-overlay,
+.halloween-theme .file-drop-zone,
+.halloween-theme .result-container {
+    background: rgba(15, 10, 26, 0.95) !important;
+    border: 2px solid var(--halloween-accent) !important;
+    color: var(--halloween-text) !important;
+}
+
+/* Halloween theme headings */
+.halloween-theme h1,
+.halloween-theme h2,
+.halloween-theme h3 {
+    color: var(--halloween-text-secondary) !important;
+    text-shadow: var(--halloween-text-shadow) !important;
+}
+
+/* General text with better contrast */
+.halloween-theme p,
+.halloween-theme span,
+.halloween-theme div,
+.halloween-theme label {
+    color: var(--halloween-text) !important;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* Secondary text with good contrast */
+.halloween-theme .text-muted,
+.halloween-theme .secondary-text,
+.halloween-theme small {
+    color: var(--halloween-text-muted) !important;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7) !important;
+}
+
+/* Input elements */
+.halloween-theme input,
+.halloween-theme textarea {
+    background: rgba(15, 10, 26, 0.95) !important;
+    color: var(--halloween-text) !important;
+    border: 2px solid var(--halloween-accent) !important;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5) !important;
+}
+
+.halloween-theme input::placeholder,
+.halloween-theme textarea::placeholder {
+    color: var(--halloween-text-muted) !important;
+    opacity: 0.8;
+}
+
+.halloween-theme input:focus,
+.halloween-theme textarea:focus {
+    border-color: var(--halloween-primary) !important;
+    box-shadow: 0 0 15px rgba(255, 107, 53, 0.6) !important;
+    color: var(--halloween-text) !important;
+}
+
+/* Halloween theme interactive elements */
+.halloween-theme .interactive-element {
+    position: relative;
+    overflow: hidden;
+}
+
+.halloween-theme .interactive-element::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 107, 53, 0.1), transparent);
+    transform: rotate(45deg);
+    transition: all 0.5s ease;
+    opacity: 0;
+}
+
+.halloween-theme .interactive-element:hover::after {
+    animation: halloweenShine 1s ease-in-out;
+}
+
+@keyframes halloweenShine {
+    0% {
+        transform: translateX(-100%) translateY(-100%) rotate(45deg);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(100%) translateY(100%) rotate(45deg);
+        opacity: 0;
+    }
+}
+
+/* Halloween theme scrollbar */
+.halloween-theme ::-webkit-scrollbar {
+    width: 12px;
+}
+
+.halloween-theme ::-webkit-scrollbar-track {
+    background: var(--halloween-dark);
+    border-radius: 6px;
+}
+
+.halloween-theme ::-webkit-scrollbar-thumb {
+    background: var(--halloween-gradient-secondary);
+    border-radius: 6px;
+    border: 2px solid var(--halloween-dark);
+}
+
+.halloween-theme ::-webkit-scrollbar-thumb:hover {
+    background: var(--halloween-gradient-accent);
+}
+
+/* Smooth transitions for theme changes */
+* {
+    transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease,
+        box-shadow 0.5s ease !important;
+}
+
+/* Halloween theme specific elements with better contrast */
+.halloween-theme .character-name,
+.halloween-theme .element-name,
+.halloween-theme .stat-value {
+    color: var(--halloween-text) !important;
+    text-shadow: var(--halloween-text-shadow) !important;
+    font-weight: 600 !important;
+}
+
+/* Halloween theme links and interactive elements */
+.halloween-theme a {
+    color: var(--halloween-text-secondary) !important;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8) !important;
+}
+
+.halloween-theme a:hover {
+    color: var(--halloween-primary) !important;
+    text-shadow: 0 0 8px rgba(255, 107, 53, 0.8) !important;
+}
+
+/* Halloween theme code and monospace elements */
+.halloween-theme code,
+.halloween-theme pre {
+    background: rgba(15, 10, 26, 0.95) !important;
+    color: var(--halloween-text) !important;
+    border: 1px solid transparent !important;
+    text-shadow: none !important;
+}
+
+/* Halloween theme tables and data elements */
+.halloween-theme table,
+.halloween-theme th,
+.halloween-theme td {
+    color: var(--halloween-text) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.halloween-theme th {
+    background: rgba(15, 10, 26, 0.9) !important;
+    color: var(--halloween-text-secondary) !important;
+    text-shadow: var(--halloween-text-shadow) !important;
+}
+
+/* Halloween theme specific SVG styles */
+
+/* Create animated gradients with Halloween colors to override original gradients */
+.halloween-theme svg defs linearGradient stop:first-child {
+    animation: halloweenGradientStart 6s infinite !important;
+}
+
+.halloween-theme svg defs linearGradient stop:last-child {
+    animation: halloweenGradientEnd 6s infinite !important;
+}
+
+/* Halloween theme animated gradients */
+@keyframes halloweenGradientStart {
+    0% {
+        stop-color: #ff8c42;
+    }
+    33% {
+        stop-color: #8b5a3c;
+    }
+    66% {
+        stop-color: #2d1b69;
+    }
+    100% {
+        stop-color: #ff8c42;
+    }
+}
+
+@keyframes halloweenGradientEnd {
+    0% {
+        stop-color: #2d1b69;
+    }
+    33% {
+        stop-color: #ff8c42;
+    }
+    66% {
+        stop-color: #8b5a3c;
+    }
+    100% {
+        stop-color: #2d1b69;
+    }
+}
+
+/* SVG with fill currentColor - apply thematic gradient */
+.halloween-theme svg[fill='currentColor'] {
+    background: linear-gradient(45deg, var(--halloween-accent), var(--halloween-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* SVG with stroke currentColor - apply thematic color */
+.halloween-theme svg[stroke='currentColor'] {
+    stroke: var(--halloween-accent) !important;
+}
+
+/* For SVG paths without defined gradients, apply thematic color */
+.halloween-theme svg path[fill='currentColor'] {
+    fill: var(--halloween-accent) !important;
+}
+
+/* SVG paths without fill defined */
+.halloween-theme svg path:not([fill]):not([fill*='url(']) {
+    fill: var(--halloween-accent) !important;
+}
+
+/* Maintain smooth transitions */
+.halloween-theme svg {
+    transition: all 0.3s ease !important;
+}
+
+/* Status elements and notifications */
+.halloween-theme .success {
+    color: #4ade80 !important;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8) !important;
+}
+
+.halloween-theme .error {
+    color: #f87171 !important;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8) !important;
+}
+
+.halloween-theme .warning {
+    color: #fbbf24 !important;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* Main image - maintain same size as original */
+.halloween-theme .upload-image {
+    width: auto !important;
+    height: 500px !important;
+    filter: drop-shadow(0 0 15px rgba(255, 107, 53, 0.6)) !important;
+    transition: all 0.3s ease !important;
+}
+
+.halloween-theme .upload-image:hover {
+    filter: drop-shadow(0 0 25px rgba(255, 107, 53, 0.8)) !important;
+    transform: scale(0.8) !important;
+}
+
+/* Halloween theme footer separator with animated gradient */
+.halloween-theme .footer-separator {
+    background: linear-gradient(
+        45deg,
+        var(--halloween-accent),
+        var(--halloween-secondary),
+        #8b5a3c,
+        var(--halloween-accent)
+    ) !important;
+    background-size: 300% 300% !important;
+    animation: halloweenFooterGradient 8s ease-in-out infinite !important;
+}
+
+/* Halloween theme footer separator animation */
+@keyframes halloweenFooterGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    25% {
+        background-position: 50% 0%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    75% {
+        background-position: 50% 100%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Halloween theme support title with animated gradient */
+.halloween-theme .support-title {
+    background: linear-gradient(
+        0deg,
+        var(--halloween-accent),
+        var(--halloween-secondary),
+        #8b5a3c,
+        var(--halloween-accent)
+    ) !important;
+    background-size: 400% 400% !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    animation: halloweenSupportGradient 6s ease-in-out infinite !important;
+}
+
+/* Halloween theme support title animation */
+@keyframes halloweenSupportGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    20% {
+        background-position: 25% 25%;
+    }
+    40% {
+        background-position: 75% 75%;
+    }
+    60% {
+        background-position: 100% 50%;
+    }
+    80% {
+        background-position: 50% 0%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Halloween theme animated title with gradient */
+h1.gradient-animated-title {
+    background: linear-gradient(90deg, #ff8c42, #2d1b69, #8b5a3c, #ff8c42) !important;
+    background-size: 400% 400% !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    animation: halloweenTitleGradient 6s ease-in-out infinite !important;
+    text-shadow: none !important;
+    font-weight: bold !important;
+    display: inline-block !important;
+    text-align: center !important;
+    width: 100% !important;
+}
+
+/* Halloween theme title animation */
+@keyframes halloweenTitleGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    25% {
+        background-position: 100% 50%;
+    }
+    50% {
+        background-position: 200% 50%;
+    }
+    75% {
+        background-position: 300% 50%;
+    }
+    100% {
+        background-position: 400% 50%;
+    }
+}

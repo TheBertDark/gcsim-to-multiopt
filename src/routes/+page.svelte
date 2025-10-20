@@ -17,6 +17,8 @@
     import type { CustomMultiTarget } from '$lib/gcsim-to-multiopt/go_types';
 
     import { initKonamiCode } from '$lib/utils/konamiCode';
+    import themeManager from '$lib/utils/themeManager.js';
+    import halloweenTester from '$lib/utils/halloweenTester.js';
     import PauseIcon from '$lib/components/PauseIcon.svelte';
     import PlayIcon from '$lib/components/PlayIcon.svelte';
     import WelcomeOverlay from '$lib/components/WelcomeOverlay.svelte';
@@ -182,6 +184,28 @@
     }
 
     onMount(() => {
+        // Initialize the Halloween theme manager
+        if (typeof window !== 'undefined') {
+            // Initialize the theme manager first
+            themeManager.init();
+            // Then force the theme check
+            themeManager.forceThemeCheck();
+
+            // Force activation of the Halloween theme for testing
+            console.log('🎃 Forcing activation of the Halloween theme...');
+            themeManager.applyHalloweenTheme();
+
+            // Verify the theme status after a short delay
+            setTimeout(() => {
+                console.log('🎃 Theme status:', {
+                    currentTheme: themeManager.getCurrentTheme(),
+                    bodyHasClass: document.body.classList.contains('halloween-theme'),
+                    htmlHasClass: document.documentElement.classList.contains('halloween-theme'),
+                    cssLoaded: !!document.getElementById('halloween-theme-css'),
+                });
+            }, 1000);
+        }
+
         const randomAudioFile = audioFiles[Math.floor(Math.random() * audioFiles.length)];
         audio = new Audio(randomAudioFile);
         audio.volume = 0.3;
@@ -1365,12 +1389,6 @@
             background 0.4s ease,
             opacity 0.3s ease;
         overflow: hidden;
-    }
-
-    .hint-area:hover {
-        opacity: 1;
-        background: rgba(255, 255, 255, 0.06);
-        box-shadow: 0 0 10px rgba(0, 255, 200, 0.3);
     }
 
     .hint-area::after {
