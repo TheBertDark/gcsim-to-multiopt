@@ -67,21 +67,7 @@ function getAbilByElementDifferentiation(abilName: string, ele: string, characte
 
 function getAbilExceptions(abil: AbilInfo, abilPath: string[], allAbils: CustomTarget[], char: Character | undefined): string[] {
     if (char && char.name) {
-        if (char.name === "amber") {
-            if (char.cons >= 1 && abil.name === "Aimed Shot") {
-                const found = [...allAbils].reverse().
-                    find(target => target.path[0] === "charged" || target.path[0] === "constellation1");
-                if (found && found.path[1] === "aimed")
-                    return ["constellation1", "secondAimed"];
-            }
-            else if (char.cons >= 1 && abil.name === "Fully-Charged Aimed Shot") {
-                const found = [...allAbils].reverse().
-                    find(target => target.path[0] === "charged" || target.path[0] === "constellation1");
-                if (found && found.path[1] === "aimedCharged")
-                    return ["constellation1", "secondAimedCharged"];
-            }
-        }
-        else if (char.name === "bennett") {
+        if (char.name === "bennett") {
             if (abil.name === "Passion Overload (Level 1)") {
                 const found = [...allAbils].reverse().find(target => target.path[0] === "skill");
                 if (found && found.path[1] === "hold1_1")
@@ -101,11 +87,6 @@ function getAbilExceptions(abil: AbilInfo, abilPath: string[], allAbils: CustomT
                 if (found && found.path[1] === "hit41")
                     return ["burst", "hit42"];
             }
-            else if (abil.name === "Musou Isshin (Charge Attack)") {
-                const found = [...allAbils].reverse().find(target => target.path[0] === "burst");
-                if (found && found.path[1] === "charged1")
-                    return ["burst", "charged2"];
-            }
         }
         else if (char.name === "sethos") {
             if (abil.name === "Dusk Bolt 1") {
@@ -121,26 +102,13 @@ function getAbilExceptions(abil: AbilInfo, abilPath: string[], allAbils: CustomT
                 if (found && found.path[1] === "normal61")
                     return ["skill", "normal62"];
             }
-            else if (abil.name === "Charged Attack" && abilPath[0] === "skill") {
-                const found = [...allAbils].reverse().
-                    find(target => target.path[0] === "skill" && target.path[1] !== "riptideSlash");
-                if (found && found.path[1] === "charged1")
-                    return ["skill", "charged2"];
-            }
         }
         else if (char.name === "travelerelectro") {
-            if (abil.name === "Falling Thunder Proc (Q)") {
+            if (abil.name === "Falling Thunder") {
                 const founds = [...allAbils].reverse().
                     filter(target => target.path[0] === "burst").slice(0, 2);
                 if (founds.length === 2 && founds.every(f => f.path[1] === "thunderDmg"))
                     return ["burst", "thirdThunderDmg"];
-            }
-        }
-        else if (char.name === "xingqiu") {
-            if (abil.name === "Guhua Sword: Fatal Rainscreen") {
-                const found = [...allAbils].reverse().find(target => target.path[0] === "skill");
-                if (found && found.path[1] === "press1")
-                    return ["skill", "press2"];
             }
         }
     }

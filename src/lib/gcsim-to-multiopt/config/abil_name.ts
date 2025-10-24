@@ -114,9 +114,9 @@ const characterAbils: Record<string, AbilsType> = {
 
     amber: {
         "Baron Bunny": ["skill", "dmg"],
-        "Baron Bunny (Manual Explosion)": ["constellation2", "manualDetonationDmg"],
         "Fiery Rain": ["burst", "dmgPerWave"],
-        "Aimed Shot (C1)": ["constellation1","secondAimedCharged"]
+        "Aimed Shot (C1)": ["constellation1", "secondAimedCharged"],
+        "Baron Bunny (Manual Explosion)": ["constellation2", "manualDetonationDmg"],
     },
 
     arlecchino: {
@@ -367,8 +367,6 @@ const characterAbils: Record<string, AbilsType> = {
 
     flins: {},
 
-    // Miss ["skill","level1CryoDmg"] (1 to 3) and ["skill","level2PhysDmg"] (2 and 3) and ["skill","level4Dmg"]
-    // No distinction between pers level
     freminet: {
         "Pressurized Floe: Upward Thrust": ["skill", "thrustDmg"],
         "Pressurized Floe: Pers Time Frost": ["skill", "frostDmg"],
@@ -421,11 +419,9 @@ const characterAbils: Record<string, AbilsType> = {
       "Windmuster Iris": ["burst", "hydro_iris_dmg", "pyro_iris_dmg", "cryo_iris_dmg", "electro_iris_dmg"],
     },
 
-    // Miss ["burst","lowHpDmg"] sim doesn't have different names for <50% hp and >50% hp hu tao bursts
-    // Maybe see with a4 proc
     hutao: {
         "Blood Blossom": ["skill", "dmg"],
-        "Spirit Soother": ["burst", "dmg"], //! sim doesn't have different names for <50% hp and >50% hp hu tao bursts
+        "Spirit Soother": ["burst", "dmg"],
         "Spirit Soother (Low HP)": ["burst","lowHpDmg"],
         "Low Plunge (Paramita Papilio)": ["plunging","low"], //! GO doesnt have different names for low and high plunge in skill state to normal state
         "High Plunge (Paramita Papilio)": ["plunging","high"],
@@ -463,7 +459,6 @@ const characterAbils: Record<string, AbilsType> = {
         "Pairidaeza's Dreams (C6)": ["constellation6","dmg"],
     },
 
-    // Miss ["skill","hold"] don't have the diff on gcsim
     // Gcsim let only high_plunge after e
     kazuha: {
         "Soumon Swordsmanship (A1)": ["passive1", "absorb"],
@@ -694,9 +689,9 @@ const characterAbils: Record<string, AbilsType> = {
         "Musou Isshin 4": ["burst", "hit5"],
         "Musou Isshin (Charge Attack 0)": ["burst", "charged1"],
         "Musou Isshin (Charge Attack 1)": ["burst", "charged2"],
-        "Plunge Collision (Musou Isshin)": ["burst","plunge"],
-        "Low Plunge (Musou Isshin)": ["burst","plungeLow"],
-        "High Plunge (Musou Isshin)": ["burst","plungeHigh"],
+        "Plunge Collision (Musou Isshin)": ["burst", "plunge"],
+        "Low Plunge (Musou Isshin)": ["burst", "plungeLow"],
+        "High Plunge (Musou Isshin)": ["burst", "plungeHigh"],
         "Eye of Stormy Judgement": ["skill", "dmg"],
         "Eye of Stormy Judgement (Strike)": ["skill", "coorDmg"],
     },
@@ -903,7 +898,6 @@ const characterAbils: Record<string, AbilsType> = {
         "Shugen: The Curtains’ Melancholic Sway": ["constellation6", "0"],
     },
 
-    // Will be issue with Normal atk as it's the same element not like Ayato
     wriothesley: {
         "Rebuke: Vaulting Fist": ["charged", "rebukeDmg"],
         "Normal 0 (Enhanced)": ["skill", "enhanced_0"],
@@ -951,7 +945,7 @@ const characterAbils: Record<string, AbilsType> = {
     },
 
     xingqiu: {
-        "Xingqiu Orbital": ["type", "subtype"], //! No damage
+        "Xingqiu Orbital": ["type", "subtype"], //! No Opt
         "Guhua Sword: Fatal Rainscreen 0": ["skill", "press1"],
         "Guhua Sword: Fatal Rainscreen 1": ["skill", "press2"],
         "Guhua Sword: Raincutter": ["burst", "dmg"],
