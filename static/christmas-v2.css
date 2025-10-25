@@ -1,0 +1,214 @@
+:root.christmas-theme {
+    /* Color palette extracted from the Christmas image */
+    --christmas-red-primary: #c41e3a;
+    --christmas-red-dark: #8b0000;
+    --christmas-green-primary: #228b22;
+    --christmas-green-dark: #006400;
+    --christmas-gold: #ffd700;
+    --christmas-gold-dark: #b8860b;
+    --christmas-white: #fffaf0;
+    --christmas-cream: #f5f5dc;
+
+    /* Primary colors of the theme */
+    --christmas-primary: var(--christmas-red-primary);
+    --christmas-secondary: var(--christmas-green-primary);
+    --christmas-accent: var(--christmas-gold);
+    --christmas-dark: #2f1b14;
+    --christmas-darker: #1a0f0a;
+
+    /* Text colors optimized for readability on the background */
+    --christmas-text: var(--christmas-white);
+    --christmas-text-secondary: var(--christmas-gold);
+    --christmas-text-muted: var(--christmas-cream);
+    --christmas-text-dark: var(--christmas-dark);
+
+    /* Shadows and effects */
+    --christmas-shadow: 0 4px 20px rgba(196, 30, 58, 0.3);
+    --christmas-shadow-strong: 0 8px 30px rgba(196, 30, 58, 0.5);
+    --christmas-glow: 0 0 20px rgba(255, 215, 0, 0.6);
+    --christmas-text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+
+    /* Christmas-themed gradients */
+    --christmas-gradient-primary: linear-gradient(
+        135deg,
+        var(--christmas-red-primary) 0%,
+        var(--christmas-red-dark) 50%,
+        var(--christmas-green-dark) 100%
+    );
+
+    --christmas-gradient-secondary: linear-gradient(
+        45deg,
+        var(--christmas-green-primary) 0%,
+        var(--christmas-gold) 50%,
+        var(--christmas-red-primary) 100%
+    );
+
+    --christmas-gradient-accent: radial-gradient(
+        circle,
+        var(--christmas-gold) 0%,
+        var(--christmas-gold-dark) 70%,
+        var(--christmas-red-dark) 100%
+    );
+}
+
+/* Apply the Christmas theme to the body */
+body.christmas-theme {
+    background: url('./Bacground-Navidad.png') center center / cover no-repeat fixed !important;
+    background-size: cover !important;
+    background-position: center center !important;
+    background-attachment: fixed !important;
+    color: var(--christmas-text) !important;
+    position: relative;
+    min-height: 100vh;
+}
+
+/* Styles for main elements */
+.christmas-theme .character-select-wrapper,
+.christmas-theme .main-container,
+.christmas-theme .content-wrapper {
+    background: rgba(47, 27, 20, 0.85) !important;
+    border: 2px solid var(--christmas-gold) !important;
+    border-radius: 12px !important;
+    box-shadow: var(--christmas-shadow-strong) !important;
+    backdrop-filter: blur(10px) !important;
+    position: relative;
+    z-index: 2;
+}
+
+/* Christmas-themed buttons */
+.christmas-theme button,
+.christmas-theme .btn {
+    background: var(--christmas-gradient-primary) !important;
+    color: var(--christmas-white) !important;
+    border: 2px solid var(--christmas-gold) !important;
+    border-radius: 8px !important;
+    padding: 10px 20px !important;
+    font-weight: bold !important;
+    text-shadow: var(--christmas-text-shadow) !important;
+    box-shadow: var(--christmas-shadow) !important;
+    transition: all 0.3s ease !important;
+    position: relative;
+    z-index: 3;
+}
+
+.christmas-theme button:hover,
+.christmas-theme .btn:hover {
+    background: var(--christmas-gradient-secondary) !important;
+    box-shadow: var(--christmas-shadow-strong) !important;
+    transform: translateY(-2px) !important;
+    border-color: var(--christmas-white) !important;
+}
+
+/* Christmas-themed inputs and forms */
+.christmas-theme input,
+.christmas-theme select,
+.christmas-theme textarea {
+    border: 2px solid var(--christmas-gold) !important;
+    border-radius: 6px !important;
+    padding: 8px 12px !important;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+    position: relative;
+    z-index: 3;
+}
+
+.christmas-theme input:focus,
+.christmas-theme select:focus,
+.christmas-theme textarea:focus {
+    border-color: var(--christmas-red-primary) !important;
+    box-shadow: 0 0 10px rgba(196, 30, 58, 0.5) !important;
+    outline: none !important;
+}
+
+/* Christmas-themed headings */
+.christmas-theme h1,
+.christmas-theme h2,
+.christmas-theme h3,
+.christmas-theme h4,
+.christmas-theme h5,
+.christmas-theme h6 {
+    color: var(--christmas-gold) !important;
+    text-shadow: var(--christmas-text-shadow) !important;
+    font-weight: bold !important;
+    position: relative;
+    z-index: 3;
+}
+
+/* Main text */
+.christmas-theme p,
+.christmas-theme span,
+.christmas-theme div,
+.christmas-theme label {
+    color: var(--christmas-text) !important;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7) !important;
+    position: relative;
+    z-index: 3;
+}
+
+/* Christmas-themed links */
+.christmas-theme a {
+    color: var(--christmas-gold) !important;
+    text-decoration: none !important;
+    text-shadow: var(--christmas-text-shadow) !important;
+    transition: all 0.3s ease !important;
+    position: relative;
+    z-index: 3;
+}
+
+/* Christmas-themed scrollbars */
+.christmas-theme ::-webkit-scrollbar {
+    width: 12px;
+}
+
+.christmas-theme ::-webkit-scrollbar-track {
+    background: rgba(47, 27, 20, 0.5);
+    border-radius: 6px;
+}
+
+.christmas-theme ::-webkit-scrollbar-thumb {
+    background: var(--christmas-gradient-primary);
+    border-radius: 6px;
+    border: 2px solid var(--christmas-gold);
+}
+
+.christmas-theme ::-webkit-scrollbar-thumb:hover {
+    background: var(--christmas-gradient-secondary);
+}
+
+/* Specific application elements */
+.christmas-theme .logo,
+.christmas-theme .brand {
+    filter: drop-shadow(0 0 10px var(--christmas-gold)) !important;
+    position: relative;
+    z-index: 4;
+}
+
+/* Christmas-themed footer and navigation */
+.christmas-theme footer,
+.christmas-theme nav {
+    background: rgba(47, 27, 20, 0.9) !important;
+    border-top: 2px solid var(--christmas-gold) !important;
+    backdrop-filter: blur(10px) !important;
+    position: relative;
+    z-index: 2;
+}
+
+/* Smooth animations for transitions */
+.christmas-theme * {
+    transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    body.christmas-theme::before,
+    body.christmas-theme::after {
+        background-size: 200px 200px, 150px 150px, 250px 250px, 120px 120px, 180px 180px,
+            100px 100px, 130px 130px, 90px 90px;
+    }
+
+    .christmas-theme .character-select-wrapper,
+    .christmas-theme .main-container,
+    .christmas-theme .content-wrapper {
+        margin: 10px !important;
+        border-radius: 8px !important;
+    }
+}

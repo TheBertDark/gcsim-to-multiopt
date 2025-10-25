@@ -1,12 +1,13 @@
 /**
  * Theme Manager - Manage automatic seasonal theme changes
- * Automatically detects October and applies the Halloween theme
+ * Automatically detects October (Halloween) and December (Christmas) and applies the corresponding themes
  */
 
 class ThemeManager {
     constructor() {
         this.currentTheme = 'default';
         this.halloweenThemeLoaded = false;
+        this.christmasThemeLoaded = false;
         this.isClient = typeof window !== 'undefined';
         this.originalImageSrc = null; // To save the original image
 
@@ -33,8 +34,10 @@ class ThemeManager {
 
         if (this.isHalloweenSeason()) {
             this.applyHalloweenTheme();
+        } else if (this.isChristmasSeason()) {
+            this.applyChristmasTheme();
         } else {
-            this.removeHalloweenTheme();
+            this.removeAllThemes();
         }
     }
 
@@ -71,21 +74,53 @@ class ThemeManager {
     }
 
     /**
-     * Remove the Halloween theme
+     * Apply the Christmas theme
      */
-    removeHalloweenTheme() {
+    async applyChristmasTheme() {
+        if (!this.isClient || this.currentTheme === 'christmas') return;
+
+        try {
+            console.log('🎄 Iniciando aplicación del tema de Navidad...');
+
+            // Load the Christmas theme CSS if it is not loaded
+            if (!this.christmasThemeLoaded) {
+                await this.loadChristmasCSS();
+                this.christmasThemeLoaded = true;
+            }
+
+            // Apply the theme classes
+            console.log('🎄 Applying theme classes...');
+            document.documentElement.classList.add('christmas-theme');
+            document.body.classList.add('christmas-theme');
+
+            // Change the main image to the Christmas version
+            console.log('🎄 Changing main image to Christmas version...');
+            this.switchToChristmasImage();
+
+            this.currentTheme = 'christmas';
+
+            console.log('🎄 Christmas theme applied successfully');
+        } catch (error) {
+            console.error('❌ Error applying Christmas theme:', error);
+        }
+    }
+
+    /**
+     * Remove all themes
+     */
+    removeAllThemes() {
         if (!this.isClient || this.currentTheme === 'default') return;
 
-        // Remove the theme classes
-        document.documentElement.classList.remove('halloween-theme');
-        document.body.classList.remove('halloween-theme');
+        // Remove all theme classes
+        document.documentElement.classList.remove('halloween-theme', 'christmas-theme');
+        document.body.classList.remove('halloween-theme', 'christmas-theme');
 
         // Restore the original image
         this.restoreOriginalImage();
 
         this.currentTheme = 'default';
 
-        console.log('👻 Halloween theme removed automatically');
+        console.log('🔄 All themes removed automatically');
     }
 
     /**
@@ -108,6 +143,25 @@ class ThemeManager {
     }
 
     /**
+     * Change the main image to the Christmas version
+     */
+    switchToChristmasImage() {
+        if (!this.isClient) return;
+
+        const uploadImage = document.querySelector('.upload-image');
+        if (uploadImage && uploadImage instanceof HTMLImageElement) {
+            // Save the original image if it hasn't been saved yet
+            if (!this.originalImageSrc) {
+                this.originalImageSrc = uploadImage.src;
+            }
+
+            // Change to the Christmas image
+            uploadImage.src = '/gcsim-to-multiopt/GCSim-to-GO_Navidad.png';
+            console.log('🎄 Image changed to Christmas version');
+        }
+    }
+
+    /**
      * Restore the original image
      */
     restoreOriginalImage() {
@@ -118,6 +172,41 @@ class ThemeManager {
             uploadImage.src = this.originalImageSrc;
             console.log('👻 Image restored to original version');
         }
+    }
+
+    /**
+     * Load the Christmas theme CSS dynamically
+     * @returns {Promise<void>}
+     */
+    loadChristmasCSS() {
+        if (!this.isClient) return Promise.resolve();
+
+        return new Promise((resolve, reject) => {
+            // Check if the link already exists
+            if (document.getElementById('christmas-theme-css')) {
+                console.log('🎄 Christmas theme CSS already loaded');
+                resolve();
+                return;
+            }
+
+            console.log('🎄 Loading Christmas theme CSS...');
+            const link = document.createElement('link');
+            link.id = 'christmas-theme-css';
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = '/gcsim-to-multiopt/christmas-v2.css';
+
+            link.onload = () => {
+                console.log('🎄 Christmas theme CSS loaded successfully');
+                resolve();
+            };
+            link.onerror = () => {
+                console.error('❌ Error loading Christmas theme CSS');
+                reject(new Error('Failed to load Christmas theme CSS'));
+            };
+
+            document.head.appendChild(link);
+        });
     }
 
     /**
@@ -154,7 +243,6 @@ class ThemeManager {
             document.head.appendChild(link);
         });
     }
-
     /**
      * Configures the daily date checker that runs every 24 hours
      */
@@ -186,7 +274,7 @@ class ThemeManager {
 
     /**
      * Get the current theme
-     * @returns {string} - The current theme ('default' or 'halloween')
+     * @returns {string} - The current theme ('default', 'halloween', or 'christmas')
      */
     getCurrentTheme() {
         return this.currentTheme;
@@ -198,8 +286,16 @@ class ThemeManager {
      */
     isHalloweenSeason() {
         const now = new Date();
-        // Temporarily enabled for testing - change to: return now.getMonth() === 9;
-        return true; // October
+        return now.getMonth() === 9; // October (0-indexed)
+    }
+
+    /**
+     * Check if it's Christmas season (December)
+     * @returns {boolean} - True if it's December
+     */
+    isChristmasSeason() {
+        const now = new Date();
+        return now.getMonth() === 11; // December (0-indexed)
     }
 }
 

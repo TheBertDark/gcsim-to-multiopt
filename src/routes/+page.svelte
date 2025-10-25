@@ -19,6 +19,7 @@
     import { initKonamiCode } from '$lib/utils/konamiCode';
     import themeManager from '$lib/utils/themeManager.js';
     import halloweenTester from '$lib/utils/halloweenTester.js';
+    import christmasTester from '$lib/utils/christmasTester';
     import PauseIcon from '$lib/components/PauseIcon.svelte';
     import PlayIcon from '$lib/components/PlayIcon.svelte';
     import WelcomeOverlay from '$lib/components/WelcomeOverlay.svelte';
@@ -1120,6 +1121,11 @@
         color: #e4e5e7;
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
             Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+
+    /* Override body background when Christmas theme is active */
+    :global(body.christmas-theme) {
+        background-color: transparent !important;
     }
 
     main {
