@@ -7,10 +7,10 @@ Mark characters as their abilities are added.
 
 **Updated:** 02/10/25, 7:10 p.m.
 
-- Total characters: 110
+- Total characters: 111
 - Mapped: 102
 - Pending: 8
-- Completion percentage: 92.7%
+- Completion percentage: 91.9%
 
 ## Character Status
 
@@ -84,6 +84,7 @@ Mark characters as their abilities are added.
 | Mualani | ✅ |
 | Nahida | ✅ |
 | Navia | ✅ |
+| Nefer | ⬜ |
 | Neuvillette | ✅ |
 | Nilou | ✅ |
 | Ningguang | ✅ |

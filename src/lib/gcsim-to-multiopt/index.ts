@@ -44,9 +44,9 @@ function isTransformativeReaction(name: string): boolean {
     return reactions.includes(name);
 }
 
-export function getCharacterAbils(sample: Sample, charName: string, ignoredMods: string[]): [AbilInfo[], string[]] {
+export function getCharacterAbils(sample: Sample, charName: string, ignoredMods: string[]): [AbilInfo[], string[], Character | undefined] {
     if (!sample.character_details || !sample.logs) {
-        return [[], []];
+        return [[], [], undefined];
     }
 
     const charIndex: number = sample.character_details.findIndex((char: Character) => char.name == charName) ?? 0;
@@ -151,7 +151,7 @@ export function getCharacterAbils(sample: Sample, charName: string, ignoredMods:
         lastBuffs = { ...buffs };
         return { name, reaction, buffs, defShred, infusion, resists, ele };
     });
-    return [abils, Object.keys(availabledMods)];
+    return [abils, Object.keys(availabledMods), char];
 }
 
 // USAGE:
