@@ -4,6 +4,7 @@ import type { AbilInfo } from "./types";
 import statNameConvert from "./config/stat_name";
 import resistNameConvert from "./config/resist_name";
 import abilNameConvert, { type AbilsType, defaultAbils, characterAbils } from "./config/abil_name";
+import { Character } from "./gcsim_types";
 
 export function statConvert(name: string, value: number): [string, number] | Error {
     if (!statNameConvert[name]) {
@@ -64,25 +65,62 @@ function getAbilByElementDifferentiation(abilName: string, ele: string, characte
     return charAbil || defaultAbil;
 }
 
-function getAbilExceptions(abil: AbilInfo, abilPath: string[], allAbils: CustomTarget[], charName?: string): string[] {
-    if (charName) {
-        if (charName === "xingqiu") {
-            if (abil.name === "Guhua Sword: Fatal Rainscreen") {
+function getAbilExceptions(abil: AbilInfo, abilPath: string[], allAbils: CustomTarget[], char: Character | undefined): string[] {
+    if (char && char.name) {
+        if (char.name === "bennett") {
+            if (abil.name === "Passion Overload (Level 1)") {
                 const found = [...allAbils].reverse().find(target => target.path[0] === "skill");
-                if (found && found.path[1] === "press1")
-                    return ["skill", "press2"];
+                if (found && found.path[1] === "hold1_1")
+                    return ["skill", "hold1_2"];
+            }
+            else if (abil.name === "Passion Overload (Level 2)") {
+                const found = [...allAbils].reverse().find(target => target.path[0] === "skill");
+                if (found && found.path[1] === "hold2_1")
+                    return ["skill", "hold2_2"];
+                else if (found && found.path[1] === "hold2_2")
+                    return ["skill", "explosion"];
+            }
+        }
+        else if (char.name === "raiden") {
+            if (abil.name === "Musou Isshin 3") {
+                const found = [...allAbils].reverse().find(target => target.path[0] === "burst");
+                if (found && found.path[1] === "hit41")
+                    return ["burst", "hit42"];
+            }
+        }
+        else if (char.name === "sethos") {
+            if (abil.name === "Dusk Bolt 1") {
+                const found = [...allAbils].reverse().find(target => target.path[0] === "burst");
+                if (found && found.path[1] === "dusk_1")
+                    return ["burst", "dusk_2"];
+            }
+        }
+        else if (char.name === "tartaglia") {
+            if (abil.name === "Normal 5" && abilPath[0] === "skill") {
+                const found = [...allAbils].reverse().
+                    find(target => target.path[0] === "skill" && target.path[1] !== "riptideSlash");
+                if (found && found.path[1] === "normal61")
+                    return ["skill", "normal62"];
+            }
+        }
+        else if (char.name === "travelerelectro") {
+            if (abil.name === "Falling Thunder") {
+                const founds = [...allAbils].reverse().
+                    filter(target => target.path[0] === "burst").slice(0, 2);
+                if (founds.length === 2 && founds.every(f => f.path[1] === "thunderDmg"))
+                    return ["burst", "thirdThunderDmg"];
             }
         }
     }
     return abilPath;
 }
 
-function getAbil(abil: AbilInfo, convert: AbilsType, allAbils: CustomTarget[], charName?: string): string[] {
+function getAbil(abil: AbilInfo, convert: AbilsType, allAbils: CustomTarget[], char: Character | undefined): string[] {
     let abilPath = convert[abil.name];
     
     // Try element-based differentiation for character-specific abilities
-    if (charName) {
-        const charAbils: AbilsType = characterAbils[charName] || {};
+    if (char && char.name) {
+        const charAbils: AbilsType = characterAbils[char.name] || {};
         const elementDifferentiatedPath = getAbilByElementDifferentiation(abil.name, abil.ele, charAbils, defaultAbils);
         
         if (elementDifferentiatedPath) {
@@ -93,14 +131,14 @@ function getAbil(abil: AbilInfo, convert: AbilsType, allAbils: CustomTarget[], c
     if (abilPath) {
         if (abilPath.length > 2)
             abilPath = getAbilByEle(abilPath, abil.ele);
-        abilPath = getAbilExceptions(abil, abilPath, allAbils, charName)
+        abilPath = getAbilExceptions(abil, abilPath, allAbils, char)
     }
 
     return abilPath
 }
 
-function convertAbil(abil: AbilInfo, convert: AbilsType, allAbils: CustomTarget[], charName?: string): TargetResult {
-    const abilPath = getAbil(abil, convert, allAbils, charName);
+function convertAbil(abil: AbilInfo, convert: AbilsType, allAbils: CustomTarget[], char: Character | undefined): TargetResult {
+    const abilPath = getAbil(abil, convert, allAbils, char);
     if (!abilPath || !abilPath.length)
         return [undefined, [new Error(`Unknown ability "${abil.name}"`)]];
 
@@ -171,14 +209,14 @@ export function mergeCustomTargets(targets: CustomTarget[]): CustomTarget[] {
     return Array.from(mergedMap.values());
 }
 
-export function convertAbils(abils: AbilInfo[], convert: AbilsType, charName?: string): [CustomMultiTarget, Error[]] {
+export function convertAbils(abils: AbilInfo[], convert: AbilsType, char: Character | undefined): [CustomMultiTarget, Error[]] {
     const result: TargetResult[] = [];
     
-    if (charName)
-        charName = charName.replace(/^(aether|lumine)/, "traveler");
+    if (char && char.name)
+        char.name = char.name.replace(/^(aether|lumine)/, "traveler");
     for (let i = 0; i < abils.length; i++) {
         const customeTargets = result.map(x => x[0]).filter((x): x is CustomTarget => x !== undefined);
-        result.push(convertAbil(abils[i], convert, customeTargets, charName));
+        result.push(convertAbil(abils[i], convert, customeTargets, char));
     }
     const targets: CustomTarget[] = mergeCustomTargets(result.
         map(x => x[0]).

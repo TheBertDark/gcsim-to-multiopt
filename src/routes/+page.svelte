@@ -364,7 +364,7 @@
         }
         errors = [];
         errorContexts = [];
-        const [abilities, mods] = getCharacterAbils(sample, charName, ignoredMods);
+        const [abilities, mods, char] = getCharacterAbils(sample, charName, ignoredMods);
         availabledMods = mods;
 
         if (abilities.length === 0) {
@@ -397,7 +397,7 @@
             return;
         }
 
-        const [newTarget, newErrors] = convertAbils(abilities, convert, charName);
+        const [newTarget, newErrors] = convertAbils(abilities, convert, char);
         target = newTarget;
         errors = newErrors.map(e => e.message);
 
@@ -514,10 +514,10 @@
     function updateTarget() {
         if (!charName || !sample) return;
 
-        const [abils, mods] = getCharacterAbils(sample, charName, ignoredMods);
+        const [abils, mods, char] = getCharacterAbils(sample, charName, ignoredMods);
         if (!abils || abils.length === 0) return;
 
-        const [newTarget, errors] = convertAbils(abils, getAbilities(charName), charName);
+        const [newTarget, errors] = convertAbils(abils, getAbilities(charName), char);
         if (errors.length > 0) {
             errorContexts = errors.map(err => ({
                 message: err.message,
