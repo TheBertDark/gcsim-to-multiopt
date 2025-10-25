@@ -4,7 +4,7 @@ import type { AbilInfo } from "./types";
 import statNameConvert from "./config/stat_name";
 import resistNameConvert from "./config/resist_name";
 import abilNameConvert, { type AbilsType, defaultAbils, characterAbils } from "./config/abil_name";
-import { Character } from "./gcsim_types";
+import type { Character } from "./gcsim_types";
 
 export function statConvert(name: string, value: number): [string, number] | Error {
     if (!statNameConvert[name]) {

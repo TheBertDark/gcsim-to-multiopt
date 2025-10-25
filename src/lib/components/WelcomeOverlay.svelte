@@ -6,13 +6,13 @@
     // List of pending characters (extracted from TODO.md)
     const pendingCharacters = [
         'Aino',
-        'Dahlia',
         `Flins`,
         'Iansan',
         'Ifa',
         'Ineffa',
         'Kachina',
         'Lauma',
+        'Nefer',
     ];
 
     let overlayElement: HTMLElement;
@@ -86,7 +86,7 @@
                     {/each}
                 </div>
                 <p class="completion-info">
-                    <strong>Current progress:</strong> 102/110 characters implemented (92.7% completed)
+                    <strong>Current progress:</strong> 103/111 characters implemented (92.8% completed)
                 </p>
             </div>
 

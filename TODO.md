@@ -5,12 +5,12 @@ Mark characters as their abilities are added.
 
 ---
 
-**Updated:** 02/10/25, 7:10 p.m.
+**Updated:** 25/10/25, 2:14 p.m.
 
 - Total characters: 111
-- Mapped: 102
+- Mapped: 103
 - Pending: 8
-- Completion percentage: 91.9%
+- Completion percentage: 92.8%
 
 ## Character Status
 
@@ -38,7 +38,7 @@ Mark characters as their abilities are added.
 | Clorinde | ✅ |
 | Collei | ✅ |
 | Cyno | ✅ |
-| Dahlia | ⬜ |
+| Dahlia | ✅ |
 | Dehya | ✅ |
 | Diluc | ✅ |
 | Diona | ✅ |

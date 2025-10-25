@@ -288,7 +288,10 @@ const characterAbils: Record<string, AbilsType> = {
         "Raiment: Just Scales (C6)": ["passive1", "boltDmg"],
     },
 
-    dahlia: {},
+    dahlia: {
+        "Radiant Psalter": ["burst", "skillDmg"],
+        "Immersive Ordinance": ["skill", "skillDmg"],
+    },
 
     dehya: {
         "Molten Inferno": ["skill", "indomitableDmg"],
@@ -631,6 +634,8 @@ const characterAbils: Record<string, AbilsType> = {
         "Cannon Fire Support": ["burst", "supportDmg"],
         "Cannon Fire Support (C2)": ["burst", "supportDmg"], //! (C2)
     },
+
+    nefer: {},
 
     neuvillette: {
         "Charged Attack: Equitable Judgment": ["charged", "judgmentDmg"],
