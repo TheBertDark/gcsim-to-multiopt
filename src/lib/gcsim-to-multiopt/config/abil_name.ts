@@ -97,7 +97,6 @@ const characterAbils: Record<string, AbilsType> = {
         "Rite of Progeniture: Tectonic Tide (Blossom)": ["burst", "blossom"],
     },
 
-    // Should create an exception on his charged
     alhaitham: {
         "Charge 0": ["charged", "dmg"],
         "Charge 1": ["charged", "dmg"],
@@ -115,7 +114,6 @@ const characterAbils: Record<string, AbilsType> = {
         "Prophecies of Dawn": ["burst", "dmg"],
     },
 
-    // Miss ["constellation1","secondAimedCharged"] and ["constellation1","secondAimed"]
     amber: {
         "Baron Bunny": ["skill", "dmg"],
         "Fiery Rain": ["burst", "dmgPerWave"],
@@ -140,7 +138,6 @@ const characterAbils: Record<string, AbilsType> = {
         "Boundless Origin (C6)": ["constellation6", "dmg"]
     },
     
-    // Should create an exception on her charged
     ayaka: {
         "Charge": ["charged", "dmg1"],
         "Hyouka": ["skill", "press"],
@@ -161,7 +158,6 @@ const characterAbils: Record<string, AbilsType> = {
         "Let the Show Begin♪ (Melody Loop)": ["type", "subtype"], // No Opt
     },
 
-    // Base damage Modify for "dmgOneHit" or "dmgTwoHits" skill sim doesn't have different names for it
     beidou: {
         "Tidecaller": ["skill", "baseDmg"],
         "Tidecaller (Level 1)": ["skill","dmgOneHit"],
@@ -171,8 +167,6 @@ const characterAbils: Record<string, AbilsType> = {
         "Stunning Revenge (C4)": ["constellation4","skillDmg"],
     },
 
-    // Miss second hit for hold1/2 (["skill","hold1_2"], ["skill","hold2_2"])
-    // Miss third hit for hold2 (["skill","explosion"])
     bennett: {
         "Passion Overload (Press)": ["skill", "press"],
         "Passion Overload (Level 1)": ["skill", "hold1_1"],
@@ -430,8 +424,6 @@ const characterAbils: Record<string, AbilsType> = {
       "Windmuster Iris": ["burst", "hydro_iris_dmg", "pyro_iris_dmg", "cryo_iris_dmg", "electro_iris_dmg"],
     },
 
-    // Miss ["burst","lowHpDmg"] sim doesn't have different names for <50% hp and >50% hp hu tao bursts
-    // Maybe see with a4 proc
     hutao: {
         "Blood Blossom": ["skill", "dmg"],
         "Spirit Soother": ["burst", "dmg"],
