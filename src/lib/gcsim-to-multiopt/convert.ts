@@ -81,6 +81,30 @@ function getAbilExceptions(abil: AbilInfo, abilPath: string[], allAbils: CustomT
                     return ["skill", "explosion"];
             }
         }
+        else if (char.name === "lisa") {
+            if (abil.name === "Violet Arc (Hold)") {
+                // Really not fully working as first it seems that stacks have a duration which we doesn't account here
+                // And second it seems that one press can make several stacks with some reactions (OL)
+                const reversed = [...allAbils].reverse();
+                const founds = [];
+
+                for (const target of reversed) {
+                    if (target.path[0] === "skill") {
+                        if (target.path[1] === "press")
+                            founds.push(target);
+                        else
+                            break;
+                    }
+                }
+
+                if (founds.length >= 3)
+                    return ["skill", "stack3"];
+                else if (founds.length == 2)
+                    return ["skill", "stack2"];
+                else if (founds.length == 1)
+                    return ["skill", "stack1"];
+            }
+        }
         else if (char.name === "raiden") {
             if (abil.name === "Musou Isshin 3") {
                 const found = [...allAbils].reverse().find(target => target.path[0] === "burst");
@@ -110,6 +134,19 @@ function getAbilExceptions(abil: AbilInfo, abilPath: string[], allAbils: CustomT
                 if (founds.length === 2 && founds.every(f => f.path[1] === "thunderDmg"))
                     return ["burst", "thirdThunderDmg"];
             }
+        }
+        else if (char.name === "wanderer") {
+            if (abil.name === "Shugen: The Curtains’ Melancholic Sway") {
+                const found = [...allAbils].reverse().find(target => target.path[0] === "normal");
+                if (found)
+                    return ["constellation6", found.path[1]];
+            }
+        }
+        else if (char.name === "yelan") {
+            // Not a full working fix as standard Breakthrough Barb can still be triggered at c6
+            // But it requires to make a charged after 5sec out of combat so it's unlickly
+            if (char.cons >= 6 && abil.name === "Breakthrough Barb")
+                return ["constellation6", "barbDmg"];
         }
     }
     return abilPath;
