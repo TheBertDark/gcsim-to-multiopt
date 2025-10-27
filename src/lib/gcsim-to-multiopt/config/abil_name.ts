@@ -14,7 +14,7 @@ const defaultAbils: AbilsType = {
     "Charge 0": ["charged", "dmg1"],
     "Charge 1": ["charged", "dmg2"],
     "Aimed Shot": ["charged", "aimed"],
-    "Aimed Shot (C1)": ["constellation1","secondAimed"], //! Aimed shot's Amber C1 (physic)
+    "Aimed Shot (C1)": ["constellation1", "secondAimed"], //! Aimed shot's Amber C1 (physic)
     "Fully-Charged Aimed Shot": ["charged", "aimedCharged"],
     "Low Plunge": ["plunging", "low"],
     "Low Plunge Attack": ["plunging", "low"],
@@ -24,6 +24,8 @@ const defaultAbils: AbilsType = {
     // Reactions
     "bloom": ["reaction", "bloom"],
     "bloom (self damage)": ["type", "subtype"], // No Opt
+    "burgeon": ["reaction", "burgeon"],
+    "burgeon (self damage)": ["type", "subtype"], // No Opt
     "burning": ["reaction", "burning"],
     "electrocharged": ["reaction", "electrocharged"],
     "Freeze Broken": ["type", "subtype"], // No Opt
@@ -546,7 +548,6 @@ const characterAbils: Record<string, AbilsType> = {
         "Starlight Slug":["burst","slugDmg"],
     },
 
-    // Miss ["skill","stack1"] (1 to 3) for conductive stacks
     lisa: {
         "Violet Arc (Press)": ["skill", "press"],
         "Violet Arc (Hold)": ["skill", "stack0"],
@@ -613,9 +614,10 @@ const characterAbils: Record<string, AbilsType> = {
 
     // Miss ["constellation1","surgingDmg"] not differentiate from skill surging
     mualani: {
-        "Sharky's Bite (0 momentum)":["skill","basicDmg"],
-        "Sharky's Bite (1 momentum)":["skill","stack1Dmg"],
-        "Sharky's Bite (2 momentum)":["skill","stack2Dmg"],
+        "Surfing Hit": ["type", "subtype"], // No Opt
+        "Sharky's Bite (0 momentum)": ["skill", "basicDmg"],
+        "Sharky's Bite (1 momentum)": ["skill", "stack1Dmg"],
+        "Sharky's Bite (2 momentum)": ["skill", "stack2Dmg"],
         "Sharky's Surging Bite": ["skill", "surgingDmg"],
         "Boomsharka-laka": ["burst", "dmg"],
     },
@@ -864,7 +866,6 @@ const characterAbils: Record<string, AbilsType> = {
         "Plains Scorcher": ["burst", "dmg"],
     },
 
-    // Miss ["burst","fpKickDmg"] and ["plunging","fplow"] haven't found how to proc them on gcsim
     varesa: {
         "Fiery Passion 0": ["normal", "fp0"],
         "Fiery Passion 1": ["normal", "fp1"],
@@ -872,12 +873,12 @@ const characterAbils: Record<string, AbilsType> = {
         "Charged Attack (Follow-Up Strike)": ["charged", "dmg"],
         "Fiery Passion Charged Attack": ["charged", "fpDmg"],
         "Fiery Passion Charged Attack (Follow-Up Strike)": ["charged", "fpDmg"],
-        "Fiery Passion Low Plunge": ["plunging","fplow"],
+        "Fiery Passion Low Plunge": ["plunging", "fplow"],
         "Fiery Passion High Plunge": ["plunging", "fphigh"],
         "Rush": ["skill", "rushDmg"],
         "Fiery Passion Rush": ["skill", "fpRushDmg"],
         "Flying Kick": ["burst", "kickDmg"],
-        "Fiery Passion Flying Kick": ["burst","fpKickDmg"],
+        "Fiery Passion Flying Kick": ["burst", "fpKickDmg"],
         "Volcano Kablam": ["burst", "volcanoDmg"],
     },
 
@@ -890,7 +891,6 @@ const characterAbils: Record<string, AbilsType> = {
         "Fully-Charged Aimed Shot (C1)": ["constellation1", "fully"],
     },
 
-    // Miss ["constellation6","1"] and ["constellation6","2"] which scale with N2 and N3 instead of N1
     wanderer: {
         "Normal 0 (Windfavored)": ["normal", "0"],
         "Normal 1 (Windfavored)": ["normal", "1"],
@@ -938,12 +938,12 @@ const characterAbils: Record<string, AbilsType> = {
     },
 
     // Miss ["plunging","ns_low"] not implem on gcsim
-    // Miss ["plunging","ns_high"] written as a standard high plunge
     xilonen: {
         "Blade Roller 0": ["normal", "ns0"],
         "Blade Roller 1": ["normal", "ns1"],
         "Blade Roller 2": ["normal", "ns2"],
         "Blade Roller 3": ["normal", "ns3"],
+        "High Plunge": ["plunging", "ns_high"],
         "Yohual's Scratch": ["skill", "rushDmg"],
         "Ocelotlicue Point!": ["burst", "skillDmg"],
         "Follow-Up Beat": ["burst", "beatDmg"],
@@ -985,14 +985,12 @@ const characterAbils: Record<string, AbilsType> = {
         "Mega Radish": ["constellation6", "dmg"],
     },
 
-    // Miss ["constellation6","barbDmg"] cause this have the same name as special charged
     yelan: {
         "Breakthrough Barb": ["charged", "barb"],
         "Lingering Lifeline": ["skill", "dmg"],
         "Depth-Clarion Dice": ["burst", "pressDmg"],
         "Exquisite Throw": ["burst", "throwDmg"],
         "Exquisite Throw (C2)": ["constellation2", "arrowDmg"],
-        // "Breakthrough Barb": ["constellation6", "barbDmg"], //! Same as Yelan charged
     },
 
     yoimiya: {
