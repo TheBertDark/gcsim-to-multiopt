@@ -91,11 +91,7 @@ const characterAbils: Record<string, AbilsType> = {
     aino: {},
 
     albedo: {
-<<<<<<< Updated upstream
         "Abiogenesis: Solar Isotoma (Initial)": ["skill", "dmg"],
-=======
-        "Abiogenesis: Solar Isotoma": ["skill", "dmg"],
->>>>>>> Stashed changes
         "Abiogenesis: Solar Isotoma (Tick)": ["skill", "blossom"],
         "Rite of Progeniture: Tectonic Tide": ["burst", "dmg"],
         "Rite of Progeniture: Tectonic Tide (Blossom)": ["burst", "blossom"],
@@ -122,10 +118,6 @@ const characterAbils: Record<string, AbilsType> = {
     // Miss ["constellation1","secondAimedCharged"] and ["constellation1","secondAimed"]
     amber: {
         "Baron Bunny": ["skill", "dmg"],
-<<<<<<< Updated upstream
-=======
-        "Baron Bunny (Manual Explosion)": ["constellation2", "manualDetonationDmg"],
->>>>>>> Stashed changes
         "Fiery Rain": ["burst", "dmgPerWave"],
         "Aimed Shot (C1)": ["constellation1", "secondAimedCharged"],
         "Baron Bunny (Manual Explosion)": ["constellation2", "manualDetonationDmg"],
@@ -166,27 +158,17 @@ const characterAbils: Record<string, AbilsType> = {
 
     barbara: {
         "Let the Show Begin♪ (Droplet)": ["skill", "dmg"],
-<<<<<<< Updated upstream
         "Let the Show Begin♪ (Melody Loop)": ["type", "subtype"], // No Opt
-=======
->>>>>>> Stashed changes
     },
 
     // Base damage Modify for "dmgOneHit" or "dmgTwoHits" skill sim doesn't have different names for it
     beidou: {
-<<<<<<< Updated upstream
         "Tidecaller": ["skill", "baseDmg"],
         "Tidecaller (Level 1)": ["skill","dmgOneHit"],
         "Tidecaller (Level 2)": ["skill","dmgTwoHits"],
         "Stormbreaker (Initial)": ["burst", "burstDmg"],
         "Stormbreaker (Bounce)": ["burst", "lightningDmg"],
         "Stunning Revenge (C4)": ["constellation4","skillDmg"],
-=======
-        "Tidecaller (E)": ["skill", "baseDmg"],
-        "Stormbreaker (Q)": ["burst", "burstDmg"],
-        "Stormbreak Proc (Q)": ["burst", "lightningDmg"],
-        "Beidou C4": ["constellation4", "skillDmg"],
->>>>>>> Stashed changes
     },
 
     // Miss second hit for hold1/2 (["skill","hold1_2"], ["skill","hold2_2"])
@@ -286,11 +268,7 @@ const characterAbils: Record<string, AbilsType> = {
         "Impale the Night (<100% BoL)": ["skill", "thrust2Dmg"],
         "Impale the Night (100%+ BoL)": ["skill", "thrust3Dmg"],
         "Surging Blade": ["skill", "bladeDmg"],
-<<<<<<< Updated upstream
         "Last Lightfall": ["burst", "skillDmg"],
-=======
-        "Burst": ["burst", "skillDmg"],
->>>>>>> Stashed changes
         "Nightwatch Shade (C1)": ["constellation1", "dmg"],
         "Glimbright Shade (C6)": ["constellation6", "dmg"],
     },
@@ -312,13 +290,8 @@ const characterAbils: Record<string, AbilsType> = {
         "Pactsworn Pathclearer 3": ["burst", "normal_3"],
         "Pactsworn Pathclearer 4": ["burst", "normal_4"],
         "Pactsworn Pathclearer Charge": ["burst", "charged"],
-<<<<<<< Updated upstream
         "Low Plunge (Pactsworn Pathclearer)": ["burst","plunging_low"],
         "High Plunge (Pactsworn Pathclearer)": ["burst","plunging_high"],
-=======
-        "Low Plunge (Q)": ["burst", "plunging_low"],
-        "High Plunge (Q)": ["burst", "plunging_high"],
->>>>>>> Stashed changes
         "Duststalker Bolt": ["passive1", "boltDmg"],
         "Raiment: Just Scales (C6)": ["passive1", "boltDmg"],
     },
@@ -391,11 +364,7 @@ const characterAbils: Record<string, AbilsType> = {
         "The Wind's Secret Ways": ["burst", "dmg"],
     },
 
-<<<<<<< Updated upstream
     // Miss ["passive1","aimedChargedOz"], seems it's not implemented on gcsim
-=======
-    // Miss ["passive1","aimedChargedOz"], seems it's not implemented
->>>>>>> Stashed changes
     fischl: {
         "Thundering Retribution (A4)": ["passive2", "dmg"],
         "Gaze of the Deep (C1)": ["constellation1", "dmg"],
@@ -407,7 +376,6 @@ const characterAbils: Record<string, AbilsType> = {
         "Oz (Burst)": ["skill", "ozDmg"],
     },
 
-<<<<<<< Updated upstream
     flins: {},
 
     freminet: {
@@ -421,15 +389,6 @@ const characterAbils: Record<string, AbilsType> = {
         "Pressurized Floe: Shattering Pressure (Physical Lvl 2)": ["skill", "level2PhysDmg"],
         "Pressurized Floe: Shattering Pressure (Physical Lvl 3)": ["skill", "level3PhysDmg"],
         "Pressurized Floe: Shattering Pressure (Physical Lvl 4)": ["skill", "level4Dmg"],
-=======
-    // Miss ["skill","level1CryoDmg"] (1 to 3) and ["skill","level2PhysDmg"] (2 and 3) and ["skill","level4Dmg"]
-    // No distinction between pers level
-    freminet: {
-        "Pressurized Floe: Upward Thrust": ["skill", "thrustDmg"],
-        "Pressurized Floe: Pers Time Frost": ["skill", "frostDmg"],
-        "Pressurized Floe: Shattering Pressure (Cryo)": ["skill", "level0Dmg"],
-        "Pressurized Floe: Shattering Pressure (Physical)": ["skill", "level1PhysDmg"],
->>>>>>> Stashed changes
         "Pressurized Floe: Spiritbreath Thorn": ["skill", "thornDmg"],
         "Shadowhunter's Ambush": ["burst", "dmg"],
     },
@@ -476,12 +435,9 @@ const characterAbils: Record<string, AbilsType> = {
     hutao: {
         "Blood Blossom": ["skill", "dmg"],
         "Spirit Soother": ["burst", "dmg"],
-<<<<<<< Updated upstream
         "Spirit Soother (Low HP)": ["burst","lowHpDmg"],
         "Low Plunge (Paramita Papilio)": ["plunging","low"], //! GO doesnt have different names for low and high plunge in skill state to normal state
         "High Plunge (Paramita Papilio)": ["plunging","high"],
-=======
->>>>>>> Stashed changes
     },
 
     iansan: {},
@@ -516,21 +472,12 @@ const characterAbils: Record<string, AbilsType> = {
         "Pairidaeza's Dreams (C6)": ["constellation6","dmg"],
     },
 
-<<<<<<< Updated upstream
     // Gcsim let only high_plunge after e
     kazuha: {
         "Soumon Swordsmanship (A1)": ["passive1", "absorb"],
         "High Plunge": ["skill", "phigh"],
         "Chihayaburu (Press)": ["skill", "press"],
         "Chihayaburu (Hold)": ["skill", "hold"],
-=======
-    // Miss ["skill","hold"] don't have the diff on gcsim
-    // Gcsim let only high_plunge after e
-    kazuha: {
-        "Kazuha A1": ["passive1", "absorb"],
-        "High Plunge": ["skill", "phigh"],
-        "Chihayaburu": ["skill", "press"],
->>>>>>> Stashed changes
         "Kazuha Slash": ["burst", "dmg"],
         "Kazuha Slash (DoT)": ["burst", "dot"],
         "Kazuha Slash (Absorb DoT)": ["burst", "absorb"],
@@ -894,7 +841,6 @@ const characterAbils: Record<string, AbilsType> = {
         "Slitting Wind (A1)": ["passive1", "dmg"],
     },
 
-<<<<<<< Updated upstream
     travelerdendro: {
         "Razorgrass Blade": ["skill", "dmg"],
         "Lea Lotus Lamp": ["burst", "lampDmg"],
@@ -912,26 +858,6 @@ const characterAbils: Record<string, AbilsType> = {
         "Wake of Earth": ["burst", "dmg"],
         "Frenzied Rockslide (A4)": ["passive2", "dmg"],
         "Rockcore Meltdown": ["constellation2", "dmg"],
-=======
-    travelergeo: {
-        "Starfell Sword": ["skill", "dmg"],
-        "Wake of Earth": ["burst", "dmg"],
-        "Frenzied Rockslide (A4)": ["passive2", "dmg"],
-        "Rockcore Meltdown": ["constellation2", "dmg"],
-    },
-
-    // Miss ["burst","thirdThunderDmg"] which is written the same way as ["burst","thunderDmg"]
-    travelerelectro: {
-        "Lightning Blade": ["skill", "dmg"],
-        "Bellowing Thunder": ["burst", "pressDmg"],
-        "Falling Thunder Proc (Q)": ["burst", "thunderDmg"],
-    },
-
-    travelerdendro: {
-        "Razorgrass Blade": ["skill", "dmg"],
-        "Lea Lotus Lamp": ["burst", "lampDmg"],
-        "Lea Lotus Lamp Explosion": ["burst", "explosionDmg"],
->>>>>>> Stashed changes
     },
 
     travelerhydro: {
