@@ -191,10 +191,9 @@
             themeManager.init();
             // Then force the theme check
             themeManager.forceThemeCheck();
-
-            // Force activation of the Halloween theme for testing
-            console.log('🎃 Forcing activation of the Halloween theme...');
-            themeManager.applyHalloweenTheme();
+            
+            // Aplicar tema según la temporada actual (no forzar Halloween)
+            console.log('🔄 Verificando tema según temporada actual...');
 
             // Verify the theme status after a short delay
             setTimeout(() => {

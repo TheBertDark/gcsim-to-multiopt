@@ -51,9 +51,9 @@
     );
 }
 
-/* Apply the Christmas theme to the body */
+/* Aplicar el tema navideño al body */
 body.christmas-theme {
-    background: url('./Bacground-Navidad.png') center center / cover no-repeat fixed !important;
+    background: url('/Bacground-Navidad.png') center center / cover no-repeat fixed !important;
     background-size: cover !important;
     background-position: center center !important;
     background-attachment: fixed !important;
