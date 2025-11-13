@@ -21,5 +21,9 @@ export default {
     "cryo%": "cryo_dmg_",
     "dendro%": "dendro_dmg_",
     "heal": "heal_",
-    "dmg%": "all_dmg_"
+    "dmg%": "all_dmg_",
+    // Reaction-specific damage bonuses
+    "bloom%": "bloom_dmg_",
+    "burgeon%": "burgeon_dmg_",
+    "hyperbloom%": "hyperbloom_dmg_"
 } as Record<string, string>;

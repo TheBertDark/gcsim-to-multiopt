@@ -55,6 +55,20 @@ export function getCharacterAbils(sample: Sample, charName: string, ignoredMods:
 
     let availabledMods: Record<string, boolean> = {};
 
+    // Detect Flower of Paradise Lost 4pc from hitlag events (buff/icd markers)
+    // GCSIM records these under 'mods affected' but not in damage mods
+    const hasFlower4pc: boolean = (sample.logs ?? []).some((log: LogDetails) => {
+        if (log.char_index !== charIndex || log.event !== "hitlag") return false;
+        const serialized = JSON.stringify(log.logs ?? {});
+        return serialized.includes("flower-4pc-buff") || serialized.includes("flower-4pc-icd");
+    });
+    // Detect Flower set from character details (4pc equipped)
+    const hasFlowerSetFromChar: boolean = Object.entries(char?.sets ?? {}).some(([key, count]) => {
+        const k = String(key).toLowerCase();
+        return count >= 4 && k.includes("paradise") && k.includes("lost");
+    });
+    const hasFlowerEquipped = hasFlower4pc || hasFlowerSetFromChar;
+
     const filterMods = (mods: Mods): [string, string[]][] => Object.entries(mods).
         filter(([key, modBuffs]) => {
             if (!(modBuffs instanceof Array) || key == "pre_damage_mods" || key == "resist_mods" || key == "def_mods") {
@@ -124,6 +138,8 @@ export function getCharacterAbils(sample: Sample, charName: string, ignoredMods:
     }
 
     let lastBuffs: Buffs = {};
+    const reactionWindow = 600; // 10s ≈ 600 frames
+    const flowerReactions = new Set(["bloom", "burgeon", "hyperbloom"]);
     const abils: AbilInfo[] = damages.map(x => {
         const name = x.logs["abil"];
         const ele = x.logs["ele"];
@@ -147,10 +163,29 @@ export function getCharacterAbils(sample: Sample, charName: string, ignoredMods:
         applyBuffs(x.logs, buffs);
         applyBuffs(getSubMods(x.logs["pre_damage_mods"]), buffs);
         applyResists(getSubMods(x.logs["resist_mods"]), resists);
+
+        // Infer and apply Flower of Paradise Lost 4pc reaction bonus when not ignored
+        // Applies to Bloom, Burgeon, Hyperbloom (transformative reactions)
+        // Apply only if the set is equipped (hitlag markers or character sets) and toggle not ignored
+        if (transformative && hasFlowerEquipped && !ignoredMods.includes("flower-4pc") && flowerReactions.has(name)) {
+            // Baseline 40% (Default in Genshin Optimizer) + stacks: +10% per trigger within last 10s, up to 4 stacks, capped at 40%
+            const currentFrame = x.frame;
+            const stacks = damages
+                .filter(d => d.char_index === x.char_index && flowerReactions.has(d.logs["abil"]) && d.frame >= currentFrame - reactionWindow && d.frame < currentFrame)
+                .length;
+            const stackBonus = Math.min(stacks, 4) * 0.1;
+            const totalBonus = Math.min(stackBonus, 0.4);
+            const reactionStat = `${name}%`; // e.g., "hyperbloom%" -> maps to "hyperbloom_dmg_"
+            buffs[reactionStat] = (buffs[reactionStat] ?? 0) + totalBonus;
+        }
         
         lastBuffs = { ...buffs };
         return { name, reaction, buffs, defShred, infusion, resists, ele };
     });
+    // Expose synthetic mod in UI for toggle support only if the set is equipped
+    if (hasFlowerEquipped) {
+        availabledMods["flower-4pc"] = true;
+    }
     return [abils, Object.keys(availabledMods), char];
 }
 

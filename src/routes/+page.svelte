@@ -86,6 +86,9 @@
     let charNames: string[] = [];
     let ignoredMods: string[] = [];
     let availabledMods: string[] = [];
+    // Mods that the user has decided to enable even though they are ignored by default
+    let manualEnabledMods: Set<string> = new Set();
+    import { computeDefaultIgnored } from '$lib/gcsim-to-multiopt/config/default_ignored_mods';
     let target: CustomMultiTarget | null = null;
     let errors: string[] = [];
     let errorContexts: ErrorContext[] = [];
@@ -363,6 +366,21 @@
         }
         errors = [];
         errorContexts = [];
+        // First pass to collect available mods
+        const [_, modsFirstPass] = getCharacterAbils(sample, charName, ignoredMods);
+        availabledMods = modsFirstPass;
+
+        // Apply ignored defaults while respecting manual user overrides
+        if (availabledMods.length > 0) {
+            const defaultIgnored = computeDefaultIgnored(availabledMods);
+            // Add ignored defaults except those the user manually enabled
+            const toAdd = defaultIgnored.filter(m => !manualEnabledMods.has(m));
+            if (toAdd.length > 0) {
+                ignoredMods = Array.from(new Set([...ignoredMods, ...toAdd]));
+            }
+        }
+
+        // Recompute abilities with the (possibly) updated ignoredMods
         const [abilities, mods, char] = getCharacterAbils(sample, charName, ignoredMods);
         availabledMods = mods;
 
@@ -489,6 +507,9 @@
         if (!sample) {
             return;
         }
+        // Reset ignored mods when loading a new sample file
+        ignoredMods = [];
+        manualEnabledMods = new Set();
         charNames = sample.character_details?.map(detail => detail.name) ?? [];
         charName = charNames[0] ?? '';
 
@@ -693,7 +714,14 @@
                     </p>
 
                     <p class="tooltip-note">
-                        <strong>Note:</strong> By default, all mods are active and included.
+                        <strong>Heads up:</strong> Some mods start disabled on purpose. This avoids
+                        double-counting buffs that Genshin Optimizer already applies by default — for
+                        example set bonuses with the suffix <code>-2pc</code> or passives tied to non-fixed stats like
+                        <code>nahida-a4</code>.
+                    </p>
+                    <p class="tooltip-note">
+                        You can enable any mod manually. Your choice persists while switching characters
+                        for the current file and resets when you upload a new file.
                     </p>
 
                     <div class="tooltip-color-guide">
@@ -715,7 +743,22 @@
                             bind:group={ignoredMods}
                             value={mod}
                             id={mod}
-                            on:change={updateCharacterAbils}
+                            on:change={() => {
+                                // Register manual override: if the mod is ignored by default and is now unchecked, add it to manualEnabledMods
+                                const defaultIgnored = computeDefaultIgnored(availabledMods);
+                                const isDefaultIgnored = defaultIgnored.includes(mod);
+                                const isIgnored = ignoredMods.includes(mod);
+                                if (isDefaultIgnored) {
+                                    if (isIgnored) {
+                                        // User decided to ignore it (keep default), remove override if it exists
+                                        manualEnabledMods.delete(mod);
+                                    } else {
+                                        // User decided to enable it (remove default), register override
+                                        manualEnabledMods.add(mod);
+                                    }
+                                }
+                                updateCharacterAbils();
+                            }}
                         />
                         <label for={mod}>{mod}</label>
                     </div>
