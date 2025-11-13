@@ -130,3 +130,13 @@ Mark characters as their abilities are added.
 ---
 
 > Update this list as you add character mappings or new characters.
+
+## Note on buffs
+ ### Missing buffs
+
+ - Albedo C6 need a further look, haven't seen it but not many test
+ - Mavuika C2 Flamestrider buff (NA/CA/Q)
+
+ ### Buffs to exclude
+
+ - Citlali citlali-c2-em for herself only

@@ -6,7 +6,7 @@
     import 'prismjs/components/prism-json';
 
     import { readGZ, readJSON } from '$lib';
-    import { getCharacterAbils } from '$lib/gcsim-to-multiopt';
+    import { getCharacterAbils, getCustomDescription } from '$lib/gcsim-to-multiopt';
     import { convertAbils } from '$lib/gcsim-to-multiopt/convert';
     import getAbilities from '$lib/gcsim-to-multiopt/config/abil_name';
     import statNameConvert from '$lib/gcsim-to-multiopt/config/stat_name';
@@ -546,6 +546,8 @@
         } else if (newTarget) {
             errorContexts = [];
             target = newTarget;
+            const customDesc = getCustomDescription(char);
+            target.description = [customDesc, target.description,].join('\n');
             target.name = configName || 'Powered by DarkJake';
             updateHighlightedJson();
         }
