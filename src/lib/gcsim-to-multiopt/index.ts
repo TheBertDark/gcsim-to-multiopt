@@ -189,6 +189,33 @@ export function getCharacterAbils(sample: Sample, charName: string, ignoredMods:
     return [abils, Object.keys(availabledMods), char];
 }
 
+export function getCustomDescription(char: Character | undefined): string {
+    if (!char) return "";
+    const name = (char.name || "").toLowerCase();
+
+    switch (name) {
+        case "albedo": {
+            if (char.cons >= 2) {
+                return "You must select the Opening of Phanerozoic consumed on Q settings";
+            }
+            break;
+        }
+        case "mavuika": {
+            return "You must select the fighting spirit consumed on Q settings";
+        }
+        case "nahida": {
+            if (char.cons >= 2) {
+                return "You must click the \"Opponent is marked by Seed of Skandha\" on C2 settings";
+            }
+            break;
+        }
+        default:
+            break;
+    }
+
+    return "";
+}
+
 // USAGE:
 // const sample: Sample = readGZ('./sample.gz'); // or readJSON
 // const charName: string = "kokomi";

@@ -6,7 +6,7 @@
     import 'prismjs/components/prism-json';
 
     import { readGZ, readJSON } from '$lib';
-    import { getCharacterAbils } from '$lib/gcsim-to-multiopt';
+    import { getCharacterAbils, getCustomDescription } from '$lib/gcsim-to-multiopt';
     import { convertAbils } from '$lib/gcsim-to-multiopt/convert';
     import getAbilities from '$lib/gcsim-to-multiopt/config/abil_name';
     import statNameConvert from '$lib/gcsim-to-multiopt/config/stat_name';
@@ -90,6 +90,8 @@
     let manualEnabledMods: Set<string> = new Set();
     import { computeDefaultIgnored } from '$lib/gcsim-to-multiopt/config/default_ignored_mods';
     let target: CustomMultiTarget | null = null;
+    // Visible note with character-specific recommendations for the UI
+    let customDescNote: string = '';
     let errors: string[] = [];
     let errorContexts: ErrorContext[] = [];
     let addConvert = '';
@@ -383,6 +385,7 @@
         // Recompute abilities with the (possibly) updated ignoredMods
         const [abilities, mods, char] = getCharacterAbils(sample, charName, ignoredMods);
         availabledMods = mods;
+        customDescNote = getCustomDescription(char) || '';
 
         if (abilities.length === 0) {
             // Clear the previous target and show "information not available" message
@@ -396,6 +399,7 @@
                         'This character has no damage data recorded in the simulation. Make sure the character actively participated in combat during the simulation.',
                 },
             ];
+            customDescNote = '';
             return;
         }
 
@@ -546,7 +550,12 @@
         } else if (newTarget) {
             errorContexts = [];
             target = newTarget;
+            const customDesc = getCustomDescription(char);
+            target.description = customDesc
+                ? [customDesc, target.description].join('\n')
+                : target.description;
             target.name = configName || 'Powered by DarkJake';
+            customDescNote = customDesc || '';
             updateHighlightedJson();
         }
     }
@@ -734,6 +743,12 @@
                     </div>
                 </div>
             </div>
+
+            {#if customDescNote}
+                <div class="custom-desc-note">
+                    <span class="note-label">Note:</span> {customDescNote}
+                </div>
+            {/if}
 
             <div class="mods-grid">
                 {#each availabledMods as mod}
@@ -1695,6 +1710,22 @@
     .mod-item:hover {
         transform: translateY(-2px);
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .custom-desc-note {
+        margin: 0.5rem 0 0.5rem;
+        padding: 0.75rem 1rem;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.06);
+        font-size: 0.9rem;
+        color: #e4e5e7;
+        border-left: 4px solid #646cff;
+    }
+
+    .custom-desc-note .note-label {
+        font-weight: 600;
+        margin-right: 0.5rem;
+        color: #a1a1aa;
     }
 
     .error-section {
