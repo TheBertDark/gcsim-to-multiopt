@@ -135,6 +135,7 @@ Mark characters as their abilities are added.
  ### Missing buffs
 
  - Albedo C6 need a further look, haven't seen it but not many test
+ - Nilou C4 need a further look, haven't seen it but not many test
  - Mavuika C2 Flamestrider buff (NA/CA/Q)
 
  ### Buffs to exclude
