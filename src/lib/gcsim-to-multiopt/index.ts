@@ -189,19 +189,28 @@ export function getCharacterAbils(sample: Sample, charName: string, ignoredMods:
     return [abils, Object.keys(availabledMods), char];
 }
 
-function getCustomDescription(char: Character | undefined): string {
-    if (!char) 
-        return "";
+export function getCustomDescription(char: Character | undefined): string {
+    if (!char) return "";
+    const name = (char.name || "").toLowerCase();
 
-    switch (char.name) {
-        case "albedo":
-            if (char.cons >= 2)
+    switch (name) {
+        case "albedo": {
+            if (char.cons >= 2) {
                 return "You must select the Opening of Phanerozoic consumed on Q settings";
-        case "mavuika":
+            }
+            break;
+        }
+        case "mavuika": {
             return "You must select the fighting spirit consumed on Q settings";
-        case "nahida":
-            if (char.cons >= 2)
+        }
+        case "nahida": {
+            if (char.cons >= 2) {
                 return "You must click the \"Opponent is marked by Seed of Skandha\" on C2 settings";
+            }
+            break;
+        }
+        default:
+            break;
     }
 
     return "";
