@@ -120,6 +120,68 @@ export function getCharacterAbils(sample: Sample, charName: string, ignoredMods:
         }
     }
 
+    // Parse an array like ["cryo: 19.965", "hydro: 0.000"] into a map
+    const parseGaugeLines = (lines: unknown): Record<string, number> => {
+        const map: Record<string, number> = {};
+        const arr = Array.isArray(lines) ? lines : [];
+        for (const line of arr) {
+            const m = /([a-z]+):\s*([\d.]+)/i.exec(String(line));
+            if (m) {
+                map[m[1].toLowerCase()] = parseFloat(m[2]);
+            }
+        }
+        return map;
+    };
+
+    // Detección genérica de auras del objetivo alrededor del frame del golpe
+    // Busca en eventos "element" y, como refuerzo para "frozen", en eventos "reaction: freeze"
+    const hasTargetAura = (frame: number, target: number, auraNames: string[]): boolean => {
+        const window = 60; // ~1s
+        const names = auraNames.map(a => a.toLowerCase());
+
+        const inWindow = (l: LogDetails) => l.frame >= frame - window && l.frame <= frame + window;
+
+        // 1) Preferimos el último evento de elementos antes del golpe
+        const beforeCandidate = (sample.logs || [])
+            .filter((l: LogDetails) => l.event === 'element' && (l.logs?.target ?? -1) === target && l.frame <= frame && l.frame > frame - window)
+            .sort((a: LogDetails, b: LogDetails) => b.frame - a.frame)[0];
+        if (beforeCandidate && beforeCandidate.logs) {
+            const existing = parseGaugeLines(beforeCandidate.logs["existing"]);
+            for (const n of names) {
+                if ((existing[n] ?? 0) > 0) return true;
+                // Algunos builds registran "frozen" como texto; comprobamos el blob
+                const blob = JSON.stringify(beforeCandidate.logs).toLowerCase();
+                if (n === "frozen" && (blob.includes("frozen") || blob.includes("freeze"))) return true;
+            }
+        }
+
+        // 2) Primer evento de elementos tras el golpe dentro de ventana
+        const afterCandidate = (sample.logs || [])
+            .filter((l: LogDetails) => l.event === 'element' && (l.logs?.target ?? -1) === target && l.frame >= frame && l.frame <= frame + window)
+            .sort((a: LogDetails, b: LogDetails) => a.frame - b.frame)[0];
+        if (afterCandidate && afterCandidate.logs) {
+            const existing = parseGaugeLines(afterCandidate.logs["existing"]);
+            for (const n of names) {
+                if ((existing[n] ?? 0) > 0) return true;
+                const blob = JSON.stringify(afterCandidate.logs).toLowerCase();
+                if (n === "frozen" && (blob.includes("frozen") || blob.includes("freeze"))) return true;
+            }
+        }
+
+        // 3) Refuerzo para Frozen: reacción "freeze" en ventana y mismo target
+        if (names.includes("frozen") || names.includes("freeze")) {
+            const reactionHit = (sample.logs || [])
+                .filter((l: LogDetails) => l.event === 'reaction' && inWindow(l) && (l.logs?.target ?? -1) === target)
+                .some(l => {
+                    const blob = JSON.stringify(l.logs ?? {}).toLowerCase();
+                    return blob.includes("freeze") || blob.includes("frozen");
+                });
+            if (reactionHit) return true;
+        }
+
+        return false;
+    };
+
     const getDefShred = (mods: Mods): number | undefined => {
         let defshred: number | undefined = undefined;
         for (const [_, modBuffs] of filterMods(mods)) {
@@ -180,7 +242,16 @@ export function getCharacterAbils(sample: Sample, charName: string, ignoredMods:
         }
         
         lastBuffs = { ...buffs };
-        return { name, reaction, buffs, defShred, infusion, resists, ele };
+        const targetIndex: number = Number(x.logs["target"] ?? 0);
+        // Calculamos auras relevantes; empezamos con elementos base y "frozen"
+        const auraList = ["anemo","geo","electro","hydro","pyro","cryo","dendro","frozen"] as const;
+        const auras: Record<string, boolean> = {};
+        for (const a of auraList) {
+            auras[a] = hasTargetAura(x.frame, targetIndex, [a]);
+        }
+        // Para procs "afectado por Cryo" tomamos cry o frozen
+        const cryAffected = !!(auras["cryo"] || auras["frozen"]);
+        return { name, reaction, buffs, defShred, infusion, resists, ele, auras, cryAffected, frame: x.frame, target: targetIndex };
     });
     // Expose synthetic mod in UI for toggle support only if the set is equipped
     if (hasFlowerEquipped) {

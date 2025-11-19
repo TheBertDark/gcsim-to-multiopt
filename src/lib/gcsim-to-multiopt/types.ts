@@ -20,4 +20,12 @@ export interface AbilInfo {
     infusion?: string;
     resists: Resist[];
     ele: string;
+    // Active auras on the target around the time of the hit
+    // Keys in lowercase (e.g., "cryo", "hydro", "frozen") and boolean value
+    auras?: Record<string, boolean>;
+    // Whether the target was affected by Cryo aura at the time of hit
+    cryAffected?: boolean;
+    // Optional context for more advanced heuristics if needed later
+    frame?: number;
+    target?: number;
 };

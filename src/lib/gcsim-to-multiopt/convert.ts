@@ -149,6 +149,16 @@ function getAbilExceptions(abil: AbilInfo, abilPath: string[], allAbils: CustomT
                 return ["constellation6", "barbDmg"];
         }
     }
+    // General weapon procs that scale differently if the opponent is affected by Cryo
+    // If we can reliably detect Cryo aura from logs (index.ts), switch to the proper path
+    const cryoProcOverrides: Record<string, string[]> = {
+        "Frostbearer Proc": ["weapon:Frostbearer", "dmgOnCryoOp"],
+        "Starsilver Proc": ["weapon:SnowTombedStarsilver", "dmgOnCryoOp"],
+        "Dragonspine Proc": ["weapon:DragonspineSpear", "dmgOnCryoOp"],
+    };
+    if ((abil.cryAffected || (abil.auras && (abil.auras["frozen"] ?? false))) && cryoProcOverrides[abil.name]) {
+        return cryoProcOverrides[abil.name];
+    }
     return abilPath;
 }
 

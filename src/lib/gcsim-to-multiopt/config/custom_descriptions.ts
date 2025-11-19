@@ -21,19 +21,21 @@ function normalizeName(name?: string): string {
 
 // Weapon help texts (data)
 const weaponTexts: Record<string, string> = {
-    'snowtombedstarsilver': 'When importing the settings into Genshin Optimizer, change the damage instance of [Snow-Tombed Starsilver] from “Everfrost Icicle DMG” to “DMG on Cryo Affected Opponents” as appropriate for your case.',
+    'dragonsbane': 'You must deselect the option «Enemy is affected by Hydro or Pyro» in the weapon condition located in the [Overview] tab of the Genshin Optimizer.',
 };
 
 
 // Artifact set help texts (data)
 const setTexts: Record<string, string> = {
     'flower of paradise lost': 'Using 4pc Flower: This configuration is only valid for 4pc FoPL equipment; any other configuration will not be accurate due to the 4-piece set bonus. If you want to use it for general builds, disable the ‘flower-4pc’ buff.',
+    'crimson witch of flames': 'Using 4pc Crimson Witch of Flames: This configuration is only valid for 4pc CW equipment; any other configuration will not be accurate due to the 4-piece set bonus (only stacks). If you want to use it for general builds, disable the ‘crimson-4pc-stacks’ buff.',
 };
 
 // Artifact set conditions (logic)
 // keyIncludes: tokens expected in the set key; minPieces: minimum required pieces
 const setConds: Record<string, { keyIncludes: string[]; minPieces?: number }> = {
     'flower of paradise lost': { keyIncludes: ['paradise', 'lost'], minPieces: 4 },
+    'crimson witch of flames': { keyIncludes: ['witch', 'flames'], minPieces: 4 },
 };
 
 function hasSetPieces(char: Character, tokens: string[], minPieces = 4): boolean {
