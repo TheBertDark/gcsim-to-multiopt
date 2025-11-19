@@ -3,6 +3,7 @@ import type { Character } from '../gcsim_types';
 // Help texts by character (data)
 export const descriptionTexts: Record<string, string> = {
     albedo: 'You must select the Opening of Phanerozoic consumed on Q settings',
+    kazuha: 'You must select the A1 and Q elemental absorption on E and Q settings',
     mavuika: 'You must select the fighting spirit consumed on Q settings',
     nahida: 'You must select the «Opponent is marked by Seed of Skandha» option in the C2 settings of the Genshin Optimizer.',
 };
@@ -11,6 +12,7 @@ export const descriptionTexts: Record<string, string> = {
 // Example: minCons = minimum required constellation; always = always show
 export const descriptionConditions: Record<string, { minCons?: number; always?: boolean }> = {
     albedo: { minCons: 2 },
+    kazuha: { always: true },
     mavuika: { always: true },
     nahida: { minCons: 2 },
 };
@@ -21,7 +23,9 @@ function normalizeName(name?: string): string {
 
 // Weapon help texts (data)
 const weaponTexts: Record<string, string> = {
-    'dragonsbane': 'You must deselect the option «Enemy is affected by Hydro or Pyro» in the weapon condition located in the [Overview] tab of the Genshin Optimizer.',
+    'dragonsbane': 'You must deselect the option «Enemy is affected by Hydro or Pyro» in the weapon condition located in the [Overview] tab of the Genshin Optimizer.', 
+    // Should we really precise that ? everything need to be unselect except the one we precise
+    // And by default on GO everything is unselected
 };
 
 
