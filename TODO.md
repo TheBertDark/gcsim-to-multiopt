@@ -135,8 +135,13 @@ Mark characters as their abilities are added.
  ### Missing buffs
 
  - Albedo C6 need a further look, haven't seen it but not many test
- - Nilou C4 need a further look, haven't seen it but not many test
+ - Amber A4 need a further look, haven't seen it but not many test
+ - Furina number of char offering HP for E
+ - Furina C6 need a further look, haven't seen it but not many test
+ - Ganyu C1 need a further look, haven't seen it but not many test
  - Mavuika C2 Flamestrider buff (NA/CA/Q)
+ - Nilou C4 need a further look, haven't seen it but not many test
+ - Xianyun C6 need a further look, haven't seen it but not many test
 
  ### Buffs to exclude
 
