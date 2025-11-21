@@ -135,12 +135,18 @@ Mark characters as their abilities are added.
  ### Missing buffs
 
  - Albedo C6 need a further look, haven't seen it but not many test
+ - (currently in desc) Albedo C2, as all the others flat dmg buff, we could maybe handle it by our side
  - Amber A4 need a further look, haven't seen it but not many test
+ - Arle NA and C6 life bond %, need further check if we can get it, or need to setup on GO
+ - Ayato Namisen stacks need a further look, haven't seen it but not many test, ayato-c2 is linked to it so will have to except if we can't manage it
  - Furina number of char offering HP for E
  - Furina C6 need a further look, haven't seen it but not many test
  - Ganyu C1 need a further look, haven't seen it but not many test
  - Mavuika C2 Flamestrider buff (NA/CA/Q)
+ - (currently in desc) Mavuika fighting spirit consumed, as all the others flat dmg buff, we could handle it by our side
  - Nilou C4 need a further look, haven't seen it but not many test
+ - Skirk serpent subtelty consumed, need further check if we can get it, or need to setup on GO
+ - Skirk A4 need a further look, haven't seen it but not many test, skirk-c4 is linked to it so will have to except if we can't manage it
  - Xianyun C6 need a further look, haven't seen it but not many test
 
  ### Buffs to exclude

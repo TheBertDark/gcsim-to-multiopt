@@ -2,6 +2,7 @@ export const DEFAULT_IGNORED_EXACT: string[] = [
     // Char A1/A4/Constel
     'alhaitham-a4',
     'amber-a1',
+    'arlecchino-passive',
     'gaming-c6',
     'furina-a4',
     'kirara-a4-burst',
@@ -12,6 +13,7 @@ export const DEFAULT_IGNORED_EXACT: string[] = [
     'nilou-c6-cr',
     'paramita',
     'xingqiu-a4',
+    'yaemiko-a4',
     'yelan-a1',
 
     // Arte sets
