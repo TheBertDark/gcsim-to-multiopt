@@ -7,6 +7,7 @@
 
     import { readGZ, readJSON } from '$lib';
     import { getCharacterAbils, getCustomDescription } from '$lib/gcsim-to-multiopt';
+    import { applyNoteStyling } from '$lib/gcsim-to-multiopt/config/custom_descriptions';
     import { convertAbils } from '$lib/gcsim-to-multiopt/convert';
     import getAbilities from '$lib/gcsim-to-multiopt/config/abil_name';
     import statNameConvert from '$lib/gcsim-to-multiopt/config/stat_name';
@@ -92,6 +93,10 @@
     let target: CustomMultiTarget | null = null;
     // Visible note with character-specific recommendations for the UI
     let customDescNote: string = '';
+    $: customDescItems = (customDescNote || '')
+        .split('\n')
+        .map(s => s.trim())
+        .filter(Boolean);
     let errors: string[] = [];
     let errorContexts: ErrorContext[] = [];
     let addConvert = '';
@@ -744,9 +749,14 @@
                 </div>
             </div>
 
-            {#if customDescNote}
-                <div class="custom-desc-note">
-                    <span class="note-label">Note:</span> {customDescNote}
+            {#if customDescItems.length > 0}
+                <div class="custom-desc-note" aria-live="polite">
+                    <span class="note-label">Note:</span>
+                    <ul class="note-list">
+                        {#each customDescItems as note}
+                            <li>{@html applyNoteStyling(note)}</li>
+                        {/each}
+                    </ul>
                 </div>
             {/if}
 
@@ -1713,19 +1723,135 @@
     }
 
     .custom-desc-note {
-        margin: 0.5rem 0 0.5rem;
-        padding: 0.75rem 1rem;
-        border-radius: 8px;
-        background: rgba(255, 255, 255, 0.06);
-        font-size: 0.9rem;
-        color: #e4e5e7;
-        border-left: 4px solid #646cff;
+        margin: 0.75rem 0 1rem;
+        padding: 1rem;
+        border-radius: 12px;
+        background: linear-gradient(135deg, rgba(39, 41, 54, 0.65) 0%, rgba(28, 29, 39, 0.6) 100%);
+        font-size: 0.95rem;
+        color: #e6e7ff;
+        border: 1px solid rgba(100, 108, 255, 0.35);
+        box-shadow: 0 6px 18px rgba(100, 108, 255, 0.15);
+        display: flex;
+        align-items: flex-start;
+        gap: 0.8rem;
     }
 
     .custom-desc-note .note-label {
         font-weight: 600;
         margin-right: 0.5rem;
-        color: #a1a1aa;
+        color: #c9cbff;
+        flex-shrink: 0;
+        background: rgba(100, 108, 255, 0.16);
+        border: 1px solid rgba(100, 108, 255, 0.35);
+        padding: 0.25rem 0.6rem;
+        border-radius: 999px;
+    }
+
+    .custom-desc-note .note-list {
+        margin: 0.1rem 0 0;
+        padding-left: 0;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+        list-style: none;
+    }
+
+    .custom-desc-note .note-list li {
+        display: flex;
+        align-items: center;
+        gap: 0.55rem;
+        padding: 0.6rem 0.75rem;
+        border-radius: 10px;
+        background: rgba(100, 108, 255, 0.08);
+        border: 1px solid rgba(100, 108, 255, 0.25);
+        color: #e6e7ff;
+        line-height: 1.45;
+        white-space: normal;
+        word-break: break-word;
+        overflow-wrap: anywhere;
+        box-sizing: border-box;
+        max-width: 100%;
+    }
+
+    .custom-desc-note .note-list li::before {
+        content: 'i';
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 18px;
+        height: 18px;
+        font-size: 12px;
+        font-weight: 700;
+        color: #1c1d27;
+        background: #c9cbff;
+        border: 1px solid rgba(100, 108, 255, 0.45);
+        border-radius: 999px;
+        flex-shrink: 0;
+    }
+
+    /* Tag styles inside notes (global because content se inserta con {@html}) */
+    .custom-desc-note :global(.note-strong) {
+        font-weight: 700 !important;
+        color: #ffffff !important;
+        display: inline;
+        line-height: inherit;
+        white-space: normal;
+        overflow-wrap: break-word;
+        vertical-align: baseline;
+    }
+    .custom-desc-note :global(.note-emphasis) {
+        color: #9adcf8 !important;
+        font-style: normal !important;
+        // text-decoration: underline dotted rgba(154, 220, 248, 0.6);
+        text-underline-offset: 3px;
+        display: inline;
+        line-height: inherit;
+        white-space: nowrap;
+        vertical-align: baseline;
+    }
+    .custom-desc-note :global(.note-highlight) {
+        background: rgba(255, 223, 88, 0.18);
+        border: 1px solid rgba(255, 223, 88, 0.35);
+        border-radius: 6px;
+        padding: 0.05rem 0.2rem;
+        color: #fff2a0 !important;
+        font-weight: 600 !important;
+        display: inline;
+        line-height: inherit;
+        white-space: nowrap; /* evita salto dentro del resaltado */
+        vertical-align: baseline;
+        box-decoration-break: clone;
+    }
+    .custom-desc-note :global(.note-warning) {
+        color: #ff7b7b !important;
+        font-weight: 700 !important;
+        // text-decoration: underline rgba(255, 123, 123, 0.6);
+        text-underline-offset: 3px;
+        display: inline;
+        line-height: inherit;
+        white-space: nowrap;
+        vertical-align: baseline;
+    }
+    .custom-desc-note :global(.note-important) {
+        color: #ffd3d3 !important;
+        font-weight: 700 !important;
+        border-bottom: 2px solid rgba(255, 87, 87, 0.6);
+        padding-bottom: 0.05rem;
+        display: inline;
+        line-height: inherit;
+        white-space: normal;
+        overflow-wrap: anywhere;
+        vertical-align: baseline;
+    }
+    .custom-desc-note :global(.note-underline) {
+        text-decoration: underline !important;
+        text-underline-offset: 3px;
+        display: inline;
+        line-height: inherit;
+        white-space: normal;
+        overflow-wrap: anywhere;
+        vertical-align: baseline;
     }
 
     .error-section {
