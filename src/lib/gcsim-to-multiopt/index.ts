@@ -262,8 +262,8 @@ export function getCharacterAbils(sample: Sample, charName: string, ignoredMods:
 
 import { getCustomDescriptionFor } from './config/custom_descriptions';
 
-export function getCustomDescription(char: Character | undefined): string {
-    return getCustomDescriptionFor(char);
+export function getCustomDescription(char: Character | undefined, activeBuffs: string[] = []): string {
+    return getCustomDescriptionFor(char, activeBuffs);
 }
 
 // USAGE:

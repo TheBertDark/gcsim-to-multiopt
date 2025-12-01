@@ -35,7 +35,7 @@ export const DEFAULT_IGNORED_EXACT: string[] = [
 
 export const DEFAULT_IGNORED_SUFFIXES: string[] = ['-2pc'];
 
-export const DEFAULT_IGNORED_PREFIXES: string[] = ['xiphos']; // Buffs from xiphos are followed by the char name
+export const DEFAULT_IGNORED_PREFIXES: string[] = ['xiphos', 'kazuha-a4-']; // Buffs from xiphos are followed by the char name
 
 export const DEFAULT_EXCEPTIONS: string[] = ['obsidiancodex-2pc'];
 
@@ -45,7 +45,6 @@ export function computeDefaultIgnored(mods: string[]): string[] {
             !DEFAULT_EXCEPTIONS.includes(m) &&
             (DEFAULT_IGNORED_EXACT.includes(m) ||
                 DEFAULT_IGNORED_SUFFIXES.some(suf => m.endsWith(suf)) ||
-                DEFAULT_IGNORED_PREFIXES.some(pre => m.startsWith(pre))
-            )
+                DEFAULT_IGNORED_PREFIXES.some(pre => m.startsWith(pre)))
     );
 }

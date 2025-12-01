@@ -201,7 +201,7 @@
             themeManager.init();
             // Then force the theme check
             themeManager.forceThemeCheck();
-            
+
             // Aplicar tema según la temporada actual (no forzar Halloween)
             console.log('🔄 Verificando tema según temporada actual...');
 
@@ -390,7 +390,7 @@
         // Recompute abilities with the (possibly) updated ignoredMods
         const [abilities, mods, char] = getCharacterAbils(sample, charName, ignoredMods);
         availabledMods = mods;
-        customDescNote = getCustomDescription(char) || '';
+        customDescNote = getCustomDescription(char, mods) || '';
 
         if (abilities.length === 0) {
             // Clear the previous target and show "information not available" message
@@ -555,7 +555,7 @@
         } else if (newTarget) {
             errorContexts = [];
             target = newTarget;
-            const customDesc = getCustomDescription(char);
+            const customDesc = getCustomDescription(char, mods);
             target.description = customDesc
                 ? [customDesc, target.description].join('\n')
                 : target.description;
