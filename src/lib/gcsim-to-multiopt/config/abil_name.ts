@@ -57,19 +57,19 @@ const defaultAbils: AbilsType = {
 
     // Catalysts
     "Ash-Graven Drinking Horn Proc": ["weapon:AshGravenDrinkingHorn","dmg"],
-    "Frostbearer Proc": ["weapon:Frostbearer","dmgAoe"], // Miss ["weapon:Frostbearer","dmgOnCryoOp"] not diff of normal proc
+    "Frostbearer Proc": ["weapon:Frostbearer","dmgAoe"],
     "Eye of Preception Proc": ["weapon:EyeOfPerception","dmg_"],
     "Skyward Atlas Proc": ["weapon:SkywardAtlas","dmg"],
 
     // Claymores
     "Prototype Archaic Proc": ["weapon:PrototypeArchaic","dmg"],
-    "Starsilver Proc": ["weapon:SnowTombedStarsilver","dmgAoe"], // Miss ["weapon:SnowTombedStarsilver","dmgOnCryoOp"] not diff of normal proc
+    "Starsilver Proc": ["weapon:SnowTombedStarsilver","dmgAoe"],
     "Skyward Pride Proc": ["weapon:SkywardPride","dmg"],
     "Debate Club Proc": ["weapon:DebateClub","dmg"],
     "Luxurious Sea-Lord Proc": ["weapon:LuxuriousSeaLord","dmg"],
 
     // Polearms
-    "Dragonspine Proc": ["weapon:DragonspineSpear","dmgAoe"], // Miss ["weapon:DragonspineSpear","dmgOnCryoOp"] not diff of normal proc
+    "Dragonspine Proc": ["weapon:DragonspineSpear","dmgAoe"],
     "Crescent Pike Proc": ["weapon:CrescentPike","hit"],
     "Halberd Proc": ["weapon:Halberd","dmg"],
     "Skyward Spine Proc": ["weapon:SkywardSpine","dmg"],
@@ -326,6 +326,8 @@ const characterAbils: Record<string, AbilsType> = {
         "Special Franchise (C2)": ["constellation2", "dmg"],
     },
 
+    durin: {},
+
     emilie: {
         "Spiritbreath Thorn": ["skill", "thornDmg"],
         "Lumidouce Case (Summon)": ["skill", "skillDmg"],
@@ -444,6 +446,8 @@ const characterAbils: Record<string, AbilsType> = {
         "Arataki Kesagiri Combo Slash": ["charged", "akSlash"],
         "Masatsu Zetsugi: Akaushi Burst!": ["skill", "dmg"],
     },
+
+    jahoda: {},
 
     jean: {
         "Gale Blade": ["skill", "dmg"],

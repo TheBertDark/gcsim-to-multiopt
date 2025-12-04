@@ -5,12 +5,12 @@ Mark characters as their abilities are added.
 
 ---
 
-**Updated:** 25/10/25, 2:14 p.m.
+**Updated:** 04/12/25, 1:53 a.m.
 
-- Total characters: 111
+- Total characters: 113
 - Mapped: 103
-- Pending: 8
-- Completion percentage: 92.8%
+- Pending: 10
+- Completion percentage: 91.2%
 
 ## Character Status
 
@@ -43,6 +43,7 @@ Mark characters as their abilities are added.
 | Diluc | ✅ |
 | Diona | ✅ |
 | Dori | ✅ |
+| Durin | ⬜ |
 | Emilie | ✅ |
 | Escoffier | ✅ |
 | Eula | ✅ |
@@ -60,6 +61,7 @@ Mark characters as their abilities are added.
 | Ifa | ⬜ |
 | Ineffa | ⬜ |
 | Itto | ✅ |
+| Jahoda | ⬜ |
 | Jean | ✅ |
 | Kachina | ⬜ |
 | Kaeya | ✅ |

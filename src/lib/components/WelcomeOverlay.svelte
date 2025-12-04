@@ -6,10 +6,12 @@
     // List of pending characters (extracted from TODO.md)
     const pendingCharacters = [
         'Aino',
-        `Flins`,
+        'Durin',
+        'Flins',
         'Iansan',
         'Ifa',
         'Ineffa',
+        'Jahoda',
         'Kachina',
         'Lauma',
         'Nefer',
@@ -86,7 +88,7 @@
                     {/each}
                 </div>
                 <p class="completion-info">
-                    <strong>Current progress:</strong> 103/111 characters implemented (92.8% completed)
+                    <strong>Current progress:</strong> 103/113 characters implemented (91.2% completed)
                 </p>
             </div>
 
