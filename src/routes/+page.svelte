@@ -716,37 +716,6 @@
                     on:mousemove={handleMouseMove}
                     on:mouseleave={handleMouseLeave}>?</span
                 >
-                <div
-                    class="tooltip"
-                    class:show={showTooltip}
-                    style="left: {tooltipX}px; top: {tooltipY}px;"
-                >
-                    <p><strong>What is this for?</strong></p>
-                    <p style="text-align: justify">
-                        Enable or disable specific mods to include or exclude them from the
-                        configuration used for Genshin Optimizer.
-                    </p>
-
-                    <p class="tooltip-note">
-                        <strong>Heads up:</strong> Some mods start disabled on purpose. This avoids
-                        double-counting buffs that Genshin Optimizer already applies by default — for
-                        example set bonuses with the suffix <code>-2pc</code> or passives tied to non-fixed stats like
-                        <code>nahida-a4</code>.
-                    </p>
-                    <p class="tooltip-note">
-                        You can enable any mod manually. Your choice persists while switching characters
-                        for the current file and resets when you upload a new file.
-                    </p>
-
-                    <div class="tooltip-color-guide">
-                        <div>
-                            <span class="mod-box active"></span> Active Mod (Included)
-                        </div>
-                        <div>
-                            <span class="mod-box inactive"></span> Inactive Mod (Ignored)
-                        </div>
-                    </div>
-                </div>
             </div>
 
             {#if customDescItems.length > 0}
@@ -928,6 +897,38 @@
                 </button>
             </div>
         {/if}
+        <div
+            class="tooltip"
+            class:show={showTooltip}
+            style="left: {tooltipX}px; top: {tooltipY}px;"
+        >
+            <p><strong>What is this for?</strong></p>
+            <p style="text-align: justify">
+                Enable or disable specific mods to include or exclude them from the configuration
+                used for Genshin Optimizer.
+            </p>
+
+            <p class="tooltip-note">
+                <strong>Heads up:</strong> Some mods start disabled on purpose. This avoids
+                double-counting buffs that Genshin Optimizer already applies by default — for
+                example set bonuses with the suffix <code>-2pc</code> or passives tied to non-fixed
+                stats like
+                <code>nahida-a4</code>.
+            </p>
+            <p class="tooltip-note">
+                You can enable any mod manually. Your choice persists while switching characters for
+                the current file and resets when you upload a new file.
+            </p>
+
+            <div class="tooltip-color-guide">
+                <div>
+                    <span class="mod-box active"></span> Active Mod (Included)
+                </div>
+                <div>
+                    <span class="mod-box inactive"></span> Inactive Mod (Ignored)
+                </div>
+            </div>
+        </div>
     </main>
 
     <!-- Overlay de bienvenida -->

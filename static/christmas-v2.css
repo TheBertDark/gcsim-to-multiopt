@@ -192,6 +192,79 @@ body.christmas-theme {
     z-index: 2;
 }
 
+/* Christmas-themed notes container */
+.christmas-theme .custom-desc-note {
+    background: rgba(47, 27, 20, 0.95) !important;
+    border: 1px solid var(--christmas-gold) !important;
+    box-shadow: var(--christmas-shadow) !important;
+    backdrop-filter: blur(5px) !important;
+    padding: 1rem !important;
+    border-radius: 8px !important;
+    margin-bottom: 1.5rem !important;
+}
+
+.christmas-theme .custom-desc-note .note-label {
+    color: var(--christmas-gold) !important;
+    font-weight: bold !important;
+    margin-right: 0.5rem !important;
+}
+
+/* Christmas-themed mods container */
+.christmas-theme .mods-grid {
+    background: linear-gradient(145deg, rgba(40, 20, 20, 0.85), rgba(20, 10, 10, 0.95)) !important;
+    border: 1px solid rgba(255, 215, 0, 0.4) !important;
+    border-top: 1px solid rgba(255, 215, 0, 0.7) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 0 40px rgba(196, 30, 58, 0.15) !important;
+    backdrop-filter: blur(12px) !important;
+    padding: 1.5rem !important;
+    border-radius: 16px !important;
+    margin-top: 1.5rem !important;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Decorative shine effect for mods container */
+.christmas-theme .mods-grid::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--christmas-gold), transparent);
+    opacity: 0.5;
+}
+
+/* Christmas-themed mod boxes/buttons */
+.christmas-theme .mod-box {
+    position: relative;
+    z-index: 3;
+    transition: all 0.3s ease !important;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8) !important;
+    font-weight: 600 !important;
+}
+
+.christmas-theme .mod-box.active {
+    background: linear-gradient(135deg, #228b22 0%, #006400 100%) !important;
+    border: 1px solid var(--christmas-gold) !important;
+    box-shadow: 0 0 8px rgba(34, 139, 34, 0.6) !important;
+    opacity: 1 !important;
+}
+
+.christmas-theme .mod-box.inactive {
+    background: linear-gradient(135deg, rgba(139, 0, 0, 0.8), rgba(80, 0, 0, 0.8)) !important;
+    border: 1px solid #8b0000 !important;
+    color: #e0e0e0 !important;
+    opacity: 0.9 !important;
+}
+
+.christmas-theme .mod-box:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4) !important;
+    border-color: var(--christmas-white) !important;
+    z-index: 10 !important;
+}
+
 /* Smooth animations for transitions */
 .christmas-theme * {
     transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease !important;
