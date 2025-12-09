@@ -7,7 +7,10 @@
 
     import { readGZ, readJSON } from '$lib';
     import { getCharacterAbils, getCustomDescription } from '$lib/gcsim-to-multiopt';
-    import { applyNoteStyling } from '$lib/gcsim-to-multiopt/config/custom_descriptions';
+    import {
+        applyNoteStyling,
+        type NoteItem,
+    } from '$lib/gcsim-to-multiopt/config/custom_descriptions';
     import { convertAbils } from '$lib/gcsim-to-multiopt/convert';
     import getAbilities from '$lib/gcsim-to-multiopt/config/abil_name';
     import statNameConvert from '$lib/gcsim-to-multiopt/config/stat_name';
@@ -92,11 +95,8 @@
     import { computeDefaultIgnored } from '$lib/gcsim-to-multiopt/config/default_ignored_mods';
     let target: CustomMultiTarget | null = null;
     // Visible note with character-specific recommendations for the UI
-    let customDescNote: string = '';
-    $: customDescItems = (customDescNote || '')
-        .split('\n')
-        .map(s => s.trim())
-        .filter(Boolean);
+    let customDescNote: NoteItem[] = [];
+    $: customDescItems = customDescNote;
     let errors: string[] = [];
     let errorContexts: ErrorContext[] = [];
     let addConvert = '';
@@ -390,7 +390,7 @@
         // Recompute abilities with the (possibly) updated ignoredMods
         const [abilities, mods, char] = getCharacterAbils(sample, charName, ignoredMods);
         availabledMods = mods;
-        customDescNote = getCustomDescription(char, mods) || '';
+        customDescNote = getCustomDescription(char, mods) || [];
 
         if (abilities.length === 0) {
             // Clear the previous target and show "information not available" message
@@ -404,7 +404,7 @@
                         'This character has no damage data recorded in the simulation. Make sure the character actively participated in combat during the simulation.',
                 },
             ];
-            customDescNote = '';
+            customDescNote = [];
             return;
         }
 
@@ -556,11 +556,15 @@
             errorContexts = [];
             target = newTarget;
             const customDesc = getCustomDescription(char, mods);
-            target.description = customDesc
-                ? [customDesc, target.description].join('\n')
+
+            // Format description for Genshin Optimizer (text only)
+            const descText = customDesc.map(item => item.text).join('\n');
+            target.description = descText
+                ? [descText, target.description].join('\n')
                 : target.description;
+
             target.name = configName || 'Powered by DarkJake';
-            customDescNote = customDesc || '';
+            customDescNote = customDesc || [];
             updateHighlightedJson();
         }
     }
@@ -723,7 +727,14 @@
                     <span class="note-label">Note:</span>
                     <ul class="note-list">
                         {#each customDescItems as note}
-                            <li>{@html applyNoteStyling(note)}</li>
+                            <li class:has-image={!!note.image}>
+                                {@html applyNoteStyling(note.text)}
+                                {#if note.image}
+                                    <div class="image-tooltip">
+                                        <img src={note.image} alt="Visual help for {note.text}" />
+                                    </div>
+                                {/if}
+                            </li>
                         {/each}
                     </ul>
                 </div>
@@ -1759,15 +1770,14 @@
     }
 
     .custom-desc-note .note-list li {
-        display: flex;
-        align-items: center;
-        gap: 0.55rem;
-        padding: 0.6rem 0.75rem;
+        display: block; /* Change from flex to block to handle text flow better */
+        position: relative; /* Context for absolute positioning of the icon if needed, or just flow */
+        padding: 0.6rem 0.75rem 0.6rem 2.5rem; /* Add left padding for the icon */
         border-radius: 10px;
         background: rgba(100, 108, 255, 0.08);
         border: 1px solid rgba(100, 108, 255, 0.25);
         color: #e6e7ff;
-        line-height: 1.45;
+        line-height: 1.5;
         white-space: normal;
         word-break: break-word;
         overflow-wrap: anywhere;
@@ -1775,8 +1785,48 @@
         max-width: 100%;
     }
 
+    /* Style for items with images (cursor hint) */
+    .custom-desc-note .note-list li.has-image::before {
+        cursor: help;
+        border-color: #ffd700;
+        box-shadow: 0 0 5px rgba(255, 215, 0, 0.3);
+    }
+
+    /* Image tooltip container */
+    .image-tooltip {
+        position: absolute;
+        top: 100%;
+        left: 2.5rem; /* Align with text start */
+        z-index: 9999; /* Ensure it's above other elements */
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        pointer-events: none;
+        padding-top: 10px;
+    }
+
+    .custom-desc-note .note-list li.has-image:hover .image-tooltip {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .image-tooltip img {
+        max-width: 300px;
+        /* max-height removed to allow aspect ratio to determine height */
+        border-radius: 8px;
+        border: 2px solid #ffd700;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        background: #1a1a1a;
+        object-fit: contain;
+    }
+
     .custom-desc-note .note-list li::before {
         content: 'i';
+        position: absolute; /* Position absolutely within the relative li */
+        left: 0.75rem; /* Position it in the left padding area */
+        top: 0.65rem; /* Align with the first line of text */
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -1788,7 +1838,6 @@
         background: #c9cbff;
         border: 1px solid rgba(100, 108, 255, 0.45);
         border-radius: 999px;
-        flex-shrink: 0;
     }
 
     /* Tag styles inside notes (global because content se inserta con {@html}) */
@@ -1853,6 +1902,48 @@
         white-space: normal;
         overflow-wrap: anywhere;
         vertical-align: baseline;
+    }
+
+    /* Elemental Text Styles */
+    .custom-desc-note :global(.note-pyro) {
+        color: #ff9999 !important;
+        font-weight: 600;
+        text-shadow: 0 0 2px rgba(255, 60, 50, 0.4);
+    }
+    .custom-desc-note :global(.note-hydro) {
+        color: #80c0ff !important;
+        font-weight: 600;
+        text-shadow: 0 0 2px rgba(86, 128, 255, 0.4);
+    }
+    .custom-desc-note :global(.note-electro) {
+        color: #d396ff !important;
+        font-weight: 600;
+        text-shadow: 0 0 2px rgba(171, 71, 188, 0.4);
+    }
+    .custom-desc-note :global(.note-geo) {
+        color: #ffe699 !important;
+        font-weight: 600;
+        text-shadow: 0 0 2px rgba(248, 186, 78, 0.4);
+    }
+    .custom-desc-note :global(.note-cryo) {
+        color: #a0e9ff !important;
+        font-weight: 600;
+        text-shadow: 0 0 2px rgba(79, 195, 247, 0.4);
+    }
+    .custom-desc-note :global(.note-anemo) {
+        color: #80ffd6 !important;
+        font-weight: 600;
+        text-shadow: 0 0 2px rgba(97, 219, 187, 0.4);
+    }
+    .custom-desc-note :global(.note-dendro) {
+        color: #c3e66a !important;
+        font-weight: 600;
+        text-shadow: 0 0 2px rgba(165, 200, 59, 0.4);
+    }
+    .custom-desc-note :global(.note-physical) {
+        color: #cccccc !important;
+        font-weight: 600;
+        text-shadow: 0 0 2px rgba(150, 150, 150, 0.4);
     }
 
     .error-section {

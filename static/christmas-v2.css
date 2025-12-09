@@ -201,6 +201,8 @@ body.christmas-theme {
     padding: 1rem !important;
     border-radius: 8px !important;
     margin-bottom: 1.5rem !important;
+    position: relative; /* Create positioning context */
+    z-index: 20; /* Ensure it is above the mods grid (which might be z-index: 2 or auto) */
 }
 
 .christmas-theme .custom-desc-note .note-label {

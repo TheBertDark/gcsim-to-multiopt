@@ -260,9 +260,9 @@ export function getCharacterAbils(sample: Sample, charName: string, ignoredMods:
     return [abils, Object.keys(availabledMods), char];
 }
 
-import { getCustomDescriptionFor } from './config/custom_descriptions';
+import { getCustomDescriptionFor, type NoteItem } from './config/custom_descriptions';
 
-export function getCustomDescription(char: Character | undefined, activeBuffs: string[] = []): string {
+export function getCustomDescription(char: Character | undefined, activeBuffs: string[] = []): NoteItem[] {
     return getCustomDescriptionFor(char, activeBuffs);
 }
 
