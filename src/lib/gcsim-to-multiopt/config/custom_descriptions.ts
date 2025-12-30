@@ -17,6 +17,13 @@ export const characterDescriptions: Record<string, DescriptionRule[]> = {
             condition: { minCons: 2 },
         },
     ],
+    klee: [
+        {
+            text: '<strong class="note-pyro">Hexerei: Secret Rite</strong> : Klee\'s Charged Attacks are enhanced to <strong class="note-pyro">Boom-Boom Strike</strong>. Ensure you have the Hexerei buffs enabled if applicable. Do not activate in Genshin Optimizer.',
+            condition: { always: true },
+            image: '/gcsim-to-multiopt/visual-help/klee-hexerei.png'
+        },
+    ],
     kazuha: [
         {
             text: 'You must select the A1 and Q elemental absorption on E and Q settings',
@@ -93,6 +100,14 @@ const buffTexts: Record<string, DescriptionRule> = {
     'khaj-nisut-buff': {
         text: '<warning>Key of Khaj-Nisut passive detected:</warning> The weapon’s passive has been disabled due to its relation to the character’s max HP.',
     },
+    'fischl-hexerei-atkp': {
+        text: '<strong class="note-electro">Hexerei: Secret Rite</strong> buffs detected: If Oz is on field, <strong class="note-highlight">ATK +22.5%</strong> (Overload). Do not activate in Genshin Optimizer.',
+        image: '/gcsim-to-multiopt/visual-help/fischl-hexerei.png',
+    },
+    'fischl-hexerei-em': {
+        text: '<strong class="note-electro">Hexerei: Secret Rite</strong> buffs detected: If Oz is on field, <strong class="note-highlight">EM +90</strong> (Electro-Charged). Do not activate in Genshin Optimizer.',
+        image: '/gcsim-to-multiopt/visual-help/fischl-hexerei.png',
+    }
 };
 
 // Optional buff conditions (logic)

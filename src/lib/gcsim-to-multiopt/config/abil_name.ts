@@ -513,6 +513,9 @@ const characterAbils: Record<string, AbilsType> = {
         "Sparks'n'Splash": ["burst","dmg"],
         "Sparks'n'Splash (C1)": ["constellation1","chainedReactionsDmg"],
         "Sparkly Explosion (C4)": ["constellation4","sparklyExplosionDmg"],
+        "Boom-Boom Strike": ["passive1", "dmg"],
+        "Boom-Boom Strike (Coordinated)": ["passive1", "dmg"],
+        "Charge (Coordinated)": ["passive1", "dmg"], //! No sure if this is the same as Boom-Boom Strike (Coordinated)
     },
 
     kokomi: {
