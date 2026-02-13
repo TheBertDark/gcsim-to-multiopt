@@ -42,6 +42,8 @@ const defaultAbils: AbilsType = {
     "swirl-hydro (aoe)": ["reaction", "hydroSwirl"],
     "swirl-pyro": ["reaction", "pyroSwirl"],
     "swirl-pyro (aoe)": ["reaction", "pyroSwirl"],
+    "lunarcharged": ["reaction", "lunarcharged"],
+    "lunarcrystallize": ["reaction", "lunarcrystallize"],
 
     // Events
     "Hurt": ["type", "subtype"], // No Opt
@@ -275,6 +277,14 @@ const characterAbils: Record<string, AbilsType> = {
         "Forest of Falling Arrows (C6)": ["constellation6", "dmg"],
     },
 
+    columbina: {
+        "Skill": ["skill", "skillDmg"],
+        "Skill (DoT)": ["skill", "continuousDmg"],
+        "Skill Gravity (Lunar-Charged)": ["skill", "lunarchargedDmg"],
+        "Skill Gravity (Lunar-Crystallize)": ["skill", "lunarcrystallizeDmg"],
+        "Burst": ["burst", "skillDmg"],
+    },
+
     cyno: {
         "Secret Rite: Chasmic Soulfarer": ["skill", "skillDmg"],
         "Mortuary Rite": ["skill", "riteDmg"],
@@ -438,7 +448,18 @@ const characterAbils: Record<string, AbilsType> = {
 
     ifa: {},
 
-    ineffa: {},
+    illuga: {
+        "Skill": ["skill", "pressDmg"],
+        "Burst": ["burst", "skillDmg"],
+        "Illuga C2": ["constellation2", "dmg"],
+    },
+
+    ineffa: {
+        "Cleaning Mode: Carrier Frequency": ["skill", "skillDmg"],
+        "Birgitta": ["skill", "birgittaDmg"],
+        "Birgitta (A1)": ["passive1", "dmg"],
+        "Supreme Instruction: Cyclonic Exterminator": ["burst", "skillDmg"],
+    },
 
     itto: {
         "Saichimonji Slash": ["charged", "sSlash"],
@@ -1025,6 +1046,18 @@ const characterAbils: Record<string, AbilsType> = {
         "Stone Stele (Hold)": ["skill", "holdDMG"],
         "Stone Stele (Tick)": ["skill", "resonance"],
         "Planet Befall": ["burst", "dmg"],
+    },
+
+    zibai: {
+        "Normal 0 (Skill)": ["skill", "shift1Dmg"],
+        "Normal 1 (Skill)": ["skill", "shift2Dmg"],
+        "Normal 2 (Skill)": ["skill", "shift3Dmg"],
+        "Normal 3 (Skill)": ["skill", "shift4Dmg"],
+        "Normal 3 (Skill) (Lunar-Crystallize)": ["skill", "shift4GleamDmg"],
+        "Spirit Steed's Stride": ["skill", "stride1Dmg"],
+        "Spirit Steed's Stride (Lunar-Crystallize)": ["skill", "stride2Dmg"],
+        "Burst": ["burst", "skill1Dmg"],
+        "Burst (Lunar-Crystallize)": ["burst", "skill2Dmg"],
     }
 };
 

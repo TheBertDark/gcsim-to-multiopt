@@ -5,12 +5,12 @@ Mark characters as their abilities are added.
 
 ---
 
-**Updated:** 04/12/25, 1:53 a.m.
+**Updated:** 13/02/26, 4:55 p.m.
 
-- Total characters: 113
-- Mapped: 103
-- Pending: 10
-- Completion percentage: 91.2%
+- Total characters: 116
+- Mapped: 107
+- Pending: 9
+- Completion percentage: 92.2%
 
 ## Character Status
 
@@ -37,6 +37,7 @@ Mark characters as their abilities are added.
 | Citlali | ✅ |
 | Clorinde | ✅ |
 | Collei | ✅ |
+| Columbina | ✅ |
 | Cyno | ✅ |
 | Dahlia | ✅ |
 | Dehya | ✅ |
@@ -59,7 +60,8 @@ Mark characters as their abilities are added.
 | Hutao | ✅ |
 | Iansan | ⬜ |
 | Ifa | ⬜ |
-| Ineffa | ⬜ |
+| Illuga | ✅ |
+| Ineffa | ✅ |
 | Itto | ✅ |
 | Jahoda | ⬜ |
 | Jean | ✅ |
@@ -129,6 +131,7 @@ Mark characters as their abilities are added.
 | Yoimiya | ✅ |
 | Yunjin | ✅ |
 | Zhongli | ✅ |
+| Zibai | ✅ |
 ---
 
 > Update this list as you add character mappings or new characters.

@@ -10,7 +10,6 @@
         'Flins',
         'Iansan',
         'Ifa',
-        'Ineffa',
         'Jahoda',
         'Kachina',
         'Lauma',
