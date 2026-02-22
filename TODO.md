@@ -5,12 +5,12 @@ Mark characters as their abilities are added.
 
 ---
 
-**Updated:** 13/02/26, 4:55 p.m.
+**Updated:** 21/02/26, 10:44 p.m.
 
 - Total characters: 116
-- Mapped: 107
-- Pending: 9
-- Completion percentage: 92.2%
+- Mapped: 109
+- Pending: 7
+- Completion percentage: 94.0%
 
 ## Character Status
 
@@ -50,7 +50,7 @@ Mark characters as their abilities are added.
 | Eula | ✅ |
 | Faruzan | ✅ |
 | Fischl | ✅ |
-| Flins | ⬜ |
+| Flins | ✅ |
 | Freminet | ✅ |
 | Furina | ✅ |
 | Gaming | ✅ |
@@ -76,7 +76,7 @@ Mark characters as their abilities are added.
 | Kokomi | ✅ |
 | Kuki | ✅ |
 | Lanyan | ✅ |
-| Lauma | ⬜ |
+| Lauma | ✅ |
 | Layla | ✅ |
 | Lisa | ✅ |
 | Lynette | ✅ |

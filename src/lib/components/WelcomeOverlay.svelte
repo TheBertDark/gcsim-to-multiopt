@@ -7,12 +7,10 @@
     const pendingCharacters = [
         'Aino',
         'Durin',
-        'Flins',
         'Iansan',
         'Ifa',
         'Jahoda',
         'Kachina',
-        'Lauma',
         'Nefer',
     ];
 

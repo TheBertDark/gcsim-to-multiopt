@@ -141,6 +141,14 @@ function getAbilExceptions(abil: AbilInfo, abilPath: string[], allAbils: CustomT
                 if (found)
                     return ["constellation6", found.path[1]];
             }
+        } else if (char.name === "flins") {
+            // Thunderous Symphony has two damage instances with the same name:
+            // 1st: Thunderous Symphony DMG → thunderDmg
+            // 2nd: Thunderous Symphony Additional DMG → thunderAddlDmg
+            if (abil.name === "Thunderous Symphony") {
+                const found = [...allAbils].reverse().find(target => target.path[0] === "burst");
+                if (found && found.path[1] === "thunderDmg") return ["burst", "thunderAddlDmg"];
+            }
         }
         else if (char.name === "yelan") {
             // Not a full working fix as standard Breakthrough Barb can still be triggered at c6

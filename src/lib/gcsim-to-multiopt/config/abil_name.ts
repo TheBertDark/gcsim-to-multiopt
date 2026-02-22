@@ -382,7 +382,15 @@ const characterAbils: Record<string, AbilsType> = {
         "Oz (Burst)": ["skill", "ozDmg"],
     },
 
-    flins: {},
+    flins: {
+        "Normal 0 (Skill)": ["skill", "na1"],
+        "Normal 1 (Skill)": ["skill", "na2"],
+        "Normal 2 (Skill)": ["skill", "na3"],
+        "Normal 3 (Skill)": ["skill", "na4"],
+        "Normal 4 (Skill)": ["skill", "na5"],
+        "Northland Spearstorm": ["skill", "spearDmg"],
+        "Thunderous Symphony": ["burst", "thunderDmg"],
+    },
 
     freminet: {
         "Pressurized Floe: Upward Thrust": ["skill", "thrustDmg"],
@@ -566,7 +574,12 @@ const characterAbils: Record<string, AbilsType> = {
         "Feathermoon Ring (C1) (electro)": ["passive1", "electro"],
     },
 
-    lauma: {},
+    lauma: {
+        "Hymn of Hunting (Press)": ["skill", "pressDmg"],
+        "Hymn of Eternal Rest (Hold)": ["skill", "hold1Dmg"],
+        "Hymn of Eternal Rest (Hold) (Lunar-Bloom)": ["skill", "hold2Dmg"],
+        "Frostgrove Sanctuary": ["skill", "frostgroveDmg"],
+    },
 
     layla: {
         "Charge 0":["charged","dmg1"],

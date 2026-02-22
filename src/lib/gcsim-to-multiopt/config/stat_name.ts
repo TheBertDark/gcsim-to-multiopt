@@ -22,8 +22,16 @@ export default {
     "dendro%": "dendro_dmg_",
     "heal": "heal_",
     "dmg%": "all_dmg_",
-    // Reaction-specific damage bonuses
+    // Reaction-specific damage bonuses (percentage)
     "bloom%": "bloom_dmg_",
     "burgeon%": "burgeon_dmg_",
-    "hyperbloom%": "hyperbloom_dmg_"
+    "hyperbloom%": "hyperbloom_dmg_",
+    "lunarbloom%": "lunarbloom_dmg_",
+    "lunarcharged%": "lunarcharged_dmg_",
+    // Reaction-specific flat damage increase
+    "bloom_flat": "bloom_dmgInc",
+    "burgeon_flat": "burgeon_dmgInc",
+    "hyperbloom_flat": "hyperbloom_dmgInc",
+    "lunarbloom_flat": "lunarbloom_dmgInc",
+    "lunarcharged_flat": "lunarcharged_dmgInc",
 } as Record<string, string>;
