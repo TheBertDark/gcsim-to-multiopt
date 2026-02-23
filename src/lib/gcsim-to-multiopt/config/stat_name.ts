@@ -28,10 +28,12 @@ export default {
     "hyperbloom%": "hyperbloom_dmg_",
     "lunarbloom%": "lunarbloom_dmg_",
     "lunarcharged%": "lunarcharged_dmg_",
+    "lunarcrystallize%": "lunarcrystallize_dmg_",
     // Reaction-specific flat damage increase
     "bloom_flat": "bloom_dmgInc",
     "burgeon_flat": "burgeon_dmgInc",
     "hyperbloom_flat": "hyperbloom_dmgInc",
     "lunarbloom_flat": "lunarbloom_dmgInc",
     "lunarcharged_flat": "lunarcharged_dmgInc",
+    "lunarcrystallize_flat": "lunarcrystallize_dmgInc",
 } as Record<string, string>;

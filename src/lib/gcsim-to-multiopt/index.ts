@@ -707,6 +707,8 @@ export function getCharacterAbils(
                 buffs['lunarbloom%'] = (buffs['lunarbloom%'] ?? 0) + 0.1;
             } else if (name === 'lunarcharged') {
                 buffs['lunarcharged%'] = (buffs['lunarcharged%'] ?? 0) + 0.1;
+            } else if (name === 'lunarcrystallize') {
+                buffs['lunarcrystallize%'] = (buffs['lunarcrystallize%'] ?? 0) + 0.1;
             }
         }
 
@@ -722,6 +724,8 @@ export function getCharacterAbils(
                 buffs['lunarbloom%'] = (buffs['lunarbloom%'] ?? 0) + 0.1;
             } else if (name === 'lunarcharged') {
                 buffs['lunarcharged%'] = (buffs['lunarcharged%'] ?? 0) + 0.1;
+            } else if (name === 'lunarcrystallize') {
+                buffs['lunarcrystallize%'] = (buffs['lunarcrystallize%'] ?? 0) + 0.1;
             }
             // CR when gleaming-moon-intent-cr is active (4s after Lunar Reaction)
             // +15% Nascent (Moonsign < 2) or +30% Ascendant (Moonsign >= 2)
@@ -741,6 +745,8 @@ export function getCharacterAbils(
                 buffs['lunarbloom%'] = (buffs['lunarbloom%'] ?? 0) + ascendantGleamBonus;
             } else if (name === 'lunarcharged') {
                 buffs['lunarcharged%'] = (buffs['lunarcharged%'] ?? 0) + ascendantGleamBonus;
+            } else if (name === 'lunarcrystallize') {
+                buffs['lunarcrystallize%'] = (buffs['lunarcrystallize%'] ?? 0) + ascendantGleamBonus;
             }
         }
 
