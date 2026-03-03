@@ -26,6 +26,7 @@
     import christmasTester from '$lib/utils/christmasTester';
     import PauseIcon from '$lib/components/PauseIcon.svelte';
     import PlayIcon from '$lib/components/PlayIcon.svelte';
+    import BuildCardsPromoOverlay from '$lib/components/BuildCardsPromoOverlay.svelte';
     import WelcomeOverlay from '$lib/components/WelcomeOverlay.svelte';
 
     // Import element icons
@@ -108,6 +109,8 @@
     let toastTimeout: ReturnType<typeof setTimeout>;
     let configName = '';
     let showWelcomeOverlay = true;
+    let showBuildCardsPromo = true;
+    const buildCardsPromoUrl = 'https://www.khaenri.online/';
 
     // Variables para el tooltip
     let tooltipX = 0;
@@ -944,7 +947,21 @@
 
     <!-- Overlay de bienvenida -->
     {#if showWelcomeOverlay}
-        <WelcomeOverlay on:close={() => (showWelcomeOverlay = false)} />
+        <WelcomeOverlay
+            on:close={() => {
+                showWelcomeOverlay = false;
+            }}
+        />
+    {/if}
+
+    {#if showBuildCardsPromo && !showWelcomeOverlay}
+        <BuildCardsPromoOverlay
+            promoUrl={buildCardsPromoUrl}
+            demoImage="/gcsim-to-multiopt/Mavuika_build.png"
+            on:close={() => {
+                showBuildCardsPromo = false;
+            }}
+        />
     {/if}
 
     <footer>
