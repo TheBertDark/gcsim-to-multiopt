@@ -703,8 +703,16 @@ const characterAbils: Record<string, AbilsType> = {
     },
 
     ningguang: {
+        "Normal (Right)": ["normal", "0"],
+        "Normal (Left)": ["normal", "0"],
+        "Normal (Twirl)": ["normal", "0"],
+        "Charge (Right)": ["charged", "baseDmg"],
+        "Charge (Left)": ["charged", "baseDmg"],
+        "Charge Gem (Right)": ["charged", "jadeDmg"],
+        "Charge Gem (Left)": ["charged", "jadeDmg"],
         "Jade Screen": ["skill", "dmg"],
         "Starshatter": ["burst", "gemDmg"],
+        "Starshatter (Jade Screen Gems)": ["burst", "gemDmg"],
     },
 
     noelle: {
