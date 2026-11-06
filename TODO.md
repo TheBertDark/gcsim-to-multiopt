@@ -5,12 +5,12 @@ Mark characters as their abilities are added.
 
 ---
 
-**Updated:** 05/11/26, 9:07 p.m.
+**Updated:** 06/11/26, 2:49 a.m.
 
 - Total characters: 129
-- Mapped: 109
-- Pending: 20
-- Completion percentage: 84.5%
+- Mapped: 111
+- Pending: 18
+- Completion percentage: 86.0%
 
 ## Character Status
 
@@ -98,7 +98,7 @@ Mark characters as their abilities are added.
 | Nilou | ✅ |
 | Ningguang | ✅ |
 | Noelle | ✅ |
-| Odette | ⬜ |
+| Odette | ✅ |
 | Ororon | ✅ |
 | Prune | ⬜ |
 | Qiqi | ✅ |
@@ -117,7 +117,7 @@ Mark characters as their abilities are added.
 | Thoma | ✅ |
 | Tighnari | ✅ |
 | Traveler Anemo | ✅ |
-| Traveler Cryo | ⬜ |
+| Traveler Cryo | ✅ |
 | Traveler Dendro | ✅ |
 | Traveler Electro | ✅ |
 | Traveler Geo | ✅ |

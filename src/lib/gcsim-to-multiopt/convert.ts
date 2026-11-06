@@ -268,7 +268,7 @@ export function convertAbils(abils: AbilInfo[], convert: AbilsType, char: Charac
     const result: TargetResult[] = [];
     
     if (char && char.name)
-        char.name = char.name.replace(/^(aether|lumine)/, "traveler");
+        char.name = char.name.replace(/^(aether|lumine)/, "traveler").replace(/^yumemizukimizuki$/, "mizuki");
     for (let i = 0; i < abils.length; i++) {
         const customeTargets = result.map(x => x[0]).filter((x): x is CustomTarget => x !== undefined);
         result.push(convertAbil(abils[i], convert, customeTargets, char));

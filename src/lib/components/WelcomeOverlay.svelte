@@ -17,10 +17,8 @@
         'Mitya',
         'Nefer',
         'Nicole',
-        'Odette',
         'Prune',
         'Sandrone',
-        'Traveler Cryo',
         'Valeriy',
         'Varka',
         'Vesna',
@@ -28,8 +26,8 @@
     ];
 
     const totalCharacters = 129;
-    const mappedCharacters = 109;
-    const progressPercent = 84.5;
+    const mappedCharacters = 111;
+    const progressPercent = 86.0;
     // [AUTO-GENERATED:END]
 
     let overlayElement: HTMLElement;

@@ -44,7 +44,7 @@
                                     </div>
                                     <div class="suggestion">
                                         Suggested fix: Add to the conversion map below:<br />
-                                        "{error.raw.name}": ["type", "subtype"]
+                                        {JSON.stringify(error.raw.name)}: ["type", "subtype"]
                                     </div>
                                 {/if}
                             {:else if error.message.includes('Unknown stat')}

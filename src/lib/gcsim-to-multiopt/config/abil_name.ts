@@ -44,6 +44,11 @@ const defaultAbils: AbilsType = {
     "swirl-pyro (aoe)": ["reaction", "pyroSwirl"],
     "lunarcharged": ["reaction", "lunarcharged"],
     "lunarcrystallize": ["reaction", "lunarcrystallize"],
+    "Stellar Swirl": ["reaction", "stellarswirl"],
+    "Stellar Swirl (Mizuki C1)": ["reaction", "stellarswirl"],
+    "Stellar Swirl Detonation": ["reaction", "stellarswirl_vortex1"],
+    "Stellar Swirl Detonation (1-2 Stacks)": ["reaction", "stellarswirl_vortex1"],
+    "Stellar Swirl Detonation (3-6 Stacks)": ["reaction", "stellarswirl_vortex2"],
 
     // Events
     "Hurt": ["type", "subtype"], // No Opt
@@ -650,8 +655,11 @@ const characterAbils: Record<string, AbilsType> = {
     mizuki: {
         "Aisa Utamakura Pilgrimage": ["skill", "skillDmg"],
         "Dreamdrifter Continuous Attack": ["skill", "contDmg"],
+        "Dreamdrifter (Stellar Swirl)": ["lockedPassive", "skillContSsDmg"],
         "Anraku Secret Spring Therapy": ["burst", "skillDmg"],
         "Munen Shockwave": ["burst", "shockwaveDmg"],
+        "Mizuki C1 (Anemo)": ["constellation1", "dmg"],
+        "Mizuki C1 (Stellar Swirl)": ["constellation1", "ssDmg"],
     },
 
     mona: {
@@ -732,7 +740,24 @@ const characterAbils: Record<string, AbilsType> = {
         "Breastplate (C4)": ["constellation4", "dmg"],
     },
 
-    odette: {},
+    odette: {
+        "Adagio: Phantom Night Dancers": ["skill", "skillDmg"],
+        "Coda at Dawn's Tolling": ["skill", "codaDotDmg"],
+        "Coda at Dawn's Tolling (Stellar-Conduct)": ["skill", "codaStellarconductDmg"],
+        "Coda at Dawn's Tolling (Stellar Swirl)": ["skill", "codaStellarswirlDmg"],
+        "\"Plume\" Dance Move": ["skill", "plumeDmg"],
+        "\"Plume\" Dance Move (Stellar-Conduct)": ["skill", "plumeStellarconductDmg"],
+        "\"Plume\" Dance Move (Stellar Swirl)": ["skill", "plumeStellarswirlDmg"],
+        "\"Wing\" Dance Move": ["skill", "wingDmg"],
+        "\"Wing\" Dance Move (Stellar-Conduct)": ["skill", "wingStellarconductDmg"],
+        "\"Wing\" Dance Move (Stellar Swirl)": ["skill", "wingStellarswirlDmg"],
+        "Presto: Bluebird Finale (Slash)": ["burst", "slashDmg"],
+        "Presto: Bluebird Finale (Final)": ["burst", "finalDmg"],
+        "Daybreak Finale (C1) (Stellar-Conduct)": ["constellation1", "stellarconduct_dmg"],
+        "Daybreak Finale (C1) (Stellar Swirl)": ["constellation1", "stellarswirl_dmg"],
+        "Odette C4 (Stellar-Conduct)": ["constellation4", "stellarconduct_dmg"],
+        "Odette C4 (Stellar Swirl)": ["constellation4", "stellarswirl_dmg"],
+    },
 
     ororon: {
         "Spirit Orb DMG": ["skill", "dmg"],
@@ -898,7 +923,17 @@ const characterAbils: Record<string, AbilsType> = {
         "Slitting Wind (A1)": ["passive1", "dmg"],
     },
 
-    travelercryo: {},
+    travelercryo: {
+        "Charge 0 (Stellar-Conduct)": ["lockedPassive", "stellarconductDmg1"],
+        "Charge 1 (Stellar-Conduct)": ["lockedPassive", "stellarconductDmg2"],
+        "Charge 0 (Stellar Swirl)": ["lockedPassive", "stellarswirlDmg1"],
+        "Charge 1 (Stellar Swirl)": ["lockedPassive", "stellarswirlDmg2"],
+        "Ice Fog Piercer": ["skill", "skillDmg"],
+        "Frostpierce Star": ["skill", "crystalDmg"],
+        "Frostbound Javelin": ["burst", "javelinDmg"],
+        "Frostbound Javelin (Stellar-Conduct)": ["burst", "javelinStellarconductDmg"],
+        "Frostbound Javelin (Stellar Swirl)": ["burst", "javelinStellarswirlDmg"],
+    },
 
     travelerdendro: {
         "Razorgrass Blade": ["skill", "dmg"],
@@ -1038,11 +1073,17 @@ const characterAbils: Record<string, AbilsType> = {
         "Riff Revolution (DoT)": ["burst","dotPyroDmg"],
     },
 
-    // Missing ["skill","dmg3"] and ["skill","dmg4"] cause can't see Sesshou Sakura level (or number)
     yaemiko: {
         "Sesshou Sakura Tick": ["skill", "dmg2"],
+        "Sesshou Sakura Tick (Lvl 1)": ["skill", "dmg1"],
+        "Sesshou Sakura Tick (Lvl 2)": ["skill", "dmg2"],
+        "Sesshou Sakura Tick (Lvl 3)": ["skill", "dmg3"],
+        "Sesshou Sakura Tick (Lvl 4)": ["skill", "dmg4"],
+        "Sesshou Sakura (Stellar-Conduct)": ["lockedPassive", "dmg"],
         "Great Secret Art: Tenko Kenshin": ["burst", "dmg"],
         "Tenko Thunderbolt": ["burst", "tenkoDmg"],
+        "Yae A1": ["passive1", "dmg"],
+        "Yae A1 (Stellar-Conduct)": ["passive1", "stellarDmg"],
     },
 
     // Missing ["charged","1"] to ["charged","4"], all seal number variation which we can't see
@@ -1111,6 +1152,9 @@ const characterAbils: Record<string, AbilsType> = {
 export { defaultAbils, characterAbils };
 
 export default function (charName?: string) {
+    if (charName) {
+        charName = charName.replace(/^(aether|lumine)/, "traveler").replace(/^yumemizukimizuki$/, "mizuki");
+    }
     if (!charName || !characterAbils[charName]) {
         return defaultAbils;
     }

@@ -398,7 +398,7 @@
             const context: ErrorContext = { message: error };
 
             if (error.includes('Unknown ability')) {
-                const abilityName = error.match(/"([^"]+)"/)?.[1];
+                const abilityName = error.match(/^Unknown ability "(.+)"$/)?.[1];
                 if (abilityName && abilities) {
                     const ability = abilities.find(a => a.name === abilityName);
                     if (ability) {

@@ -2,6 +2,7 @@ import { describe, it, expect } from 'vitest';
 import * as path from 'path';
 import { readGZFromDisk } from './helpers/nodeReader';
 import { getCharacterAbils, getCustomDescription } from '../src/lib/gcsim-to-multiopt';
+import { isTransformativeReaction } from '../src/lib/gcsim-to-multiopt/reactions/classifiers';
 import { convertAbils } from '../src/lib/gcsim-to-multiopt/convert';
 import getAbilities from '../src/lib/gcsim-to-multiopt/config/abil_name';
 import { computeDefaultIgnored } from '../src/lib/gcsim-to-multiopt/config/default_ignored_mods';
@@ -74,6 +75,24 @@ describe('GCSim to MultiOpt Engine', () => {
 
             expect(Array.isArray(customDesc)).toBe(true);
         });
+
+        it('should convert all characters in estelar.gz with zero unknown ability or stat errors', () => {
+            const sample = readGZFromDisk(path.join(FIXTURES_DIR, 'estelar.gz'));
+            const chars = sample.character_details?.map(c => c.name) ?? [];
+            expect(chars).toEqual(['yumemizukimizuki', 'yaemiko', 'odette', 'luminecryo']);
+
+            for (const charName of chars) {
+                const [abilities, mods, char] = getCharacterAbils(sample, charName, []);
+                expect(abilities.length).toBeGreaterThan(0);
+                expect(mods.length).toBeGreaterThan(0);
+
+                const mapping = getAbilities(charName);
+                const [target, errors] = convertAbils(abilities, mapping, char);
+
+                expect(errors).toEqual([]);
+                expect(target.targets.length).toBeGreaterThan(0);
+            }
+        });
     });
 
     describe('Default ignored mods', () => {
@@ -82,6 +101,88 @@ describe('GCSim to MultiOpt Engine', () => {
             const ignored = computeDefaultIgnored(mods);
 
             expect(ignored).toContain('golden-troupe-2pc');
+        });
+    });
+
+    describe('Mathematical integrity against gcsim calc ground truth', () => {
+        it('should never inflate critRate_ or reaction DMG% beyond gcsim calc values across fixtures', () => {
+            const fixtureFiles = [
+                'Lunar.gz',
+                'electrocargadolunar.gz',
+                'estelar.gz',
+                'lauma2.gz',
+                'fallbacktest.gz',
+                'test1y1.gz',
+            ];
+
+            for (const file of fixtureFiles) {
+                const sample = readGZFromDisk(path.join(FIXTURES_DIR, file));
+                const chars = sample.character_details ?? [];
+
+                for (let charIdx = 0; charIdx < chars.length; charIdx++) {
+                    const charName = chars[charIdx].name;
+                    const [abilities] = getCharacterAbils(sample, charName, []);
+
+                    // Base crit rate from character stats-check or character details
+                    const baseCr =
+                        0.05 +
+                        (chars[charIdx].stats?.[9] ?? 0); // index 9 in gcsim stats array is CR from artifacts/substats/ascension
+
+                    for (const abil of abilities) {
+                        // 1. Check Ascendant Gleam cap: any Lunar reaction bonus without character-specific passives
+                        // must never exceed the gcsim calc react_bonus on direct talent hits at the same frame
+                        const matchingCalc = (sample.logs ?? []).find(
+                            l =>
+                                l.event === 'calc' &&
+                                l.char_index === charIdx &&
+                                l.frame === abil.frame &&
+                                l.logs?.abil === abil.name
+                        );
+
+                        if (matchingCalc && typeof matchingCalc.logs?.react_bonus === 'number') {
+                            const calcReactBonus = matchingCalc.logs.react_bonus;
+                            if (calcReactBonus > 0) {
+                                const lunarorStellarBuff =
+                                    (abil.buffs['lunarcharged%'] ?? 0) +
+                                    (abil.buffs['lunarcrystallize%'] ?? 0) +
+                                    (abil.buffs['lunarbloom%'] ?? 0) +
+                                    (abil.buffs['stellarconduct%'] ?? 0) +
+                                    (abil.buffs['stellarswirl%'] ?? 0);
+                                // Our extracted reaction DMG% buff must never exceed gcsim's total react_bonus
+                                expect(lunarorStellarBuff).toBeLessThanOrEqual(calcReactBonus + 1e-6);
+                            }
+                        }
+
+                        // 2. Check critRate_ buff is never double-counted beyond calc.cr
+                        if (
+                            matchingCalc &&
+                            typeof matchingCalc.logs?.cr === 'number' &&
+                            matchingCalc.logs.cr > 0 &&
+                            !isTransformativeReaction(abil.name)
+                        ) {
+                            const crBuff = abil.buffs['cr'] ?? 0;
+                            // Total CR (baseCr + crBuff) should not exceed calc.cr by more than rounding tolerance
+                            // (unless calc.cr was clamped to 1.0 by gcsim)
+                            if (matchingCalc.logs.cr < 1.0) {
+                                expect(baseCr + crBuff).toBeLessThanOrEqual(
+                                    matchingCalc.logs.cr + 0.01
+                                );
+                            }
+                        } else if (
+                            matchingCalc &&
+                            typeof matchingCalc.logs?.cr === 'number' &&
+                            isTransformativeReaction(abil.name) &&
+                            abil.name !== 'lunarcrystallize' &&
+                            abil.name !== 'lunarcharged'
+                        ) {
+                            // Transformative reactions (bloom, hyperbloom, burgeon) do not use character baseCr,
+                            // only reaction CR buffs (like Lauma A1 +15% CR).
+                            const crBuff = abil.buffs['cr'] ?? 0;
+                            expect(crBuff).toBeLessThanOrEqual(matchingCalc.logs.cr + 0.01);
+                        }
+                    }
+                }
+            }
         });
     });
 });
