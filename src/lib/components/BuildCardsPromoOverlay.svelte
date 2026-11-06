@@ -7,13 +7,13 @@
     export let promoUrl = 'https://www.khaenri.online/';
     export let demoImage = '/gcsim-to-multiopt/Mavuika_build.png';
     export let title = 'Build Cards for Genshin';
-    export let subtitle = 'Create cards ready to share with art, key stats, and your best builds.';
+    export let subtitle = 'Create aesthetic character cards ready to share with art, key stats, and your best builds.';
     export let highlights = [
         'Export your build to a clean and aesthetic image',
         'Share on Discord, Twitter, or wherever you want',
         'Show stats, sets, constellations, weapons, and more',
     ];
-    export let ctaText = 'Go to Build Cards';
+    export let ctaText = 'Explore Build Cards';
     export let galleryImages = [
         '/gcsim-to-multiopt/multi-card-simple.png',
         '/gcsim-to-multiopt/multi-card-full.png',
@@ -72,234 +72,253 @@
         };
     }
 
-    function handleKeydown(event: KeyboardEvent) {
-        if (event.key === 'Escape') {
-            closeOverlay();
-        }
-    }
-
     onMount(() => {
-        document.addEventListener('keydown', handleKeydown);
         restartRotation();
         return () => {
-            document.removeEventListener('keydown', handleKeydown);
             if (rotationId) clearInterval(rotationId);
         };
     });
 </script>
 
-<div class="overlay" role="dialog" aria-modal="true" aria-labelledby="promo-title" tabindex="-1">
-    <button class="backdrop" on:click={closeOverlay} aria-label="Close"></button>
-    <div class="promo-card">
-        <button class="close-btn" on:click={closeOverlay} aria-label="Close">
-            <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-            >
-                <line x1="18" y1="6" x2="6" y2="18"></line>
-                <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
-        </button>
+<aside class="promo-section" aria-labelledby="promo-title">
+    <button class="close-btn" on:click={closeOverlay} aria-label="Dismiss notice" title="Dismiss notice">
+        <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+        >
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+    </button>
 
-        <div class="content">
-            <div class="text">
-                <div class="badge">New</div>
-                <h2 id="promo-title">{title}</h2>
-                <p class="subtitle">{subtitle}</p>
-                <ul class="highlights">
-                    {#each highlights as item}
-                        <li>{item}</li>
-                    {/each}
-                </ul>
-                <div class="actions">
-                    <a
-                        class="btn primary"
-                        href={promoUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        {ctaText}
-                    </a>
-                </div>
+    <div class="promo-grid">
+        <div class="promo-info">
+            <div class="badge-row">
+                <span class="promo-badge">
+                    <span class="badge-dot"></span>
+                    <span>Sister Project</span>
+                </span>
             </div>
 
-            <div class="preview">
-                <button
-                    class="image-button"
-                    type="button"
-                    on:click={() => {
-                        nextImage();
-                        restartRotation();
-                    }}
-                    aria-label="Change image"
+            <h2 id="promo-title">{title}</h2>
+            <p class="subtitle">{subtitle}</p>
+
+            <ul class="highlights">
+                {#each highlights as item}
+                    <li>
+                        <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <span>{item}</span>
+                    </li>
+                {/each}
+            </ul>
+
+            <div class="actions">
+                <a
+                    class="cta-btn"
+                    href={promoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
                 >
-                    <div class="image-frame">
-                        <img class="image-layer base-image" src={prevImage} alt="" />
-                        {#key currentImage}
-                            <img
-                                class="image-layer top-image"
-                                src={currentImage}
-                                alt="Demo Build Card"
-                                loading="lazy"
-                                in:sweep={{ duration: 750 }}
-                            />
-                        {/key}
-                    </div>
-                </button>
-                <div class="caption">Real example generated with the tool</div>
-                <div class="preload" aria-hidden="true">
-                    {#each imageList as src}
-                        <img {src} alt="" loading="eager" />
-                    {/each}
+                    <span>{ctaText}</span>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                        <polyline points="15 3 21 3 21 9"></polyline>
+                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="promo-preview">
+            <button
+                class="image-button"
+                type="button"
+                on:click={() => {
+                    nextImage();
+                    restartRotation();
+                }}
+                aria-label="Click to preview next card design"
+                title="Click to preview next card design"
+            >
+                <div class="image-frame">
+                    <img class="image-layer base-image" src={prevImage} alt="" />
+                    {#key currentImage}
+                        <img
+                            class="image-layer top-image"
+                            src={currentImage}
+                            alt="Demo Build Card"
+                            loading="lazy"
+                            in:sweep={{ duration: 750 }}
+                        />
+                    {/key}
                 </div>
+            </button>
+            <div class="caption">Real example generated with the tool • Click to preview next</div>
+            <div class="preload" aria-hidden="true">
+                {#each imageList as src}
+                    <img {src} alt="" loading="eager" />
+                {/each}
             </div>
         </div>
     </div>
-</div>
+</aside>
 
-<style>
-    .overlay {
-        inset: 0;
-        background: rgba(6, 6, 16, 0.85);
-        backdrop-filter: blur(10px);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 1200;
-        padding: 24px;
-    }
-
-    .backdrop {
-        position: absolute;
-        inset: 0;
-        background: transparent;
-        border: none;
-        cursor: pointer;
-        z-index: 0;
-    }
-
-    .promo-card {
+<style lang="scss">
+    .promo-section {
         position: relative;
-        width: min(960px, 96vw);
-        z-index: 1;
-        background: linear-gradient(140deg, rgba(20, 20, 34, 0.98), rgba(34, 20, 48, 0.98));
-        border: 1px solid rgba(100, 108, 255, 0.6);
-        border-radius: 20px;
-        box-shadow:
-            0 24px 80px rgba(8, 12, 40, 0.6),
-            0 0 50px rgba(100, 108, 255, 0.2);
-        overflow: hidden;
+        background: rgba(18, 23, 34, 0.75);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 16px;
+        padding: 1.75rem 2rem;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        box-sizing: border-box;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+        &:hover {
+            border-color: rgba(99, 102, 241, 0.3);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35), 0 0 20px rgba(99, 102, 241, 0.1);
+        }
     }
 
     .close-btn {
         position: absolute;
-        top: 4px;
-        right: 4px;
-        background: rgba(12, 12, 24, 0.8);
+        top: 1rem;
+        right: 1rem;
+        background: rgba(255, 255, 255, 0.04);
         border: 1px solid rgba(255, 255, 255, 0.08);
-        color: #e4e5e7;
-        border-radius: 10px;
-        width: 34px;
-        height: 34px;
+        color: #94a3b8;
+        border-radius: 8px;
+        width: 30px;
+        height: 30px;
         display: grid;
         place-items: center;
         cursor: pointer;
-        transition:
-            transform 0.2s ease,
-            box-shadow 0.2s ease,
-            background 0.2s ease;
+        transition: all 0.2s ease;
+        z-index: 5;
+
+        &:hover {
+            color: #f8fafc;
+            background: rgba(239, 68, 68, 0.15);
+            border-color: rgba(239, 68, 68, 0.4);
+            transform: scale(1.05);
+        }
     }
 
-    .close-btn:hover {
-        transform: scale(1.05);
-        background: rgba(220, 38, 38, 0.8);
-        box-shadow: 0 0 12px rgba(220, 38, 38, 0.5);
-    }
-
-    .content {
+    .promo-grid {
         display: grid;
-        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-        gap: 28px;
-        padding: 40px;
+        grid-template-columns: 1.15fr 1fr;
+        gap: 2.25rem;
+        align-items: center;
     }
 
-    .text h2 {
-        margin: 12px 0 8px;
-        font-size: 2rem;
+    .badge-row {
+        margin-bottom: 0.75rem;
+    }
+
+    .promo-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        font-size: 0.72rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        padding: 0.25rem 0.7rem;
+        border-radius: 999px;
+        background: rgba(99, 102, 241, 0.12);
+        border: 1px solid rgba(99, 102, 241, 0.3);
+        color: #a5b4fc;
+
+        .badge-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #38bdf8;
+            box-shadow: 0 0 8px #38bdf8;
+        }
+    }
+
+    #promo-title {
+        margin: 0 0 0.5rem 0;
+        font-size: 1.6rem;
+        font-weight: 700;
+        letter-spacing: -0.015em;
         color: #f8fafc;
-        letter-spacing: 0.5px;
     }
 
     .subtitle {
-        margin: 0 0 20px;
-        color: #cbd5f5;
-        line-height: 1.6;
-    }
-
-    .badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 6px 14px;
-        background: rgba(0, 255, 231, 0.15);
-        border: 1px solid rgba(0, 255, 231, 0.4);
-        color: #00ffe7;
-        border-radius: 999px;
-        font-weight: 600;
-        text-transform: uppercase;
-        font-size: 0.75rem;
-        letter-spacing: 1px;
+        margin: 0 0 1.25rem 0;
+        color: #94a3b8;
+        font-size: 0.92rem;
+        line-height: 1.55;
     }
 
     .highlights {
-        margin: 0 0 24px;
-        padding-left: 18px;
-        color: #e2e8f0;
-        display: grid;
-        gap: 10px;
-    }
+        list-style: none;
+        padding: 0;
+        margin: 0 0 1.5rem 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
 
-    .highlights li::marker {
-        color: #00ffe7;
+        li {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            color: #cbd5e1;
+            font-size: 0.88rem;
+
+            .check-icon {
+                color: #38bdf8;
+                flex-shrink: 0;
+            }
+        }
     }
 
     .actions {
         display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
+        align-items: center;
+        gap: 1rem;
     }
 
-    .btn {
-        text-decoration: none;
-        padding: 12px 20px;
-        border-radius: 10px;
+    .cta-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.65rem 1.3rem;
+        border-radius: 8px;
+        background: linear-gradient(135deg, #6366f1 0%, #38bdf8 100%);
+        color: #ffffff;
         font-weight: 600;
-        transition:
-            transform 0.2s ease,
-            box-shadow 0.2s ease,
-            background 0.2s ease;
+        font-size: 0.875rem;
+        text-decoration: none;
+        box-shadow: 0 4px 15px rgba(99, 102, 241, 0.35);
+        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+        &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(99, 102, 241, 0.45);
+            filter: brightness(1.08);
+        }
     }
 
-    .btn.primary {
-        background: linear-gradient(135deg, #00ffe7 0%, #646cff 100%);
-        color: #0b0d1a;
-        border: 1px solid rgba(0, 255, 231, 0.6);
-    }
-
-    .btn.primary:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 24px rgba(0, 255, 231, 0.25);
-    }
-
-    .preview {
+    .promo-preview {
         display: flex;
         flex-direction: column;
-        gap: 14px;
         align-items: center;
+        width: 100%;
     }
 
     .image-button {
@@ -308,48 +327,54 @@
         background: transparent;
         cursor: pointer;
         width: 100%;
+        outline: none;
     }
 
     .image-frame {
         position: relative;
-        width: 426px;
-        background: rgba(12, 12, 28, 0.8);
-        border-radius: 16px;
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        padding: 12px;
-        box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.6);
+        width: 100%;
+        background: rgba(11, 14, 20, 0.6);
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 8px;
+        box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.6), 0 8px 20px rgba(0, 0, 0, 0.35);
         overflow: hidden;
         aspect-ratio: 2605 / 997;
-    }
+        transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 
-    .image-button:hover .image-frame {
-        transform: translateY(-2px);
-        box-shadow:
-            inset 0 0 20px rgba(0, 0, 0, 0.6),
-            0 12px 24px rgba(0, 0, 0, 0.35);
+        .image-button:hover & {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.4);
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.6), 0 12px 28px rgba(0, 0, 0, 0.45);
+        }
     }
 
     .image-layer {
         position: absolute;
         top: 0;
         left: 0;
-        width: calc(100% - 24px);
-        border-radius: 12px;
+        width: calc(100% - 16px);
+        border-radius: 8px;
         display: block;
         object-fit: cover;
-        will-change:
-            mask-image,
-            -webkit-mask-image;
+        will-change: mask-image, -webkit-mask-image;
     }
 
     .base-image {
         z-index: 1;
-        padding: 12px;
+        padding: 8px;
     }
 
     .top-image {
         z-index: 2;
-        padding: 12px;
+        padding: 8px;
+    }
+
+    .caption {
+        font-size: 0.76rem;
+        color: #64748b;
+        margin-top: 0.65rem;
+        text-align: center;
     }
 
     .preload {
@@ -359,45 +384,25 @@
         overflow: hidden;
         opacity: 0;
         pointer-events: none;
+
+        img {
+            width: 1px;
+            height: 1px;
+        }
     }
 
-    .preload img {
-        width: 1px;
-        height: 1px;
-    }
-
-    .caption {
-        font-size: 0.9rem;
-        color: #94a3b8;
-        text-align: center;
-    }
-
-    @media (max-width: 900px) {
-        .content {
+    @media (max-width: 860px) {
+        .promo-grid {
             grid-template-columns: 1fr;
-            padding: 32px 24px;
+            gap: 1.5rem;
         }
 
-        .promo-card {
-            width: min(720px, 94vw);
+        .promo-section {
+            padding: 1.5rem;
         }
 
-        .text h2 {
-            font-size: 1.6rem;
-        }
-    }
-
-    @media (max-width: 640px) {
-        .content {
-            padding: 28px 20px;
-        }
-
-        .actions {
-            flex-direction: column;
-        }
-
-        .btn {
-            text-align: center;
+        #promo-title {
+            font-size: 1.4rem;
         }
     }
 </style>

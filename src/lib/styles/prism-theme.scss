@@ -1,0 +1,45 @@
+code[class*='language-'] {
+    text-shadow: none !important;
+}
+
+pre[class*='language-'] {
+    text-shadow: none !important;
+}
+
+.token.property {
+    color: hsl(125, 100%, 60%) !important;
+}
+
+.token.property:has(+ .token.operator + .token.punctuation + .token.property) {
+    color: hsl(339, 100%, 60%) !important;
+}
+
+.token.property:has(
+    + .token.operator
+        + .token.punctuation
+        + .token.property:has(
+            + .token.operator + .token.punctuation + .token.property
+        )
+) {
+    color: hsl(4, 100%, 60%) !important;
+}
+
+.token.property:has(+ .token.operator + .token.number) {
+    color: hsl(36, 100%, 60%) !important;
+}
+
+.token.string {
+    color: hsl(187, 100%, 60%) !important;
+}
+
+.token.number {
+    color: hsl(59, 100%, 60%) !important;
+}
+
+.token.punctuation {
+    color: hsl(302, 100%, 60%) !important;
+}
+
+.token.operator {
+    color: #c9d1d9 !important;
+}

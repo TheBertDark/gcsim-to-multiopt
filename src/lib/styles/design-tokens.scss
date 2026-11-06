@@ -1,0 +1,45 @@
+// Modern Design Tokens for GCSim to GO-MultiOpt
+:root {
+    --bg-page: #0b0e14;
+    --bg-surface: #121722;
+    --bg-surface-elevated: #182030;
+    --bg-surface-glass: rgba(18, 23, 34, 0.75);
+    --border-subtle: rgba(255, 255, 255, 0.08);
+    --border-highlight: rgba(100, 108, 255, 0.3);
+    
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+
+    // Elemental Accents
+    --el-anemo: #2dd4bf;
+    --el-cryo: #7dd3fc;
+    --el-dendro: #a3e635;
+    --el-electro: #c084fc;
+    --el-geo: #fbbf24;
+    --el-hydro: #38bdf8;
+    --el-pyro: #ff5a50;
+
+    --brand-primary: #6366f1;
+    --brand-primary-hover: #4f46e5;
+    --brand-gradient: linear-gradient(135deg, #6366f1 0%, #38bdf8 50%, #ec4899 100%);
+    
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+    --radius-xl: 20px;
+    --radius-full: 9999px;
+
+    --shadow-card: 0 8px 30px rgba(0, 0, 0, 0.35);
+    --shadow-glow: 0 0 20px rgba(99, 102, 241, 0.25);
+}
+
+// Glassmorphism mixin helper
+@mixin glass-card {
+    background: var(--bg-surface-glass);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+}

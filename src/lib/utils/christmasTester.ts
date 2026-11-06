@@ -3,6 +3,8 @@
  * Forces the date to December to activate the Christmas theme
  */
 
+import type { ChristmasTesterType } from './types.d.ts';
+
 interface ThemeManager {
     forceThemeCheck(): void;
     getCurrentTheme(): string;
@@ -17,32 +19,34 @@ interface DebugStatus {
     currentTheme: string;
 }
 
-declare global {
-    interface Window {
-        themeManager?: ThemeManager;
-        christmasTester?: ChristmasTester;
-        activateChristmasTheme?: () => void;
-        deactivateChristmasTheme?: () => void;
-        toggleChristmasTheme?: () => void;
-        christmasDebug?: () => DebugStatus;
-        Date: DateConstructor;
-    }
-}
-
-class ChristmasTester {
+class ChristmasTester implements ChristmasTesterType {
     private originalDate: DateConstructor | null = null;
-    private isTestModeActive: boolean = false;
+    private isTestModeActiveState: boolean = false;
 
     constructor() {
         this.originalDate = null;
-        this.isTestModeActive = false;
+        this.isTestModeActiveState = false;
+    }
+
+    /**
+     * Enable test mode alias
+     */
+    enableTestMode(): void {
+        this.activateTestMode();
+    }
+
+    /**
+     * Disable test mode alias
+     */
+    disableTestMode(): void {
+        this.deactivateTestMode();
     }
 
     /**
      * Activate test mode by forcing the date to December
      */
     activateTestMode(): void {
-        if (this.isTestModeActive) {
+        if (this.isTestModeActiveState) {
             console.log('🎄 Christmas test mode is already active');
             return;
         }
@@ -84,7 +88,7 @@ class ChristmasTester {
         // Replace the global Date constructor
         window.Date = ChristmasDate as DateConstructor;
 
-        this.isTestModeActive = true;
+        this.isTestModeActiveState = true;
 
         console.log('🎄 Test mode activated - Simulating December');
         console.log('🎄 Current simulated date:', new Date().toString());
@@ -101,7 +105,7 @@ class ChristmasTester {
      * Deactivate test mode and restore the original Date constructor
      */
     deactivateTestMode(): void {
-        if (!this.isTestModeActive) {
+        if (!this.isTestModeActiveState) {
             console.log('🎄 Christmas test mode is not active');
             return;
         }
@@ -111,7 +115,7 @@ class ChristmasTester {
             window.Date = this.originalDate;
         }
 
-        this.isTestModeActive = false;
+        this.isTestModeActiveState = false;
 
         console.log('🎄 Test mode deactivated - Restored original date');
         console.log('🎄 Current real date:', new Date().toString());
@@ -128,7 +132,7 @@ class ChristmasTester {
      * Toggle test mode on/off
      */
     toggleTestMode(): void {
-        if (this.isTestModeActive) {
+        if (this.isTestModeActiveState) {
             this.deactivateTestMode();
         } else {
             this.activateTestMode();
@@ -139,7 +143,15 @@ class ChristmasTester {
      * Check if test mode is active
      */
     isActive(): boolean {
-        return this.isTestModeActive;
+        return this.isTestModeActiveState;
+    }
+
+    isTestModeActive(): boolean {
+        return this.isTestModeActiveState;
+    }
+
+    debugInfo(): DebugStatus {
+        return this.printDebugInfo();
     }
 
     /**
@@ -151,7 +163,7 @@ class ChristmasTester {
         const isDecember = month === 11;
 
         const status: DebugStatus = {
-            testModeActive: this.isTestModeActive,
+            testModeActive: this.isTestModeActiveState,
             currentDate: now.toString(),
             currentMonth: month + 1, // 1-indexed for display
             isDecember,
@@ -195,14 +207,16 @@ if (typeof window !== 'undefined') {
     
     // Add convenient global functions
     window.activateChristmasTheme = () => christmasTester.activateTestMode();
+    window.enableChristmasTest = () => christmasTester.activateTestMode();
     window.deactivateChristmasTheme = () => christmasTester.deactivateTestMode();
+    window.disableChristmasTest = () => christmasTester.deactivateTestMode();
     window.toggleChristmasTheme = () => christmasTester.toggleTestMode();
     window.christmasDebug = () => christmasTester.printDebugInfo();
 }
 
 console.log('🎄 Christmas Theme Tester loaded');
 console.log('🎄 Available commands:');
-console.log('  - activateChristmasTheme() - Force Christmas theme');
-console.log('  - deactivateChristmasTheme() - Disable Christmas theme');
+console.log('  - activateChristmasTheme() / christmasTester.enableTestMode() - Force Christmas theme');
+console.log('  - deactivateChristmasTheme() / christmasTester.disableTestMode() - Disable Christmas theme');
 console.log('  - toggleChristmasTheme() - Toggle Christmas theme');
 console.log('  - christmasDebug() - Show debug information');

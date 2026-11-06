@@ -8,7 +8,12 @@
 		"build": "vite build",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"generate:todo": "node scripts/generate-todo.cjs",
+		"generate:preview": "node scripts/generate-preview.cjs",
+		"debug:fallback": "node scripts/debug-fallback.cjs",
+		"test": "vitest run",
+		"test:watch": "vitest"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^3.0.0",
@@ -23,10 +28,12 @@
 		"svelte-check": "^4.0.0",
 		"svelte-copy": "^2.0.0",
 		"typescript": "^5.0.0",
-		"vite": "^5.0.3"
+		"vite": "^5.0.3",
+		"vitest": "^2.1.9"
 	},
 	"dependencies": {
 		"pako": "^2.1.0",
 		"prismjs": "^1.30.0"
-	}
+	},
+	"packageManager": "pnpm@11.2.2"
 }

@@ -1,289 +1,424 @@
+/* Christmas / Navidad Theme - Modernized for GCSim to GO-MultiOpt */
+/* Color Palette: Warm Starlight Gold, Festive Crimson Red, Holly Pine Green, Pure Snow White */
+
 :root.christmas-theme {
-    /* Color palette extracted from the Christmas image */
-    --christmas-red-primary: #c41e3a;
-    --christmas-red-dark: #8b0000;
-    --christmas-green-primary: #228b22;
-    --christmas-green-dark: #006400;
-    --christmas-gold: #ffd700;
-    --christmas-gold-dark: #b8860b;
-    --christmas-white: #fffaf0;
-    --christmas-cream: #f5f5dc;
-
-    /* Primary colors of the theme */
-    --christmas-primary: var(--christmas-red-primary);
-    --christmas-secondary: var(--christmas-green-primary);
-    --christmas-accent: var(--christmas-gold);
-    --christmas-dark: #2f1b14;
-    --christmas-darker: #1a0f0a;
-
-    /* Text colors optimized for readability on the background */
-    --christmas-text: var(--christmas-white);
-    --christmas-text-secondary: var(--christmas-gold);
-    --christmas-text-muted: var(--christmas-cream);
-    --christmas-text-dark: var(--christmas-dark);
-
-    /* Shadows and effects */
-    --christmas-shadow: 0 4px 20px rgba(196, 30, 58, 0.3);
-    --christmas-shadow-strong: 0 8px 30px rgba(196, 30, 58, 0.5);
-    --christmas-glow: 0 0 20px rgba(255, 215, 0, 0.6);
-    --christmas-text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-
-    /* Christmas-themed gradients */
-    --christmas-gradient-primary: linear-gradient(
-        135deg,
-        var(--christmas-red-primary) 0%,
-        var(--christmas-red-dark) 50%,
-        var(--christmas-green-dark) 100%
-    );
-
-    --christmas-gradient-secondary: linear-gradient(
-        45deg,
-        var(--christmas-green-primary) 0%,
-        var(--christmas-gold) 50%,
-        var(--christmas-red-primary) 100%
-    );
-
-    --christmas-gradient-accent: radial-gradient(
-        circle,
-        var(--christmas-gold) 0%,
-        var(--christmas-gold-dark) 70%,
-        var(--christmas-red-dark) 100%
-    );
+    --xmas-red: #dc2626;
+    --xmas-red-dark: #991b1b;
+    --xmas-green: #15803d;
+    --xmas-green-light: #22c55e;
+    --xmas-gold: #fbbf24;
+    --xmas-gold-light: #fef08a;
+    --xmas-card-bg: rgba(15, 26, 20, 0.88);
+    --xmas-card-border: rgba(251, 191, 36, 0.35);
+    --xmas-card-hover: rgba(251, 191, 36, 0.65);
+    --xmas-text: #ffffff;
+    --xmas-text-gold: #fef08a;
 }
 
-/* Aplicar el tema navideño al body */
 body.christmas-theme {
-    background: url('./Bacground-Navidad.png') center center / cover no-repeat fixed !important;
-    background-size: cover !important;
-    background-position: center center !important;
+    background-color: #08140f !important;
+    background-image: 
+        url('/gcsim-to-multiopt/Bacground-Navidad.png'),
+        radial-gradient(circle at 50% 0%, rgba(220, 38, 38, 0.22) 0%, transparent 60%),
+        radial-gradient(circle at 100% 50%, rgba(21, 128, 61, 0.2) 0%, transparent 50%) !important;
+    background-size: cover, 100% 100%, 100% 100% !important;
+    background-position: center center, center center, center center !important;
     background-attachment: fixed !important;
-    color: var(--christmas-text) !important;
+    color: var(--xmas-text) !important;
     position: relative;
-    min-height: 100vh;
+    transition: background-color 0.5s ease, color 0.5s ease;
 }
 
-/* Styles for main elements */
-.christmas-theme .character-select-wrapper,
-.christmas-theme .main-container,
-.christmas-theme .content-wrapper {
-    background: rgba(47, 27, 20, 0.85) !important;
-    border: 2px solid var(--christmas-gold) !important;
-    border-radius: 12px !important;
-    box-shadow: var(--christmas-shadow-strong) !important;
-    backdrop-filter: blur(10px) !important;
-    position: relative;
-    z-index: 2;
-}
-
-/* Christmas-themed buttons */
-.christmas-theme button,
-.christmas-theme .btn {
-    background: var(--christmas-gradient-primary) !important;
-    color: var(--christmas-white) !important;
-    border: 2px solid var(--christmas-gold) !important;
-    border-radius: 8px !important;
-    padding: 10px 20px !important;
-    font-weight: bold !important;
-    text-shadow: var(--christmas-text-shadow) !important;
-    box-shadow: var(--christmas-shadow) !important;
-    transition: all 0.3s ease !important;
-    position: relative;
-    z-index: 3;
-}
-
-.christmas-theme button:hover,
-.christmas-theme .btn:hover {
-    background: var(--christmas-gradient-secondary) !important;
-    box-shadow: var(--christmas-shadow-strong) !important;
-    transform: translateY(-2px) !important;
-    border-color: var(--christmas-white) !important;
-}
-
-/* Christmas-themed inputs and forms */
-.christmas-theme input,
-.christmas-theme select,
-.christmas-theme textarea {
-    border: 2px solid var(--christmas-gold) !important;
-    border-radius: 6px !important;
-    padding: 8px 12px !important;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1) !important;
-    position: relative;
-    z-index: 3;
-}
-
-.christmas-theme input:focus,
-.christmas-theme select:focus,
-.christmas-theme textarea:focus {
-    border-color: var(--christmas-red-primary) !important;
-    box-shadow: 0 0 10px rgba(196, 30, 58, 0.5) !important;
-    outline: none !important;
-}
-
-/* Christmas-themed headings */
-.christmas-theme h1,
-.christmas-theme h2,
-.christmas-theme h3,
-.christmas-theme h4,
-.christmas-theme h5,
-.christmas-theme h6 {
-    color: var(--christmas-gold) !important;
-    text-shadow: var(--christmas-text-shadow) !important;
-    font-weight: bold !important;
-    position: relative;
-    z-index: 3;
-}
-
-/* Main text */
-.christmas-theme p,
-.christmas-theme span,
-.christmas-theme div,
-.christmas-theme label {
-    color: var(--christmas-text) !important;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7) !important;
-    position: relative;
-    z-index: 3;
-}
-
-/* Christmas-themed links */
-.christmas-theme a {
-    color: var(--christmas-gold) !important;
-    text-decoration: none !important;
-    text-shadow: var(--christmas-text-shadow) !important;
-    transition: all 0.3s ease !important;
-    position: relative;
-    z-index: 3;
-}
-
-/* Christmas-themed scrollbars */
-.christmas-theme ::-webkit-scrollbar {
-    width: 12px;
-}
-
-.christmas-theme ::-webkit-scrollbar-track {
-    background: rgba(47, 27, 20, 0.5);
-    border-radius: 6px;
-}
-
-.christmas-theme ::-webkit-scrollbar-thumb {
-    background: var(--christmas-gradient-primary);
-    border-radius: 6px;
-    border: 2px solid var(--christmas-gold);
-}
-
-.christmas-theme ::-webkit-scrollbar-thumb:hover {
-    background: var(--christmas-gradient-secondary);
-}
-
-/* Specific application elements */
-.christmas-theme .logo,
-.christmas-theme .brand {
-    filter: drop-shadow(0 0 10px var(--christmas-gold)) !important;
-    position: relative;
-    z-index: 4;
-}
-
-/* Christmas-themed footer and navigation */
-.christmas-theme footer,
-.christmas-theme nav {
-    background: rgba(47, 27, 20, 0.9) !important;
-    border-top: 2px solid var(--christmas-gold) !important;
-    backdrop-filter: blur(10px) !important;
-    position: relative;
-    z-index: 2;
-}
-
-/* Christmas-themed notes container */
-.christmas-theme .custom-desc-note {
-    background: rgba(47, 27, 20, 0.95) !important;
-    border: 1px solid var(--christmas-gold) !important;
-    box-shadow: var(--christmas-shadow) !important;
-    backdrop-filter: blur(5px) !important;
-    padding: 1rem !important;
-    border-radius: 8px !important;
-    margin-bottom: 1.5rem !important;
-    position: relative; /* Create positioning context */
-    z-index: 20; /* Ensure it is above the mods grid (which might be z-index: 2 or auto) */
-}
-
-.christmas-theme .custom-desc-note .note-label {
-    color: var(--christmas-gold) !important;
-    font-weight: bold !important;
-    margin-right: 0.5rem !important;
-}
-
-/* Christmas-themed mods container */
-.christmas-theme .mods-grid {
-    background: linear-gradient(145deg, rgba(40, 20, 20, 0.85), rgba(20, 10, 10, 0.95)) !important;
-    border: 1px solid rgba(255, 215, 0, 0.4) !important;
-    border-top: 1px solid rgba(255, 215, 0, 0.7) !important;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 0 40px rgba(196, 30, 58, 0.15) !important;
-    backdrop-filter: blur(12px) !important;
-    padding: 1.5rem !important;
-    border-radius: 16px !important;
-    margin-top: 1.5rem !important;
-    position: relative;
-    overflow: hidden;
-}
-
-/* Decorative shine effect for mods container */
-.christmas-theme .mods-grid::before {
+/* Falling Snow Animation Layers */
+body.christmas-theme::before,
+body.christmas-theme::after {
     content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--christmas-gold), transparent);
-    opacity: 0.5;
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
 }
 
-/* Christmas-themed mod boxes/buttons */
-.christmas-theme .mod-box {
-    position: relative;
-    z-index: 3;
-    transition: all 0.3s ease !important;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8) !important;
-    font-weight: 600 !important;
+body.christmas-theme::before {
+    background-image: 
+        radial-gradient(3px 3px at 20px 30px, rgba(255, 255, 255, 0.8), transparent),
+        radial-gradient(2px 2px at 40px 70px, rgba(255, 255, 255, 0.6), transparent),
+        radial-gradient(3.5px 3.5px at 90px 40px, rgba(255, 255, 255, 0.9), transparent),
+        radial-gradient(2px 2px at 160px 120px, rgba(255, 255, 255, 0.5), transparent),
+        radial-gradient(2.5px 2.5px at 230px 80px, rgba(255, 255, 255, 0.7), transparent);
+    background-size: 260px 260px;
+    animation: gentleSnowFall 14s linear infinite;
 }
 
-.christmas-theme .mod-box.active {
-    background: linear-gradient(135deg, #228b22 0%, #006400 100%) !important;
-    border: 1px solid var(--christmas-gold) !important;
-    box-shadow: 0 0 8px rgba(34, 139, 34, 0.6) !important;
-    opacity: 1 !important;
+body.christmas-theme::after {
+    background-image: 
+        radial-gradient(1.5px 1.5px at 50px 15px, rgba(254, 240, 138, 0.6), transparent),
+        radial-gradient(2px 2px at 110px 95px, rgba(255, 255, 255, 0.6), transparent),
+        radial-gradient(2.5px 2.5px at 180px 45px, rgba(254, 240, 138, 0.7), transparent),
+        radial-gradient(1.5px 1.5px at 240px 140px, rgba(255, 255, 255, 0.5), transparent);
+    background-size: 320px 320px;
+    animation: gentleSnowFall 22s linear infinite;
+    opacity: 0.75;
 }
 
-.christmas-theme .mod-box.inactive {
-    background: linear-gradient(135deg, rgba(139, 0, 0, 0.8), rgba(80, 0, 0, 0.8)) !important;
-    border: 1px solid #8b0000 !important;
-    color: #e0e0e0 !important;
-    opacity: 0.9 !important;
+@keyframes gentleSnowFall {
+    0% { transform: translateY(-320px); }
+    100% { transform: translateY(100vh); }
 }
 
-.christmas-theme .mod-box:hover {
-    transform: translateY(-2px) !important;
-    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4) !important;
-    border-color: var(--christmas-white) !important;
-    z-index: 10 !important;
+/* Header & Animated Title */
+body.christmas-theme .gradient-animated-title {
+    background: linear-gradient(135deg, #ffffff 0%, #fef08a 25%, #ef4444 60%, #22c55e 100%) !important;
+    background-size: 250% 250% !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    filter: drop-shadow(0 4px 18px rgba(220, 38, 38, 0.5)) drop-shadow(0 0 10px rgba(251, 191, 36, 0.4)) !important;
 }
 
-/* Smooth animations for transitions */
-.christmas-theme * {
-    transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease !important;
+body.christmas-theme .hero-subtitle {
+    color: #fef08a !important;
+    text-shadow: 0 0 10px rgba(251, 191, 36, 0.4) !important;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    body.christmas-theme::before,
-    body.christmas-theme::after {
-        background-size: 200px 200px, 150px 150px, 250px 250px, 120px 120px, 180px 180px,
-            100px 100px, 130px 130px, 90px 90px;
+body.christmas-theme .credit {
+    background: rgba(251, 191, 36, 0.1) !important;
+    border: 1px solid rgba(251, 191, 36, 0.35) !important;
+    box-shadow: 0 0 15px rgba(251, 191, 36, 0.2) !important;
+    color: #fef08a !important;
+
+    code {
+        color: #ef4444 !important;
+        text-shadow: 0 0 8px rgba(239, 68, 68, 0.6) !important;
+    }
+}
+
+/* Universal Card Styling */
+body.christmas-theme .upload-card,
+body.christmas-theme .controls-card,
+body.christmas-theme .modifiers-card,
+body.christmas-theme .output-card,
+body.christmas-theme .promo-section {
+    background: rgba(14, 25, 18, 0.88) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(251, 191, 36, 0.35) !important;
+    border-radius: 16px !important;
+    box-shadow: 
+        0 10px 35px rgba(0, 0, 0, 0.55),
+        0 0 25px rgba(220, 38, 38, 0.15) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+body.christmas-theme .upload-card:hover,
+body.christmas-theme .controls-card:hover,
+body.christmas-theme .modifiers-card:hover,
+body.christmas-theme .output-card:hover,
+body.christmas-theme .promo-section:hover {
+    border-color: rgba(251, 191, 36, 0.65) !important;
+    box-shadow: 
+        0 14px 45px rgba(0, 0, 0, 0.65),
+        0 0 35px rgba(251, 191, 36, 0.25) !important;
+}
+
+/* Upload Drop Zone */
+body.christmas-theme .upload-card {
+    border-style: dashed !important;
+    border-color: rgba(251, 191, 36, 0.45) !important;
+
+    &:hover, &.dragging {
+        border-color: #ef4444 !important;
+        background: rgba(24, 38, 28, 0.92) !important;
+        box-shadow: 0 14px 45px rgba(220, 38, 38, 0.35) !important;
     }
 
-    .christmas-theme .character-select-wrapper,
-    .christmas-theme .main-container,
-    .christmas-theme .content-wrapper {
-        margin: 10px !important;
-        border-radius: 8px !important;
+    .icon-bubble {
+        background: rgba(251, 191, 36, 0.15) !important;
+        border: 1px solid rgba(251, 191, 36, 0.45) !important;
+        color: #fbbf24 !important;
+        box-shadow: 0 0 15px rgba(251, 191, 36, 0.35) !important;
+    }
+
+    .upload-title {
+        color: #ffffff !important;
+        text-shadow: 0 0 10px rgba(251, 191, 36, 0.4) !important;
+    }
+
+    .upload-subtitle {
+        color: #fef08a !important;
+    }
+
+    .upload-badges .badge {
+        background: rgba(220, 38, 38, 0.2) !important;
+        border-color: rgba(220, 38, 38, 0.5) !important;
+        color: #fca5a5 !important;
+    }
+
+    &.loaded {
+        border-style: solid !important;
+        border-color: rgba(251, 191, 36, 0.6) !important;
+
+        .file-name {
+            color: #fef08a !important;
+            text-shadow: 0 0 8px rgba(254, 240, 138, 0.6) !important;
+        }
+
+        .file-status {
+            color: #4ade80 !important;
+
+            .status-dot {
+                background: #22c55e !important;
+                box-shadow: 0 0 10px #22c55e !important;
+            }
+        }
+
+        .change-file-btn {
+            background: rgba(220, 38, 38, 0.2) !important;
+            border-color: rgba(220, 38, 38, 0.45) !important;
+            color: #fecaca !important;
+
+            &:hover {
+                background: rgba(220, 38, 38, 0.4) !important;
+                border-color: #ef4444 !important;
+            }
+        }
+    }
+}
+
+/* Mascot Bear Glow */
+body.christmas-theme .upload-image {
+    filter: 
+        drop-shadow(0 14px 28px rgba(0, 0, 0, 0.85))
+        drop-shadow(0 0 20px rgba(220, 38, 38, 0.55))
+        drop-shadow(0 0 35px rgba(251, 191, 36, 0.35)) !important;
+}
+
+/* Step Badges */
+body.christmas-theme .step-label {
+    color: #ffffff !important;
+
+    .step-number {
+        background: linear-gradient(135deg, #dc2626 0%, #15803d 100%) !important;
+        color: #ffffff !important;
+        box-shadow: 0 0 12px rgba(220, 38, 38, 0.5) !important;
+    }
+}
+
+/* Character Pills */
+body.christmas-theme .character-pill {
+    background: rgba(22, 36, 26, 0.75) !important;
+    border: 1px solid rgba(251, 191, 36, 0.25) !important;
+    color: #f8fafc !important;
+
+    &:hover {
+        border-color: rgba(251, 191, 36, 0.6) !important;
+        background: rgba(251, 191, 36, 0.12) !important;
+        box-shadow: 0 0 15px rgba(251, 191, 36, 0.25) !important;
+        transform: translateY(-2px);
+    }
+
+    &.selected {
+        border-color: #fbbf24 !important;
+        background: rgba(251, 191, 36, 0.2) !important;
+        box-shadow: 0 0 20px rgba(251, 191, 36, 0.45) !important;
+
+        .char-name {
+            color: #fef08a !important;
+            font-weight: 700 !important;
+        }
+
+        .active-indicator {
+            background: #ef4444 !important;
+            box-shadow: 0 0 8px #ef4444 !important;
+        }
+    }
+}
+
+/* Input & Generate Button */
+body.christmas-theme .input-field .label-text {
+    color: #fef08a !important;
+}
+
+body.christmas-theme .input-wrapper input {
+    background: rgba(10, 18, 12, 0.85) !important;
+    border: 1px solid rgba(251, 191, 36, 0.4) !important;
+    color: #ffffff !important;
+
+    &:focus {
+        border-color: #fbbf24 !important;
+        box-shadow: 0 0 15px rgba(251, 191, 36, 0.45) !important;
+    }
+}
+
+body.christmas-theme .generate-btn {
+    background: linear-gradient(135deg, #dc2626 0%, #15803d 100%) !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 18px rgba(220, 38, 38, 0.5) !important;
+    border: 1px solid rgba(251, 191, 36, 0.5) !important;
+
+    &:hover {
+        box-shadow: 0 6px 26px rgba(251, 191, 36, 0.6) !important;
+        filter: brightness(1.12) !important;
+        transform: translateY(-2px) !important;
+    }
+}
+
+/* Modifiers & Buffs */
+body.christmas-theme .count-pill.active {
+    background: rgba(21, 128, 61, 0.25) !important;
+    border-color: #22c55e !important;
+    color: #4ade80 !important;
+    box-shadow: 0 0 8px rgba(34, 197, 94, 0.3) !important;
+}
+
+body.christmas-theme .count-pill.ignored {
+    background: rgba(220, 38, 38, 0.25) !important;
+    border-color: #ef4444 !important;
+    color: #f87171 !important;
+    box-shadow: 0 0 8px rgba(239, 68, 68, 0.3) !important;
+}
+
+body.christmas-theme .info-bubble {
+    background: rgba(251, 191, 36, 0.2) !important;
+    border-color: rgba(251, 191, 36, 0.5) !important;
+    color: #fef08a !important;
+}
+
+body.christmas-theme .mod-chip {
+    background: rgba(20, 32, 24, 0.75) !important;
+    border: 1px solid rgba(34, 197, 94, 0.4) !important;
+    color: #f0fdf4 !important;
+
+    .state-tag {
+        background: rgba(34, 197, 94, 0.25) !important;
+        color: #4ade80 !important;
+    }
+
+    &:hover {
+        border-color: #fbbf24 !important;
+        box-shadow: 0 0 15px rgba(251, 191, 36, 0.35) !important;
+        transform: translateY(-2px);
+    }
+
+    &.ignored {
+        background: rgba(38, 16, 20, 0.65) !important;
+        border-color: rgba(220, 38, 38, 0.35) !important;
+        color: #fca5a5 !important;
+
+        .state-tag {
+            background: rgba(220, 38, 38, 0.25) !important;
+            color: #fca5a5 !important;
+        }
+
+        &:hover {
+            box-shadow: 0 0 12px rgba(220, 38, 38, 0.4) !important;
+        }
+    }
+}
+
+body.christmas-theme .custom-desc-note {
+    background: rgba(20, 32, 24, 0.9) !important;
+    border: 1px solid rgba(251, 191, 36, 0.4) !important;
+    box-shadow: 0 0 18px rgba(251, 191, 36, 0.2) !important;
+
+    .note-badge {
+        background: rgba(251, 191, 36, 0.2) !important;
+        border-color: rgba(251, 191, 36, 0.5) !important;
+        color: #fef08a !important;
+    }
+}
+
+/* Output Viewer */
+body.christmas-theme .code-output-wrapper {
+    background: #08120c !important;
+    border: 1px solid rgba(251, 191, 36, 0.4) !important;
+    box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.8), 0 0 25px rgba(251, 191, 36, 0.2) !important;
+}
+
+body.christmas-theme .output-badge {
+    background: rgba(251, 191, 36, 0.15) !important;
+    border-color: rgba(251, 191, 36, 0.4) !important;
+    color: #fef08a !important;
+}
+
+body.christmas-theme .copy-btn {
+    background: linear-gradient(135deg, #dc2626 0%, #15803d 100%) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(251, 191, 36, 0.4) !important;
+    box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4) !important;
+
+    &:hover {
+        box-shadow: 0 6px 22px rgba(251, 191, 36, 0.6) !important;
+        transform: translateY(-2px);
+    }
+}
+
+/* Sister Project Promo Section */
+body.christmas-theme .promo-section {
+    .promo-badge {
+        background: rgba(251, 191, 36, 0.18) !important;
+        border-color: rgba(251, 191, 36, 0.5) !important;
+        color: #fef08a !important;
+    }
+
+    #promo-title {
+        color: #ffffff !important;
+    }
+
+    .cta-btn {
+        background: linear-gradient(135deg, #dc2626 0%, #15803d 100%) !important;
+        border: 1px solid rgba(251, 191, 36, 0.5) !important;
+        box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4) !important;
+    }
+
+    .image-frame {
+        border-color: rgba(251, 191, 36, 0.35) !important;
+    }
+}
+
+/* Welcome Modal */
+body.christmas-theme .modal {
+    background: rgba(15, 26, 20, 0.95) !important;
+    border: 1px solid rgba(251, 191, 36, 0.5) !important;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7), 0 0 30px rgba(220, 38, 38, 0.25) !important;
+
+    .progress-fill {
+        background: linear-gradient(90deg, #dc2626 0%, #15803d 50%, #fbbf24 100%) !important;
+        box-shadow: 0 0 12px rgba(251, 191, 36, 0.6) !important;
+    }
+
+    .continue-btn {
+        background: linear-gradient(135deg, #dc2626 0%, #15803d 100%) !important;
+        color: #ffffff !important;
+        border: 1px solid rgba(251, 191, 36, 0.4) !important;
+        box-shadow: 0 4px 16px rgba(220, 38, 38, 0.4) !important;
+    }
+}
+
+/* Footer */
+body.christmas-theme footer {
+    background: rgba(10, 20, 14, 0.92) !important;
+    border-top: 1px solid rgba(251, 191, 36, 0.3) !important;
+    box-shadow: 0 -4px 25px rgba(0, 0, 0, 0.4) !important;
+
+    .upstream-link {
+        color: #fbbf24 !important;
+
+        &:hover {
+            color: #ffffff !important;
+            text-shadow: 0 0 8px rgba(251, 191, 36, 0.5) !important;
+        }
+    }
+
+    .footer-separator {
+        background: rgba(251, 191, 36, 0.2) !important;
+    }
+
+    .support-title {
+        color: #fbbf24 !important;
+    }
+
+    .footer-icon:hover {
+        box-shadow: 0 0 15px rgba(251, 191, 36, 0.5) !important;
+        border-color: #fbbf24 !important;
     }
 }

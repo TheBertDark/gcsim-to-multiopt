@@ -116,6 +116,8 @@ const characterAbils: Record<string, AbilsType> = {
         "Prophecies of Dawn": ["burst", "dmg"],
     },
 
+    alyosha: {},
+
     amber: {
         "Baron Bunny": ["skill", "dmg"],
         "Fiery Rain": ["burst", "dmgPerWave"],
@@ -589,12 +591,16 @@ const characterAbils: Record<string, AbilsType> = {
         "Starlight Slug":["burst","slugDmg"],
     },
 
+    linnea: {},
+
     lisa: {
         "Violet Arc (Press)": ["skill", "press"],
         "Violet Arc (Hold)": ["skill", "stack0"],
         "Lightning Rose (Initial)": ["burst", "summon"],
         "Lightning Rose (Tick)": ["burst", "tick"],
     },
+
+    lohen: {},
 
     lynette: {
         "Normal 3": ["normal", "4"],
@@ -638,6 +644,8 @@ const characterAbils: Record<string, AbilsType> = {
         "Rimestar Flare": ["skill", "flareDmg"],
         "Rimestar Shard": ["skill", "shardDmg"],
     },
+
+    mitya: {},
 
     mizuki: {
         "Aisa Utamakura Pilgrimage": ["skill", "skillDmg"],
@@ -689,6 +697,8 @@ const characterAbils: Record<string, AbilsType> = {
         "Charged Attack: Equitable Judgment (C6)": ["constellation6", "currentDmg"],
     },
 
+    nicole: {},
+
     nilou: {
         "Water Wheel": ["skill", "wheelDmg"],
         "Sword Dance 0": ["skill", "dance1Dmg"],
@@ -722,6 +732,8 @@ const characterAbils: Record<string, AbilsType> = {
         "Breastplate (C4)": ["constellation4", "dmg"],
     },
 
+    odette: {},
+
     ororon: {
         "Spirit Orb DMG": ["skill", "dmg"],
         "Ritual DMG": ["burst", "activationDmg"],
@@ -729,6 +741,8 @@ const characterAbils: Record<string, AbilsType> = {
         "Hypersense": ["passive1", "dmg"],
         "Hypersense (C6)": ["constellation6", "dmg"],
     },
+
+    prune: {},
 
     qiqi: {
         "Herald of Frost: Initial Damage": ["skill", "castDmg"],
@@ -770,6 +784,8 @@ const characterAbils: Record<string, AbilsType> = {
         "Rites of Termination (Initial 2)": ["burst", "hit2"],
         "Rites of Termination (DoT)": ["burst", "dotDmg"],
     },
+
+    sandrone: {},
 
     sara: {
         "Fully-Charged Aimed Shot (A1)": ["charged", "fullyAimed"],
@@ -882,6 +898,8 @@ const characterAbils: Record<string, AbilsType> = {
         "Slitting Wind (A1)": ["passive1", "dmg"],
     },
 
+    travelercryo: {},
+
     travelerdendro: {
         "Razorgrass Blade": ["skill", "dmg"],
         "Lea Lotus Lamp": ["burst", "lampDmg"],
@@ -915,6 +933,8 @@ const characterAbils: Record<string, AbilsType> = {
         "Plains Scorcher": ["burst", "dmg"],
     },
 
+    valeriy: {},
+
     varesa: {
         "Fiery Passion 0": ["normal", "fp0"],
         "Fiery Passion 1": ["normal", "fp1"],
@@ -931,6 +951,8 @@ const characterAbils: Record<string, AbilsType> = {
         "Volcano Kablam": ["burst", "volcanoDmg"],
     },
 
+    varka: {},
+
     venti: {
         "Skyward Sonnett (Press)": ["skill", "press"],
         "Skyward Sonnett (Hold)": ["skill", "hold"],
@@ -939,6 +961,10 @@ const characterAbils: Record<string, AbilsType> = {
         "Aimed Shot (C1)": ["constellation1", "aimed"],
         "Fully-Charged Aimed Shot (C1)": ["constellation1", "fully"],
     },
+
+    vesna: {},
+
+    vodyanitsa: {},
 
     wanderer: {
         "Normal 0 (Windfavored)": ["normal", "0"],

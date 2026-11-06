@@ -1,5 +1,3 @@
-import * as fs from 'fs';
-import * as zlib from 'zlib';
 
 import type { Character, LogDetails, Sample } from './gcsim_types';
 import type { AbilInfo, Buffs, Mods, Resist } from './types';
@@ -8,16 +6,6 @@ import type { CustomMultiTarget } from './go_types';
 import getAbilities from './config/abil_name';
 import { convertAbils } from './convert';
 
-export function readJSON(input: string): Sample {
-    const data = fs.readFileSync(input, 'utf-8');
-    return JSON.parse(data) as Sample;
-}
-
-export function readGZ(input: string): Sample {
-    const data = fs.readFileSync(input);
-    const unzip = zlib.inflateSync(data);
-    return JSON.parse(unzip.toString('utf-8')) as Sample;
-}
 
 const buffNumberRegex = /(\w+%?):\s*(\S+)/;
 

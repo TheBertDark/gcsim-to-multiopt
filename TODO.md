@@ -5,12 +5,12 @@ Mark characters as their abilities are added.
 
 ---
 
-**Updated:** 21/02/26, 10:44 p.m.
+**Updated:** 05/11/26, 9:07 p.m.
 
-- Total characters: 116
+- Total characters: 129
 - Mapped: 109
-- Pending: 7
-- Completion percentage: 94.0%
+- Pending: 20
+- Completion percentage: 84.5%
 
 ## Character Status
 
@@ -20,6 +20,7 @@ Mark characters as their abilities are added.
 | Albedo | ✅ |
 | Alhaitham | ✅ |
 | Aloy | ✅ |
+| Alyosha | ⬜ |
 | Amber | ✅ |
 | Arlecchino | ✅ |
 | Ayaka | ✅ |
@@ -78,11 +79,14 @@ Mark characters as their abilities are added.
 | Lanyan | ✅ |
 | Lauma | ✅ |
 | Layla | ✅ |
+| Linnea | ⬜ |
 | Lisa | ✅ |
+| Lohen | ⬜ |
 | Lynette | ✅ |
 | Lyney | ✅ |
 | Mavuika | ✅ |
 | Mika | ✅ |
+| Mitya | ⬜ |
 | Mizuki | ✅ |
 | Mona | ✅ |
 | Mualani | ✅ |
@@ -90,14 +94,18 @@ Mark characters as their abilities are added.
 | Navia | ✅ |
 | Nefer | ⬜ |
 | Neuvillette | ✅ |
+| Nicole | ⬜ |
 | Nilou | ✅ |
 | Ningguang | ✅ |
 | Noelle | ✅ |
+| Odette | ⬜ |
 | Ororon | ✅ |
+| Prune | ⬜ |
 | Qiqi | ✅ |
 | Raiden | ✅ |
 | Razor | ✅ |
 | Rosaria | ✅ |
+| Sandrone | ⬜ |
 | Sara | ✅ |
 | Sayu | ✅ |
 | Sethos | ✅ |
@@ -109,13 +117,18 @@ Mark characters as their abilities are added.
 | Thoma | ✅ |
 | Tighnari | ✅ |
 | Traveler Anemo | ✅ |
+| Traveler Cryo | ⬜ |
 | Traveler Dendro | ✅ |
 | Traveler Electro | ✅ |
 | Traveler Geo | ✅ |
 | Traveler Hydro | ✅ |
 | Traveler Pyro | ✅ |
+| Valeriy | ⬜ |
 | Varesa | ✅ |
+| Varka | ⬜ |
 | Venti | ✅ |
+| Vesna | ⬜ |
+| Vodyanitsa | ⬜ |
 | Wanderer | ✅ |
 | Wriothesley | ✅ |
 | Xiangling | ✅ |

@@ -5,6 +5,7 @@ node_modules
 .vercel
 /.svelte-kit
 /build
+/dist
 
 # OS
 .DS_Store
@@ -20,6 +21,8 @@ Thumbs.db
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 
-# Generate
-generate-preview.cjs
-generate-todo.cjs
+# Temporary / Debug files
+*.log
+
+# Agent & IDE
+.agent/
