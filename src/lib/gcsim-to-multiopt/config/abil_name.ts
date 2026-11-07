@@ -208,7 +208,7 @@ const characterAbils: Record<string, AbilsType> = {
     },
 
     charlotte: {
-        "Spiritbreath Thorn (Charlotte)": ["charged", "thornDmg"],
+        "Spiritbreath Thorn (charlotte)": ["charged", "thornDmg"],
         "Framing: Freezing Point Composition": ["skill", "photoPressDmg"],
         "Framing: Freezing Point Composition (Hold)": ["skill", "photoHoldDmg"],
         "Snappy Silhouette Mark": ["skill", "snapMarkDmg"],
@@ -245,7 +245,7 @@ const characterAbils: Record<string, AbilsType> = {
         "Short-Range Rapid Interdiction Fire": ["skill", "pressDmg"],
         "Short-Range Rapid Interdiction Fire [Hold]": ["skill", "holdDmg"],
         "Short-Range Rapid Interdiction Fire [Overcharged]": ["skill", "ballDmg"],
-        "Surging Blade (Chevreuse)": ["skill", "bladeDmg"],
+        "Surging Blade (chevreuse)": ["skill", "bladeDmg"],
         "Explosive Grenade": ["burst", "grenadeDmg"],
         "Secondary Explosive Shell": ["burst", "shellDmg"],
         "Sniper Induced Explosion (C2)": ["constellation2", "dmg"],
@@ -383,7 +383,7 @@ const characterAbils: Record<string, AbilsType> = {
     escoffier: {
         "Low-Temperature Cooking": ["skill", "skillDmg"],
         "Frosty Parfait": ["skill", "parfaitDmg"],
-        "Surging Blade (Escoffier)": ["skill", "bladeDmg"],
+        "Surging Blade (escoffier)": ["skill", "bladeDmg"],
         "Scoring Cuts": ["burst", "skillDmg"],
         "Special-Grade Frozen Parfait (C6)": ["constellation6", "dmg"],
     },
@@ -447,8 +447,8 @@ const characterAbils: Record<string, AbilsType> = {
     },
 
     furina: {
-        "Spiritbreath Thorn (Furina)": ["normal", "thornBladeDmg"],
-        "Surging Blade (Furina)": ["normal", "thornBladeDmg"],
+        "Spiritbreath Thorn (furina)": ["normal", "thornBladeDmg"],
+        "Surging Blade (furina)": ["normal", "thornBladeDmg"],
         "Charge Pneuma": ["charged", "dmg"],
         "Charge Ousia": ["charged", "dmg"],
         "Salon Solitaire: Ousia Bubble": ["skill", "bubbleDmg"],
@@ -687,7 +687,7 @@ const characterAbils: Record<string, AbilsType> = {
     lynette: {
         "Normal 3": ["normal", "4"],
         "Enigmatic Feint":["skill","thrustDmg"],
-        "Surging Blade (Lynette)":["skill","bladeDmg"],
+        "Surging Blade (lynette)":["skill","bladeDmg"],
         "Magic Trick: Astonishing Shift":["burst","dmg"],
         "Bogglecat Box":["burst","boxDmg"],
         "Vivid Shot":["burst","shotDmg"],
@@ -696,7 +696,7 @@ const characterAbils: Record<string, AbilsType> = {
     lyney: {
         "Fully-Charged Aimed Shot (Prop Arrow)" :["charged","prop"],
         "Pyrotechnic Strike": ["charged","pyrotechnic"],
-        "Spiritbreath Thorn (Lyney)": ["charged","spiritbreath"],
+        "Spiritbreath Thorn (lyney)": ["charged","spiritbreath"],
         "Bewildering Lights": ["skill","dmg"],
         "Wondrous Trick: Miracle Parade": ["burst","dmg"],
         "Wondrous Trick: Miracle Parade (Explosive Firework)": ["burst","fireworkDmg"],
@@ -792,7 +792,7 @@ const characterAbils: Record<string, AbilsType> = {
         "Charged Attack: Equitable Judgment": ["charged", "judgmentDmg"],
         "O Tides, I Have Returned: Waterfall DMG": ["burst", "waterfallDmg"],
         "O Tides, I Have Returned: Skill DMG": ["burst", "skillDmg"],
-        "Spiritbreath Thorn (Neuvillette)": ["skill", "thornDmg"],
+        "Spiritbreath Thorn (neuvillette)": ["skill", "thornDmg"],
         "O Tears, I Shall Repay": ["skill", "skillDmg"],
         "Charged Attack: Equitable Judgment (C6)": ["constellation6", "currentDmg"],
     },
@@ -969,7 +969,7 @@ const characterAbils: Record<string, AbilsType> = {
     sigewinne: {
         "Mini-Stration Bubble": ["charged", "bubble"],
         "Rebound Hydrotherapy": ["skill", "dmg"],
-        "Spiritbreath Thorn (Sigewinne)": ["skill", "bladeDmg"],
+        "Spiritbreath Thorn (sigewinne)": ["skill", "bladeDmg"],
         "Super Saturated Syringing": ["burst", "spoutDmg"],
     },
 
