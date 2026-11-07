@@ -92,10 +92,19 @@ const defaultAbils: AbilsType = {
 
     // Artifacts
     "Sea-Dyed Foam": ["artifact:OceanHuedClam", "heal"], // Make a better logic for it
+
+    // Team-shared abilities (Nicole)
+    "Arcane Projection": ["nicole", "burstArcaneProjectionDmg"],
+    "Arcane Projection: Unity": ["nicole", "c1ArcaneProjectionUnityDmg"]
 };
 
 const characterAbils: Record<string, AbilsType> = {
-    aino: {},
+    aino: {
+        "Musecatcher 0": ["skill", "dmg1"],
+        "Musecatcher 1": ["skill", "dmg2"],
+        "Cool Your Jets Ducky": ["burst", "ballDmg"],
+        "Cool Your Jets Ducky (C2)": ["constellation2", "dmg"],
+    },
 
     albedo: {
         "Abiogenesis: Solar Isotoma (Initial)": ["skill", "dmg"],
@@ -121,7 +130,13 @@ const characterAbils: Record<string, AbilsType> = {
         "Prophecies of Dawn": ["burst", "dmg"],
     },
 
-    alyosha: {},
+    alyosha: {
+        "Normal 3": ["normal", "4"],
+        "Skill": ["skill", "pressDmg"],
+        "Skill (Hold)": ["skill", "holdDmg"],
+        "Fulgurite Hunting Field": ["burst", "fieldDmg"],
+        "Tugarin": ["burst", "tugarinDmg"],
+    },
 
     amber: {
         "Baron Bunny": ["skill", "dmg"],
@@ -285,10 +300,14 @@ const characterAbils: Record<string, AbilsType> = {
     },
 
     columbina: {
+        "Moondew Cleanse": ["charged", "dewDmg"],
         "Skill": ["skill", "skillDmg"],
         "Skill (DoT)": ["skill", "continuousDmg"],
         "Skill Gravity (Lunar-Charged)": ["skill", "lunarchargedDmg"],
         "Skill Gravity (Lunar-Crystallize)": ["skill", "lunarcrystallizeDmg"],
+        "Gravity Interference (Lunar-Charged)": ["skill", "lunarchargedDmg"],
+        "Gravity Interference (Lunar-Bloom)": ["skill", "lunarbloomDmg"],
+        "Gravity Interference (Lunar-Crystallize)": ["skill", "lunarcrystallizeDmg"],
         "Burst": ["burst", "skillDmg"],
     },
 
@@ -343,7 +362,14 @@ const characterAbils: Record<string, AbilsType> = {
         "Special Franchise (C2)": ["constellation2", "dmg"],
     },
 
-    durin: {},
+    durin: {
+        "Confirmation of Purity": ["skill", "purityDmg"],
+        "Denial of Darkness": ["skill", "darkDmg1"],
+        "As the Light Shifts": ["burst", "purityDmg1"],
+        "Dragon of White Flame": ["burst", "whiteDmg"],
+        "As the Stars Smolder": ["burst", "darkDmg1"],
+        "Dragon of Dark Decay": ["burst", "decayDmg"],
+    },
 
     emilie: {
         "Spiritbreath Thorn": ["skill", "thornDmg"],
@@ -395,8 +421,14 @@ const characterAbils: Record<string, AbilsType> = {
         "Normal 2 (Skill)": ["skill", "na3"],
         "Normal 3 (Skill)": ["skill", "na4"],
         "Normal 4 (Skill)": ["skill", "na5"],
+        "Charge": ["skill", "ca"],
+        "Arcane Light (0 dmg)": ["type", "subtype"], // No Opt
         "Northland Spearstorm": ["skill", "spearDmg"],
+        "Cometh the Night (Initial)": ["burst", "skillDmg"],
+        "Cometh the Night (Mid)": ["burst", "middleLunarDmg"],
+        "Cometh the Night (Final)": ["burst", "finalLunarDmg"],
         "Thunderous Symphony": ["burst", "thunderDmg"],
+        "The Devil's Wall (C2)": ["constellation2", "dmg"],
     },
 
     freminet: {
@@ -459,14 +491,27 @@ const characterAbils: Record<string, AbilsType> = {
         "High Plunge (Paramita Papilio)": ["plunging","high"],
     },
 
-    iansan: {},
+    iansan: {
+        "Swift Stormflight": ["charged", "swiftDmg"],
+        "Thunderbolt Rush": ["skill", "skillDmg"],
+        "The Three Principles of Power": ["burst", "skillDmg"],
+    },
 
-    ifa: {},
+    ifa: {
+        "Tonic Shot": ["skill", "tonicDmg"],
+        "Compound Sedation Field": ["burst", "skillDmg"],
+        "Sedation Mark": ["burst", "hydro", "pyro", "cryo", "electro"],
+        "Tonic Shot C6": ["constellation6", "dmg"],
+    },
 
     illuga: {
         "Skill": ["skill", "pressDmg"],
+        "Dawnbearing Songbird (Tap)": ["skill", "pressDmg"],
+        "Dawnbearing Songbird (Hold)": ["skill", "holdDmg"],
         "Burst": ["burst", "skillDmg"],
+        "Shadowless Reflection": ["burst", "skillDmg"],
         "Illuga C2": ["constellation2", "dmg"],
+        "Aedon C2 Hit": ["constellation2", "dmg"],
     },
 
     ineffa: {
@@ -474,6 +519,8 @@ const characterAbils: Record<string, AbilsType> = {
         "Birgitta": ["skill", "birgittaDmg"],
         "Birgitta (A1)": ["passive1", "dmg"],
         "Supreme Instruction: Cyclonic Exterminator": ["burst", "skillDmg"],
+        "Punishment Edit (C2)": ["constellation2", "dmg"],
+        "A Dawning Morn for You (C6)": ["constellation6", "dmg"],
     },
 
     itto: {
@@ -483,7 +530,16 @@ const characterAbils: Record<string, AbilsType> = {
         "Masatsu Zetsugi: Akaushi Burst!": ["skill", "dmg"],
     },
 
-    jahoda: {},
+    jahoda: {
+        "Fully-Charged Aimed Shot": ["charged", "fullyAimed"],
+        "Smoke Bomb": ["skill", "bombDmg"],
+        "Unfilled Treasure Flask": ["skill", "unfilledDmg"],
+        "Filled Treasure Flask": ["skill", "filledDmg"],
+        "Meowball": ["skill", "meowDmgHydro", "meowDmgPyro", "meowDmgCryo", "meowDmgElectro"],
+        "Meowball (C1)": ["skill", "meowDmgHydro", "meowDmgPyro", "meowDmgCryo", "meowDmgElectro"],
+        "Hidden Aces: Seven Tools of the Hunter": ["burst", "dmg"],
+        "Purrsonal Coordinated Assistance Robot DMG": ["burst", "robotDmgHydro", "robotDmgPyro", "robotDmgCryo", "robotDmgElectro"],
+    },
 
     jean: {
         "Gale Blade": ["skill", "dmg"],
@@ -491,7 +547,19 @@ const characterAbils: Record<string, AbilsType> = {
         "Dandelion Breeze (In/Out)": ["burst", "enterExitDmg"],
     },
 
-    kachina: {},
+    kachina: {
+        "Normal 1": ["normal", "0"],
+        "Normal 2": ["normal", "1"],
+        "Normal 3": ["normal", "3"],
+        "Normal 4": ["normal", "4"],
+        "Turbo Twirly Normal 1": ["skill", "rideDmg"],
+        "Turbo Twirly Normal 2": ["skill", "rideDmg"],
+        "Turbo Twirly Normal 3": ["skill", "rideDmg"],
+        "Turbo Twirly Normal 4": ["skill", "rideDmg"],
+        "Turbo Twirly": ["skill", "independentDmg"],
+        "Time to Get Serious!": ["burst", "skillDmg"],
+        "This Time, I've Gotta Win": ["constellation6", "dmg"],
+    },
 
     kaeya: {
         "Frostgnaw": ["skill", "dmg"],
@@ -568,6 +636,7 @@ const characterAbils: Record<string, AbilsType> = {
     },
 
     lanyan: {
+        "Swallow-Wisp Pinion Dance: Detect": ["type", "subtype"], // No Opt
         "Feathermoon Ring": ["skill", "ringDmg"],
         "Feathermoon Ring (C1)": ["skill", "ringDmg"],
         "Lustrous Moonrise": ["burst", "dmg"],
@@ -586,6 +655,8 @@ const characterAbils: Record<string, AbilsType> = {
         "Hymn of Eternal Rest (Hold)": ["skill", "hold1Dmg"],
         "Hymn of Eternal Rest (Hold) (Lunar-Bloom)": ["skill", "hold2Dmg"],
         "Frostgrove Sanctuary": ["skill", "frostgroveDmg"],
+        "Frostgrove Sanctuary C6": ["constellation6", "dmg1"],
+        "Normal C6 Pale Hymn": ["constellation6", "dmg2"],
     },
 
     layla: {
@@ -596,7 +667,13 @@ const characterAbils: Record<string, AbilsType> = {
         "Starlight Slug":["burst","slugDmg"],
     },
 
-    linnea: {},
+    linnea: {
+        "Fully-Charged Aimed Shot": ["charged", "fullyAimed"],
+        "Lumi Pound-Pound Pummeler 1": ["skill", "pummelerDmg"],
+        "Lumi Pound-Pound Pummeler 2": ["skill", "pummelerDmg"],
+        "Lumi Heavy Overdrive Hammer": ["skill", "hammerDmg"],
+        "Lumi Million Ton Crush": ["skill", "crushDmg"],
+    },
 
     lisa: {
         "Violet Arc (Press)": ["skill", "press"],
@@ -694,7 +771,22 @@ const characterAbils: Record<string, AbilsType> = {
         "Cannon Fire Support (C2)": ["burst", "supportDmg"], //! (C2)
     },
 
-    nefer: {},
+    nefer: {
+        "Normal 1": ["normal", "0"],
+        "Normal 2": ["normal", "1"],
+        "Normal 3": ["normal", "2"],
+        "Normal 4": ["normal", "4"],
+        "Plunge": ["plunging", "dmg"],
+        "Senet Strategy: Dance of a Thousand Nights": ["skill", "skillDmg"],
+        "Phantasm Performance (Nefer 1)": ["skill", "nefer1Dmg"],
+        "Phantasm Performance (Nefer 2)": ["skill", "nefer2Dmg"],
+        "Phantasm Performance (Shade 1)": ["skill", "shade1Dmg"],
+        "Phantasm Performance (Shade 2)": ["skill", "shade2Dmg"],
+        "Phantasm Performance (Shade 3)": ["skill", "shade3Dmg"],
+        "Phantasm Performance (C6 End Hit)": ["constellation6", "dmg"],
+        "Sacred Vow: True Eye's Phantasm (Hit 1)": ["burst", "hit1"],
+        "Sacred Vow: True Eye's Phantasm (Hit 2)": ["burst", "hit2"],
+    },
 
     neuvillette: {
         "Charged Attack: Equitable Judgment": ["charged", "judgmentDmg"],
@@ -705,7 +797,10 @@ const characterAbils: Record<string, AbilsType> = {
         "Charged Attack: Equitable Judgment (C6)": ["constellation6", "currentDmg"],
     },
 
-    nicole: {},
+    nicole: {
+        "Revelation: Uncreated Light": ["skill", "skillDmg"],
+        "Revelation: Ladder of Divine Ascent": ["burst", "skillDmg"],
+    },
 
     nilou: {
         "Water Wheel": ["skill", "wheelDmg"],
@@ -767,7 +862,14 @@ const characterAbils: Record<string, AbilsType> = {
         "Hypersense (C6)": ["constellation6", "dmg"],
     },
 
-    prune: {},
+    prune: {
+        "Ring-A-Ding-Ding! Hexhunter Chime DMG": ["skill", "ringDmg"],
+        "Clang Clang! Witch-tribution Comes! DMG": ["skill", "clangHydroDmg", "clangPyroDmg", "clangCryoDmg", "clangElectroDmg"],
+        "The Bell Tolls! The Hunt Is On!": ["burst", "skillDmg"],
+        "Witchlure Bell": ["burst", "bellDmg"],
+        "Banehunter Oathhammer (A1)": ["passive1", "hydroDmg", "pyroDmg", "cryoDmg", "electroDmg"],
+        "Banehunter Oathhammer Ricochet (C4)": ["constellation4", "hydroDmg", "pyroDmg", "cryoDmg", "electroDmg"],
+    },
 
     qiqi: {
         "Herald of Frost: Initial Damage": ["skill", "castDmg"],
@@ -799,6 +901,7 @@ const characterAbils: Record<string, AbilsType> = {
         "The Wolf Within 1": ["burst", "companionDmg2"],
         "The Wolf Within 2": ["burst", "companionDmg3"],
         "The Wolf Within 3": ["burst", "companionDmg4"],
+        "Surge of Lightning": ["lockedPassive", "dmg"],
         "Lupus Fulguris": ["constellation6", "dmg"],
     },
 
@@ -810,7 +913,26 @@ const characterAbils: Record<string, AbilsType> = {
         "Rites of Termination (DoT)": ["burst", "dotDmg"],
     },
 
-    sandrone: {},
+    sandrone: {
+        "Sweeping Fire": ["charged", "sweepDmg"],
+        "Condensed Beam": ["charged", "beamDmg"],
+        "Condensed Beam (Stellar-Conduct)": ["charged", "beamStellarDmg"],
+        "Condensed Beam (Stellar Swirl)": ["charged", "beamSsDmg"],
+        "Fagio (Power Overdrive)": ["charged", "overdriveDmg"],
+        "Prism Shot": ["skill", "prismDmg1"],
+        "Prism Shot (Stellar-Conduct)": ["skill", "prismStellarDmg"],
+        "Prism Shot (Stellar-Conduct) (A1)": ["skill", "prismStellarDmg"],
+        "Prism Shot (Stellar Swirl)": ["skill", "prismSsDmg"],
+        "Prism Shot (Stellar Swirl) (A1)": ["skill", "prismSsDmg"],
+        "Bombardment": ["burst", "bombardDmg"],
+        "Convective Inhibition Ray": ["burst", "rayDmg"],
+        "Convective Inhibition Ray (Stellar-Conduct)": ["burst", "rayStellarDmg"],
+        "Convective Inhibition Ray (Stellar Swirl)": ["burst", "raySsDmg"],
+        "Coordinated Attack (C4)": ["constellation4", "dmg"],
+        "Condensed Cluster Beam (C6)": ["constellation6", "dmg"],
+        "Condensed Cluster Beam (C6) (Stellar-Conduct)": ["constellation6", "dmg2"],
+        "Condensed Cluster Beam (C6) (Stellar Swirl)": ["constellation6", "ssDmg"],
+    },
 
     sara: {
         "Fully-Charged Aimed Shot (A1)": ["charged", "fullyAimed"],
@@ -866,6 +988,7 @@ const characterAbils: Record<string, AbilsType> = {
         "Havoc: Ruin (DoT)": ["burst", "skillDmg"],
         "Havoc: Ruin (Final)": ["burst", "finalDmg"],
         "Far to Fall (C1)": ["constellation1", "dmg"],
+        "Havoc: Sever (Burst)": ["constellation6", "burstDmg"],
         "Havoc: Sever (Normal)": ["constellation6", "normalDmg"],
     },
 
@@ -986,9 +1109,39 @@ const characterAbils: Record<string, AbilsType> = {
         "Volcano Kablam": ["burst", "volcanoDmg"],
     },
 
-    varka: {},
+    varka: {
+        "Normal 0": ["normal", "na1"],
+        "Normal 1": ["normal", "na21"],
+        "Normal 2": ["normal", "na31"],
+        "Normal 3": ["normal", "na41"],
+        "Normal 4": ["normal", "na51"],
+        "Charge": ["charged", "dmg1"],
+        "Windbound Execution": ["skill", "skillDmg"],
+        "Sturm und Drang Normal 0": ["skill", "na1"],
+        "Sturm und Drang Normal 1": ["skill", "na21"],
+        "Sturm und Drang Normal 2": ["skill", "na31"],
+        "Sturm und Drang Normal 3": ["skill", "na41"],
+        "Sturm und Drang Normal 4": ["skill", "na51"],
+        "Sturm und Drang Charge": ["skill", "ca1"],
+        "Four Winds' Ascension": ["skill", "fourWind1"],
+        "Azure Devour": ["skill", "azure1"],
+        "Northwind Avatar": ["burst", "dmg1"],
+        "Varka C2": ["constellation2", "dmg"],
+    },
 
     venti: {
+        "Normal 0": ["normal", "hex0"],
+        "Normal 1": ["normal", "hex1"],
+        "Normal 2": ["normal", "hex2"],
+        "Normal 3": ["normal", "hex3"],
+        "Normal 4": ["normal", "hex5"],
+        "Normal 5": ["normal", "hex6"],
+        "Normal 0 (C1)": ["constellation1", "hex0"],
+        "Normal 1 (C1)": ["constellation1", "hex1"],
+        "Normal 2 (C1)": ["constellation1", "hex2"],
+        "Normal 3 (C1)": ["constellation1", "hex3"],
+        "Normal 4 (C1)": ["constellation1", "hex5"],
+        "Normal 5 (C1)": ["constellation1", "hex6"],
         "Skyward Sonnett (Press)": ["skill", "press"],
         "Skyward Sonnett (Hold)": ["skill", "hold"],
         "Wind's Grand Ode": ["burst", "base"],
@@ -1137,6 +1290,13 @@ const characterAbils: Record<string, AbilsType> = {
     },
 
     zibai: {
+        "Normal 0": ["skill", "shift1Dmg"],
+        "Normal 1": ["skill", "shift2Dmg"],
+        "Normal 2": ["skill", "shift3Dmg"],
+        "Normal 3": ["skill", "shift4Dmg"],
+        "Normal 4 (Lunar-Crystallize)": ["skill", "shift4GleamDmg"],
+        "Charge": ["skill", "shiftCaDmg"],
+        "Lunar Phase Shift (0 dmg)": ["type", "subtype"], // No Opt
         "Normal 0 (Skill)": ["skill", "shift1Dmg"],
         "Normal 1 (Skill)": ["skill", "shift2Dmg"],
         "Normal 2 (Skill)": ["skill", "shift3Dmg"],

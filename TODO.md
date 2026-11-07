@@ -5,22 +5,22 @@ Mark characters as their abilities are added.
 
 ---
 
-**Updated:** 06/11/26, 2:49 a.m.
+**Updated:** 06/11/26, 3:25 p.m.
 
 - Total characters: 129
-- Mapped: 111
-- Pending: 18
-- Completion percentage: 86.0%
+- Mapped: 124
+- Pending: 5
+- Completion percentage: 96.1%
 
 ## Character Status
 
 | Character | Status |
 |-----------|--------|
-| Aino | ⬜ |
+| Aino | ✅ |
 | Albedo | ✅ |
 | Alhaitham | ✅ |
 | Aloy | ✅ |
-| Alyosha | ⬜ |
+| Alyosha | ✅ |
 | Amber | ✅ |
 | Arlecchino | ✅ |
 | Ayaka | ✅ |
@@ -45,7 +45,7 @@ Mark characters as their abilities are added.
 | Diluc | ✅ |
 | Diona | ✅ |
 | Dori | ✅ |
-| Durin | ⬜ |
+| Durin | ✅ |
 | Emilie | ✅ |
 | Escoffier | ✅ |
 | Eula | ✅ |
@@ -59,14 +59,14 @@ Mark characters as their abilities are added.
 | Gorou | ✅ |
 | Heizou | ✅ |
 | Hutao | ✅ |
-| Iansan | ⬜ |
-| Ifa | ⬜ |
+| Iansan | ✅ |
+| Ifa | ✅ |
 | Illuga | ✅ |
 | Ineffa | ✅ |
 | Itto | ✅ |
-| Jahoda | ⬜ |
+| Jahoda | ✅ |
 | Jean | ✅ |
-| Kachina | ⬜ |
+| Kachina | ✅ |
 | Kaeya | ✅ |
 | Kaveh | ✅ |
 | Kazuha | ✅ |
@@ -79,7 +79,7 @@ Mark characters as their abilities are added.
 | Lanyan | ✅ |
 | Lauma | ✅ |
 | Layla | ✅ |
-| Linnea | ⬜ |
+| Linnea | ✅ |
 | Lisa | ✅ |
 | Lohen | ⬜ |
 | Lynette | ✅ |
@@ -92,20 +92,20 @@ Mark characters as their abilities are added.
 | Mualani | ✅ |
 | Nahida | ✅ |
 | Navia | ✅ |
-| Nefer | ⬜ |
+| Nefer | ✅ |
 | Neuvillette | ✅ |
-| Nicole | ⬜ |
+| Nicole | ✅ |
 | Nilou | ✅ |
 | Ningguang | ✅ |
 | Noelle | ✅ |
 | Odette | ✅ |
 | Ororon | ✅ |
-| Prune | ⬜ |
+| Prune | ✅ |
 | Qiqi | ✅ |
 | Raiden | ✅ |
 | Razor | ✅ |
 | Rosaria | ✅ |
-| Sandrone | ⬜ |
+| Sandrone | ✅ |
 | Sara | ✅ |
 | Sayu | ✅ |
 | Sethos | ✅ |
@@ -125,7 +125,7 @@ Mark characters as their abilities are added.
 | Traveler Pyro | ✅ |
 | Valeriy | ⬜ |
 | Varesa | ✅ |
-| Varka | ⬜ |
+| Varka | ✅ |
 | Venti | ✅ |
 | Vesna | ⬜ |
 | Vodyanitsa | ⬜ |

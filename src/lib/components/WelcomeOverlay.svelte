@@ -5,29 +5,16 @@
 
     // [AUTO-GENERATED:START]
     const pendingCharacters = [
-        'Aino',
-        'Alyosha',
-        'Durin',
-        'Iansan',
-        'Ifa',
-        'Jahoda',
-        'Kachina',
-        'Linnea',
         'Lohen',
         'Mitya',
-        'Nefer',
-        'Nicole',
-        'Prune',
-        'Sandrone',
         'Valeriy',
-        'Varka',
         'Vesna',
         'Vodyanitsa',
     ];
 
     const totalCharacters = 129;
-    const mappedCharacters = 111;
-    const progressPercent = 86.0;
+    const mappedCharacters = 124;
+    const progressPercent = 96.1;
     // [AUTO-GENERATED:END]
 
     let overlayElement: HTMLElement;

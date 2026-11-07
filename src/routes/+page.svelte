@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { onMount, afterUpdate } from 'svelte';
+    import { onMount } from 'svelte';
     import Prism from 'prismjs';
     import 'prismjs/themes/prism-tomorrow.css';
     import 'prismjs/components/prism-json';
@@ -151,24 +151,31 @@
     }
 
     function updateTooltipPosition(event: MouseEvent) {
-        tooltipX = event.clientX + 15;
-        tooltipY = event.clientY - 15;
+        const tooltipElement = document.querySelector('.tooltip') as HTMLElement | null;
+        const tooltipWidth = tooltipElement?.offsetWidth || 320;
+        const tooltipHeight = tooltipElement?.offsetHeight || 380;
+        const margin = 12;
 
-        const tooltipWidth = 320;
+        let nextX = event.clientX + 15;
+        let nextY = event.clientY + 15;
         let originX = 'left';
         let originY = 'top';
 
-        if (tooltipX + tooltipWidth > window.innerWidth) {
-            tooltipX = event.clientX - tooltipWidth - 15;
+        if (nextX + tooltipWidth + margin > window.innerWidth) {
+            nextX = event.clientX - tooltipWidth - 15;
             originX = 'right';
         }
+        nextX = Math.max(margin, Math.min(nextX, window.innerWidth - tooltipWidth - margin));
 
-        if (tooltipY < 0) {
-            tooltipY = event.clientY + 15;
+        if (nextY + tooltipHeight + margin > window.innerHeight) {
+            nextY = event.clientY - tooltipHeight - 15;
             originY = 'bottom';
         }
+        nextY = Math.max(margin, Math.min(nextY, window.innerHeight - tooltipHeight - margin));
 
-        const tooltipElement = document.querySelector('.tooltip') as HTMLElement;
+        tooltipX = nextX;
+        tooltipY = nextY;
+
         if (tooltipElement) {
             tooltipElement.style.transformOrigin = `${originX} ${originY}`;
         }
@@ -210,61 +217,6 @@
                 audio = null;
             }
         };
-    });
-
-    afterUpdate(() => {
-        document.querySelectorAll('.token.string').forEach(span => {
-            const texto = span.textContent || '';
-            const url = 'https://thebertdark.github.io/gcsim-to-multiopt/';
-
-            if (texto === '"No description available."') {
-                (span as HTMLElement).style.setProperty('color', 'hsl(0, 100%, 50%)', 'important');
-                (span as HTMLElement).style.fontWeight = 'bold';
-                (span as HTMLElement).style.fontStyle = 'italic';
-                return;
-            }
-
-            if (texto === '"Powered by DarkJake"') {
-                (span as HTMLElement).style.setProperty('color', 'hsl(161 100% 50%)', 'important');
-                (span as HTMLElement).style.fontWeight = 'bold';
-                return;
-            }
-
-            if (texto.includes(url)) {
-                const partes = texto.split(url);
-                const parent = span.parentElement;
-
-                if (parent) {
-                    const spanBefore = document.createElement('span');
-                    spanBefore.className = 'token string';
-                    spanBefore.textContent = partes[0];
-                    spanBefore.style.setProperty('color', 'hsl(76, 100%, 50%)', 'important');
-                    spanBefore.style.setProperty('font-style', 'italic', 'important');
-
-                    const spanLink = document.createElement('span');
-                    spanLink.className = 'token string';
-                    spanLink.textContent = url;
-                    spanLink.style.setProperty('color', 'hsl(196, 100%, 60%)', 'important');
-                    spanLink.style.setProperty('text-decoration', 'underline', 'important');
-                    spanLink.style.setProperty(
-                        'background-color',
-                        'rgba(0, 255, 255, 0.1)',
-                        'important'
-                    );
-                    spanLink.style.setProperty('font-style', 'italic', 'important');
-
-                    const spanAfter = document.createElement('span');
-                    spanAfter.className = 'token string';
-                    spanAfter.textContent = partes[1];
-                    spanAfter.style.setProperty('color', 'hsl(76, 100%, 50%)', 'important');
-                    spanAfter.style.setProperty('font-style', 'italic', 'important');
-
-                    parent.replaceChild(spanBefore, span);
-                    parent.insertBefore(spanLink, spanBefore.nextSibling);
-                    parent.insertBefore(spanAfter, spanLink.nextSibling);
-                }
-            }
-        });
     });
 
     function playTrack(index: number) {
@@ -345,19 +297,21 @@
         errors = [];
         errorContexts = [];
 
-        const [_, modsFirstPass] = getCharacterAbils(sample, charName, ignoredMods);
-        availabledMods = modsFirstPass;
+        let [abilities, mods, char] = getCharacterAbils(sample, charName, ignoredMods);
+        availabledMods = mods;
 
         if (availabledMods.length > 0) {
             const defaultIgnored = computeDefaultIgnored(availabledMods);
-            const toAdd = defaultIgnored.filter(m => !manualEnabledMods.has(m));
+            const toAdd = defaultIgnored.filter(
+                m => !manualEnabledMods.has(m) && !ignoredMods.includes(m)
+            );
             if (toAdd.length > 0) {
                 ignoredMods = Array.from(new Set([...ignoredMods, ...toAdd]));
+                [abilities, mods, char] = getCharacterAbils(sample, charName, ignoredMods);
+                availabledMods = mods;
             }
         }
 
-        const [abilities, mods, char] = getCharacterAbils(sample, charName, ignoredMods);
-        availabledMods = mods;
         customDescNote = getCustomDescription(char, mods) || [];
 
         if (abilities.length === 0) {
@@ -488,7 +442,30 @@
         if (target) {
             target.name = configName || 'Powered by DarkJake';
             const jsonString = JSON.stringify(target, null, 2);
-            highlightedJson = Prism.highlight(jsonString, Prism.languages.json, 'json');
+            let html = Prism.highlight(jsonString, Prism.languages.json, 'json');
+
+            // Apply custom token styling directly on the HTML string instead of running querySelectorAll on every DOM update
+            const url = 'https://thebertdark.github.io/gcsim-to-multiopt/';
+            html = html
+                .replace(
+                    /<span class="token string">"No description available\."<\/span>/g,
+                    '<span class="token string" style="color: hsl(0, 100%, 50%) !important; font-weight: bold; font-style: italic;">"No description available."</span>'
+                )
+                .replace(
+                    /<span class="token string">"Powered by DarkJake"<\/span>/g,
+                    '<span class="token string" style="color: hsl(161 100% 50%) !important; font-weight: bold;">"Powered by DarkJake"</span>'
+                )
+                .replace(
+                    new RegExp(
+                        `<span class="token string">("This configuration was generated with --&gt;|"This configuration was generated with -->)( ?${url.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})(")<\\/span>`,
+                        'g'
+                    ),
+                    '<span class="token string" style="color: hsl(76, 100%, 50%) !important; font-style: italic !important;">$1</span>' +
+                        '<span class="token string" style="color: hsl(196, 100%, 60%) !important; text-decoration: underline !important; background-color: rgba(0, 255, 255, 0.1) !important; font-style: italic !important;">$2</span>' +
+                        '<span class="token string" style="color: hsl(76, 100%, 50%) !important; font-style: italic !important;">$3</span>'
+                );
+
+            highlightedJson = html;
         }
     }
 
@@ -496,15 +473,11 @@
         showNotification('Copied to clipboard!', '✓', 2000);
     }
 
-    $: if (target) {
+    $: if (configName !== undefined && target) {
         updateHighlightedJson();
     }
 
     $: ignoredMods = ignoredMods.filter(mod => availabledMods.includes(mod));
-
-    $: if (configName) {
-        updateHighlightedJson();
-    }
 </script>
 
 <svelte:head>

@@ -93,6 +93,26 @@ describe('GCSim to MultiOpt Engine', () => {
                 expect(target.targets.length).toBeGreaterThan(0);
             }
         });
+
+        it('should convert all characters in sample.gz (varka, prune, odette, luminecryo) with zero unknown ability or stat errors', () => {
+            const sample = readGZFromDisk(path.join(FIXTURES_DIR, 'sample.gz'));
+            const chars = sample.character_details?.map(c => c.name) ?? [];
+            expect(chars).toEqual(['varka', 'prune', 'odette', 'luminecryo']);
+
+            for (const charName of chars) {
+                const [abilities, mods, char] = getCharacterAbils(sample, charName, []);
+                expect(abilities.length).toBeGreaterThan(0);
+                expect(mods.length).toBeGreaterThan(0);
+
+                const mapping = getAbilities(charName);
+                const [target, errors] = convertAbils(abilities, mapping, char);
+
+                expect(errors).toEqual([]);
+                expect(target.targets.length).toBeGreaterThan(0);
+                // Ensure char.name in sample.character_details is never mutated
+                expect(char?.name).toBe(charName);
+            }
+        });
     });
 
     describe('Default ignored mods', () => {
@@ -113,6 +133,7 @@ describe('GCSim to MultiOpt Engine', () => {
                 'lauma2.gz',
                 'fallbacktest.gz',
                 'test1y1.gz',
+                'sample.gz',
             ];
 
             for (const file of fixtureFiles) {

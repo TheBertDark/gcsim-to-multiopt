@@ -135,64 +135,97 @@ export function getCharacterAbils(
         return map;
     };
 
-    // Generic target aura detection around the hit frame
+    // Pre-group element and freeze reaction events by target for fast aura lookup
+    const elementEventsByTarget = new Map<
+        number,
+        { frame: number; existing: Record<string, number>; hasFrozenText: boolean }[]
+    >();
+    const freezeReactionFramesByTarget = new Map<number, number[]>();
+
+    for (const l of sample.logs ?? []) {
+        if (l.event === 'element' && l.logs) {
+            const t = Number(l.logs['target'] ?? -1);
+            let arr = elementEventsByTarget.get(t);
+            if (!arr) {
+                arr = [];
+                elementEventsByTarget.set(t, arr);
+            }
+            const existing = parseGaugeLines(l.logs['existing']);
+            const blob = JSON.stringify(l.logs).toLowerCase();
+            const hasFrozenText = blob.includes('frozen') || blob.includes('freeze');
+            arr.push({ frame: l.frame, existing, hasFrozenText });
+        } else if (l.event === 'reaction' && l.logs) {
+            const blob = JSON.stringify(l.logs).toLowerCase();
+            if (blob.includes('freeze') || blob.includes('frozen')) {
+                const t = Number(l.logs['target'] ?? -1);
+                let arr = freezeReactionFramesByTarget.get(t);
+                if (!arr) {
+                    arr = [];
+                    freezeReactionFramesByTarget.set(t, arr);
+                }
+                arr.push(l.frame);
+            }
+        }
+    }
+
+    // Generic target aura detection around the hit frame using binary search on pre-indexed target events
     const hasTargetAura = (frame: number, target: number, auraNames: string[]): boolean => {
         const window = 60; // ~1s
         const names = auraNames.map(a => a.toLowerCase());
-        const inWindow = (l: LogDetails) => l.frame >= frame - window && l.frame <= frame + window;
+        const targetElements = elementEventsByTarget.get(target);
 
-        // 1) Latest element event before or at the hit
-        const beforeCandidate = (sample.logs || [])
-            .filter(
-                (l: LogDetails) =>
-                    l.event === 'element' &&
-                    (l.logs?.target ?? -1) === target &&
-                    l.frame <= frame &&
-                    l.frame > frame - window
-            )
-            .sort((a: LogDetails, b: LogDetails) => b.frame - a.frame)[0];
-        if (beforeCandidate && beforeCandidate.logs) {
-            const existing = parseGaugeLines(beforeCandidate.logs['existing']);
-            for (const n of names) {
-                if ((existing[n] ?? 0) > 0) return true;
-                const blob = JSON.stringify(beforeCandidate.logs).toLowerCase();
-                if (n === 'frozen' && (blob.includes('frozen') || blob.includes('freeze')))
-                    return true;
+        if (targetElements && targetElements.length > 0) {
+            // Binary search for the last event with frame <= hit frame
+            let lo = 0;
+            let hi = targetElements.length - 1;
+            let beforeIdx = -1;
+            while (lo <= hi) {
+                const mid = (lo + hi) >> 1;
+                if (targetElements[mid].frame <= frame) {
+                    beforeIdx = mid;
+                    lo = mid + 1;
+                } else {
+                    hi = mid - 1;
+                }
             }
-        }
 
-        // 2) First element event after the hit within window
-        const afterCandidate = (sample.logs || [])
-            .filter(
-                (l: LogDetails) =>
-                    l.event === 'element' &&
-                    (l.logs?.target ?? -1) === target &&
-                    l.frame >= frame &&
-                    l.frame <= frame + window
-            )
-            .sort((a: LogDetails, b: LogDetails) => a.frame - b.frame)[0];
-        if (afterCandidate && afterCandidate.logs) {
-            const existing = parseGaugeLines(afterCandidate.logs['existing']);
-            for (const n of names) {
-                if ((existing[n] ?? 0) > 0) return true;
-                const blob = JSON.stringify(afterCandidate.logs).toLowerCase();
-                if (n === 'frozen' && (blob.includes('frozen') || blob.includes('freeze')))
-                    return true;
+            // 1) Latest element event before or at the hit within window
+            if (beforeIdx >= 0 && targetElements[beforeIdx].frame > frame - window) {
+                const cand = targetElements[beforeIdx];
+                for (const n of names) {
+                    if ((cand.existing[n] ?? 0) > 0) return true;
+                    if (n === 'frozen' && cand.hasFrozenText) return true;
+                }
+            }
+
+            // 2) First element event after or at the hit within window
+            // Find first index with frame >= hit frame
+            let afterIdx = beforeIdx;
+            while (afterIdx >= 0 && afterIdx > 0 && targetElements[afterIdx - 1].frame === frame) {
+                afterIdx--;
+            }
+            if (afterIdx < 0 || targetElements[afterIdx].frame < frame) {
+                afterIdx = beforeIdx + 1;
+            }
+            if (afterIdx < targetElements.length && targetElements[afterIdx].frame <= frame + window) {
+                const cand = targetElements[afterIdx];
+                for (const n of names) {
+                    if ((cand.existing[n] ?? 0) > 0) return true;
+                    if (n === 'frozen' && cand.hasFrozenText) return true;
+                }
             }
         }
 
         // 3) Fallback for Frozen: reaction "freeze" in window on same target
         if (names.includes('frozen') || names.includes('freeze')) {
-            const reactionHit = (sample.logs || [])
-                .filter(
-                    (l: LogDetails) =>
-                        l.event === 'reaction' && inWindow(l) && (l.logs?.target ?? -1) === target
-                )
-                .some(l => {
-                    const blob = JSON.stringify(l.logs ?? {}).toLowerCase();
-                    return blob.includes('freeze') || blob.includes('frozen');
-                });
-            if (reactionHit) return true;
+            const freezeFrames = freezeReactionFramesByTarget.get(target);
+            if (freezeFrames) {
+                for (let i = 0; i < freezeFrames.length; i++) {
+                    const f = freezeFrames[i];
+                    if (f >= frame - window && f <= frame + window) return true;
+                    if (f > frame + window) break;
+                }
+            }
         }
 
         return false;

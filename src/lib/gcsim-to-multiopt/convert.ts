@@ -26,7 +26,9 @@ export function resistConvert(element: string, value: number): [string, number] 
     return [element, value];
 }
 
-// Used for cases where the ability name on GCSIM stay the same
+function normalizeCharKey(name: string): string {
+    return name.replace(/^(aether|lumine)/, "traveler").replace(/^yumemizukimizuki$/, "mizuki");
+}
 // But element change and name on GO change with it
 function getAbilByEle(abilPath: string[], ele: string): string[] {
     // Arbitrary element order to put in the config (the one on go)
@@ -156,6 +158,107 @@ function getAbilExceptions(abil: AbilInfo, abilPath: string[], allAbils: CustomT
             if (char.cons >= 6 && abil.name === "Breakthrough Barb")
                 return ["constellation6", "barbDmg"];
         }
+        else if (char.name === "varka") {
+            if (abilPath[0] === "normal") {
+                const found = [...allAbils].reverse().find(target => target.path[0] === "normal");
+                if (abil.name === "Normal 1" && found?.path[1] === "na21") return ["normal", "na22"];
+                if (abil.name === "Normal 2" && found?.path[1] === "na31") return ["normal", "na32"];
+                if (abil.name === "Normal 3" && found?.path[1] === "na41") return ["normal", "na42"];
+                if (abil.name === "Normal 4" && found?.path[1] === "na51") return ["normal", "na52"];
+            }
+            else if (abil.name === "Charge") {
+                const found = [...allAbils].reverse().find(target => target.path[0] === "charged");
+                if (found?.path[1] === "dmg1") return ["charged", "dmg2"];
+            }
+            else if (abil.name === "Sturm und Drang Normal 1") {
+                if (abil.ele !== "anemo") return ["skill", "na22"];
+                const found = [...allAbils].reverse().find(target => target.path[0] === "skill");
+                if (found?.path[1] === "na21") return ["skill", "na22"];
+            }
+            else if (abil.name === "Sturm und Drang Normal 2") {
+                if (abil.ele !== "anemo") return ["skill", "na32"];
+                const found = [...allAbils].reverse().find(target => target.path[0] === "skill");
+                if (found?.path[1] === "na31") return ["skill", "na32"];
+            }
+            else if (abil.name === "Sturm und Drang Normal 3") {
+                if (abil.ele === "anemo") return ["skill", "na42"];
+                const found = [...allAbils].reverse().find(target => target.path[0] === "skill");
+                if (found?.path[1] === "na41") return ["skill", "na42"];
+            }
+            else if (abil.name === "Sturm und Drang Normal 4") {
+                if (abil.ele === "anemo") return ["skill", "na52"];
+                const found = [...allAbils].reverse().find(target => target.path[0] === "skill");
+                if (found?.path[1] === "na51") return ["skill", "na52"];
+            }
+            else if (abil.name === "Sturm und Drang Charge") {
+                if (abil.ele === "anemo") return ["skill", "ca2"];
+                const found = [...allAbils].reverse().find(target => target.path[0] === "skill");
+                if (found?.path[1] === "ca1") return ["skill", "ca2"];
+            }
+            else if (abil.name === "Four Winds' Ascension") {
+                if (abil.ele === "anemo") return ["skill", "fourWind2"];
+                const found = [...allAbils].reverse().find(target => target.path[0] === "skill");
+                if (found?.path[1] === "fourWind1") return ["skill", "fourWind2"];
+            }
+            else if (abil.name === "Azure Devour") {
+                if (abil.ele === "anemo") return ["skill", "azure2"];
+                const found = [...allAbils].reverse().find(target => target.path[0] === "skill");
+                if (found?.path[1] === "azure1") return ["skill", "azure2"];
+            }
+            else if (abil.name === "Northwind Avatar") {
+                if (abil.ele === "anemo") {
+                    const found = [...allAbils].reverse().find(target => target.path[0] === "burst");
+                    if (found?.path[1] === "dmg1") return ["burst", "dmg2"];
+                }
+            }
+        }
+        else if (char.name === "durin") {
+            if (abil.name === "Denial of Darkness") {
+                const found = [...allAbils].reverse().find(target => target.path[0] === "skill");
+                if (found?.path[1] === "darkDmg1") return ["skill", "darkDmg2"];
+                if (found?.path[1] === "darkDmg2") return ["skill", "darkDmg3"];
+            }
+            else if (abil.name === "As the Light Shifts") {
+                const found = [...allAbils].reverse().find(target => target.path[0] === "burst");
+                if (found?.path[1] === "purityDmg1") return ["burst", "purityDmg2"];
+                if (found?.path[1] === "purityDmg2") return ["burst", "purityDmg3"];
+            }
+            else if (abil.name === "As the Stars Smolder") {
+                const found = [...allAbils].reverse().find(target => target.path[0] === "burst");
+                if (found?.path[1] === "darkDmg1") return ["burst", "darkDmg2"];
+                if (found?.path[1] === "darkDmg2") return ["burst", "darkDmg3"];
+            }
+        }
+        else if (char.name === "alyosha") {
+            if (abil.name === "Normal 2") {
+                const found = [...allAbils].reverse().find(target => target.path[0] === "normal");
+                if (found?.path[1] === "2") return ["normal", "3"];
+            }
+        }
+        else if (char.name === "kachina") {
+            if (abil.name === "Normal 2") {
+                const found = [...allAbils].reverse().find(target => target.path[0] === "normal");
+                if (found?.path[1] === "1") return ["normal", "2"];
+            }
+        }
+        else if (char.name === "nefer") {
+            if (abil.name === "Normal 3") {
+                const found = [...allAbils].reverse().find(target => target.path[0] === "normal");
+                if (found?.path[1] === "2") return ["normal", "3"];
+            }
+        }
+        else if (char.name === "venti") {
+            if (abilPath[0] === "normal" && abilPath[1].startsWith("hex")) {
+                const found = [...allAbils].reverse().find(target => target.path[0] === "normal");
+                if (abil.name === "Normal 0" && found?.path[1] === "hex0") return ["normal", "hex1"];
+                if (abil.name === "Normal 3" && found?.path[1] === "hex3") return ["normal", "hex4"];
+            }
+            else if (abilPath[0] === "constellation1" && abilPath[1].startsWith("hex")) {
+                const found = [...allAbils].reverse().find(target => target.path[0] === "constellation1");
+                if (abil.name === "Normal 0 (C1)" && found?.path[1] === "hex0") return ["constellation1", "hex1"];
+                if (abil.name === "Normal 3 (C1)" && found?.path[1] === "hex3") return ["constellation1", "hex4"];
+            }
+        }
     }
     // General weapon procs that scale differently if the opponent is affected by Cryo
     // If we can reliably detect Cryo aura from logs (index.ts), switch to the proper path
@@ -267,11 +370,10 @@ export function mergeCustomTargets(targets: CustomTarget[]): CustomTarget[] {
 export function convertAbils(abils: AbilInfo[], convert: AbilsType, char: Character | undefined): [CustomMultiTarget, Error[]] {
     const result: TargetResult[] = [];
     
-    if (char && char.name)
-        char.name = char.name.replace(/^(aether|lumine)/, "traveler").replace(/^yumemizukimizuki$/, "mizuki");
+    const normalizedChar: Character | undefined = char ? { ...char, name: normalizeCharKey(char.name) } : undefined;
     for (let i = 0; i < abils.length; i++) {
         const customeTargets = result.map(x => x[0]).filter((x): x is CustomTarget => x !== undefined);
-        result.push(convertAbil(abils[i], convert, customeTargets, char));
+        result.push(convertAbil(abils[i], convert, customeTargets, normalizedChar));
     }
     const targets: CustomTarget[] = mergeCustomTargets(result.
         map(x => x[0]).

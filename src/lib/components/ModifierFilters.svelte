@@ -71,6 +71,7 @@
                     type="button"
                     class="mod-chip"
                     class:ignored={isIgnored}
+                    title={mod}
                     on:click={() => onModToggle(mod)}
                     aria-pressed={!isIgnored}
                 >
@@ -323,9 +324,11 @@
             font-size: 0.85rem;
             font-weight: 500;
             flex: 1;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            min-width: 0;
+            white-space: normal;
+            overflow-wrap: anywhere;
+            word-break: break-word;
+            line-height: 1.3;
             font-family: 'Fira Code', monospace;
         }
 
@@ -335,6 +338,7 @@
             background: rgba(34, 197, 94, 0.1);
             padding: 0.15rem 0.45rem;
             border-radius: 4px;
+            flex-shrink: 0;
         }
 
         &.ignored {

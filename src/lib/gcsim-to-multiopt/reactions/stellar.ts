@@ -64,6 +64,14 @@ export function createStellarReactionContext(
             log.msg === 'sky kitsune tick at level'
     );
 
+    // Pre-filter Mizuki C1 flat proc events for this character
+    const mizukiC1ProcEvents = logs.filter(
+        (log: LogDetails) =>
+            log.char_index === charIndex &&
+            log.event === 'pre_damage_mods' &&
+            log.msg === 'mizuki c1 proc'
+    );
+
     const findMatchingCalc = (dmgEvent: LogDetails): LogDetails | undefined => {
         const abil = dmgEvent.logs?.['abil'] ?? '';
         const frame = dmgEvent.frame;
@@ -222,12 +230,8 @@ export function createStellarReactionContext(
 
             // Check for Mizuki C1 flat damage proc on Stellar Swirl / Swirl
             if (rawAbil.includes('(Mizuki C1)')) {
-                const c1Proc = logs.find(
-                    l =>
-                        l.char_index === charIndex &&
-                        l.event === 'pre_damage_mods' &&
-                        l.msg === 'mizuki c1 proc' &&
-                        (l.frame === frame || l.frame === srcFrame)
+                const c1Proc = mizukiC1ProcEvents.find(
+                    l => l.frame === frame || l.frame === srcFrame
                 );
                 const addition = Number(c1Proc?.logs?.['addition'] ?? 0);
                 if (addition > 0) {

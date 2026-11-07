@@ -66,7 +66,7 @@
         &.show {
             opacity: 1;
             visibility: visible;
-            pointer-events: auto;
+            pointer-events: none;
             transform: scale(1);
         }
 
